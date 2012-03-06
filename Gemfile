@@ -14,6 +14,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'tabulous'
 gem 'fog'
+gem 'heroku'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,10 +32,10 @@ end
 gem 'jquery-rails'
 
 # added thin and pg for heroku
-#group :production do
- # gem 'thin'
- # gem 'pg'
-#end
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
