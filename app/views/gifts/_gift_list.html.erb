@@ -1,0 +1,10 @@
+
+<li class="prod-well prod-list block">
+  <div>
+    <% link = "http://"+gift.permalink %>
+    <%= link_to image_tag(gift.image_url(:thumb_pic).to_s), link, :target => "_blank" %>
+    <%= link_to gift.name, link, :target => "_blank", :class => "strong" %></br>
+    <%= number_to_currency(gift.price) %></br>
+    <div class="btn primary white-link"><%= link_to "Check It Out", link, :target => "_blank" %></div>
+  </div>
+</li>

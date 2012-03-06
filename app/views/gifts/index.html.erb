@@ -1,0 +1,69 @@
+
+
+<div class="container">
+    
+    <div class="row">
+
+      <div class="span3 splash-box">
+        <p class="splash-font"><strong>Let us help you find the perfect gift for your little ones<p class="gray-font">We only suggest the best products
+          in the market.</strong></p>
+        <hr/>
+        <p class="splash-font"><strong><%= mail_to("contact@bubboli.com", "Suggest A Toy", :subject => "Suggest A Toy") %></strong></br></p>
+        <p class="gray-font"><strong>Is there a toy that your child just absolutely loves? Suggest it to us so we can share it with others.</strong></p>
+        <hr/>
+        <p class="splash-font"><strong>WE ARE SOCIAL: </strong><br/></p>
+        <div style="opacity: 0.6">
+          <%= link_to facebook, "http://www.facebook.com/pages/Bubboli/150558398340272", :target => "_blank" %>  
+          <%= link_to twitter, "http://www.twitter.com/BubboliKids", :target => "_blank" %>
+          <p style="text-align: center"><%= link_to pinterest, "http://www.pinterest.com/bubboli/", :target => "_blank" %>
+          <%= link_to rss, "#", :target => "_blank" %></p>
+        </div>
+      </div>
+      
+      <div class="span9">
+        <div id="slideshow"><%= splash_one %></div> 
+      </div>
+    
+    </div>  
+  
+  </br>
+
+
+  <a name="gifts"></a>
+  <div class="row"> 
+  
+    <div class="span11">
+        <%= page_navigation_links @gifts, 'gifts' %>  
+    </div>    
+
+  </div>
+  
+  <div class="row">
+    
+    <div class="span3 form-stacked toy-search">
+      <p class="mynewfont">Search Criterias</p>
+      <%= semantic_form_for @search  do |f| %>
+        <%= render(:partial => "gift_search", :locals => {:f => f})%>
+      <% end %>
+    </div>
+    
+    <div class="row">
+      <div class="span12">
+        <ul class="prod">
+          <% if @gifts.empty? %>
+            <p class="no-gifts">There are no gifts that match your criteria.</p>
+          <% else %>
+            <% @gifts.each do |gift| %>
+              <%= render(:partial => "gift_list", :locals => {:gift => gift})%>
+            <% end %>
+          <% end %>        
+        </ul>
+      </div>
+    </div> 
+    
+    <div class="row will-paginate pull-right">
+        <%= page_navigation_links @gifts, 'gifts' %>  
+    </div>
+
+  </div>
+</div>

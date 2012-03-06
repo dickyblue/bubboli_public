@@ -1,0 +1,38 @@
+<% @page_title = "List of Comments" %>
+
+<div class="container">
+  
+  <p><%= link_to "«« Back to Blogs »»", blog_path %> | <%= link_to "«« Back to Admin Panel »»", admin_path %></p></br> 
+  
+  <h4>List of Comments</h4></br>
+  
+    <table class="table zebra-striped">
+      <thead>
+        <tr>
+          <th>ID #</th>
+          <th>Blog ID</th>
+          <th>Commenter</th>
+          <th>Content</th>
+          <th>Commenter Website</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.id %></td>
+          <td><%= comment.blog_id%></td>
+          <td><%= comment.commenter %></td>
+          <td><%= link_to truncate(comment.content, :length => 30, :separator => ' '), comment_path(comment) %></td>
+          <td><%= comment.commenter_permalink %></td>
+          <td><%= comment.status %></td>
+          <td><%= link_to "Set Status", :action => 'edit', :id => comment.id %> | <%= link_to "Delete", comment, :method => :delete %></td>         
+         </tr>
+        <% end %>
+      </tbody>  
+
+    </table>
+      
+</div>

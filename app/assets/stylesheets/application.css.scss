@@ -1,0 +1,311 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+/* Color index */
+
+
+$background-blue:     #D7EFEE;
+$dark-green-blue:     #53868B;
+$bubboli-red:         #FF6F6A;
+$subdued-red:         #FF9B97;
+$background-blue-two: #E4F9F8;
+$light-gray:          #bfbfbf;
+$background-orange:   #F9F2E3;
+$orange-red:          #FF4500;
+
+
+@import 'bootstrap';
+
+body {
+  padding-top: 190px;
+  padding-bottom: 0;
+  }
+
+.logo-topbar-fill {
+  background-color: #FFF;
+  background-color: #FFF;
+  background-image: -moz-linear-gradient(center top , #FFF, #FFF);
+  }
+
+.logo-topbar {
+  height: 120px;
+  left: 0;
+  overflow: visible;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+  }
+  
+.topbar {
+  top: 110px;
+  }
+  
+.topbar .fill {
+  background-image: -moz-linear-gradient(center top , $background-blue, #FFF);
+  background-image: -khtml-gradient(linear, left top, left bottom, from($background-blue), to(#FFF));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFF), color-stop(100%, $background-blue));
+  background-image: -webkit-linear-gradient(top, $background-blue, #FFF);
+  background-image: -o-linear-gradient(top, $background-blue, #FFF);
+  background-image: linear-gradient(top, $background-blue, #FFF);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
+  }
+  
+.topbar a {
+  color: $dark-green-blue;
+  }
+  
+.topbar div > ul .active > a {
+  background-color: $dark-green-blue;
+  }
+  
+.topbar p a:hover {
+  color: $subdued-red
+  }
+  
+.topbar div > ul a:hover, .nav a:hover {
+  color: $dark-green-blue;
+  }
+  
+.btn.primary {
+  background-color: $bubboli-red;
+  
+  background-image: -moz-linear-gradient(center top , $subdued-red, $bubboli-red);
+  background-image: -khtml-gradient(linear, left top, left bottom, from($subdued-red), to($bubboli-red));
+  background-image: -ms-linear-gradient(top, $subdued-red, $bubboli-red);
+  background-image: -webkit-gradient(linear, center top, left bottom, color-stop(0%, $subdued-red), color-stop(100%, $bubboli-red));
+  background-image: -webkit-linear-gradient(top, $subdued-red, $bubboli-red);
+  background-image: -o-linear-gradient(top, $subdued-red, $bubboli-red);
+  background-image: linear-gradient(top, $subdued-red, $bubboli-red);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$subdued-red', endColorstr='$bubboli-red', GradientType=0);
+
+  background-repeat: repeat-x;
+  border-color: $bubboli-red $bubboli-red $subdued-red;
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+  
+footer{
+  text-align: center;
+  background-color: #eee;
+  height: 70px;
+  }
+  
+a {
+  color: $dark-green-blue;
+  }
+
+ul.prod {
+  list-style: none;
+  width: 780px;
+  }
+  
+li.prod-list {
+  float: left;
+  width: 180px;
+  }
+  
+.prod-well {
+  height: 240px;
+  float: left;
+  width: 180px;
+  padding: 10px;
+  text-align: center;
+  background-color: $background-blue;
+  border: 20px solid #fff;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  }
+  
+  
+.toy-search {
+  margin-top: -30px;
+  margin-bottom: 20px;
+  padding: 39px;
+  }
+
+.form-stacked {
+  padding-left: 0px;
+  }
+  
+.form-stacked label {
+  color: $light-gray;
+  }
+  
+.no-gifts {
+  padding-top: 50px;
+  padding-left: 20px;
+  }
+
+.white-link a {
+  color: #fff;
+  text-decoration: none;
+  }
+
+.socialmedia-logo {
+  list-style: none;
+  }
+  
+.socialmedia-overlap {
+  visibility: visible;
+  position: absolute;
+  z-index: 10000;
+  filter: alpha(opacity=60);
+  -moz-opacity: 0.6;
+  -khtml-opacity: 0.6;
+  opacity: 0.6;
+  }
+  
+.fb {
+  left: 736px;
+  top: -33px;
+  }
+  
+.twitter {
+  left: 796px;
+  top: -33px;
+  }
+  
+.pinterest {
+  left: 855px;
+  top: -25px;
+  }
+  
+.rss {
+  left: 895px;
+  top: -25px;
+  }
+  
+.text-over-banner {
+  position: relative;
+  z-index: 1;
+  left: 15px;
+  top: -100px;
+  }
+  
+.sign-out {
+  float: right;
+  }
+
+.no-margin-or-bullet {
+  list-style: none;
+  padding: 0;
+  margin-left: 0px;
+  }
+  
+.blog-content {
+  margin-left: 0px;
+  }
+
+@font-face {
+  font-family: 'MountainsofChristmas';
+  src: url('/assets/MountainsofChristmas-webfont.eot');
+  src: local('MountainsofChristmas'), url('/assets/MountainsofChristmas-webfont.eot?#iefix') format("embedded-opentype"), url('/assets/MountainsofChristmas-webfont.woff') format("woff"), url('/assets/MountainsofChristmas-webfont.ttf') format("truetype"), url('/assets/MountainsofChristmas-webfont.svg#MountainsofChristmasRegular') format("svg");
+  font-weight: normal;
+  font-style: normal;
+  }
+  
+.mynewfont {
+  font-family: 'MountainsofChristmas';
+  font-size: 18px;
+  color: $bubboli-red;
+  }
+  
+  .large-font {
+    font-size: 28px;
+    }
+  
+.gray-font {
+  color: $light-gray;
+  }
+  
+.blog-back-home {
+  text-align: center;
+  }
+  
+.divider {
+  border-left:20px $bubboli-red;
+  font-size: 70px;
+  margin: 0;
+  }
+
+hr {
+  border-bottom: 1px dashed $background-blue;
+  }
+  
+pre {
+  font-family: 'MountainsofChristmas';
+  }
+  
+img.float-right {
+  float: right;
+  margin: 5px;
+  }
+  
+#slideshow {
+  visibility: visible;
+  position: relative
+  }
+  
+#slideshow IMG {
+  position:absolute;
+  z-index:8;
+  }
+
+#slideshow IMG.active {
+  z-index:10;
+  }
+  
+#slideshow IMG.last-active {
+  z-index:9;
+  }
+  
+  
+.splash-box {
+  width: 280px;
+  height: 361px;
+  background: #FFF;
+  border: 5px solid $dark-green-blue;
+  padding: 15px;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  }
+
+.splash-font {
+  font-size: 15px;
+  color: $dark-green-blue;
+  }
+  
+.blog {
+  left: 860px;
+  top: -35px;
+  opacity: 1;
+  }
+  
+.brand-text {
+  text-align: center;
+  color: $dark-green-blue;
+  font-size: 15px;
+  }  
+  
+.brands {
+  text-align: center;
+  }  
+  
+.pagination .active a, .pagination a:hover, {
+  background-color: $background-blue;
+  }

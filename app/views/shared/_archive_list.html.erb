@@ -1,0 +1,14 @@
+
+
+<p class="mynewfont">Archives</p>
+  <ul class="no-margin-or-bullet">
+    <% @archive_list.each do |item| %>
+    <li><%= link_to(item[0], :action => 'archive', :year => item[1], :month => item[2]) %></li>
+    <% end %>
+  </ul>
+
+
+
+
+
+

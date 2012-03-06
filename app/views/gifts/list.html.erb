@@ -1,0 +1,38 @@
+<% @page_title = "List of Gifts" %>
+
+<div class="container">
+  
+  <p><%= link_to "«« Back to Gifts »»", gifts_path %> | <%= link_to "«« Back to Admin Panel »»", admin_path %></p></br> 
+  
+  <h4>List of Gifts</h4></br>
+  
+  <table class="table zebra-striped">
+    <thead>
+      <tr>
+        <th>ID #</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Permalink</th>
+        <th>Categories</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @gifts.each do |gift| %>
+      <tr>
+        <td><%= gift.id %></td>
+        <td><%= gift.name %></td>
+        <td>$<%= gift.price %></td>
+        <td><%= gift.permalink %></td>
+        <td><%= gift.gift_categories.collect {|cat| cat.name}.join(", ") %></td>
+        <td><%= link_to "Edit", :action => 'manage', :id => gift.id %> | <%= link_to "Delete", gift, :method => :delete %></td>        
+       </tr>
+      <% end %>
+    </tbody>  
+
+  </table>
+  
+  <div class="btn primary white-link pull-right"><%= link_to "New", :action => 'manage' %></div>
+
+</div>

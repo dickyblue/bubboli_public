@@ -1,0 +1,22 @@
+
+<div class="span2">              
+  <ul class="no-margin-or-bullet">
+    <h3 class="mynewfont"><li><%= blog.publish_date.strftime("%b %e") %></li></h3>
+    <li style="font-size: 11px">By: <%= blog.author %></li>
+  </ul>
+</div>
+
+<div class="span10">
+  <ul class="no-margin-or-bullet">
+    <li style="font-size: 18px"><%= link_to blog.title, blog %></li>
+    <li style="font-size: 11px">Posted in <%= blog.blog_categories.collect {|cat| cat.name }.join(", ") %> | <%= link_to(pluralize(blog.comments.size, 'comment'), :action => 'show', :id => blog.id, :anchor => 'comments') %></li></br>
+  </ul>
+    
+  
+  <div class="row">
+    <div class="span3 no-margin-or-bullet"><%= image_tag(blog.image_url(:thumb_pic).to_s) if blog.image? %></div>
+      
+    <div class="span7"><%= simple_format(truncate(blog.content, :length => 280, :separator => " ")) %></div>
+  </div>
+  <hr/>
+</div>

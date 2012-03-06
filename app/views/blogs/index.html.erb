@@ -1,0 +1,39 @@
+
+<div class="container">
+  <div class="row will-paginate">
+      <%= page_navigation_links @blogs, '#' %>  
+  </div>
+
+  <div class="row">
+    <div class="span16">
+      <div class="row">
+        <div class="span12">
+          <div class="row">
+            
+            <% if @blogs.empty?%>
+              There are no entries that match your selection.
+            <% else %>
+              <% @blogs.each do |blog| %>
+                <%= render(:partial => 'shared/blog_index', :locals => {:blog => blog})%>
+              <% end %>
+            <% end %>
+          
+          </div>
+          <div class="row will-paginate pull-right">
+              <%= page_navigation_links @blogs, '#' %>  
+          </div>
+        </div>
+
+        <div class="span4 form-stacked">
+
+          <%= render(:partial => 'shared/blog_search')%>          
+          <%= render(:partial => 'shared/archive_list')%>                
+
+        </div>
+      </div>
+    </div>  
+  </div> 
+    
+
+  </div>
+</div>

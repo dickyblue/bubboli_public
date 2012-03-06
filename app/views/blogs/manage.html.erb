@@ -1,0 +1,43 @@
+<% @page_title = "Manage Blogs" %>
+
+<div class="container">
+  
+  <h4>Manage Blogs</h4>
+
+  <%= semantic_form_for(@blog, :html => {:multipart => true}) do |f| %>
+    <%= f.inputs do %>
+
+      <div class="row">
+        <div class="span16">
+          <%= f.input :image, :as => :file %>
+          <%= f.input :remote_image_url, :label => "Remote Image URL" %>
+          <%= f.input :title %>
+          <%= f.input :author %>
+          <div class="textarea span3"><%= f.input :content, :input_html => { :rows => 20, :class => "xxlarge" }%></div>
+          <%= f.input :author_permalink, :as => :url, :label => "Author Website" %>
+
+            
+          <label>Blog Categories</label>
+          <div class="input">
+            <% @all_blog_categories.each do |cat| %>
+              <%= check_box_tag('blog_categories[]', cat.id, @blog.blog_categories.map {|c| c.id }.include?(cat.id)) %> 
+              <%= cat.name %></br>
+            <% end %>
+          </div>
+
+          <%= f.input :published, :label => "Publish?", :as => :radio, :collection => [["True", true], ["False", false]] %>  
+          <label>Publish Date</label><%= datetime_select(:blog, :publish_date, :order => [:month, :day, :year], :start_year => 2012, :end_year => Time.now.next_year.year)%>    
+        </div>
+        
+      </div>
+    
+    <% end %>
+
+    <div class="pull-right">
+    <div class="btn primary white-link"><%= link_to "Cancel", list_blog_path %></div>  
+    <%= f.commit_button :button_html => {:class => "primary"} %>
+    </div>
+    
+  <% end %>
+  
+</div>

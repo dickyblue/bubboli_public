@@ -1,0 +1,21 @@
+<div class="container">
+
+  <%= semantic_form_for(:session, :url => sessions_path) do |f| %>
+    <%= f.inputs do %>
+
+      <div class="row">
+        <div class="span8">
+          <%= f.input :email %>
+          <%= f.input :password %>
+        </div>
+      </div>
+    <% end %>
+  
+  
+  <div class="pull-right">
+  <%= f.commit_button :button_html => {:class => "primary"}, :label => "Login" %>
+  </div>
+  
+  <% end %>
+  
+</div>

@@ -1,0 +1,100 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+<% @page_title = @blog.title %>
+
+<div class="container">
+  <%= page_navigation_links @blogs, '#' %>  
+
+  <div class="row">
+    <div class="span16">
+      <div class="row">
+        <div class="span12">
+          
+          
+          <div class="row">
+            <div class="span2">              
+              <ul class="no-margin-or-bullet">
+                <h3 class="mynewfont"><li><%= @blog.created_at.strftime("%b %e") %></li></h3>
+                <li style="font-size: 11px"><%= @blog.author %></li>
+              </ul>
+            </div>
+
+            <div class="span6">
+              <ul class="no-margin-or-bullet">
+                <li style="font-size: 18px"><%= @blog.title %></li>
+                <li style="font-size: 11px"><%= @blog.blog_categories.collect {|cat| cat.name }.join(", ") %> | <%= link_to(pluralize(@blog.comments.size - 1, 'comment'), :action => 'show', :id => @blog.id, :anchor => 'comments') %></li>                
+              </ul>
+            </div>
+
+            <div class="span2 no-margin-or-bullet">
+              <div class="fb-like" data-href="http://www.bubboli.com" data-send="false" data-layout="button_count" data-width="10" data-show-faces="true" data-font="arial"></div> 
+            </div>
+
+            <div class="span2 no-margin-or-bullet">
+              <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+            </div>
+          </div>
+          
+          <div style="text-align: center"><%= image_tag(@blog.image_url(:large_pic).to_s) if @blog.image? %></div>
+          
+          <div class="blog-content">
+            <%= simple_format(@blog.content) %>
+          </div>
+        
+      
+          </br>
+
+          <div class="row">
+            <div class="mynewfont blog-back-home pull-right"><%= link_to("«« Blog Home", blogs_path) %></div>
+           </div>
+          
+          <hr/>        
+        
+          <div class="comment">
+            <h5 class="gray-font">Leave a comment</h5>
+            <%= render(:partial => "shared/flash", :locals => {:flash => flash}) %>
+            <%= render(:partial => 'comment_form')%>
+          </div>
+      
+          </br>
+          </br>
+      
+          <div class="existing-comment">
+            <a name="comments"></a>
+            <h5 class="gray-font"><%= pluralize(@blog.comments.size - 1 , 'Comment') %></h5>
+              <ul class="no-margin-or-bullet">
+              <% @comments.each do |comment| %>
+                <% link = "http://"+comment.commenter_permalink %>
+                <li><strong><%= link_to comment.commenter, link, :target => "_blank" %></strong> on <em><%= comment.created_at.strftime("%b %d, %Y")%></em></li>
+                <li><%= comment.content %></li></br>
+              <% end %>
+              </ul>
+          </div>
+        </div>
+
+        <div class="span4 form-stacked">      
+          <%= render(:partial => 'shared/blog_search')%>          
+          <%= render(:partial => 'shared/archive_list')%>          
+        </div>
+
+      </div>
+    </div>  
+  </div> 
+    
+    <div class="row will-paginate pull-right">
+        <%= page_navigation_links @blogs, '#' %>  
+    </div>
+
+  </div>
+</div>

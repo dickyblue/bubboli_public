@@ -1,0 +1,22 @@
+<% @page_title = "Manage Blog Categories" %>
+
+<div class="container">
+  
+  <h4>Manage Blog Categories</h4>
+
+  <%= semantic_form_for @blog_category do |f| %>
+    <%= f.inputs do %>
+
+      <%= render(:partial => 'shared/manage', :locals => {:f => f}) %>
+
+    <% end %>
+  
+  
+  <div class="pull-right">
+  <div class="btn primary white-link"><%= link_to "Cancel", list_blog_category_path %></div>
+  <%= f.commit_button :button_html => {:class => "primary"}, :label => "Create" %>
+  </div>
+  
+  <% end %>
+  
+</div>

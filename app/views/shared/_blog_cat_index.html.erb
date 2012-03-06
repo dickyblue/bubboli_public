@@ -1,0 +1,10 @@
+<h6>Categories</h6> 
+  <ul class="no-margin-or-bullet">
+    <% @all_blog_categories.each do |cat| %>
+    <li>
+      <%= link_to cat.name, cat %>
+    </li>
+    <% end %>
+  </ul>
+
+

@@ -1,0 +1,42 @@
+<% @page_title = "List of Blogs" %>
+
+<div class="container">
+  
+  <p><%= link_to "«« Back to Blogs »»", blogs_path %> | <%= link_to "«« Back to Admin Panel »»", admin_path %></p></br> 
+  
+  <h4>List of Blogs</h4></br>
+  
+  <table class="table zebra-striped">
+    <thead>
+      <tr>
+        <th>ID #</th>
+        <th>Title</th>
+        <th>Published?</th>
+        <th>Publish Date</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Categories</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.id %></td>
+        <td><%= link_to blog.title, blog_path(blog) %></td>
+        <td><%= blog.published %></td>
+        <td><%= blog.publish_date.strftime('%b %d, %Y') %></td>
+        <td><%= truncate(blog.content, :length => 30, :separator => ' ') %></td>
+        <td><%= blog.author %></td>
+        <td><%= blog.blog_categories.collect {|cat| cat.name}.join(", ") %></td>
+        <td><%= link_to "Edit", :action => 'manage', :id => blog.id %> | <%= link_to "Delete", blog, :method => :delete %></td>        
+       </tr>
+      <% end %>
+    </tbody>  
+
+  </table>
+  
+  <div class="btn primary white-link pull-right"><%= link_to "New", :action => 'manage' %></div>
+
+</div>
