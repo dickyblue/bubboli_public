@@ -8,53 +8,56 @@
 </head>
 <body>
   
-  <div class="logo-topbar">
-    <div class="logo-topbar-fill">
-      <div class="container">
-        <div class="nav">
-          <% if current_user %>
-            <%= link_to bubboli, root_path %>
-          <% else %>
-            <%= link_to bubboli, root_path %>
-          <% end %>
-        </div>
+  <div class="wrapper">
+    <div class="logo-topbar">
+      <div class="logo-topbar-fill">
+        <div class="container">
+          <div class="nav">
+            <% if current_user %>
+              <%= link_to bubboli, root_path %>
+            <% else %>
+              <%= link_to bubboli, root_path %>
+            <% end %>
+          </div>
         
-        <div class="sign-out">
-          <% if current_user %>
-            Welcome back, <%= current_user.first_name %> | <%= link_to "Sign out", sign_out_path %></br>
-            <%= link_to "Admin Panel", admin_path %>
-          <% else %>
+          <div class="sign-out">
+            <% if current_user %>
+              Welcome back, <%= current_user.first_name %> | <%= link_to "Sign out", sign_out_path %></br>
+              <%= link_to "Admin Panel", admin_path %>
+            <% else %>
 
-          <% end %>
-        </div>
+            <% end %>
+          </div>
         
+        </div>
       </div>
     </div>
-  </div>
     
-  <div class="topbar">
-    <div class="fill">
-      <div class="container">
-        <ul class="nav">
-          <li><%= tabs %></li>
-          <li class="socialmedia-overlap fb"><%= link_to facebook, "http://www.facebook.com/pages/Bubboli/150558398340272", :target => "_blank" %></li>
-          <li class="socialmedia-overlap twitter"><%= link_to twitter, "http://www.twitter.com/BubboliKids", :target => "_blank" %></li>
-          <li class="socialmedia-overlap pinterest"><%= link_to pinterest, "http://www.pinterest.com/bubboli/", :target => "_blank" %></li>
-          <li class="socialmedia-overlap rss"><%= link_to rss, "#", :target => "_blank" %></li>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <ul class="nav">
+            <li><%= tabs %></li>
+            <li class="socialmedia-overlap fb"><%= link_to facebook, "http://www.facebook.com/pages/Bubboli/150558398340272", :target => "_blank" %></li>
+            <li class="socialmedia-overlap twitter"><%= link_to twitter, "http://www.twitter.com/BubboliKids", :target => "_blank" %></li>
+            <li class="socialmedia-overlap pinterest"><%= link_to pinterest, "http://www.pinterest.com/bubboli/", :target => "_blank" %></li>
+            <li class="socialmedia-overlap rss"><%= link_to rss, "#", :target => "_blank" %></li>
 
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <%= yield %>
+    <%= yield %>
 
-
+    <div class="push"></div>
+    
+  </div>  
 </body>
 
 <div>
   <footer>
-<p><%= link_to "About", about_path %> | <%= link_to "Blog", blogs_path %> | <%= link_to "Privacy", privacy_path %> | <%= link_to "Terms of Use", term_path %></p>
+    <p><%= link_to "About", about_path %> | <%= link_to "Blog", blogs_path %> | <%= link_to "Privacy", privacy_path %> | <%= link_to "Terms of Use", term_path %></p>
     <p>&copy;Bubboli<sup>TM</sup> | All Rights Reserved</p>
   </footer>
 </div>

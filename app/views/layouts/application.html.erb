@@ -8,50 +8,55 @@
 </head>
 <body>
   
-  <div class="logo-topbar">
-    <div class="logo-topbar-fill">
-      <div class="container">
-        <div class="nav">
-          <% if current_user %>
-            <%= link_to bubboli, root_path %>
-          <% else %>
-            <%= link_to bubboli, root_path %>
-          <% end %>
-        </div>
-        
-        <div class="sign-out">
-          <% if current_user %>
-            Welcome back, <%= current_user.first_name %> | <%= link_to "Sign out", sign_out_path %></br>
-            <%= link_to "Admin Panel", admin_path %>
-          <% else %>
+  <div class="wrapper">
+    <div class="logo-topbar">
+      <div class="logo-topbar-fill">
+        <div class="container">
+          <div class="nav">
+            <% if current_user %>
+              <%= link_to bubboli, root_path %>
+            <% else %>
+              <%= link_to bubboli, root_path %>
+            <% end %>
+          </div>
+      
+          <div class="sign-out">
+            <% if current_user %>
+              Welcome back, <%= current_user.first_name %> | <%= link_to "Sign out", sign_out_path %></br>
+              <%= link_to "Admin Panel", admin_path %>
+            <% else %>
 
-          <% end %>
+            <% end %>
+          </div>
+      
         </div>
-        
       </div>
     </div>
-  </div>
+  
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <ul class="nav">
+            <li><%= tabs %></li>
+            <li class="socialmedia-overlap blog"><%= link_to blog, blogs_path %></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <%= yield %>
     
-  <div class="topbar">
-    <div class="fill">
-      <div class="container">
-        <ul class="nav">
-          <li><%= tabs %></li>
-          <li class="socialmedia-overlap blog"><%= link_to blog, blogs_path %></li>
+    <div class="push"></div>
 
-        </ul>
-      </div>
-    </div>
   </div>
-
-  <%= yield %>
-
-
 </body>
+
+
 
 <div>
   <footer>
-<p><%= link_to "About", about_path %> | <%= link_to "Blog", blogs_path %> | <%= link_to "Privacy", privacy_path %> | <%= link_to "Terms of Use", term_path %></p>
+    <p><%= link_to "About", about_path %> | <%= link_to "Blog", blogs_path %> | <%= link_to "Privacy", privacy_path %> | <%= link_to "Terms of Use", term_path %></p>
     <p>&copy;Bubboli<sup>TM</sup> | All Rights Reserved</p>
   </footer>
 </div>

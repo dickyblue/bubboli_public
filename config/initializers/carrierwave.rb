@@ -13,7 +13,7 @@ CarrierWave.configure do |config|
     config.enable_processing = false
     config.root = "#{Rails.root}/tmp"
   elsif Rails.env.development?
-    config.storage = :fog
+    config.storage = :file
   else
     config.storage = :fog
   end

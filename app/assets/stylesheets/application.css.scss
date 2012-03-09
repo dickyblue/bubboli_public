@@ -27,9 +27,20 @@ $orange-red:          #FF4500;
 
 @import 'bootstrap';
 
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -70px;
+  }
+
+html {
+  height: 100%
+  }
+
 body {
   padding-top: 190px;
-  padding-bottom: 0;
+  height: 100%
   }
 
 .logo-topbar-fill {
@@ -95,11 +106,16 @@ body {
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
+
+.push {
+  height: 70px
+  }
   
-footer{
+footer, {
   text-align: center;
   background-color: #eee;
   height: 70px;
+  clear: both;
   }
   
 a {
