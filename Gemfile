@@ -15,7 +15,6 @@ gem 'rmagick'
 gem 'tabulous'
 gem 'fog'
 gem 'heroku'
-gem 'asset_sync'
 
 # Gems used only for assets and not required
 # in production environments by default.
