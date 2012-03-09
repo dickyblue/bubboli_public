@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+
+
 class BlogImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:

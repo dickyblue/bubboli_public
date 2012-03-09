@@ -31,6 +31,9 @@ GEM
     addressable (2.2.7)
     annotate (2.4.0)
     arel (3.0.2)
+    asset_sync (0.3.1)
+      activemodel
+      fog
     bootstrap-sass (1.4.4)
       sass-rails (~> 3.1)
     builder (3.0.0)
@@ -163,6 +166,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  asset_sync
   bootstrap-sass (= 1.4.4)
   carrierwave
   coffee-rails (~> 3.2.1)

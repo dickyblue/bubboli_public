@@ -1,24 +1,24 @@
-if Rails.env.production?
-  CarrierWave.configure do |config|
-    config.fog_credentials = {
-      provider: 'AWS',
-      aws_access_key_id: ENV['AKIAI2WTSOAPR7WAFDCQ'],
-      aws_secret_access_key: ENV['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'],
-      region: 'us-east-1'
-    }
+FOG_CONFIG = YAML.load_file(Rails.root.join('config', 'fog.yml'))[Rails.env]
 
-    config.fog_directory = ENV['bubboli']
-    config.fog_attributes = {'Cache-Control' => 'max-age=315576000'}
-    config.storage = :fog
-  end
-elsif Rails.env.development?
-  CarrierWave.configure do |config|
-    config.storage = :file
-  end
-elsif Rails.env.test? or Rails.env.cucumber?
-  CarrierWave.configure do |config|
+
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    provider: 'AWS',
+    aws_access_key_id: FOG_CONFIG['access_key_id'],
+    aws_secret_access_key: FOG_CONFIG['secret_access_key'],
+  }
+  
+  if Rails.env.test? || Rails.env.cucumber?
     config.storage = :file
     config.enable_processing = false
+    config.root = "#{Rails.root}/tmp"
+  elsif Rails.env.development?
+    config.storage = :fog
+  else
+    config.storage = :fog
   end
-end
 
+  config.cache_dir = "#{Rails.root}/tmp/uploads"
+  config.fog_directory = FOG_CONFIG['bucket']
+  config.fog_public = false
+end

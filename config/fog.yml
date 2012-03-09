@@ -1,0 +1,10 @@
+production:
+  access_key_id: AKIAI2WTSOAPR7WAFDCQ
+  secret_access_key: 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
+  bucket: bubboli
+  
+  
+development:
+  access_key_id: AKIAI2WTSOAPR7WAFDCQ
+  secret_access_key: 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
+  bucket: bubboli_dev
