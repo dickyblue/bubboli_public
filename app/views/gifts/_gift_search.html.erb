@@ -2,6 +2,7 @@
 <%= f.inputs do %>
   <%= f.input :name_or_description_contains, :label => "Keyword Search", :required => false %>
   <%= f.input :gender_contains, :as => :select, :collection => ['Male', 'Female', 'Unisex'], :label => "Gender", :required => false %>          
+  <%= f.input :age_range_contains, :as => :select, :collection => ['Birth-12 Mos.', '12-24 Mos.', '2 Years', '3-4 Years', '5-7 Years', '8-11 Years', '12+ Years'], :label => "Age Range", :required => false %>
   <%= f.input :price_search_contains, :as => :select, :collection => ['Less Than $25.00', '$25.00 - $49.99', '$50.00-$74.99', '$75.00-$99.99', '$100.00-$199.99', '$200.00 & Up'], :label => "Price Range", :required => false %>
   <%= f.input :gift_categorizations_gift_category_id_equals, :as => :select, :collection =>  GiftCategory.all, :label => "Category", :required => false %>          
   <%= f.commit_button :button_html => {:class => "primary"}, :label => "Search"%>
