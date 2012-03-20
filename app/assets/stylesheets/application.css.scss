@@ -326,6 +326,10 @@ img.float-right {
   background-color: $background-blue;
   }
 
+.tabs {
+  border-color: $subdued-red;
+  }
+
 .tabs .active {
   background-color: $subdued-red;
   color: #FFFFFF
@@ -333,8 +337,8 @@ img.float-right {
   
 .tabs > li > a {
   text-decoration: none;
-  background-color: #eee;
-  border-color: #eee #eee #ddd;
+  background-color: #FFFFFF;
+  border-color: #eee #eee $subdued-red;
   }
 
 .gift-buy-box {
