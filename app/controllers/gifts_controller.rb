@@ -5,6 +5,7 @@ class GiftsController < ApplicationController
   def index
     @search = Gift.search(params[:search])
     @gifts = @search.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
+
   end
   
   def list
@@ -15,6 +16,10 @@ class GiftsController < ApplicationController
     @gift = Gift.find(params[:id]) if params[:id]
     @gift = Gift.new if @gift.nil?
     @all_gift_categories = get_all_categories
+  end
+  
+  def show
+    @gift = Gift.find(params[:id])
   end
   
   def create
@@ -69,5 +74,7 @@ class GiftsController < ApplicationController
     cat_list =[] if cat_list.blank?
     return cat_list.collect {|cid| GiftCategory.find_by_id(cid.to_i)}.compact
   end
+  
+
 
 end

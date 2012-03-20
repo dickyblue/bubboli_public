@@ -30,7 +30,8 @@ BubboliKids::Application.routes.draw do
   match '/admin', :to => 'admins#index', :as => :admin
   
   resources :blog, :controller => 'blogs'
-  resources :gifts, :gift_categories, :users, :blog_categories, :comments
+  resources :gifts
+  resources :gift_categories, :users, :blog_categories, :comments
   resources :sessions, :only => [:create]
 
 

@@ -81,10 +81,6 @@ body {
   background-color: $dark-green-blue;
   }
   
-.topbar p a:hover {
-  color: $subdued-red
-  }
-  
 .topbar div > ul a:hover, .nav a:hover {
   color: $dark-green-blue;
   }
@@ -293,7 +289,6 @@ img.float-right {
   z-index:9;
   }
   
-  
 .splash-box {
   width: 280px;
   height: 361px;
@@ -330,3 +325,25 @@ img.float-right {
 .pagination .active a, .pagination a:hover, {
   background-color: $background-blue;
   }
+
+.tabs .active {
+  background-color: $subdued-red;
+  color: #FFFFFF
+  }
+  
+.tabs > li > a {
+  text-decoration: none;
+  background-color: #eee;
+  border-color: #eee #eee #ddd;
+  }
+
+.gift-buy-box {
+  height: 120px;
+  width: 220px;
+  padding-top: 20px;
+  text-align: center;
+  background-color: $background-blue;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
