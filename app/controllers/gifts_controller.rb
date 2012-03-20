@@ -5,7 +5,6 @@ class GiftsController < ApplicationController
   def index
     @search = Gift.search(params[:search])
     @gifts = @search.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
-
   end
   
   def list
