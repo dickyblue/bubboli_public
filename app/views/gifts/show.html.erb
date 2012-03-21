@@ -24,6 +24,8 @@ function switch_tabs(obj)
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script>
 
+<meta property="og:image" content="<%= @gift.gift_image.image_url(:thumb_pic) %>" />
+
 <% @page_title = @gift.name %>
 <div class="container">
 
@@ -45,8 +47,8 @@ function switch_tabs(obj)
       <% link = "http://"+@gift.permalink %>
       <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div></br></br>
       <span class='st_facebook'></span>
-      <span class='st_twitter'></span>
-      <span class='st_pinterest'></span>
+      <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>
+      <span class='st_pinterest' st_img='<%= @gift.gift_image.image_url>'></span>
       <span class='st_email'></span>
     </div>
     
