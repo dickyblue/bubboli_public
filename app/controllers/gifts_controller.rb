@@ -12,8 +12,9 @@ class GiftsController < ApplicationController
   end
 
   def manage
-    @gift = Gift.find(params[:id]) if params[:id]
     @gift = Gift.new if @gift.nil?
+    @gift.build_gift_image
+    @gift = Gift.find(params[:id]) if params[:id]
     @all_gift_categories = get_all_categories
   end
   

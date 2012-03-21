@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306204626) do
+ActiveRecord::Schema.define(:version => 20120320185240) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -68,6 +68,18 @@ ActiveRecord::Schema.define(:version => 20120306204626) do
 
   add_index "gift_categorizations", ["gift_id", "gift_category_id"], :name => "index_gift_categorizations_on_gift_id_and_gift_category_id"
 
+  create_table "gift_images", :force => true do |t|
+    t.integer  "gift_id"
+    t.string   "image",      :null => false
+    t.string   "image2"
+    t.string   "image3"
+    t.string   "image4"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "gift_images", ["gift_id"], :name => "index_gift_images_on_gift_id"
+
   create_table "gifts", :force => true do |t|
     t.string   "name"
     t.string   "permalink"
@@ -79,7 +91,6 @@ ActiveRecord::Schema.define(:version => 20120306204626) do
     t.string   "merchant"
     t.string   "gender"
     t.string   "age_range"
-    t.string   "image"
     t.text     "description"
     t.text     "review"
     t.text     "why_bubboli_loves_it"

@@ -30,8 +30,7 @@ function switch_tabs(obj)
 <%= link_to("«« Back to Gifts", gifts_path) %>
   <div class="row">
     <div class="span12">
-      <%= image_tag(@gift.image_url(:large_pic)) %>
-
+      <%= image_tag(@gift.gift_image.image_url(:large_pic)) %>
       <ul class="tabs">
           <li><a href="#" class="active" rel="tabs1">Product Description</a></li>
           <li><a href="#" rel="tabs2">Why Bubboli Loves It</a></li>

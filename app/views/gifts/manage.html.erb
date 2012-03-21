@@ -9,17 +9,21 @@
 
       <div class="row">
         <div class="span8">
-          <%= image_tag f.object.image.thumb_pic%>
-          <%= f.input :image, :as => :file %>
-          <%= f.input :remote_image_url, :label => "Remote Image URL" %>
+
+          <%= f.semantic_fields_for :gift_image do |ff| %>
+            <%= ff.input :image, :as => :file %>
+            <%= ff.input :remote_image_url, :label => "Remote Image URL" %>
+            <%= ff.input :image2, :as => :file %>
+            <%= ff.input :remote_image2_url, :label => "Remote Image URL" %>
+
+          <% end %>
+
           <%= f.input :name %>
           <%= f.input :permalink, :as => :url, :label => "Website" %>
           <%= f.input :merchant %>
           <%= f.input :sku, :label => "SKU Number" %>
           <%= f.input :manufacturer %>
           <%= f.input :gender, :as => :select, :collection => ['Male', 'Female', 'Unisex'] %>  
-          <%= f.input :male, :as => :radio, :collection => [["True", true], ["False", false]] %>      
-          <%= f.input :female, :as => :radio, :collection => [["True", true], ["False", false]] %>      
           <%= f.input :age_range, :as => :select, :collection => ['Birth-12 Mos.', '12-24 Mos.', '2 Years', '3-4 Years', '5-7 Years', '8-11 Years', '12+ Years'] %>
           <%= f.input :price %>
           <%= f.input :price_search, :as => :select, :collection => ['Less Than $25.00', '$25.00 - $49.99', '$50.00-$74.99', '$75.00-$99.99', '$100.00-$199.99', '$200.00 & Up'] %>          
