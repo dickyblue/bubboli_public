@@ -1,15 +1,5 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script>
 
 <% @page_title = @blog.title %>
 
@@ -37,13 +27,11 @@
               </ul>
             </div>
 
-            <div class="span2 no-margin-or-bullet">
-              <div class="fb-like" data-href="http://www.bubboli.com" data-send="false" data-layout="button_count" data-width="10" data-show-faces="true" data-font="arial"></div> 
+            <div class="span4 no-margin-or-bullet">
+              <span class='st_facebook_hcount' displayText='Facebook'></span>
+              <span class='st_twitter_hcount' displayText='Tweet'></span>
             </div>
 
-            <div class="span2 no-margin-or-bullet">
-              <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-            </div>
           </div>
           
           <div style="text-align: center"><%= image_tag(@blog.blog_image.image_url(:large_pic).to_s) if @blog.blog_image.image? %></div>
