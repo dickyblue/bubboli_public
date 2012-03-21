@@ -6,6 +6,8 @@ class GiftImage < ActiveRecord::Base
   
   mount_uploader :image, GiftImageUploader
   mount_uploader :image2, GiftImageUploader
+  mount_uploader :image3, GiftImageUploader
+  mount_uploader :image4, GiftImageUploader
 
 
 
