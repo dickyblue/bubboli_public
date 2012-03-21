@@ -11,7 +11,6 @@ class CreateGifts < ActiveRecord::Migration
       t.string    :merchant
       t.string    :gender
       t.string    :age_range
-      t.string    :image
       t.text      :description
       t.text      :review
       t.text      :why_bubboli_loves_it

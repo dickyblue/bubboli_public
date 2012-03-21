@@ -13,7 +13,7 @@
     
   
   <div class="row">
-    <div class="span3 no-margin-or-bullet"><%= image_tag(blog.image_url(:thumb_pic).to_s) if blog.image? %></div>
+    <div class="span3 no-margin-or-bullet"><%= image_tag(blog.blog_image.image_url(:thumb_pic).to_s) if blog.blog_image.image? %></div>
       
     <div class="span7"><%= simple_format(truncate(blog.content, :length => 280, :separator => " ")) %></div>
   </div>

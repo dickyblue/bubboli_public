@@ -46,7 +46,7 @@
             </div>
           </div>
           
-          <div style="text-align: center"><%= image_tag(@blog.image_url(:large_pic).to_s) if @blog.image? %></div>
+          <div style="text-align: center"><%= image_tag(@blog.blog_image.image_url(:large_pic).to_s) if @blog.blog_image.image? %></div>
           
           <div class="blog-content red-link">
             <%= simple_format(@blog.content) %>

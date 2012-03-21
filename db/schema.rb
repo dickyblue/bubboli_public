@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320185240) do
+ActiveRecord::Schema.define(:version => 20120321162749) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -28,13 +28,24 @@ ActiveRecord::Schema.define(:version => 20120320185240) do
 
   add_index "blog_categorizations", ["blog_id", "blog_category_id"], :name => "index_blog_categorizations_on_blog_id_and_blog_category_id"
 
+  create_table "blog_images", :force => true do |t|
+    t.integer  "blog_id"
+    t.string   "image",      :null => false
+    t.string   "image2"
+    t.string   "image3"
+    t.string   "image4"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "blog_images", ["blog_id"], :name => "index_blog_images_on_blog_id"
+
   create_table "blogs", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.boolean  "published",        :default => false
     t.string   "author"
     t.string   "author_permalink"
-    t.string   "image"
     t.datetime "publish_date"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false

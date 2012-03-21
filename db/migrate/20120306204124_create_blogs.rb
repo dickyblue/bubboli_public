@@ -6,7 +6,6 @@ class CreateBlogs < ActiveRecord::Migration
       t.boolean   :published, :default => false
       t.string    :author
       t.string    :author_permalink
-      t.string    :image
       t.datetime  :publish_date
 
       t.timestamps

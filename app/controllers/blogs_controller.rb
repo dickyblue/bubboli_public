@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
 
   layout "blog"
   
-  before_filter :authenticate, :except => [:index, :show, :archive, :update]
+  before_filter :authenticate, :except => [:index, :show, :archive]
 
   include ApplicationHelper
   include BlogsHelper
@@ -19,8 +19,9 @@ class BlogsController < ApplicationController
   end
 
   def manage
-    @blog = Blog.find(params[:id]) if params[:id]
     @blog = Blog.new if @blog.nil?
+    @blog.build_blog_image
+    @blog = Blog.find(params[:id]) if params[:id]
     @all_blog_categories = get_all_categories
   end
   
