@@ -12,17 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require_tree
 
 
 
 function slideSwitch() {
-    var $active = $('#slideshow IMG.active');
+    var $active = $('#mainslideshow IMG.active');
 
-    if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
+    if ( $active.length == 0 ) $active = $('#mainslideshow IMG:last');
 
     var $next =  $active.next().length ? $active.next()
-        : $('#slideshow IMG:first');
+        : $('#mainslideshow IMG:first');
 
     $active.addClass('last-active');
 
