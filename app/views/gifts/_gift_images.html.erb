@@ -5,12 +5,14 @@
   </div>
 </div>
 
-<div id ="thumbs" class="navigation">          
+<div id ="thumbs" class="navigation">
+  <% @images.each do |image| %>          
   <ul class="thumbs noscript no-margin-or-bullet">
     <li>
-      <a class="thumb" name="optionalCustomIdentifier" href="<%= @gift.gift_image.image_url(:large_pic) %>" title="<%= @gift.name %>">
-        <%= image_tag(@gift.gift_image.image_url(:sm_thumb_pic)) if @gift.gift_image.image? %>
+      <a class="thumb" name="optionalCustomIdentifier" href="<%= image.image_url(:large_pic) %>" title="<%= @gift.name %>">
+        <%= image_tag(image.image_url(:sm_thumb_pic)) if image.image? %>
       </a>
     </li>
   </ul>
+  <% end %>
 </div>        

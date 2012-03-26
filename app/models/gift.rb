@@ -1,18 +1,18 @@
 class Gift < ActiveRecord::Base
 
   attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender, :male, :female, :age_range, 
-  :gift_category_ids, :gift_image_attributes, 
+  :gift_category_ids, :gift_images_attributes, 
   :price_search, :description, :why_bubboli_loves_it, :favorite
   
   attr_searchable :name, :price_search, :age_range, :gender, :description
     
   validates :name, :permalink, :price, :merchant, :age_range, :presence => true
   
-  has_one  :gift_image  
-  has_many :gift_categorizations
-  has_many :gift_categories, :through => :gift_categorizations
+  has_many  :gift_images 
+  has_many  :gift_categorizations
+  has_many  :gift_categories, :through => :gift_categorizations
   
-  accepts_nested_attributes_for :gift_image
+  accepts_nested_attributes_for :gift_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
   
   def to_param
     "#{id}-#{name.parameterize}"

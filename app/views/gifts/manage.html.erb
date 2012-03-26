@@ -9,17 +9,13 @@
 
       <div class="row">
         <div class="span8">
+          
 
-          <%= f.semantic_fields_for :gift_image do |ff| %>
-            <%= ff.input :image, :as => :file %>
-            <%= ff.input :remote_image_url, :label => "Remote Image URL" %>
-            <%= ff.input :image2, :as => :file %>
-            <%= ff.input :remote_image2_url, :label => "Remote Image 2 URL" %>
-            <%= ff.input :image3, :as => :file %>
-            <%= ff.input :remote_image3_url, :label => "Remote Image 3 URL" %>
-            <%= ff.input :image4, :as => :file %>
-            <%= ff.input :remote_image4_url, :label => "Remote Image 4 URL" %>
+          <%= f.semantic_fields_for :gift_images do |builder| %>
+            <%= render 'gift_image_fields', :f => builder %>
           <% end %>
+          <p><%= link_to_add_fields "Add Image", f, :gift_images %>
+         
 
           <%= f.input :name %>
           <%= f.input :permalink, :as => :url, :label => "Website" %>
