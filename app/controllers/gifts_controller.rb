@@ -13,13 +13,14 @@ class GiftsController < ApplicationController
 
   def manage
     @gift = Gift.new if @gift.nil?
-    @gift.build_gift_image
+    4.times { @gift.gift_images.build }
     @gift = Gift.find(params[:id]) if params[:id]
     @all_gift_categories = get_all_categories
   end
   
   def show
     @gift = Gift.find(params[:id])
+    @images = GiftImage.where(:gift_id => @gift.id)
   end
   
   def create
