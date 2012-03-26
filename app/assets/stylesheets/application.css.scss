@@ -40,7 +40,12 @@ html {
 
 body {
   padding-top: 190px;
-  height: 100%
+  height: 100%;
+  }
+
+p {
+  line-height: 150%;
+  font-size: 105%;
   }
 
 .logo-topbar-fill {
@@ -271,21 +276,21 @@ img.float-right {
   margin: 5px;
   }
   
-#slideshow {
+#mainslideshow {
   visibility: visible;
   position: relative
   }
   
-#slideshow IMG {
+#mainslideshow IMG {
   position:absolute;
   z-index:8;
   }
 
-#slideshow IMG.active {
+#mainslideshow IMG.active {
   z-index:10;
   }
   
-#slideshow IMG.last-active {
+#mainslideshow IMG.last-active {
   z-index:9;
   }
   
@@ -331,17 +336,19 @@ img.float-right {
   }
 
 .tabs .active {
-  background-color: $subdued-red;
-  color: #FFFFFF
+  background-color: #FFFFFF;
+  color: $dark-green-blue
   }
   
 .tabs > li > a {
   text-decoration: none;
-  background-color: #FFFFFF;
-  border-color: #eee #eee $subdued-red;
+  color: #FFF;
+  background-color: $subdued-red;
+  border-color: $subdued-red $subdued-red #FFFFFF;
   }
 
 .gift-buy-box {
+  position: fixed;
   height: 120px;
   width: 220px;
   padding-top: 20px;
@@ -350,4 +357,5 @@ img.float-right {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-}
+  }
+  

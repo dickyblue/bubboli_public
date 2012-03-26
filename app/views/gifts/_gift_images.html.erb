@@ -1,0 +1,16 @@
+<div id="gallery" class="content">
+  <div class="slideshow-container">
+    <div id="loading" class="loader"></div>
+    <div id="slideshow" class="slideshow"></div>
+  </div>
+</div>
+
+<div id ="thumbs" class="navigation">          
+  <ul class="thumbs noscript no-margin-or-bullet">
+    <li>
+      <a class="thumb" name="optionalCustomIdentifier" href="<%= @gift.gift_image.image_url(:large_pic) %>" title="<%= @gift.name %>">
+        <%= image_tag(@gift.gift_image.image_url(:sm_thumb_pic)) if @gift.gift_image.image? %>
+      </a>
+    </li>
+  </ul>
+</div>        

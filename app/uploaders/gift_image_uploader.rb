@@ -43,6 +43,10 @@ class GiftImageUploader < CarrierWave::Uploader::Base
   version :thumb_pic do
     process :resize_to_limit => [170, 170]
   end
+    
+  version :sm_thumb_pic do
+    process :resize_to_limit => [90, 90]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
