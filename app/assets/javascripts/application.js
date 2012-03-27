@@ -40,6 +40,20 @@ $(function() {
 
 
 
+$(function() {
+	
+$(".image").click(function() {
+var image = $(this).attr("rel");	
+$('#image').hide();
+$('#image').fadeIn('slow');
+$('#image').html('<img src="' + image + '"/>');
+return false;
+    });
+});
+
+
+
+
 function remove_fields(link) {
         $(link).prev("input[type=hidden]").val("1");
         $(link).closest(".fields").hide();

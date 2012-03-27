@@ -1,18 +1,17 @@
-<div id="gallery" class="content">
-  <div class="slideshow-container">
-    <div id="loading" class="loader"></div>
-    <div id="slideshow" class="slideshow"></div>
+<div class="row">
+  <div class ="span5">
+  <div id ="image" >
+    <%= image_tag(@gift.gift_images.first.image_url(:large_pic)) %>
+  </div>
+  </div>
+
+  <div class="span4">
+  <div class="thumbs">
+    <% @images.each do |image| %>          
+        <a href="javascript:void(0)" rel="<%= image.image_url(:large_pic) %>" class="image">
+          <%= image_tag(image.image_url(:sm_thumb_pic)) if image.image? %>
+        </a>
+    <% end %>
+  </div>  
   </div>
 </div>
-
-<div id ="thumbs" class="navigation">
-  <% @images.each do |image| %>          
-  <ul class="thumbs noscript no-margin-or-bullet">
-    <li>
-      <a class="thumb" name="optionalCustomIdentifier" href="<%= image.image_url(:large_pic) %>" title="<%= @gift.name %>">
-        <%= image_tag(image.image_url(:sm_thumb_pic)) if image.image? %>
-      </a>
-    </li>
-  </ul>
-  <% end %>
-</div>        
