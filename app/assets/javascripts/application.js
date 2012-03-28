@@ -44,7 +44,7 @@ $(function() {
 	
 $(".image").click(function() {
 var image = $(this).attr("rel");	
-$('#image').hide();
+$('#image').fadeOut('fast');
 $('#image').fadeIn('slow');
 $('#image').html('<img src="' + image + '"/>');
 return false;
