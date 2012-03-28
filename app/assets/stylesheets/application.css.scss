@@ -357,22 +357,26 @@ img.float-right {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   }
-  
+
+
+#image {
+  height: 280px;
+  }  
   
 .thumbs img {
 	border: solid 1px #ccc;
 	padding: 4px;
-}
+  }
+  
 .thumbs img:hover {
 	border-color: #FF9900;
-}
+  }
 
 a.thumb {
-padding: 2px;
-display: block;
-border: 2px solid $bubboli-red;
-}
+  padding: 2px;
+  border: 2px solid $bubboli-red;
+  }
 
 .selected {
-border: 1px solid $bubboli-red;
-}
+  border: 1px solid $bubboli-red;
+  }
