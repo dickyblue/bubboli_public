@@ -346,6 +346,10 @@ img.float-right {
   background-color: $subdued-red;
   border-color: $subdued-red $subdued-red #FFFFFF;
   }
+  
+.tab-content {
+  border-bottom: 1px solid $bubboli-red
+  }  
 
 .gift-buy-box {
   height: 120px;
@@ -372,11 +376,3 @@ img.float-right {
 	border-color: #FF9900;
   }
 
-a.thumb {
-  padding: 2px;
-  border: 2px solid $bubboli-red;
-  }
-
-.selected {
-  border: 1px solid $bubboli-red;
-  }
