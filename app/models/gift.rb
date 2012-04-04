@@ -23,5 +23,6 @@ class Gift < ActiveRecord::Base
   end
   
   search_methods :gender_search
+
   
 end
