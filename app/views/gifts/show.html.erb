@@ -35,7 +35,7 @@ function switch_tabs(obj)
     <div class="span12">
       
       <div>
-        <h3><%= @gift.name %></h3>
+        <h3 style="color: #53868B"><%= @gift.name %></h3>
         <%= render(:partial => "gift_images") %>
       
       </div>
@@ -49,16 +49,31 @@ function switch_tabs(obj)
       
         <div class="tab-content" id="tabs1"><%= simple_format(@gift.description) %></div>
         <div class="tab-content" id="tabs2"><%= simple_format(@gift.why_bubboli_loves_it) %></div>
+        
+        </br>
+        
+        <div>
+          <%= render(:partial => "related_gifts")%>
+        </div>
+        
     </div>
     
-    <div class="span4 gift-buy-box">
-      <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
-      <% link = "http://"+@gift.permalink %>
-      <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div></br></br>
-      <span class='st_facebook'></span>
-      <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>
-      <span class='st_pinterest' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
-      <span class='st_email'></span>
+    <div class="span4">
+      <div class="row gift-buy-box">
+        <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
+        <% link = "http://"+@gift.permalink %>
+        <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div></br></br>
+        <span class='st_facebook'></span>
+        <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>
+        <span class='st_pinterest' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
+        <span class='st_email'></span>
+      </div>
+      
+      </br>
+      </br>
+      
+
+      
     </div>
     
   </div>  

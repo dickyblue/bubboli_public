@@ -353,7 +353,6 @@ img.float-right {
 
 .gift-buy-box {
   height: 120px;
-  width: 220px;
   padding-top: 20px;
   text-align: center;
   background-color: $background-blue;
@@ -367,7 +366,7 @@ img.float-right {
   height: 280px;
   }  
   
-.thumbs img {
+.related-gifts img, .thumbs img {
 	border: solid 1px #ccc;
 	height: 90px;
 	width: 90px;
@@ -378,3 +377,15 @@ img.float-right {
 	border-color: #FF9900;
   }
 
+.related-gifts {
+  float: left;
+  padding: 5px;
+  width: 130px;
+  text-align: center
+  }
+  
+.prod-stats {
+  padding: 10px;
+  border-top: solid 2px #ccc;
+  border-bottom: solid 2px #ccc;
+  }
