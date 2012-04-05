@@ -23,7 +23,7 @@ class GiftsController < ApplicationController
     @images = GiftImage.where(:gift_id => @gift.id)
     category_ids = @gift.gift_categorizations.map(&:gift_category_id)
     gift_categorizations = GiftCategorization.having(:gift_category_id => category_ids).having("gift_id != ?",@gift.id).group(:gift_id)
-    @similar_gifts = Gift.where(:id => gift_categorizations.map(&:gift_id), :age_range =>@gift.age_range).random(5)
+    @similar_gifts = Gift.where(:id => gift_categorizations.map(&:gift_id)).random(5)
   end
   
   def create
