@@ -1,11 +1,11 @@
 class Gift < ActiveRecord::Base
 
-  attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender, :male, :female, :age_range, 
+  attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender, :male, :female, 
   :gift_category_ids, :gift_images_attributes, :price_search, :description, :why_bubboli_loves_it, :favorite, :gift_age_range_ids
   
-  attr_searchable :name, :price_search, :age_range, :gender, :description
+  attr_searchable :name, :price_search, :gender, :description
     
-  validates :name, :permalink, :price, :merchant, :age_range, :presence => true
+  validates :name, :permalink, :price, :merchant, :presence => true
   
   has_many  :gift_images 
   has_many  :gift_categorizations

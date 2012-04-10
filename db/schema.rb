@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410143237) do
+ActiveRecord::Schema.define(:version => 20120410215912) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(:version => 20120410143237) do
     t.string   "price_search"
     t.string   "merchant"
     t.string   "gender"
-    t.string   "age_range"
     t.text     "description"
     t.text     "review"
     t.text     "why_bubboli_loves_it"
