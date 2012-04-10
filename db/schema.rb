@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120326043135) do
+ActiveRecord::Schema.define(:version => 20120410143237) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,21 @@ ActiveRecord::Schema.define(:version => 20120326043135) do
   end
 
   add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
+
+  create_table "gift_age_classifications", :force => true do |t|
+    t.integer  "gift_id"
+    t.integer  "gift_age_range_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "gift_age_classifications", ["gift_id", "gift_age_range_id"], :name => "index_gift_age_classifications_on_gift_id_and_gift_age_range_id"
+
+  create_table "gift_age_ranges", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "gift_categories", :force => true do |t|
     t.string   "name"

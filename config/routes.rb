@@ -10,6 +10,9 @@ BubboliKids::Application.routes.draw do
   match '/gift_categories/list', :to => 'gift_categories#list', :as => :list_gift_category
   match '/gift_categories/manage', :to => 'gift_categories#manage', :as => :manage_gift_category
 
+  match '/gift_age_ranges/list', :to => 'gift_age_ranges#list', :as => :list_gift_age_range
+  match '/gift_age_ranges/manage', :to => 'gift_age_ranges#manage', :as => :manage_gift_age_range
+
   match '/about', :to => 'pages#about', :as => :about
   match '/terms', :to => 'pages#terms', :as => :term
   match '/privacy', :to => 'pages#privacy', :as => :privacy
@@ -31,7 +34,7 @@ BubboliKids::Application.routes.draw do
   
   resources :blog, :controller => 'blogs'
   resources :gifts
-  resources :gift_categories, :users, :blog_categories, :comments
+  resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges
   resources :sessions, :only => [:create]
 
 
