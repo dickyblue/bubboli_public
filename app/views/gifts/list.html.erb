@@ -31,7 +31,7 @@
         <td><%= gift.id %></td>
         <td><%= gift.name %></td>
         <td>$<%= gift.price %></td>
-        <td><%= gift.permalink %></td>
+        <td><%= truncate(gift.permalink, :length => 50, :separator => " ") %></td>
         <td><%= gift.gift_categories.collect {|cat| cat.name}.join(", ") %></td>
         <td><%= link_to "Edit", :action => 'manage', :id => gift.id %> | <%= link_to "Delete", gift, :method => :delete %></td>        
        </tr>
