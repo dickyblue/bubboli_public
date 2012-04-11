@@ -6,6 +6,13 @@
   
   <h4>List of Gifts</h4></br>
   
+  <div>
+    <%= semantic_form_for @search_list, :url => list_gift_path do |f| %>
+      <%= f.input :name_or_description_contains, :label => "Keyword Search", :required => false %>
+      SORT BY: <%= f.sort_link :id, "ID Order" %> | <%= f.sort_link :price, "Price Order" %>
+    <% end %>
+  </div>
+  
   <table class="table zebra-striped">
     <thead>
       <tr>

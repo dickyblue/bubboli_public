@@ -1,6 +1,6 @@
 class Gift < ActiveRecord::Base
 
-  attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender, :male, :female, 
+  attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender,
   :gift_category_ids, :gift_images_attributes, :price_search, :description, :why_bubboli_loves_it, :favorite, :gift_age_range_ids
   
   attr_searchable :name, :price_search, :gender, :description
@@ -20,7 +20,7 @@ class Gift < ActiveRecord::Base
   end
    
   def self.gender_search(gender)
-    Gift.where(:gender => [gender, 'unisex'])
+    Gift.where(:gender => [gender, 'Unisex'])
   end
   
   search_methods :gender_search

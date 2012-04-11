@@ -15,7 +15,8 @@ class BlogsController < ApplicationController
   end
   
   def list
-    @blogs = Blog.find(:all)
+    @search_list = Blog.search(params[:search])
+    @blogs = @search_list.paginate(:page => params[:page], :per_page => 10, :order => "publish_date DESC")
   end
 
   def manage
