@@ -276,42 +276,7 @@ img.float-right {
   float: right;
   margin: 5px;
   }
-  
-#mainslideshow {
-  visibility: visible;
-  position: relative
-  }
-  
-#mainslideshow IMG {
-  position:absolute;
-  z-index:8;
-  }
-
-#mainslideshow IMG.active {
-  z-index:10;
-  }
-  
-#mainslideshow IMG.last-active {
-  z-index:9;
-  }
-  
-.splash-box {
-  width: 280px;
-  height: 361px;
-  background: #FFF;
-  border: 5px solid $dark-green-blue;
-  padding: 15px;
-  text-align: center;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  }
-
-.splash-font {
-  font-size: 15px;
-  color: $dark-green-blue;
-  }
-  
+    
 .blog {
   left: 860px;
   top: -35px;
@@ -390,3 +355,204 @@ img.float-right {
   border-top: solid 2px #ccc;
   border-bottom: solid 2px #ccc;
   }
+
+/* For baby slider */
+
+#mainslideshow {
+  visibility: visible;
+  position: relative
+  }
+  
+#mainslideshow IMG {
+  position:absolute;
+  z-index:8;
+  }
+
+#mainslideshow IMG.active {
+  z-index:10;
+  }
+  
+#mainslideshow IMG.last-active {
+  z-index:9;
+  }
+  
+.splash-box {
+  width: 280px;
+  /*height: 378px;*/
+  height: 285px;
+  background: #FFF;
+  /*border: 5px solid $dark-green-blue;*/
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  }
+
+.social-media-box {
+  width: 570px;
+  height: 50px;
+  background: #F8F8F8;
+  border: 1px solid #F0F0F0;
+  padding: 15px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  }
+
+
+.splash-font {
+  font-size: 15px;
+  color: $dark-green-blue;
+  }
+
+/*==================================================
+ * FOR ROOT PRODUCT SLIDER
+ * ===============================================*/
+
+ul.slideshow {
+  list-style:none;
+  width:600px;
+  height:300px;
+  overflow:hidden;
+  position:relative;
+  margin:0;
+  padding:0;
+  float: left
+  }   
+
+ul.slideshow li {
+  position:absolute;
+  left:0;
+  right:0;
+  }
+
+ul.slideshow li.show {
+  z-index:500;    
+  }
+
+ul img {
+  border:none;    
+  }
+
+#slideshow-caption {
+  width:200px;
+  height:300px;
+  position:absolute;
+  float: right;
+  bottom:0;
+  left:400px; 
+  color:#fff;
+  background: $bubboli-red;
+  z-index:500;
+  }
+
+#slideshow-caption .slideshow-caption-container {
+  padding:5px 10px;   
+  z-index:1000;   
+  }
+
+#slideshow-caption h3 {
+  margin:0;
+  padding-top:10px;
+  font-size:18px;
+  color: #fff;
+  line-height: 105%
+  }
+
+#slideshow-caption p {
+  margin:5px 0 0 0;
+  padding-top:10px;
+  font-size:14px;
+  font-weight: bold;
+  }
+  
+.featured_thumbs{  
+  width: 90px;  
+  height: 250px;  
+  overflow: hidden; 
+  position: relative;
+  float: right; 
+  }
+
+.gallery{  
+  width: 600px;  
+  height: 300px;  
+  /*border: 1px solid #F0F0F0;*/
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+	background:#FFF;
+  }
+  
+/*==================================================
+ * shadow effect
+ * ===============================================*/
+  
+.root-shadow-effect {
+  position: relative;
+  }
+  
+.root-shadow-effect:before, .root-shadow-effect:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #B8B8B8 ;
+  -moz-box-shadow: 0 15px 10px #B8B8B8 ;
+  box-shadow: 0 15px 10px #B8B8B8 ;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  }
+
+.root-shadow-effect:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+  }
+   
+.splash-box-effect {
+ 	position:relative;
+   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.1) inset;
+      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.1) inset;
+           box-shadow:0 1px 4px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.1) inset;
+  }
+  
+.splash-box-effect:before, .splash-box-effect:after {
+	 content:"";
+   position:absolute;
+   z-index:-1;
+   -webkit-box-shadow:0 0 20px rgba(0,0,0,0.9);
+   -moz-box-shadow:0 0 20px rgba(0,0,0,0.9);
+   box-shadow:0 0 20px rgba(0,0,0,0.9);
+   top:50%;
+   bottom:0;
+   left:10px;
+   right:10px;
+   -moz-border-radius:100px / 10px;
+   border-radius:100px / 10px;
+   }
+
+.splash-box-effect:after {
+	right:10px;
+  left:auto;
+  -webkit-transform:skew(8deg) rotate(3deg);
+    -moz-transform:skew(8deg) rotate(3deg);
+     -ms-transform:skew(8deg) rotate(3deg);
+      -o-transform:skew(8deg) rotate(3deg);
+         transform:skew(8deg) rotate(3deg);
+   }
+   
+   

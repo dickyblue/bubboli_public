@@ -9,7 +9,9 @@
   <div class="thumbs">
     <% @images.each do |image| %>          
         <a href="javascript:void(0)" rel="<%= image.image_url(:large_pic) %>" class="image">
-          <%= image_tag(image.image_url(:sm_thumb_pic)) if image.image? %>
+          <% unless image == @gift.gift_images.last %>
+          <%= image_tag(image.image_url(:sm_thumb_pic)) %>
+          <% end %>
         </a>
     <% end %>
   </div>  

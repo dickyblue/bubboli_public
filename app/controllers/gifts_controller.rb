@@ -7,6 +7,8 @@ class GiftsController < ApplicationController
     @gifts = @search.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
     @all_gift_categories = GiftCategory.all
     @all_gift_age_ranges = GiftAgeRange.all
+    @rotating_gift_image_first = Gift.where(:favorite => true).last
+    @rotating_gift_images = Gift.where(:favorite => true).order("created_at DESC").limit(5)     
   end
   
   def list
@@ -16,7 +18,7 @@ class GiftsController < ApplicationController
 
   def manage
     @gift = Gift.new if @gift.nil?
-    4.times { @gift.gift_images.build }
+    5.times { @gift.gift_images.build }
     @gift = Gift.find(params[:id]) if params[:id]
   end
   
