@@ -12,8 +12,9 @@
  *= require_tree .
 */
 
-/* Color index */
-
+/*==================================================
+ * COLOR INDEX
+ * ===============================================*/
 
 $background-blue:     #D7EFEE;
 $dark-green-blue:     #53868B;
@@ -27,6 +28,11 @@ $orange-red:          #FF4500;
 
 @import 'bootstrap';
 
+
+/*==================================================
+ * OVERALL SITE
+ * ===============================================*/
+ 
 .wrapper {
   min-height: 100%;
   height: auto !important;
@@ -48,6 +54,44 @@ p {
   font-size: 105%;
   }
 
+.btn.primary {
+  background-color: $bubboli-red;
+
+  background-image: -moz-linear-gradient(center top , $subdued-red, $bubboli-red);
+  background-image: -khtml-gradient(linear, left top, left bottom, from($subdued-red), to($bubboli-red));
+  background-image: -ms-linear-gradient(top, $subdued-red, $bubboli-red);
+  background-image: -webkit-gradient(linear, center top, left bottom, color-stop(0%, $subdued-red), color-stop(100%, $bubboli-red));
+  background-image: -webkit-linear-gradient(top, $subdued-red, $bubboli-red);
+  background-image: -o-linear-gradient(top, $subdued-red, $bubboli-red);
+  background-image: linear-gradient(top, $subdued-red, $bubboli-red);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$subdued-red', endColorstr='$bubboli-red', GradientType=0);
+
+  background-repeat: repeat-x;
+  border-color: $bubboli-red $bubboli-red $subdued-red;
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+
+.push {
+  height: 70px
+  }
+
+footer, {
+  text-align: center;
+  background-color: #eee;
+  height: 70px;
+  clear: both;
+  }
+
+a {
+  color: $dark-green-blue;
+  }
+
+
+/*==================================================
+ * TOPBAR
+ * ===============================================*/
+   
 .logo-topbar-fill {
   background-color: #FFF;
   background-color: #FFF;
@@ -91,39 +135,11 @@ p {
   color: $dark-green-blue;
   }
   
-.btn.primary {
-  background-color: $bubboli-red;
-  
-  background-image: -moz-linear-gradient(center top , $subdued-red, $bubboli-red);
-  background-image: -khtml-gradient(linear, left top, left bottom, from($subdued-red), to($bubboli-red));
-  background-image: -ms-linear-gradient(top, $subdued-red, $bubboli-red);
-  background-image: -webkit-gradient(linear, center top, left bottom, color-stop(0%, $subdued-red), color-stop(100%, $bubboli-red));
-  background-image: -webkit-linear-gradient(top, $subdued-red, $bubboli-red);
-  background-image: -o-linear-gradient(top, $subdued-red, $bubboli-red);
-  background-image: linear-gradient(top, $subdued-red, $bubboli-red);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$subdued-red', endColorstr='$bubboli-red', GradientType=0);
 
-  background-repeat: repeat-x;
-  border-color: $bubboli-red $bubboli-red $subdued-red;
-  color: white;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  }
-
-.push {
-  height: 70px
-  }
-  
-footer, {
-  text-align: center;
-  background-color: #eee;
-  height: 70px;
-  clear: both;
-  }
-  
-a {
-  color: $dark-green-blue;
-  }
-
+/*==================================================
+ * PRODUCTS AND SEARCH
+ * ===============================================*/
+   
 ul.prod {
   list-style: none;
   width: 780px;
@@ -177,6 +193,11 @@ li.prod-list {
   text-decoration: none;
   }
 
+
+/*==================================================
+ * SOCIAL MEDIA ICONS
+ * ===============================================*/
+
 .socialmedia-logo {
   list-style: none;
   }
@@ -210,27 +231,25 @@ li.prod-list {
   left: 895px;
   top: -25px;
   }
-  
-.text-over-banner {
-  position: relative;
-  z-index: 1;
-  left: 15px;
-  top: -100px;
-  }
-  
-.sign-out {
-  float: right;
-  }
 
-.no-margin-or-bullet {
-  list-style: none;
-  padding: 0;
-  margin-left: 0px;
-  }
+
+/*==================================================
+ * BLOG CONTENT
+ * ===============================================*/
   
 .blog-content {
   margin-left: 0px;
   }
+
+.blog {
+  left: 860px;
+  top: -35px;
+  opacity: 1;
+  }
+
+/*==================================================
+ * FONTS
+ * ===============================================*/
 
 @font-face {
   font-family: 'MountainsofChristmas';
@@ -258,6 +277,11 @@ li.prod-list {
   text-align: center;
   }
   
+
+/*==================================================
+ * OTHER
+ * ===============================================*/
+  
 .divider {
   border-left:20px $bubboli-red;
   font-size: 70px;
@@ -276,12 +300,6 @@ img.float-right {
   float: right;
   margin: 5px;
   }
-    
-.blog {
-  left: 860px;
-  top: -35px;
-  opacity: 1;
-  }
   
 .brand-text {
   text-align: center;
@@ -296,6 +314,28 @@ img.float-right {
 .pagination .active a, .pagination a:hover, {
   background-color: $background-blue;
   }
+
+.no-margin-or-bullet {
+  list-style: none;
+  padding: 0;
+  margin-left: 0px;
+  }
+
+.text-over-banner {
+  position: relative;
+  z-index: 1;
+  left: 15px;
+  top: -100px;
+  }
+
+.sign-out {
+  float: right;
+  }
+
+
+/*==================================================
+ * FOR GIFT SHOW TABS
+ * ===============================================*/
 
 .tabs {
   border-color: $subdued-red;
@@ -317,6 +357,11 @@ img.float-right {
   border-bottom: 1px solid $subdued-red
   }  
 
+
+/*==================================================
+ * FOR BUY GIFT BOX
+ * ===============================================*/
+
 .gift-buy-box {
   height: 120px;
   padding-top: 20px;
@@ -327,6 +372,10 @@ img.float-right {
   -moz-border-radius: 4px;
   }
 
+
+/*==================================================
+ * FOR RELATED GIFT IMAGES IN SHOW PAGE
+ * ===============================================*/
 
 #image {
   height: 280px;
@@ -349,6 +398,11 @@ img.float-right {
   width: 130px;
   text-align: center
   }
+ 
+ 
+/*==================================================
+ * FOR PRODUCT STATS IN SHOW PAGE
+ * ===============================================*/
   
 .prod-stats {
   padding: 10px;
@@ -356,7 +410,9 @@ img.float-right {
   border-bottom: solid 2px #ccc;
   }
 
-/* For baby slider */
+/*==================================================
+ * FOR ORIGINAL SLIDER WITH BABY PICTURES
+ * ===============================================*/
 
 #mainslideshow {
   visibility: visible;
@@ -375,6 +431,10 @@ img.float-right {
 #mainslideshow IMG.last-active {
   z-index:9;
   }
+
+/*==================================================
+ * FOR ROOT SPLASHBOX
+ * ===============================================*/
   
 .splash-box {
   width: 280px;
@@ -484,9 +544,10 @@ ul img {
   -moz-border-radius: 4px;
 	background:#FFF;
   }
+
   
 /*==================================================
- * shadow effect
+ * ROOT SHADOW EFFECTS
  * ===============================================*/
   
 .root-shadow-effect {
@@ -522,6 +583,11 @@ ul img {
   right: 10px;
   left: auto;
   }
+
+
+/*==================================================
+ * SPLASH BOX EFFECTS
+ * ===============================================*/
    
 .splash-box-effect {
  	position:relative;
