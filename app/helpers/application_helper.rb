@@ -40,6 +40,10 @@ module ApplicationHelper
     blog = image_tag("bubboli-blog.jpg", :att => "blog")
   end
 
+  def separator
+    separator = image_tag("separator.png", :att => "")
+  end
+
   def twitterized_type(type)
     case type
       when :alert

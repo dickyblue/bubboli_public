@@ -71,7 +71,23 @@ function switch_tabs(obj)
       
       </br>
       </br>
-      
+
+      <div class="row gift-buy-box2">
+        <h4 style= "color: #53868B; text-align: center">Product Statistics</h4>
+        <h5 style= "color: #53868B;">For Ages:</h5>
+          <ul class="no-margin-or-bullet">
+            <% @gift.gift_age_ranges.each do |age| %>
+            <li><%= age.name %></li>
+            <% end %>
+          </ul>
+          
+        <h5 style= "color: #53868B;">Categories:</h5>
+          <ul class="no-margin-or-bullet">
+            <% @gift.gift_categories.each do |cat| %>
+            <li><%= cat.name %></li>
+            <% end %>
+          </ul>
+      </div>
 
       
     </div>
