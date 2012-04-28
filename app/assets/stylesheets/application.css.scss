@@ -248,7 +248,7 @@ li.prod-list {
   }
 
 /*==================================================
- * FONTS
+ * FONTS - MOUNTAINS OF CHRISTMAS - BUBBOLI LOGO
  * ===============================================*/
 
 @font-face {
@@ -276,7 +276,25 @@ li.prod-list {
 .blog-back-home {
   text-align: center;
   }
-  
+
+
+/*==================================================
+ * FONTS - QIKKI REGULAR
+ * ===============================================*/
+
+ @font-face {
+   font-family: 'QikkiReg';
+   src: url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.eot');
+   src: local('QikkiReg'), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.eot?#iefix') format("embedded-opentype"), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.woff') format("woff"), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.ttf') format("truetype"), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.svg#QikkiRegRegular') format("svg");
+   font-weight: normal;
+   font-style: normal;
+   } 
+
+.qikki-font {
+  font-family: 'QikkiReg';
+  font-size: 18px;
+  }
+
 
 /*==================================================
  * OTHER
@@ -289,7 +307,7 @@ li.prod-list {
   }
 
 hr {
-  border-bottom: 2px dashed $background-blue;
+  border-bottom: 1px dashed $background-blue;
   }
   
 pre {
