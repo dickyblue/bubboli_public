@@ -7,7 +7,7 @@
 
 <div class="span10">
   <ul class="no-margin-or-bullet">
-    <li style="font-size: 18px"><%= link_to blog.title, blog %></li>
+    <li class="qikki-font" style="font-size: 18px"><%= link_to blog.title, blog %></li>
     <li style="font-size: 11px">Posted in <%= blog.blog_categories.collect {|cat| cat.name }.join(", ") %> | <%= link_to(pluralize(blog.comments.size, 'comment'), :action => 'show', :id => blog.id, :anchor => 'comments') %></li></br>
   </ul>
     

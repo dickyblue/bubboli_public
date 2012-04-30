@@ -283,16 +283,15 @@ li.prod-list {
  * ===============================================*/
 
  @font-face {
-   font-family: 'QikkiReg';
+   font-family: 'QikkiRegRegular';
    src: url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.eot');
-   src: local('QikkiReg'), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.eot?#iefix') format("embedded-opentype"), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.woff') format("woff"), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.ttf') format("truetype"), url('/vendor/assets/fonts/Qarmic_sans_Abridged-webfont.svg#QikkiRegRegular') format("svg");
+   src: local('QikkiRegRegular'), url('/assets/Qarmic_sans_Abridged-webfont.eot?#iefix') format("embedded-opentype"), url('/assets/Qarmic_sans_Abridged-webfont.woff') format("woff"), url('/assets/Qarmic_sans_Abridged-webfont.ttf') format("truetype"), url('/assets/Qarmic_sans_Abridged-webfont.svg#QikkiRegRegular') format("svg");
    font-weight: normal;
    font-style: normal;
    } 
 
 .qikki-font {
-  font-family: 'QikkiReg';
-  font-size: 18px;
+  font-family: 'QikkiRegRegular';
   }
 
 
@@ -549,7 +548,8 @@ ul img {
   padding-top:10px;
   font-size:18px;
   color: #fff;
-  line-height: 105%
+  line-height: 105%;
+  font-family: QikkiRegRegular
   }
 
 #slideshow-caption p {
