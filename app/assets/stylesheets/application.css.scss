@@ -64,7 +64,7 @@ p {
   background-image: -webkit-linear-gradient(top, $subdued-red, $bubboli-red);
   background-image: -o-linear-gradient(top, $subdued-red, $bubboli-red);
   background-image: linear-gradient(top, $subdued-red, $bubboli-red);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$subdued-red', endColorstr='$bubboli-red');
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF9B97', endColorstr='#FF6F6A', GradientType=0);
 
   background-repeat: repeat-x;
   border-color: $bubboli-red $bubboli-red $subdued-red;
@@ -120,7 +120,7 @@ a {
   background-image: -webkit-linear-gradient(top, $background-blue, #FFF);
   background-image: -o-linear-gradient(top, $background-blue, #FFF);
   background-image: linear-gradient(top, $background-blue, #FFF);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$background-blue', endColorstr='#FFF');
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D7EFEE', endColorstr='#FFF', GradientType=0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
   }
   
