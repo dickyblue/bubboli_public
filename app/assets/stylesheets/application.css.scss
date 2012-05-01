@@ -120,6 +120,7 @@ a {
   background-image: -webkit-linear-gradient(top, $background-blue, #FFF);
   background-image: -o-linear-gradient(top, $background-blue, #FFF);
   background-image: linear-gradient(top, $background-blue, #FFF);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$background-blue', endColorstr='#FFF', GradientType=0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
   }
   
