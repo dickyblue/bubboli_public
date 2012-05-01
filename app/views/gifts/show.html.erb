@@ -62,7 +62,7 @@ function switch_tabs(obj)
     
     <div class="span4">
       <div class="row gift-buy-box">
-        <h4 class="qikki-font" style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
+        <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
         <% link = "http://"+@gift.permalink %>
         <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div></br></br>
         <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
@@ -75,7 +75,7 @@ function switch_tabs(obj)
       </br>
 
       <div class="row gift-buy-box2">
-        <h4 class="qikki-font" style= "color: #53868B; text-align: center">Product Statistics</h4>
+        <h4 style= "color: #53868B; text-align: center">Product Statistics</h4>
         <h5 style= "color: #53868B;">For Ages:</h5>
           <ul class="no-margin-or-bullet">
             <% @gift.gift_age_ranges.each do |age| %>
