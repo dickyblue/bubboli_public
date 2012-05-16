@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                                       :format => { :with => email_regex },
                                       :on => :create
   
-  before_save :encrypt_password
+  before_save :encrypt_password, :unless => "password.blank?"
   
   def has_password?(submitted_password)
     password_hash == encrypt(submitted_password)
