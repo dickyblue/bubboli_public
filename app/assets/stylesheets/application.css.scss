@@ -99,20 +99,21 @@ a {
   }
 
 .logo-topbar {
-  height: 120px;
+  height: 100px;
   left: 0;
   overflow: visible;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 10000;
+  background-color: #FFF;
+  z-index: 1000;
   }
   
-.topbar {
-  top: 110px;
+.navbar-fixed-top {
+  top: 100px;
   }
   
-.topbar .fill {
+.nav, .navbar, .navbar-inner, .navbar-fixed-top {
   background-image: -moz-linear-gradient(center top , $background-blue, #FFF);
   background-image: -ms-linear-gradient(center top , $background-blue, #FFF);
   background-image: -khtml-gradient(linear, left top, left bottom, from($background-blue), to(#FFF));
@@ -124,15 +125,15 @@ a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
   }
   
-.topbar a {
-  color: $dark-green-blue;
-  }
-  
-.topbar div > ul .active > a {
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
   background-color: $dark-green-blue;
   }
   
-.topbar div > ul a:hover, .nav a:hover {
+.navbar .nav > li > a {
+  color: $dark-green-blue;
+  }
+  
+.navbar .nav > li > a:hover {
   color: $dark-green-blue;
   }
   
@@ -159,11 +160,14 @@ li.prod-list {
   text-align: center;
   background-color: $background-blue;
   border: 20px solid #fff;
-  border-radius: 24px;
+  border-radius: 14px;
   -webkit-border-radius: 24px;
   -moz-border-radius: 24px;
   }
-  
+
+.extra-padding {
+  padding-left: 20px;
+  }  
   
 .toy-search {
   margin-top: -30px;
@@ -243,7 +247,7 @@ li.prod-list {
   }
 
 .blog {
-  left: 860px;
+  left: 760px;
   top: -35px;
   opacity: 1;
   }

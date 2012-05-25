@@ -3,7 +3,7 @@
     
   <div class="row">
 
-    <div class="span3 splash-box splash-box-effect">
+    <div class="span2 splash-box splash-box-effect">
       <p class="splash-font"><strong>Let us help you find the perfect gift for your little ones<p class="gray-font">We find and recommend products
         that are unique, useful, creative, modern and most importantly, fun.</strong></p>
       <hr/>
@@ -19,7 +19,7 @@
     
 
     
-    <div class ="span10">
+    <div class ="span8">
       
       <%= render(:partial => "featured_gifts") %>
 
@@ -41,7 +41,7 @@
   
   <div class="row">
     
-    <div class="span3 form-stacked toy-search">
+    <div class="span2 form-stacked toy-search">
       <p class="mynewfont">Search Criterias</p>
       <%= semantic_form_for @search  do |f| %>
         <%= render(:partial => "gift_search", :locals => {:f => f})%>
@@ -51,7 +51,7 @@
     </div>
     
     <div class="row">
-      <div class="span12">
+      <div class="span8  extra-padding">
         <ul class="prod">
           <% if @gifts.empty? %>
             <p class="no-gifts">There are no gifts that match your criteria.</p>

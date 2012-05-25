@@ -20,7 +20,7 @@ gem 'randumb'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'bootstrap-sass', '1.4.4'
+  gem 'bootstrap-sass', '2.0.3'
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
