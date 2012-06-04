@@ -81,11 +81,18 @@ footer, {
   background-color: #eee;
   height: 70px;
   clear: both;
+  padding-top: 20px
   }
 
 a {
   color: $dark-green-blue;
   }
+
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+  background-color: $dark-green-blue
+  }
+
+
 
 
 /*==================================================
@@ -247,7 +254,7 @@ li.prod-list {
   }
 
 .blog {
-  left: 760px;
+  left: 862px;
   top: -35px;
   opacity: 1;
   }
