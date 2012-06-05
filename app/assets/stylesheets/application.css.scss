@@ -92,6 +92,12 @@ a {
   background-color: $dark-green-blue
   }
 
+input,
+select {
+  display: inline-block;
+  padding: 4px;
+  margin-bottom: 6px;
+}
 
 
 
@@ -188,6 +194,9 @@ li.prod-list {
   
 .form-stacked label {
   color: $light-gray;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 10px;
   }
   
 .no-gifts {
@@ -663,5 +672,5 @@ ul img {
       -o-transform:skew(8deg) rotate(3deg);
          transform:skew(8deg) rotate(3deg);
    }
-   
-   
+
+ 

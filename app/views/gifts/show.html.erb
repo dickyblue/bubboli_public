@@ -34,7 +34,7 @@ function switch_tabs(obj)
 
 <%= link_to("«« Back to Gifts", gifts_path) %>
   <div class="row">
-    <div class="span12">
+    <div class="span9">
       
       <div>
         <h3 class="qikki-font" style="color: #53868B"><%= @gift.name %></h3>
@@ -60,7 +60,7 @@ function switch_tabs(obj)
         
     </div>
     
-    <div class="span4">
+    <div class="span3">
       <div class="row gift-buy-box">
         <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
         <% link = "http://"+@gift.permalink %>

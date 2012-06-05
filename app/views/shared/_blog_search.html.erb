@@ -1,8 +1,6 @@
 <p class="mynewfont">Search Criterias</p>
-<%= semantic_form_for @search, :url => blog_index_path do |f| %>
-  <%= f.inputs do %>
+<%= simple_form_for @search, :url => blog_index_path do |f| %>
     <%= f.input :title_or_content_contains, :label => "Keyword Search", :required => false %>
     <%= f.input :blog_categorizations_blog_category_id_equals, :as => :select, :collection =>  BlogCategory.all, :label => "Category", :required => false %>          
-    <%= f.commit_button :button_html => {:class => "primary"}, :label => "Search" %>
-  <% end %>
+    <%= f.button :submit, 'Search', :class => "primary" %>
 <% end %>

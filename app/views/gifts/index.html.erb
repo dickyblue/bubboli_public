@@ -43,7 +43,7 @@
     
     <div class="span2 form-stacked toy-search">
       <p class="mynewfont">Search Criterias</p>
-      <%= semantic_form_for @search  do |f| %>
+      <%= simple_form_for @search do |f| %>
         <%= render(:partial => "gift_search", :locals => {:f => f})%>
       <% end %>
       
