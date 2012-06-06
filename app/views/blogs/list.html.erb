@@ -7,7 +7,7 @@
   <h4>List of Blogs</h4></br>
   
   <div>
-    <%= semantic_form_for @search_list, :url => list_blog_path do |f| %>
+    <%= simple_form_for @search_list, :url => list_blog_path do |f| %>
       <%= f.input :title_or_content_contains, :label => "Keyword Search", :required => false %>
       SORT BY: <%= f.sort_link :id, "ID Order" %> | <%= f.sort_link :publish_date, "Published Date Order" %>
     <% end %>

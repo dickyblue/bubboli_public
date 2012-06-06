@@ -1,26 +1,6 @@
 <meta property="og:image" content="<%= @gift.gift_images.first.image_url(:large_pic) %>" />
 
-<script type="text/javascript">
-$(document).ready(function() {
- 
-	$('.tabs a').click(function(){
-		switch_tabs($(this));
-	});
- 
-	switch_tabs($('.active'));
- 
-});
- 
-function switch_tabs(obj)
-{
-	$('.tab-content').hide();
-	$('.tabs a').removeClass("active");
-	var id = obj.attr("rel");
- 
-	$('#'+id).show();
-	obj.addClass("active");
-}
-</script>
+
 
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -44,13 +24,37 @@ function switch_tabs(obj)
       
       </br>
       </br>
-          <ul class="tabs">
-            <li><a href="javascript:void(0)" class="active" rel="tabs1">Product Description</a></li>
-            <li><a href="javascript:void(0)" rel="tabs2">Why Bubboli Loves It</a></li>
-          </ul>
-      
-        <div class="tab-content" id="tabs1"><%= simple_format(@gift.description) %></div>
-        <div class="tab-content" id="tabs2"><%= simple_format(@gift.why_bubboli_loves_it) %></div>
+
+
+        <ul class="tabs nav-tabs " id="myTab">
+          <li class="active"><a href="#prod_desc">Product Description</a></li>
+          <li><a href="#bubboli_love">Why Bubboli Loves It</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="prod_desc"><%= simple_format(@gift.description) %></div>
+          <div class="tab-pane" id="bubboli_love"><%= simple_format(@gift.why_bubboli_loves_it) %></div>
+        </div>
+
+        <script>
+          $('#myTab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+          })
+          
+          $(function () {
+            $('#myTab a:first').tab('show');
+          })
+          
+
+        </script>
+
+
+
+
+
+
+        
         
         </br>
         

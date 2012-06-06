@@ -286,9 +286,9 @@ li.prod-list {
   color: $bubboli-red;
   }
   
-  .large-font {
-    font-size: 28px;
-    }
+.large-font {
+  font-size: 28px;
+  }
   
 .gray-font {
   color: $light-gray;
@@ -371,20 +371,27 @@ img.float-right {
   }
 
 
+
+
 /*==================================================
  * FOR GIFT SHOW TABS
  * ===============================================*/
 
 .tabs {
   border-color: $subdued-red;
+  margin-bottom: 18px;
+  margin-left: 0;
+  list-style: none;
   }
 
-.tabs .active {
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
   background-color: #FFFFFF;
-  color: $dark-green-blue
+  color: $dark-green-blue;
+  border-color: $subdued-red $subdued-red #FFFFFF;
   }
   
 .tabs > li > a {
+  display: block;
   text-decoration: none;
   color: #FFF;
   background-color: $subdued-red;
@@ -439,6 +446,7 @@ img.float-right {
 	height: 90px;
 	width: 90px;
 	padding: 4px;
+	margin: 3px 1px 3px 1px
   }
   
 .thumbs img:hover {

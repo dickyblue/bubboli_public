@@ -14,14 +14,14 @@
           <div class="row">
             <div class="span1">              
               <ul class="no-margin-or-bullet">
-                <h3 class="mynewfont"><li><%= @blog.created_at.strftime("%b %e") %></li></h3>
+                <h3 class="mynewfont" style="color: #909090 "><li><%= @blog.created_at.strftime("%b %e") %></li></h3>
                 <li style="font-size: 11px"><%= @blog.author %></li>
               </ul>
             </div>
 
             <div class="span5">
               <ul class="no-margin-or-bullet">
-                <li style="font-size: 18px"><%= @blog.title %></li>
+                <li style="font-size: 18px; color: #909090"><%= @blog.title %></li>
                 <li style="font-size: 11px"><%= @blog.blog_categories.collect {|cat| cat.name }.join(", ") %> | <%= link_to(pluralize(@blog.comments.size - 1, 'comment'), :action => 'show', :id => @blog.id, :anchor => 'comments') %></li>                
               </ul>
             </div>
