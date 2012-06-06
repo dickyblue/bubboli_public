@@ -139,6 +139,7 @@ Tabulous.setup do |config|
   # 
   config.css.scaffolding = false
   config.bootstrap_style_subtabs = true
+  config.tabs_ul_class = "nav"
 
   # You can tweak the colors of the generated CSS.
   #

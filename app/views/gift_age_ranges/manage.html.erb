@@ -2,21 +2,18 @@
 
 <div class="container">
   
+  <div class="span4 offset4">
   <h4>Manage Gift Age ranges</h4>
+  </br>
 
-  <%= semantic_form_for @gift_age_range do |f| %>
-    <%= f.inputs do %>
+  <%= simple_form_for @gift_age_range do |f| %>
 
       <%= render(:partial => 'shared/manage', :locals => {:f => f}) %>
     
-    <% end %>
-  
-  
-  <div class="pull-right">
   <div class="btn primary white-link"><%= link_to "Cancel", list_gift_age_range_path %></div>
-  <%= f.commit_button :button_html => {:class => "primary"}, :label => "Create" %>
-  </div>
+  <%= f.button :submit, 'Save', :class => "primary" %>
   
   <% end %>
+  </div>
   
 </div>

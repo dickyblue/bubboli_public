@@ -4,48 +4,44 @@
   
   <h4>Manage Blogs</h4>
 
-  <%= semantic_form_for(@blog, :html => {:multipart => true}) do |f| %>
-    <%= f.inputs do %>
+  <%= simple_form_for(@blog, :html => {:multipart => true, :class => 'form-horizontal'}) do |f| %>
 
       <div class="row">
-        <div class="span16">
-          <%= f.semantic_fields_for :blog_image do |ff| %>
+        <div class="span6">
+          <%= f.simple_fields_for :blog_image do |ff| %>
             <%= ff.input :image, :as => :file %>
             <%= ff.input :remote_image_url, :label => "Remote Image URL" %>
             <%= ff.input :image2, :as => :file %>
             <%= ff.input :remote_image2_url, :label => "Remote Image 2 URL" %>
+        </div>    
+        <div class="span6">
+            
             <%= ff.input :image3, :as => :file %>
             <%= ff.input :remote_image3_url, :label => "Remote Image 3 URL" %>
             <%= ff.input :image4, :as => :file %>
             <%= ff.input :remote_image4_url, :label => "Remote Image 4 URL" %>
           <% end %>
-          <%= f.input :title %>
-          <%= f.input :author %>
-          <div class="textarea span3"><%= f.input :content, :input_html => { :rows => 20, :class => "xxlarge" }%></div>
-          <%= f.input :author_permalink, :as => :url, :label => "Author Website" %>
-
-            
-          <label>Blog Categories</label>
-          <div class="input">
-            <% @all_blog_categories.each do |cat| %>
-              <%= check_box_tag('blog_categories[]', cat.id, @blog.blog_categories.map {|c| c.id }.include?(cat.id)) %> 
-              <%= cat.name %></br>
-            <% end %>
-          </div>
-
-          <%= f.input :published, :label => "Publish?", :as => :radio, :collection => [["True", true], ["False", false]] %>  
-          <label>Publish Date</label><%= datetime_select(:blog, :publish_date, :order => [:month, :day, :year], :start_year => 2012, :end_year => Time.now.next_year.year)%>    
         </div>
-        
-      </div>
-    
-    <% end %>
+      </div> 
+      </br>
+      </br>
 
+      <%= f.input :title %>
+      <%= f.input :author %>
+      <%= f.input :author_permalink, :as => :url, :label => "Author Website" %>
+      <%= f.input :content, :input_html => { :rows => 15, :class => "input-xxlarge" }%>
+      <%= f.association :blog_categories, :as => :check_boxes, :label => "Blog Categories" %>
+      <%= f.input :published, :label => "Publish?", :as => :radio, :collection => [["True", true], ["False", false]] %>  
+      <%= f.input :publish_date, :as => :datetime, :order => [:month, :day, :year], :start_year => 2012, :end_year => Time.now.next_year.year, :input_html => {:class => "input-small"}, :label => "Publish Date" %>
+        
+    
     <div class="pull-right">
     <div class="btn primary white-link"><%= link_to "Cancel", list_blog_path %></div>  
-    <%= f.commit_button :button_html => {:class => "primary"} %>
+    <%= f.button :submit, :class => "primary" %>
     </div>
+    <br/>
     
   <% end %>
+
   
 </div>

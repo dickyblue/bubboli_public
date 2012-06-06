@@ -2,20 +2,16 @@
 
 <div class="container">
   
+  <div class="span4 offset4">
   <h4>Edit Comment Status</h4>
+  </br>
 
-  <%= semantic_form_for @comment do |f| %>
-    <%= f.inputs do %>
+  <%= simple_form_for @comment do |f| %>
 
-      <%= f.input :status, :as => :select, :collection => ["Approve", "Spam"] %>
-    
-    <% end %>
-  
-  
-  <div class="pull-right">
-  <%= f.commit_button :button_html => {:class => "primary"}, :label => "Save" %>
-  </div>
+    <%= f.input :status, :as => :select, :collection => ["Approve", "Spam"] %>
+    <%= f.button :submit, 'Save', :class => "primary" %>
   
   <% end %>
+  </div>
   
 </div>

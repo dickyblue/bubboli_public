@@ -81,11 +81,24 @@ footer, {
   background-color: #eee;
   height: 70px;
   clear: both;
+  padding-top: 20px
   }
 
 a {
   color: $dark-green-blue;
   }
+
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+  background-color: $dark-green-blue
+  }
+
+input,
+select {
+  display: inline-block;
+  padding: 4px;
+  margin-bottom: 6px;
+}
+
 
 
 /*==================================================
@@ -99,20 +112,21 @@ a {
   }
 
 .logo-topbar {
-  height: 120px;
+  height: 100px;
   left: 0;
   overflow: visible;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 10000;
+  background-color: #FFF;
+  z-index: 1000;
   }
   
-.topbar {
-  top: 110px;
+.navbar-fixed-top {
+  top: 100px;
   }
   
-.topbar .fill {
+.nav, .navbar, .navbar-inner, .navbar-fixed-top {
   background-image: -moz-linear-gradient(center top , $background-blue, #FFF);
   background-image: -ms-linear-gradient(center top , $background-blue, #FFF);
   background-image: -khtml-gradient(linear, left top, left bottom, from($background-blue), to(#FFF));
@@ -124,15 +138,15 @@ a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
   }
   
-.topbar a {
-  color: $dark-green-blue;
-  }
-  
-.topbar div > ul .active > a {
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
   background-color: $dark-green-blue;
   }
   
-.topbar div > ul a:hover, .nav a:hover {
+.navbar .nav > li > a {
+  color: $dark-green-blue;
+  }
+  
+.navbar .nav > li > a:hover {
   color: $dark-green-blue;
   }
   
@@ -159,11 +173,14 @@ li.prod-list {
   text-align: center;
   background-color: $background-blue;
   border: 20px solid #fff;
-  border-radius: 24px;
+  border-radius: 14px;
   -webkit-border-radius: 24px;
   -moz-border-radius: 24px;
   }
-  
+
+.extra-padding {
+  padding-left: 20px;
+  }  
   
 .toy-search {
   margin-top: -30px;
@@ -177,6 +194,9 @@ li.prod-list {
   
 .form-stacked label {
   color: $light-gray;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 10px;
   }
   
 .no-gifts {
@@ -243,7 +263,7 @@ li.prod-list {
   }
 
 .blog {
-  left: 860px;
+  left: 862px;
   top: -35px;
   opacity: 1;
   }
@@ -266,9 +286,9 @@ li.prod-list {
   color: $bubboli-red;
   }
   
-  .large-font {
-    font-size: 28px;
-    }
+.large-font {
+  font-size: 28px;
+  }
   
 .gray-font {
   color: $light-gray;
@@ -351,20 +371,27 @@ img.float-right {
   }
 
 
+
+
 /*==================================================
  * FOR GIFT SHOW TABS
  * ===============================================*/
 
 .tabs {
   border-color: $subdued-red;
+  margin-bottom: 18px;
+  margin-left: 0;
+  list-style: none;
   }
 
-.tabs .active {
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
   background-color: #FFFFFF;
-  color: $dark-green-blue
+  color: $dark-green-blue;
+  border-color: $subdued-red $subdued-red #FFFFFF;
   }
   
 .tabs > li > a {
+  display: block;
   text-decoration: none;
   color: #FFF;
   background-color: $subdued-red;
@@ -419,6 +446,7 @@ img.float-right {
 	height: 90px;
 	width: 90px;
 	padding: 4px;
+	margin: 3px 1px 3px 1px
   }
   
 .thumbs img:hover {
@@ -652,5 +680,5 @@ ul img {
       -o-transform:skew(8deg) rotate(3deg);
          transform:skew(8deg) rotate(3deg);
    }
-   
-   
+
+ 

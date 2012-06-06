@@ -2,21 +2,19 @@
 
 <div class="container">
   
+  <div class="span4 offset4">
   <h4>Manage Gift Categories</h4>
+  </br>
 
-  <%= semantic_form_for @gift_category do |f| %>
-    <%= f.inputs do %>
+  <%= simple_form_for @gift_category do |f| %>
 
       <%= render(:partial => 'shared/manage', :locals => {:f => f}) %>
     
-    <% end %>
-  
-  
-  <div class="pull-right">
   <div class="btn primary white-link"><%= link_to "Cancel", list_gift_category_path %></div>
-  <%= f.commit_button :button_html => {:class => "primary"}, :label => "Create" %>
+  <%= f.button :submit, 'Save', :class => "primary" %>
   </div>
   
   <% end %>
+  </div>
   
 </div>

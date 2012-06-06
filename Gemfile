@@ -7,7 +7,6 @@ gem 'rails', '3.2.0'
 
 gem 'mysql2', '0.3.11'
 gem 'annotate'
-gem 'formtastic-bootstrap'
 gem 'meta_search'
 gem 'will_paginate', '~> 3.0'
 gem 'carrierwave'
@@ -16,11 +15,13 @@ gem 'tabulous'
 gem 'fog'
 gem 'heroku'
 gem 'randumb'
+gem 'simple_form'
+gem 'country_select'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'bootstrap-sass', '1.4.4'
+  gem 'bootstrap-sass', '2.0.3'
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 

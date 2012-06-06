@@ -29,32 +29,44 @@
     <div class="logo-topbar">
       <div class="logo-topbar-fill">
         <div class="container">
-          <div class="nav">
+          <div>
             <% if current_user %>
               <%= link_to bubboli, root_path %>
             <% else %>
               <%= link_to bubboli, root_path %>
             <% end %>
           </div>
-        
-          <div class="sign-out">
-            <% if current_user %>
-              Welcome back, <%= current_user.first_name %> | <%= link_to "Sign out", sign_out_path %></br>
-              <%= link_to "Admin Panel", admin_path %>
-            <% else %>
-
-            <% end %>
-          </div>
-        
+            
         </div>
       </div>
     </div>
     
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+      <div class="container">
           <ul class="nav">
-            <li><%= tabs %></li>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Bubboli Favorites", favorite_gift_path %></li>
+            <li><%= link_to "Brands We Love", gift_brand_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <% if signed_in? %>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Account <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= current_user.admin == true ? link_to("Admin Panel", admin_path) : link_to("Profile", "#")%></li>
+                  <li><%= link_to "Settings", "#" %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "Sign out", sign_out_path, method: "delete" %>
+                  </li>
+                </ul>
+              </li>
+            <% else %>
+              <li><%= link_to "Sign in", sign_in_path %></li>
+            <% end %>
+
             <li class="socialmedia-overlap fb"><%= link_to facebook, "http://www.facebook.com/bubboli", :target => "_blank" %></li>
             <li class="socialmedia-overlap twitter"><%= link_to twitter, "http://www.twitter.com/bubboli", :target => "_blank" %></li>
             <li class="socialmedia-overlap pinterest"><%= link_to pinterest, "http://www.pinterest.com/bubboli/", :target => "_blank" %></li>

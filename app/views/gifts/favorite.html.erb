@@ -7,16 +7,16 @@
   
   <div class="row">
     
-    <div class="span3 form-stacked toy-search">
+    <div class="span2 form-stacked toy-search">
       <p class="mynewfont">Search Criterias</p>
-      <%= semantic_form_for @search_favorite, :url => favorite_gift_path do |f| %>
+      <%= simple_form_for @search_favorite, :url => favorite_gift_path do |f| %>
         <%= render(:partial => "gift_search", :locals => {:f => f})%>
       <% end %>
       
     </div>
     
     <div class="row">
-      <div class="span12">
+      <div class="span8 extra-padding">
         <ul class="prod">
           <% @gifts.each do |gift| %>
             <%= render(:partial => "gift_list", :locals => {:gift => gift})%>

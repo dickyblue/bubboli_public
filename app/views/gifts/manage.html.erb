@@ -4,14 +4,13 @@
 
   <h4>Manage Gifts</h4>
 
-  <%= semantic_form_for(@gift, :html => {:multipart => true}) do |f| %>
-    <%= f.inputs do %>
+  <%= simple_form_for(@gift, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
 
       <div class="row">
-        <div class="span8">
+        <div class="span6">
           
 
-          <%= f.semantic_fields_for :gift_images do |builder| %>
+          <%= f.association :gift_images do |builder| %>
             <%= render 'gift_image_fields', :f => builder %>
           <% end %>
           <p><%= link_to_add_fields "Add Image", f, :gift_images %>
@@ -23,28 +22,28 @@
           <%= f.input :sku, :label => "SKU Number" %>
           <%= f.input :manufacturer %>
           <%= f.input :gender, :as => :select, :collection => ['Male', 'Female', 'Unisex'] %>           
-          <%= f.input :gift_age_ranges, :as => :check_boxes, :label => "Age Range" %>                    
+          <%= f.association :gift_age_ranges, :as => :check_boxes, :label => "Age Range" %>                    
           <%= f.input :price %>
           <%= f.input :price_search, :as => :select, :collection => ['Less Than $25.00', '$25.00 - $49.99', '$50.00-$74.99', '$75.00-$99.99', '$100.00-$199.99', '$200.00 & Up'], :label => "Price Search" %>          
-          <%= f.input :gift_categories, :as => :check_boxes, :label => "Gift Categories" %>
-          <%= f.input :available, :label => "Availability", :as => :radio, :collection => [["True", true], ["False", false]] %>      
-          <%= f.input :favorite, :label => "Favorite", :as => :radio, :collection => [["True", true], ["False", false]] %>      
+          <%= f.association :gift_categories, :as => :check_boxes, :label => "Gift Categories" %>
 
         </div>
 
-        <div class="span8">
+        <div class="span6">
+          <%= f.input :available, :label => "Availability", :as => :radio, :collection => [["True", true], ["False", false]] %>      
+          <%= f.input :favorite, :label => "Favorite", :as => :radio, :collection => [["True", true], ["False", false]] %>                
           <%= f.input :description %>
           <%= f.input :why_bubboli_loves_it, :label => "Why Bubboli Loves It" %>
         </div>
       </div>
     
-    <% end %>
 
     <div class="pull-right">
     <div class="btn primary white-link"><%= link_to "Cancel", list_gift_path %></div>
-    <%= f.commit_button :button_html => {:class => "primary"} %>
+    <%= f.button :submit, :class => "primary" %>
     </div>
     
   <% end %>
   
 </div>
+</br>
