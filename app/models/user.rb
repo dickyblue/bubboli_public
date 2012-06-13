@@ -11,7 +11,16 @@ class User < ActiveRecord::Base
   validates :email,                   :presence => true,
                                       :uniqueness => { :case_sensitive => false },
                                       :format => { :with => email_regex },
-                                      :on => :create
+                                      :on => :save
+                                      
+  validates :work_email,              :uniqueness => { :case_sensitive => false },
+                                      :format => { :with => email_regex },
+                                      :on => :save
+
+  validates :first_name,              :presence => true
+  
+  validates :password,                :presence => true,
+                                      :confirmation => true
   
   before_save :encrypt_password, :unless => "password.blank?"
   

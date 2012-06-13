@@ -22,6 +22,7 @@ $bubboli-red:         #FF6F6A;
 $subdued-red:         #FF9B97;
 $background-blue-two: #E4F9F8;
 $light-gray:          #bfbfbf;
+$lightest-gray:       #F0F0F0;
 $background-orange:   #F9F2E3;
 $orange-red:          #FF4500;
 $bubboli-yellow:      #FEFCE6;
@@ -374,14 +375,17 @@ img.float-right {
 
 
 /*==================================================
- * FOR GIFT SHOW TABS
+ * SHOW TABS
  * ===============================================*/
 
-.tabs {
-  border-color: $subdued-red;
+.tabs, .user-tabs {
   margin-bottom: 18px;
   margin-left: 0;
   list-style: none;
+  }
+
+.tabs {
+  border-color: $subdued-red;
   }
 
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover {
@@ -390,18 +394,32 @@ img.float-right {
   border-color: $subdued-red $subdued-red #FFFFFF;
   }
   
-.tabs > li > a {
+.tabs > li > a, .user-tabs > li > a {
   display: block;
   text-decoration: none;
   color: #FFF;
+  }
+
+.tabs > li > a {
   background-color: $subdued-red;
   border-color: $subdued-red $subdued-red #FFFFFF;
   }
   
-.tab-content {
+.user-tabs > li > a {
+  background-color: $lightest-gray;
+  border-color: $lightest-gray $lightest-gray #FFFFFF;
+  color: $dark-green-blue;
+  }
+  
+.tab-content-line {
   border-bottom: 1px solid $subdued-red
   }  
 
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+  background-color: $subdued-red;
+  color: #FFFFFF;
+  font-weight: bold;
+  }
 
 /*==================================================
  * FOR BUY GIFT BOX

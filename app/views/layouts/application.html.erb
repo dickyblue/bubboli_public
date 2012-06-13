@@ -57,7 +57,7 @@
                   Account <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><%= current_user.admin == true ? link_to("Admin Panel", admin_path) : link_to("Profile", "#")%></li>
+                  <li><%= current_user.admin == true ? link_to("Admin Panel", admin_path) : link_to("Profile", current_user )%></li>
                   <li><%= link_to "Settings", "#" %></li>
                   <li class="divider"></li>
                   <li>

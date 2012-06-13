@@ -1,16 +1,13 @@
 <div class="container">
 
-  <%= semantic_form_for(:session, :url => sessions_path) do |f| %>
-    <%= f.inputs do %>
-
+  <%= simple_form_for(:session, :url => sessions_path) do |f| %>
       <div class="row">
         <div class="span4 offset4 well blog-back-home">
           <%= f.input :email %>
           <%= f.input :password %>
-          <%= f.commit_button :button_html => {:class => "primary"}, :label => "Login" %> &nbsp;&nbsp;&nbsp;&nbsp; <%= link_to "Forgot password?", "#"%>
+          <%= f.button :submit, 'Login', :class => "primary" %> &nbsp;&nbsp;&nbsp;&nbsp; <%= link_to "Forgot password?", "#"%>
         </div>
       </div>
-    <% end %>  
   <% end %>
   
 </div>
