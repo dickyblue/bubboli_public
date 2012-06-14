@@ -1,0 +1,42 @@
+<div class="span8">
+
+  <h4>
+  Before you add a child, search to see if the child is already in our database.
+  </h4>
+  </br>
+  
+  <div class="row">
+    <div class="child-search-well span4 ">
+    <%= simple_form_for @search, :url => user_path(@user) do |f| %>
+      <%= f.input :email_equals, :label => 'Search by Parent Email', :required => false %>
+      <p style="font-weight: bold">- OR -</p>
+      <%= f.input :work_email_equals, :label => 'Search by Parent Work Email', :required => false %>
+      <%= f.button :submit, 'Search', :class => 'btn primary' %>
+    <% end %>
+
+    </div>
+    
+    
+    
+    <div class="span4">
+      <% if params[:search].blank? %>
+        Your search results here.
+      <% elsif @users.empty? %>
+        <p>This child is not in the database yet. </p>
+      <% else %>
+        <% @users.each do |user| %>
+              <div class="span2">
+                image TBD
+              </div>
+              <div class="span3">
+                <%= user.email %></br>
+                <%= user.first_name %></br>
+                <%= link_to "Add #{user.email} as friend", '#' %>
+              <%= user.first_name %></br>
+              </div>
+        <% end %>
+      <% end %>        
+    </div>
+  </div>
+  
+</div>

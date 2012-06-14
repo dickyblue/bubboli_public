@@ -30,10 +30,13 @@ BubboliKids::Application.routes.draw do
   get '/blog(.:format)', :to => 'blogs#index', :as => :blogs
   post '/blog(.:format)', :to => 'blogs#create', :as => :blogs
   
-  
   match '/comments/list', :to => 'comments#list', :as => :list_comment
   
   match '/admin', :to => 'admins#index', :as => :admin
+
+  match '/users/:id/add_child', :to => 'users#add_child', :as => :add_child
+
+
   
   resources :blog, :controller => 'blogs'
   resources :gifts
