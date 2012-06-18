@@ -100,6 +100,12 @@ select {
   margin-bottom: 6px;
 }
 
+.image-placeholder {
+  border: 1px solid $lightest-gray;
+  height: 90px;
+  width: 90px;
+  margin-bottom: 4px
+  }
 
 
 /*==================================================
@@ -182,7 +188,7 @@ li.prod-list {
 .child-search-well {
   height: 190px;
   float: left;
-  width: 280px;
+  width: 220px;
   padding: 10px;
   text-align: center;
   background-color: $background-blue;

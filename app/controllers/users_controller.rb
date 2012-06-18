@@ -36,18 +36,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @search = User.search(params[:search])
-    @users = @search.all    
+    @users = @search.all
+    @child = Child.new    
   end
   
   def kids_follow
   end
   
-  
-  def add_child
-    @search = User.search(params[:search])
-    @users = @search.all            
-  end
-
 
   private
   
