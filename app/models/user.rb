@@ -3,10 +3,13 @@ require 'digest'
 class User < ActiveRecord::Base
   
   attr_accessor   :password
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :relationships_attributes
   attr_protected  :admin
   
-  has_many :children
+  has_many :relationships
+  has_many :relation_types, :through => :relationships
+  has_many :children, :through => :relationships
+
   
   email_regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 

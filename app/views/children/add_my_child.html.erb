@@ -4,8 +4,16 @@
     <%= f.input :first_name, :label => 'First Name' %>
     <%= f.input :birth_date, :as => :date, :order => [:month, :day, :year], :start_year => 2000, :end_year => Time.now.year, :input_html => {:class => "input-small"}, :label => "Birth Date" %>
     <%= f.input :gender, :as => :select, :collection => ['Male', 'Female'] %>
-    <%= f.association :relation, 'Relationship to Child' %>
+    <%= f.association :relation_types, :as => :collection_select %>
+        
+      <%= f.simple_fields_for :users do |ff| %>  
+        <%= ff.input :email, :label => 'Personal Email' %>
+        <%= ff.input :work_email, :label => 'Work Email' %>
+      <% end %>
+        
+    <%= f.button :submit, :class => "primary" %>
     
   <% end %>
+
   
 </div>

@@ -159,7 +159,7 @@ select {
   
 
 /*==================================================
- * PRODUCTS AND SEARCH
+ * PRODUCTS AND SEARCH AND USER PROFILE
  * ===============================================*/
    
 ul.prod {
@@ -196,6 +196,11 @@ li.prod-list {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+  }
+
+.align-user-profile {
+  margin-top: -15px;
+  align: right;
   }
 
 .extra-padding {

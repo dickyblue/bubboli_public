@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614193128) do
+ActiveRecord::Schema.define(:version => 20120618205821) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -129,11 +129,21 @@ ActiveRecord::Schema.define(:version => 20120614193128) do
     t.datetime "updated_at",                                                            :null => false
   end
 
-  create_table "relationships", :force => true do |t|
-    t.string   "relationship"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "relation_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "child_id"
+    t.integer  "relation_type_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "index_relationships_on_user_id_and_child_id_and_relation_type_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                 :limit => 25

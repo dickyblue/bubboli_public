@@ -35,11 +35,15 @@ BubboliKids::Application.routes.draw do
   match '/admin', :to => 'admins#index', :as => :admin
 
   match '/users/:id/search_child', :to => 'children#search_child', :as => :search_child
-  match '/users/:id/add_child', :to => 'children#add_child', :as => :add_child
+  match '/users/:id/add_child', :to => 'children#add_my_child', :as => :add_child
+
+  match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
+  match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
+
 
   
   resources :blog, :controller => 'blogs'
-  resources :gifts, :children
+  resources :gifts, :children, :relation_types, :relationships
   resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges
   resources :sessions, :only => [:create]
 

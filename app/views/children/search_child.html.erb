@@ -23,6 +23,8 @@
         Your search results here.
       <% elsif @users.empty? %>
         <p>This child is not in the database yet. </p>
+        <p>Be the first to add this child.</p>
+        <%= link_to "Add A Kid", '#', :class => "normal-button round" %>
       <% else %>
         <% @users.each do |user| %>
             <div class="row span4">  

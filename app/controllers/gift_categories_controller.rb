@@ -12,8 +12,7 @@ class GiftCategoriesController < ApplicationController
     @gift_category = GiftCategory.find(params[:id]) if params[:id]
     @gift_category = GiftCategory.new if @gift_category.nil?
   end
-  
-  
+    
   def create
     @gift_category = GiftCategory.new(params[:gift_category])
     if @gift_category.save

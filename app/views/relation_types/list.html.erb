@@ -1,0 +1,32 @@
+<% @page_title = "List of Relationship Types" %>
+
+<div class="container">
+  
+  <p><%= link_to "«« Back to Admin Panel »»", admin_path %></p></br> 
+  
+  <h4>List of Relationship Types</h4></br>
+  
+  <table class="table zebra-striped">
+    <thead>
+      <tr>
+        <th>ID #</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @relation_types.each do |rel| %>
+      <tr>
+        <td><%= rel.id %></td>
+        <td><%= rel.name %></td>
+        <td><%= link_to "Edit", :action => 'manage', :id => rel.id %> | <%= link_to "Delete", rel, :method => :delete %></td>        
+       </tr>
+      <% end %>
+    </tbody>  
+
+  </table>
+  
+  <div class="btn primary white-link pull-right"><%= link_to "New", :action => 'manage' %></div>
+
+</div>

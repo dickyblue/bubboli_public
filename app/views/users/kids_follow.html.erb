@@ -1,6 +1,21 @@
-<div class="span8">
+
+    <div class="row">
+      <ul class="prod align-user-profile">
+        <% if @kids.empty? %>
+          <p class="no-gifts">You are not following any kids yet, but that will change soon.</p>
+        <% else %>
+        <% @kids.each do |kf| %>
+          <li class="prod-well prod-list block">
+            <div>
+              <%= link_to kf.child.first_name, kf.child %></br>
+              DOB: <%= kf.child.birth_date %></br>
+              Relationship: <%= kf.relation_type.name %>
+            </div>
+          </li>
+        <% end %> 
+        <% end %>       
+      </ul>
+    </div>
+
   
-  List of kids I follow - To come once children model comes
   
-  
-</div>
