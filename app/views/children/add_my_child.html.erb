@@ -6,9 +6,8 @@
     <%= f.input :gender, :as => :select, :collection => ['Male', 'Female'] %>
     <%= f.association :relation_types, :as => :collection_select %>
         
-      <%= f.simple_fields_for :users do |ff| %>  
-        <%= ff.input :email, :label => 'Personal Email' %>
-        <%= ff.input :work_email, :label => 'Work Email' %>
+      <%= f.simple_fields_for :invitations do |ff| %>  
+        <%= ff.input :recipient_email, :label => 'Parent Email' %>
       <% end %>
         
     <%= f.button :submit, :class => "primary" %>

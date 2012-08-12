@@ -2,10 +2,12 @@
 <html>
 <head>
   <title><%= @page_title || 'Bubboli' %></title>
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "application",  :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
+  <%= favicon_link_tag %>
+
+
 <% # Adding google analytics below %>  
   <script type="text/javascript">
 
@@ -21,7 +23,7 @@
     })();
 
   </script>
-    
+  
 </head>
 <body>
   
@@ -40,7 +42,7 @@
         </div>
       </div>
     </div>
-    
+  
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
       <div class="container">
@@ -55,7 +57,7 @@
                   Account <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><%= current_user.admin == true ? link_to("Admin Panel", admin_path) : link_to("Profile", "#")%></li>
+                  <li><%= current_user.admin == true ? link_to("Admin Panel", admin_path) : link_to("Profile", current_user )%></li>
                   <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                   <li class="divider"></li>
                   <li>
@@ -66,29 +68,49 @@
             <% else %>
               <li><%= link_to "Sign in", sign_in_path %></li>
             <% end %>
-
-            <li class="socialmedia-overlap fb"><%= link_to facebook, "http://www.facebook.com/bubboli", :target => "_blank" %></li>
-            <li class="socialmedia-overlap twitter"><%= link_to twitter, "http://www.twitter.com/bubboli", :target => "_blank" %></li>
-            <li class="socialmedia-overlap pinterest"><%= link_to pinterest, "http://www.pinterest.com/bubboli/", :target => "_blank" %></li>
-            <li class="socialmedia-overlap rss"><%= link_to rss, "#", :target => "_blank" %></li>
+                      
+                      
+                      
+            <li class="socialmedia-overlap blog"><%= link_to blog, blogs_path %></li>
 
           </ul>
         </div>
       </div>
     </div>
 
-    <%= yield %>
 
-    <div class="push"></div>
+
+    <div class="container">
+  
+      <div class="row">
     
-  </div>  
-</body>
+        <div class="span3" > 
+          <div class="profile-well">
+          Test
+          </div>
+      
+          <div>      
+            Location: <%= current_user.address_city %>, <%= current_user.address_state %>
+          </div>  
+        
+          <div class="btn-group square space-break">
+            <button class="btn"><span style="font-size: 25px; font-weight: bold"><%= kids_followings.count %></span></br><span style="color: #999999">Following</span></button>
+            <button class="btn"><span style="font-size: 25px; font-weight: bold"><%= kids_followings.count %></span></br><span style="color: #999999">Followers</span></button>
+            <button class="btn"><span style="font-size: 25px; font-weight: bold"><%= kids_followings.count %></span></br><span style="color: #999999">Pending</span></button>
+          </div>
 
-<div>
-  <footer>
-    <p><%= link_to "About", about_path %> | <%= link_to "Blog", blogs_path %> | <%= link_to "Privacy", privacy_path %> | <%= link_to "Terms of Use", term_path %></p>
-    <p>&copy;Bubboli<sup>TM</sup> | All Rights Reserved</p>
-  </footer>
-</div>
+        </div>
+    
+    
+        <div class="span9">
 
-</html>
+          <%= yield %>
+    
+        </div>
+    
+      </div>
+  
+    </div>
+
+
+

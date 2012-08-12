@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
+  layout "user"
+  
   include SessionsHelper
+  include UsersHelper
 
   before_filter :authenticate, :except => [:new, :create]
   before_filter :correct_user, :except => [:new, :create]
@@ -38,7 +41,6 @@ class UsersController < ApplicationController
     @search = User.search(params[:search])
     @users = @search.all
     @kids = Relationship.where(:user_id => current_user.id)
-    @child = Child.new
   end
   
   def kids_follow

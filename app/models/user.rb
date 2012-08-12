@@ -3,13 +3,16 @@ require 'digest'
 class User < ActiveRecord::Base
   
   attr_accessor   :password
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :relationships_attributes
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :address_city, :address_state
   attr_protected  :admin
   
   has_many :relationships
   has_many :relation_types, :through => :relationships
   has_many :children, :through => :relationships
 
+  has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+  belongs_to :invitation 
+  
   
   email_regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
@@ -24,10 +27,15 @@ class User < ActiveRecord::Base
 
   validates :first_name,              :presence => true
   
-  validates :password,                :presence => true,
-                                      :confirmation => true
+  validates :password, :if => :should_validate_password?,                 :presence => true, 
+                                                                    :confirmation => true
   
   before_save :encrypt_password, :unless => "password.blank?"
+  
+  
+  def should_validate_password?
+    new_record?
+  end
   
   def has_password?(submitted_password)
     password_hash == encrypt(submitted_password)
