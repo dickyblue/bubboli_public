@@ -11,20 +11,19 @@ class ChildrenController < ApplicationController
   end
 
 
-  def add_my_child
-
+  def new
+    @child = Child.new
+    @child.invitations.build
   end
   
   def create
     @child = Child.new(params[:child])
+    @child.invitations.last.sender = current_user
     if @child.save
-      @child.relationships.each do |relationship|
-        relationship.user = current_user
-        relationship.save!
-      end
+      @child.relationships.last.update_attributes(:user_id => current_user.id)
       redirect_to current_user
     else
-      render "add_my_child"
+      render "new"
     end
   end
   

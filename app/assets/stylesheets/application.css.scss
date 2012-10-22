@@ -242,6 +242,19 @@ li.prod-list {
   -moz-border-radius: 4px;
   }
 
+.new-child-well { 
+  height: 300px;
+  float: left;
+  width: 400px;
+  padding: 10px;
+  text-align: center;
+  background-color: $background-blue;
+  border: 0px solid #fff;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  }
+
 .align-user-profile {
   margin-top: -15px;
   align: right;

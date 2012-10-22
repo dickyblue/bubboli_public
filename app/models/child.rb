@@ -1,6 +1,6 @@
 class Child < ActiveRecord::Base
   
-  attr_accessible :first_name, :gender, :birth_date, :relation_type_ids
+  attr_accessible :first_name, :gender, :birth_date, :relation_type_ids, :invitations_attributes, :relationships_attributes
   
   validates :first_name, :gender, :birth_date, :presence => true
 
@@ -11,6 +11,7 @@ class Child < ActiveRecord::Base
   has_many :invitations
   
   accepts_nested_attributes_for :invitations
+
   
   def invitation_token
     invitation.token if invitation

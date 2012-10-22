@@ -1,8 +1,8 @@
 class Invitation < ActiveRecord::Base
 
-  belongs_to  :recipient, :class_name => 'User'
-  has_one     :sender, :class_name => 'User', :foreign_key => 'sender_id'
-  belongs_to  :child
+  has_one     :recipient, :class_name => 'User'
+  belongs_to  :sender, :class_name => 'User', :foreign_key => 'sender_id'
+  has_one     :child
 
   validates :recipient_email, :presence => true
 

@@ -16,11 +16,12 @@
     </br>
     
     <span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Children I am Following</span>
+    <%= link_to "All Kids I AM Following", '#' %> | <%= link_to "Add A New Child", search_child_path %>
     <hr/>
     <% @kids.each do |kf| %>
     <%= kf.child.first_name %>
     <% end %>
-
+    
     
     </div>
     

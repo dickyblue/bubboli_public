@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801143713) do
+ActiveRecord::Schema.define(:version => 20121019202656) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -131,12 +131,15 @@ ActiveRecord::Schema.define(:version => 20120801143713) do
 
   create_table "invitations", :force => true do |t|
     t.integer  "sender_id"
+    t.integer  "child_id"
     t.string   "recipient_email"
     t.string   "invitation_token"
     t.datetime "sent_at"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "invitations", ["sender_id", "child_id"], :name => "index_invitations_on_sender_id_and_child_id"
 
   create_table "relation_types", :force => true do |t|
     t.string   "name"
@@ -176,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20120801143713) do
     t.boolean  "admin",                                    :default => false
     t.datetime "created_at",                                                  :null => false
     t.datetime "updated_at",                                                  :null => false
+    t.integer  "invitation_id"
   end
 
   add_index "users", ["email", "work_email"], :name => "index_users_on_email_and_work_email", :unique => true

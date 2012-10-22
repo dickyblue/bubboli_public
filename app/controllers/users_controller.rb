@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @search = User.search(params[:search])
     @users = @search.all
-    @kids = Relationship.where(:user_id => current_user.id)
+    @kids = Relationship.where(:user_id => current_user.id).limit(20)
   end
   
   def kids_follow
