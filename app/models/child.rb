@@ -21,4 +21,17 @@ class Child < ActiveRecord::Base
     self.invitation = Invitation.find_by_invitation_token(invitation_token)
   end
   
+  def birthday
+    (Date.parse(Date.today.strftime('%m%d')) - Date.parse(self.birth_date.strftime('%m%d'))).to_i
+  end
+  
+  def next_birthday
+    year = Date.today.year
+    mmdd = birth_date.strftime('%m%d')
+    year += 1 if mmdd < Date.today.strftime('%m%d')
+    mmdd = '0301' if mmdd == '0229' && !Date.parse("#{year}0101").leap?
+    return Date.parse("#{year}#{mmdd}")
+  end
+  
+  
 end

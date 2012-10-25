@@ -5,9 +5,8 @@
     <span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Upcoming Birthdays</span>
     <hr/>
     
-    <% @kids.each do |kf| %>
-    
-    <%= kf.child.first_name if kf.child.birth_date.strftime("%B %d") < 3.months.from_now.strftime("%B %d") %>
+    <% @relationships.each do |kf| %>    
+    <%= kf.child.first_name if (-31..0).include?(kf.child.birthday) %>
     <% end %>
         
     </br>
@@ -18,7 +17,7 @@
     <span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Children I am Following</span>
     <%= link_to "All Kids I AM Following", '#' %> | <%= link_to "Add A New Child", search_child_path %>
     <hr/>
-    <% @kids.each do |kf| %>
+    <% @relationships.each do |kf| %>
     <%= kf.child.first_name %>
     <% end %>
     
