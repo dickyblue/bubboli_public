@@ -40,7 +40,7 @@
           </div>
         
       
-          </br>
+          <br>
 
           <div class="row">
             <div class="mynewfont blog-back-home pull-right"><%= link_to("«« Blog Home", blogs_path) %></div>
@@ -54,8 +54,8 @@
             <%= render(:partial => 'comment_form')%>
           </div>
       
-          </br>
-          </br>
+          <br>
+          <br>
       
           <div class="existing-comment">
             <a name="comments"></a>
@@ -64,7 +64,7 @@
               <% @comments.each do |comment| %>
                 <% link = "http://"+comment.commenter_permalink %>
                 <li><strong><%= link_to comment.commenter, link, :target => "_blank" %></strong> on <em><%= comment.created_at.strftime("%b %d, %Y")%></em></li>
-                <li><%= comment.content %></li></br>
+                <li><%= comment.content %></li><br>
               <% end %>
               </ul>
           </div>

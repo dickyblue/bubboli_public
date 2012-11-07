@@ -3,7 +3,7 @@
     <ul class="no-margin-or-bullet">
     <% @similar_gifts.each do |gift| %>
       <li class="related-gifts">
-        <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %></br>
+        <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %><br>
         <%= link_to gift.name, gift_path(gift) %>
       </li>
     <% end %>

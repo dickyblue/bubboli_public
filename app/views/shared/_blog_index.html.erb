@@ -8,7 +8,7 @@
 <div class="span7">
   <ul class="no-margin-or-bullet">
     <li class="qikki-font" style="font-size: 18px"><%= link_to blog.title, blog %></li>
-    <li style="font-size: 11px">Posted in <%= blog.blog_categories.collect {|cat| cat.name }.join(", ") %> | <%= link_to(pluralize(blog.comments.size, 'comment'), :action => 'show', :id => blog.id, :anchor => 'comments') %></li></br>
+    <li style="font-size: 11px">Posted in <%= blog.blog_categories.collect {|cat| cat.name }.join(", ") %> | <%= link_to(pluralize(blog.comments.size, 'comment'), :action => 'show', :id => blog.id, :anchor => 'comments') %></li><br>
   </ul>
     
   
@@ -18,9 +18,9 @@
     <div class="span5"><%= simple_format(truncate(blog.content, :length => 280, :separator => " ")) %></div>
   </div>
   
-  </br>
+  <br>
   <span class="span7 dotted-hor-line no-margin-or-bullet"><%= separator %></span>
-  </br>
+  <br>
   
 </div>
 
