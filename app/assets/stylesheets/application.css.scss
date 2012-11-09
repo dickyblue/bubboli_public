@@ -296,6 +296,28 @@ li.prod-list {
   text-decoration: none;
   }
 
+ul.child-list {
+  list-style: none;
+  width: 780px;  
+  }
+
+.children-following {
+  height: 90px;
+  float: left;
+  padding: 5px;
+  text-align: left;
+  background-color: $background-blue;
+  border-top:0px;
+  border-right:10px solid #fff;
+  border-bottom:10px solid #fff;
+  border-left: 0px;
+
+  }
+  
+li.child-list {
+  float: left;
+  width: 215px;
+  }
 
 /*==================================================
  * SOCIAL MEDIA ICONS

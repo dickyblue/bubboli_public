@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  layout "user"
+  layout "user", :except => [:new]
   
   include SessionsHelper
   include UsersHelper

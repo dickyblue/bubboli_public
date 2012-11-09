@@ -1,27 +1,47 @@
 
     
     
-    <div class="span9">
-    <span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Upcoming Birthdays</span>
-    <hr/>
+<div class="span9">
+<span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Upcoming Birthdays</span>
+<hr/>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @relationships.each do |kf| %>    
+        <% if (-31..0).include?(kf.child.birthday_days) %>      
+        <li class="children-following child-list block">
+          <strong><%= link_to kf.child.first_name, child_path(kf.child) %></strong><br>
+          <span style="color: #999999; font-size: 12px">Relations:<%= kf.relation_type.name %></span><br>
+          <span style="color: #999999; font-size: 12px">Birthday: <%= kf.child.birth_date.strftime("%b. %d")%></span>
+        </li>
+        <% else %>
+        <% end %>
+      <% end %>
+
+    </ul>
+  </div>
     
-    <% @relationships.each do |kf| %>    
-    <%= kf.child.first_name if (-31..0).include?(kf.child.birthday) %>
-    <% end %>
-        
-    </br>
-    </br>
-    </br>
-    </br>
-    
-    <span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Children I am Following</span>
-    <%= link_to "All Kids I AM Following", '#' %> | <%= link_to "Add A New Child", search_child_path %>
-    <hr/>
-    <% @relationships.each do |kf| %>
-    <%= kf.child.first_name %>
-    <% end %>
-    
-    
-    </div>
+</br>
+</br>
+</br>
+</br>
+
+<span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Children I am Following</span>
+<%= link_to "All Kids I AM Following", '#' %> | <%= link_to "Add A New Child", search_child_path %>
+<hr/>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @relationships.each do |kf| %>
+      <li class="children-following child-list block">
+        <strong><%= link_to kf.child.first_name, "#" %></strong><br>
+        <span style="color: #999999; font-size: 12px">Relations:<%= kf.relation_type.name %></span><br>
+        <span style="color: #999999; font-size: 12px">Birthday: <%= kf.child.birth_date.strftime("%b. %d")%></span>
+      </li>  
+      <% end %>
+    </ul>
+  </div>
+
+</div>
     
 
