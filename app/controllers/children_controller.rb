@@ -26,14 +26,6 @@ class ChildrenController < ApplicationController
       render "new"
     end
   end
-  
-  def show
-    @child = Child.find(params[:id])
-    @city = @child.relationships.where(:relation_type_id => 1).map {|p| p.user.address_city }.to_sentence
-    @state = @child.relationships.where(:relation_type_id => 1).map {|p| p.user.address_state }.to_sentence
-    @relation = @child.relationships.where(:user_id => current_user.id).map {|p| p.relation_type.name }.to_sentence
-    @mother = @child.relationships.where(:relation_type_id => 1).map {|p| p.user.first_name }.to_sentence
-  end
 
 
 end

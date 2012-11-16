@@ -44,7 +44,7 @@ BubboliKids::Application.routes.draw do
   
   resources :blog, :controller => 'blogs'
   resources :gifts, :children, :relation_types, :relationships
-  resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges
+  resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :user_child_category_preferences
   resources :sessions, :only => [:create]
 
 
