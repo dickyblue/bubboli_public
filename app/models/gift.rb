@@ -25,5 +25,28 @@ class Gift < ActiveRecord::Base
   
   search_methods :gender_search
 
+
+  def self.gift_by_gender(ch)
+    self.where(:gender => [ch.gender, "Unisex"]).map {|p| p.name }
+  end
+  
+  def self.gift_by_age_range(ch)
+    age = ((ch.birth_date.month - Date.today.month) + 12*(Date.today.year - ch.birth_date.year))/12
+    if age < 1
+      GiftAgeClassification.where(:gift_age_range_id => 1)
+    elsif age == 1
+      GiftAgeClassification.where(:gift_age_range_id => 2)
+    elsif age == 2
+      GiftAgeClassification.where(:gift_age_range_id => 3)
+    elsif (3..4).include?(age)
+      GiftAgeClassification.where(:gift_age_range_id => 4)
+    elsif (5..7).include?(age)
+      GiftAgeClassification.where(:gift_age_range_id => 5)
+    elsif (8..11).include?(age)
+      GiftAgeClassification.where(:gift_age_range_id => 6)
+    else age >= 12
+      GiftAgeClassification.where(:gift_age_range_id => 7)
+    end
+  end
   
 end

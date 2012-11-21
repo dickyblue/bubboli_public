@@ -34,7 +34,7 @@
     <ul class="child-list">
       <% @relationships.each do |kf| %>
       <li class="children-following child-list block">
-        <strong><%= link_to kf.child.first_name, "#" %></strong><br>
+        <strong><%= link_to kf.child.first_name, relationship_path(kf) %></strong><br>
         <span style="color: #999999; font-size: 12px">Relations:<%= kf.relation_type.name %></span><br>
         <span style="color: #999999; font-size: 12px">Birthday: <%= kf.child.birth_date.strftime("%b. %d")%></span>
       </li>  

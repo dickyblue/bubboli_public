@@ -5,11 +5,14 @@ class RelationshipsController < ApplicationController
   def show
     @relationship = Relationship.find(params[:id])
     @child = @relationship.child
-    @city = @child.relationships.where(:relation_type_id => 1).map {|p| p.user.address_city }.to_sentence
-    @state = @child.relationships.where(:relation_type_id => 1).map {|p| p.user.address_state }.to_sentence
     @relation = @child.relationships.where(:user_id => current_user.id).map {|p| p.relation_type.name }.to_sentence
-    @mother = @child.relationships.where(:relation_type_id => 1).map {|p| p.user.first_name }.to_sentence
-    @father = @child.relationships.where(:relation_type_id => 2).map {|p| p.user.first_name }.to_sentence    
+
+    @categories = @relationship.user_child_category_preferences.map {|p| p.gift_category_id}
+    @gifts = GiftCategorization.where(:gift_category_id => @categories)
+    @gift_by_gender = Gift.where(:gender => [@child.gender, "Unisex"]).map {|p| p.name }
+
+    @gift = Gift.gift_by_gender(@child).to_sentence
+    @age = Gift.gift_by_age_range(@child).map {|p| p.gift.name }.to_sentence
   end
   
   def update
