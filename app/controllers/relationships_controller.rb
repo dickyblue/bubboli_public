@@ -8,11 +8,10 @@ class RelationshipsController < ApplicationController
     @relation = @child.relationships.where(:user_id => current_user.id).map {|p| p.relation_type.name }.to_sentence
 
     @categories = @relationship.user_child_category_preferences.map {|p| p.gift_category_id}
-    @gifts = GiftCategorization.where(:gift_category_id => @categories)
-    @gift_by_gender = Gift.where(:gender => [@child.gender, "Unisex"]).map {|p| p.name }
+    @gifts = GiftCategorization.where(:gift_category_id => @categories).map {|p| p.gift.name}
 
-    @gift = Gift.gift_by_gender(@child).to_sentence
-    @age = Gift.gift_by_age_range(@child).map {|p| p.gift.name }.to_sentence
+    @gifts_by_gender_age = Gift.get_gift_by_gender_and_age(@child)
+    @gifts_by_gender_age_category = Gift.get_gift_by_gender_and_age(@child).joins(:gift_categorizations).merge(GiftCategorization.where(:gift_category_id => @categories)).map {|p| p.name }
   end
   
   def update

@@ -12,14 +12,15 @@ $(':checkbox').change(function(e){
 
     <div class="span3" > 
       <div class="profile-well">
-        <%= @child.first_name %>
+        <%= @child.first_name %><br>
+        <%= @child.id %>
       </div>
   
       <div>      
-        Location: <%= @relationship.child_city(@child )%>, <%= @relationship.child_state(@child )%><br>
+        Location: <%= @relationship.child_city%>, <%= @relationship.child_state%><br>
         Relationship: <%= @relation %><br>
-        Mother: <%= @relationship.child_mother(@child )%><br>
-        Father: <%= @relationship.child_father(@child )%>
+        Mother: <%= @relationship.child_mother%><br>
+        Father: <%= @relationship.child_father%>
       </div>  
     
       <div class="btn-group square space-break">
@@ -44,27 +45,36 @@ $(':checkbox').change(function(e){
           <% end %>
               
         </div>
+        Birthday: <%= @child.birth_date%><br><br>
+        Gender: <%= @child.gender %><br><br>
+        Gifts by category: <%= @gifts %><br><br>
+        by Gender Age: <%= @gifts_by_gender_age %><br><br>
+        by Gender Age Cate: <%= @gifts_by_gender_age_category %><br><br>
         
-        <%= @categories  %>
-        <%= @gifts.map {|p| p.gift.name } %>
-        <%= @gift_by_gender %>
-        <%= @child.gender %><br>
-        <%= @relationship.gift_by_gender(@child)%><br>
-        By Gender: <%= @gift %><br>
-        By Age: <%= @age %><br>
-        Result <%= @result%><br>
         
+        Testing <%= @relationship.user_child_categories %>
         
       </br>
       </br>
       </br>
       </br>
 
-      <span style="font-size: 16px; color: #FF6F6A">Recommended Gifts For <%= @child.first_name %></span>
+      <span style="font-size: 16px; color: #FF6F6A">Recommended Gifts For <%= @child.first_name %> JUST BASED ON AGE AND GENDER FOR NOW</span>
       <hr/>
 
         <div class="row">
-          
+
+            <ul class="no-margin-or-bullet">
+            <% @gifts_by_gender_age.each do |gift| %>
+              <li class="related-gifts">
+                <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %></br>
+                <%= link_to gift.name, gift_path(gift) %>
+              </li>
+            <% end %>
+          </ul>
+
+
+
         </div>
 
     </div>

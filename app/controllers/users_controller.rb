@@ -40,7 +40,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @search = User.search(params[:search])
     @users = @search.all
-    @relationships = Relationship.where(:user_id => current_user.id).limit(20)
+    @relationships = Relationship.where(:user_id => current_user.id)
+    @relationships_by_birth_date = @relationships.limit(20).sort_by! {|b| b.child.birthday_days}
+    @relationships_by_name = @relationships.limit(20).sort_by! {|b| b.child.first_name}
   end
   
   def kids_follow

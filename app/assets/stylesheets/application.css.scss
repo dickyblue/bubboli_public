@@ -318,6 +318,11 @@ li.child-list {
   float: left;
   width: 215px;
   }
+  
+
+.static-left-side {
+  position: fixed;
+  }  
 
 /*==================================================
  * SOCIAL MEDIA ICONS
@@ -801,5 +806,6 @@ ul img {
       -o-transform:skew(8deg) rotate(3deg);
          transform:skew(8deg) rotate(3deg);
    }
+
 
  

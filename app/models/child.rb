@@ -22,8 +22,7 @@ class Child < ActiveRecord::Base
   end
   
   def birthday_days
-    (Date.parse(Date.today.strftime('%m%d')) - Date.parse(self.birth_date.strftime('%m%d'))).to_i
+    (Date.parse(self.birth_date.strftime('%m%d')) - Date.parse(Date.today.strftime('%m%d'))).to_i
   end
-  
   
 end
