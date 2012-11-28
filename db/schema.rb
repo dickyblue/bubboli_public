@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112191047) do
+ActiveRecord::Schema.define(:version => 20121127220222) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -111,6 +111,12 @@ ActiveRecord::Schema.define(:version => 20121112191047) do
 
   add_index "gift_images", ["gift_id"], :name => "index_gift_images_on_gift_id"
 
+  create_table "gift_price_ranges", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "gifts", :force => true do |t|
     t.string   "name"
     t.string   "permalink"
@@ -156,6 +162,24 @@ ActiveRecord::Schema.define(:version => 20121112191047) do
   end
 
   add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "index_relationships_on_user_id_and_child_id_and_relation_type_id"
+
+  create_table "user_child_cat_prefs", :force => true do |t|
+    t.integer  "relationship_id"
+    t.integer  "gift_category_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "user_child_cat_prefs", ["relationship_id", "gift_category_id"], :name => "user_child_cat_pref"
+
+  create_table "user_child_price_prefs", :force => true do |t|
+    t.integer  "relationship_id"
+    t.integer  "gift_price_range_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "user_child_price_prefs", ["relationship_id", "gift_price_range_id"], :name => "user_child_price_pref"
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                 :limit => 25

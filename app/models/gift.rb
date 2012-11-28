@@ -11,7 +11,9 @@ class Gift < ActiveRecord::Base
   has_many  :gift_categorizations
   has_many  :gift_categories, :through => :gift_categorizations
   has_many  :gift_age_classifications
-  has_many  :gift_age_ranges, :through => :gift_age_classifications
+  has_many  :gift_age_ranges, :through => :gift_age_classifications  
+  has_many  :user_child_price_prefs
+  has_many  :relationships, :through => :user_child_price_prefs
   
   accepts_nested_attributes_for :gift_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
   

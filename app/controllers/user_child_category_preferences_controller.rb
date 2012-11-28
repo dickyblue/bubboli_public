@@ -1,2 +1,0 @@
-class UserChildCategoryPreferencesController < ApplicationController
-end

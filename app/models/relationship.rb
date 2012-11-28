@@ -1,13 +1,15 @@
 class Relationship < ActiveRecord::Base
 
-  attr_accessible :user_id, :child_id, :relation_type_id, :gift_category_ids
+  attr_accessible :user_id, :child_id, :relation_type_id, :gift_category_ids, :gift_price_range_ids
   belongs_to  :user
   belongs_to  :child
   belongs_to  :relation_type
   
-  has_many    :user_child_category_preferences
-  has_many    :gift_categories, :through => :user_child_category_preferences
+  has_many    :user_child_cat_prefs
+  has_many    :gift_categories, :through => :user_child_cat_prefs
   
+  has_many    :user_child_price_prefs
+  has_many    :gift_price_ranges, :through => :user_child_price_prefs
 
   def child_city
     child = self.child
@@ -30,7 +32,7 @@ class Relationship < ActiveRecord::Base
   end 
   
   def user_child_categories
-    categories = self.user_child_category_preferences.map {|p| p.gift_category_id}
+    categories = self.user_child_cat_prefs.map {|p| p.gift_category_id}
     GiftCategorization.where(:gift_category_id => categories).map {|p| p.gift.name}
   end
   

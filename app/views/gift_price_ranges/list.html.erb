@@ -1,0 +1,32 @@
+<% @page_title = "List of Gift Price Ranges" %>
+
+<div class="container">
+  
+  <p><%= link_to "«« Back to Gifts »»", gifts_path %> | <%= link_to "«« Back to Admin Panel »»", admin_path %></p></br> 
+  
+  <h4>List of Gift Price Ranges</h4></br>
+  
+  <table class="table zebra-striped">
+    <thead>
+      <tr>
+        <th>ID #</th>
+        <th>Price Range</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @gift_price_ranges.each do |gift_price_range| %>
+      <tr>
+        <td><%= gift_price_range.id %></td>
+        <td><%= gift_price_range.name %></td>
+        <td><%= link_to "Edit", :action => 'manage', :id => gift_price_range.id %> | <%= link_to "Delete", gift_price_range, :method => :delete %></td>        
+       </tr>
+      <% end %>
+    </tbody>  
+
+  </table>
+  
+  <div class="btn primary white-link pull-right"><%= link_to "New", :action => 'manage' %></div>
+
+</div>

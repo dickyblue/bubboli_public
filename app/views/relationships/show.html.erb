@@ -41,6 +41,7 @@ $(':checkbox').change(function(e){
           <%= simple_form_for(@relationship, :html => {:class => "form-horizontal form-inline"}) do |f| %>
             <%= f.association :relation_type, :as => :collection_select %>
             <%= f.association :gift_categories, :as => :check_boxes, :item_wrapper_class => "inline" %>
+            <%= f.association :gift_price_ranges, :as => :check_boxes, :item_wrapper_class => "inline" %>
             <div class="pull-right"><%= f.button :submit, :class => "primary" %></div>
           <% end %>
               
@@ -50,9 +51,6 @@ $(':checkbox').change(function(e){
         Gifts by category: <%= @gifts %><br><br>
         by Gender Age: <%= @gifts_by_gender_age %><br><br>
         by Gender Age Cate: <%= @gifts_by_gender_age_category %><br><br>
-        
-        
-        Testing <%= @relationship.user_child_categories %>
         
       </br>
       </br>
