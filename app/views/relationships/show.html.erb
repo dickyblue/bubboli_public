@@ -48,22 +48,19 @@ $(':checkbox').change(function(e){
         </div>
         Birthday: <%= @child.birth_date%><br><br>
         Gender: <%= @child.gender %><br><br>
-        Gifts by category: <%= @gifts %><br><br>
-        by Gender Age: <%= @gifts_by_gender_age %><br><br>
-        by Gender Age Cate: <%= @gifts_by_gender_age_category %><br><br>
-        
+
       </br>
       </br>
       </br>
       </br>
 
-      <span style="font-size: 16px; color: #FF6F6A">Recommended Gifts For <%= @child.first_name %> JUST BASED ON AGE AND GENDER FOR NOW</span>
+      <span style="font-size: 16px; color: #FF6F6A">Test</span>
       <hr/>
 
         <div class="row">
 
             <ul class="no-margin-or-bullet">
-            <% @gifts_by_gender_age.each do |gift| %>
+            <% @gifts_by_user_pref.each do |gift| %>
               <li class="related-gifts">
                 <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %></br>
                 <%= link_to gift.name, gift_path(gift) %>

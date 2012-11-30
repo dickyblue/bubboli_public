@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127220222) do
+ActiveRecord::Schema.define(:version => 20121128183748) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -111,6 +111,15 @@ ActiveRecord::Schema.define(:version => 20121127220222) do
 
   add_index "gift_images", ["gift_id"], :name => "index_gift_images_on_gift_id"
 
+  create_table "gift_price_classifications", :force => true do |t|
+    t.integer  "gift_id"
+    t.integer  "gift_price_range_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "gift_price_classifications", ["gift_id", "gift_price_range_id"], :name => "gift_price_classification"
+
   create_table "gift_price_ranges", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -124,7 +133,6 @@ ActiveRecord::Schema.define(:version => 20121127220222) do
     t.string   "sku"
     t.string   "manufacturer"
     t.decimal  "price",                :precision => 5, :scale => 2
-    t.string   "price_search"
     t.string   "merchant"
     t.string   "gender"
     t.text     "description"

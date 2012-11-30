@@ -7,6 +7,7 @@ class GiftsController < ApplicationController
     @gifts = @search.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
     @all_gift_categories = GiftCategory.all
     @all_gift_age_ranges = GiftAgeRange.all
+    @all_gift_price_ranges = GiftPriceRange.all
     @rotating_gift_image_first = Gift.where(:favorite => true).last
     @rotating_gift_images = Gift.where(:favorite => true).order("created_at DESC").limit(5)     
   end

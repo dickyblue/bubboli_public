@@ -2,6 +2,6 @@
   <%= f.input :name_or_description_contains, :label => "Keyword Search", :required => false %>
   <%= f.input :gender_search, :as => :select, :collection => ['Male', 'Female'], :label => "Gender", :required => false %>            
   <%= f.input :gift_age_classifications_gift_age_range_id_equals, :as => :select, :collection =>  @all_gift_age_ranges, :label => "Age Range", :required => false %>
-  <%= f.input :price_search_contains, :as => :select, :collection => ['Less Than $25.00', '$25.00 - $49.99', '$50.00-$74.99', '$75.00-$99.99', '$100.00-$199.99', '$200.00 & Up'], :label => "Price Range", :required => false %>
+  <%= f.input :gift_price_classifications_gift_price_range_id_equals, :as => :select, :collection => @all_gift_price_ranges, :label => "Price Range", :required => false %>
   <%= f.input :gift_categorizations_gift_category_id_equals, :as => :select, :collection =>  @all_gift_categories, :label => "Category", :required => false %>          
   <%= f.button :submit, 'Search', :class => 'btn primary' %>
