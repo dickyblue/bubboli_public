@@ -24,20 +24,8 @@ class Gift < ActiveRecord::Base
     "#{id}-#{name.parameterize}"
   end
    
-  def self.gender_search(gender)
-    Gift.where(:gender => [gender, 'Unisex'])
-  end
-  
   search_methods :gender_search
 
-  def self.gift_by_gender(ch)
-    self.where(:gender => [ch.gender, "Unisex"]).map {|p| p.name }
-  end
-  
-  def self.get_gift_by_gender_and_age(child)
-    self.where(:gender => [child.gender, "unisex"]).joins(:gift_age_classifications).merge(GiftAgeClassification.gift_by_age_range(child))
-  end
-  
   def self.get_gift_by_gender_age_price(child, rel)
     result = self.where(:gender => [child.gender, "unisex"]).joins(:gift_age_classifications).merge(GiftAgeClassification.gift_by_age_range(child))
     result.joins(:gift_price_classifications).merge(GiftPriceClassification.user_child_price_pref(rel))
