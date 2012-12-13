@@ -89,6 +89,12 @@ a {
   color: $dark-green-blue;
   }
 
+.pending_link a {
+  color: $subdued_red;
+  font-size: 25px; 
+  font-weight: bold;
+  }
+
 .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
   background-color: $dark-green-blue
   }
@@ -243,11 +249,14 @@ li.prod-list {
   }
 
 .new-child-well { 
-  height: 300px;
-  float: left;
-  width: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -265px;
+  height: 260px;
+  width: 500px;
   padding: 10px;
-  text-align: center;
   background-color: $background-blue;
   border: 0px solid #fff;
   border-radius: 4px;

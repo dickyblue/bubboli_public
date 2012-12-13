@@ -4,6 +4,6 @@ class DeletePriceSearchInGifts < ActiveRecord::Migration
   end
 
   def down
-    add_column  :gifts, :price_search
+    add_column  :gifts, :price_search, :string
   end
 end

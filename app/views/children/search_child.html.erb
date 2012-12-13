@@ -10,12 +10,12 @@
     <div class="row">
       <div class=" span4 child-search-well ">
       <%= simple_form_for @search, :url => search_child_path do |f| %>
-        <%= f.input :email_equals, :label => 'Search by Parent Email', :required => false %>
+        <%= f.input :users_email_equals, :label => 'Search by Parent Email', :required => false %>
         <p style="font-weight: bold">- OR -</p>
-        <%= f.input :work_email_equals, :label => 'Search by Parent Work Email', :required => false %>
+        <%= f.input :users_work_email_equals, :label => 'Search by Parent Work Email', :required => false %>
         <%= f.button :submit, 'Search', :class => 'btn primary' %>
       <% end %>
-
+      
       </div>
     
     
@@ -23,21 +23,27 @@
       <div class="span4">
         <% if params[:search].blank? %>
           Your search results here.
-        <% elsif @users.empty? %>
+        <% elsif @children.empty? %>
           <p>This child is not in the database yet. </p>
           <p>Be the first to add this child.</p>
           <%= link_to "Add A Kid", new_child_path, :class => "normal-button round" %>
         <% else %>
-          <% @users.each do |user| %>
+          <% @children.each do |child| %>
               <div class="row span4">  
                 <div class="span2 image-placeholder">
                 
                 </div>
                 <div class="span2">
-                  <%= user.email %></br>
-                  <%= user.first_name %></br>
-                  <%= link_to "Follow #{user.email}", '#' %></br>
-                <%= user.first_name %></br>
+                  <%= child.first_name %></br>
+                  <% unless current_user?(@user) %>
+                    <div id="follow_form">
+                    <% if current_user.following?(child) %>
+                      <%= render 'unfollow' %>
+                    <% else %>
+                      <%= render(:partial => 'follow', :locals => {:child => child})%>
+                    <% end %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
           <% end %>

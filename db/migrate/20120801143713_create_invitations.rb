@@ -9,6 +9,8 @@ class CreateInvitations < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :invitations, :sender_id
+    add_index :invitations, :child_id
     add_index :invitations, [:sender_id, :child_id]
   end
 end

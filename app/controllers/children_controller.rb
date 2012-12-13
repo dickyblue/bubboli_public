@@ -6,8 +6,8 @@ class ChildrenController < ApplicationController
   
 
   def search_child
-    @search = User.search(params[:search])
-    @users = @search.all            
+    @search = Child.search(params[:search])
+    @children = @search.where("relationships.relation_type_id" => [1,2])
   end
 
 

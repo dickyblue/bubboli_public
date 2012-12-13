@@ -94,9 +94,9 @@
           </div>  
         
           <div class="btn-group square space-break">
-            <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #53868B"><%= kids_followings.count %></span></br><span style="color: #999999">Following</span></button>
-            <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #53868B"><%= kids_followings.count %></span></br><span style="color: #999999">Followers</span></button>
-            <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #FF9B97"><%= kids_followings.count %></span></br><span style="color: #999999">Pending</span></button>
+            <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #53868B"><%= link_to @user.following.count, following_path %></span></br><span style="color: #999999">Following</span></button>
+            <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #53868B"><%= @user.followers.count %></span></br><span style="color: #999999">Followers</span></button>
+            <button class="btn"><span class="pending_link"><%= link_to @user.pending.count, pending_path %></span></br><span style="color: #999999">Pending</span></button>
           </div>
 
         </div>

@@ -38,7 +38,8 @@ BubboliKids::Application.routes.draw do
   match '/admin', :to => 'admins#index', :as => :admin
 
   match '/users/:id/search_child', :to => 'children#search_child', :as => :search_child
-  match '/users/:id/add_child', :to => 'children#add_my_child', :as => :add_child
+  match '/users/:id/following', :to => 'users#following', :as => :following
+  match '/users/:id/pending', :to => 'users#pending', :as => :pending
 
   match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
   match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
@@ -46,7 +47,7 @@ BubboliKids::Application.routes.draw do
 
   
   resources :blog, :controller => 'blogs'
-  resources :gifts, :children, :relation_types, :relationships
+  resources :gifts, :children, :relation_types, :relationships, :my_children
   resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs
   resources :sessions, :only => [:create]
 

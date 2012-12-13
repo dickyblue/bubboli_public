@@ -7,12 +7,12 @@
 
   <div class="row">
     <ul class="child-list">
-      <% @relationships_by_birth_date.each do |kf| %>    
-        <% if (0..31).include?(kf.child.birthday_days) %>      
+      <% @relationships_by_birth_date.each do |r| %>    
+        <% if (0..31).include?(r.child.birthday_days) %>      
         <li class="children-following child-list block">
-          <strong><%= link_to kf.child.first_name, relationship_path(kf) %></strong><br>
-          <span style="color: #999999; font-size: 12px">Relations:<%= kf.relation_type.name %></span><br>
-          <span style="color: #999999; font-size: 12px">Birthday: <%= kf.child.birth_date.strftime("%b. %d")%></span>
+          <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
+          <span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
+          <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
         </li>
         <% else %>
         <% end %>
@@ -27,21 +27,25 @@
 </br>
 
 <span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Children I am Following</span>
-<%= link_to "All Kids I AM Following", '#' %> | <%= link_to "Add A New Child", search_child_path %>
+<%= link_to "Add A New Child", search_child_path %> | <%= link_to "Add My Child", new_my_child_path %>
 <hr/>
 
   <div class="row">
     <ul class="child-list">
-      <% @relationships_by_name.each do |kf| %>
+      <% @relationships_by_name.each do |r| %>
       <li class="children-following child-list block">
-        <strong><%= link_to kf.child.first_name, relationship_path(kf) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Relations:<%= kf.relation_type.name %></span><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= kf.child.birth_date.strftime("%b. %d")%></span>
+        <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
+        <span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
+        <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
       </li>  
       <% end %>
     </ul>
   </div>
-
+  
+  <% @user.my_kids.each do |test| %>
+    <%= test.child.relationships.where(:status => "Pending") %>
+  <% end %>
+  
 </div>
     
 

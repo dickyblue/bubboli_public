@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(:version => 20121128183748) do
   end
 
   add_index "gift_price_classifications", ["gift_id", "gift_price_range_id"], :name => "gift_price_classification"
+  add_index "gift_price_classifications", ["gift_id"], :name => "index_gift_price_classifications_on_gift_id"
+  add_index "gift_price_classifications", ["gift_price_range_id"], :name => "index_gift_price_classifications_on_gift_price_range_id"
 
   create_table "gift_price_ranges", :force => true do |t|
     t.string   "name"
@@ -153,7 +155,9 @@ ActiveRecord::Schema.define(:version => 20121128183748) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "invitations", ["child_id"], :name => "index_invitations_on_child_id"
   add_index "invitations", ["sender_id", "child_id"], :name => "index_invitations_on_sender_id_and_child_id"
+  add_index "invitations", ["sender_id"], :name => "index_invitations_on_sender_id"
 
   create_table "relation_types", :force => true do |t|
     t.string   "name"
@@ -165,11 +169,16 @@ ActiveRecord::Schema.define(:version => 20121128183748) do
     t.integer  "user_id"
     t.integer  "child_id"
     t.integer  "relation_type_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.string   "status",           :default => "Pending"
+    t.datetime "accepted_at"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
+  add_index "relationships", ["child_id"], :name => "index_relationships_on_child_id"
+  add_index "relationships", ["relation_type_id"], :name => "index_relationships_on_relation_type_id"
   add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "index_relationships_on_user_id_and_child_id_and_relation_type_id"
+  add_index "relationships", ["user_id"], :name => "index_relationships_on_user_id"
 
   create_table "user_child_cat_prefs", :force => true do |t|
     t.integer  "relationship_id"
@@ -178,7 +187,9 @@ ActiveRecord::Schema.define(:version => 20121128183748) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "user_child_cat_prefs", ["gift_category_id"], :name => "index_user_child_cat_prefs_on_gift_category_id"
   add_index "user_child_cat_prefs", ["relationship_id", "gift_category_id"], :name => "user_child_cat_pref"
+  add_index "user_child_cat_prefs", ["relationship_id"], :name => "index_user_child_cat_prefs_on_relationship_id"
 
   create_table "user_child_price_prefs", :force => true do |t|
     t.integer  "relationship_id"
@@ -187,7 +198,9 @@ ActiveRecord::Schema.define(:version => 20121128183748) do
     t.datetime "updated_at",          :null => false
   end
 
+  add_index "user_child_price_prefs", ["gift_price_range_id"], :name => "index_user_child_price_prefs_on_gift_price_range_id"
   add_index "user_child_price_prefs", ["relationship_id", "gift_price_range_id"], :name => "user_child_price_pref"
+  add_index "user_child_price_prefs", ["relationship_id"], :name => "index_user_child_price_prefs_on_relationship_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                 :limit => 25

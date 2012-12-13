@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @search = User.search(params[:search])
     @users = @search.all
     @relationships = Relationship.where(:user_id => current_user.id)
@@ -45,7 +45,12 @@ class UsersController < ApplicationController
     @relationships_by_name = @relationships.limit(20).sort_by! {|b| b.child.first_name}
   end
   
-  def kids_follow
+  def following
+    @following = current_user.following
+  end
+  
+  def pending
+    @pending = current_user.pending
   end
   
 

@@ -17,42 +17,27 @@ $(':checkbox').change(function(e){
       </div>
   
       <div>      
-        Location: <%= @relationship.child_city%>, <%= @relationship.child_state%><br>
-        Relationship: <%= @relation %><br>
-        Mother: <%= @relationship.child_mother%><br>
-        Father: <%= @relationship.child_father%>
+        Location: <%= @child.child_city%>, <%= @child.child_state%><br>
+        Mother: <%= @child.child_mother%><br>
+        Father: <%= @child.child_father%>
       </div>  
     
-      <div class="btn-group square space-break">
-        <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #53868B"><%= kids_followings.count %></span></br><span style="color: #999999">Following</span></button>
-        <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #53868B"><%= kids_followings.count %></span></br><span style="color: #999999">Followers</span></button>
-        <button class="btn"><span style="font-size: 25px; font-weight: bold; color: #FF9B97"><%= kids_followings.count %></span></br><span style="color: #999999">Pending</span></button>
+      <br>
+      
+      <div>
+      <span style="font-size: 16px; color: #FF6F6A">Gift Options <%= @child.first_name %></span>
+        <%= simple_form_for(@relationship, :html => {:class => "form-inline"}) do |f| %>
+          <%= f.association :relation_type, :as => :collection_select, :label => "Relation To Child"  %><br>
+          <%= f.association :gift_categories, :as => :check_boxes, :item_wrapper_class => "inline" %><br>
+          <%= f.association :gift_price_ranges, :as => :check_boxes, :item_wrapper_class => "inline" %><br>
+          <div class="pull-left"><%= f.button :submit, :class => "primary" %></div>
+        <% end %>
       </div>
-
+    
     </div>
 
 
     <div class="span9">
-
-      <span style="font-size: 16px; color: #FF6F6A">User Child Options</span>
-      <hr/>
-
-        <div class="row">
-          <%= simple_form_for(@relationship, :html => {:class => "form-horizontal form-inline"}) do |f| %>
-            <%= f.association :relation_type, :as => :collection_select %>
-            <%= f.association :gift_categories, :as => :check_boxes, :item_wrapper_class => "inline" %>
-            <%= f.association :gift_price_ranges, :as => :check_boxes, :item_wrapper_class => "inline" %>
-            <div class="pull-right"><%= f.button :submit, :class => "primary" %></div>
-          <% end %>
-              
-        </div>
-        Birthday: <%= @child.birth_date%><br><br>
-        Gender: <%= @child.gender %><br><br>
-
-      </br>
-      </br>
-      </br>
-      </br>
 
       <span style="font-size: 16px; color: #FF6F6A">Recommended Gifts for <%= @child.first_name %></span>
       <hr/>
@@ -67,8 +52,6 @@ $(':checkbox').change(function(e){
               </li>
             <% end %>
           </ul>
-
-
 
         </div>
 

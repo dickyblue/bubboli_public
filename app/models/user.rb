@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
   belongs_to :invitation 
   
-  
   email_regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
   validates :email,                   :presence => true,
@@ -32,7 +31,6 @@ class User < ActiveRecord::Base
   
   before_save :encrypt_password, :unless => "password.blank?"
   
-  
   def should_validate_password?
     new_record?
   end
@@ -42,11 +40,11 @@ class User < ActiveRecord::Base
   end
   
   def self.authenticate(email, submitted_password)
-      user = find_by_email(email)
-      return nil  if user.nil?
-      return user if user.has_password?(submitted_password)
-    end
-    
+    user = find_by_email(email)
+    return nil  if user.nil?
+    return user if user.has_password?(submitted_password)
+  end
+  
   def self.authenticate_with_password_salt(id, cookie_password_salt)
     user = find_by_id(id)
     (user && user.password_salt == cookie_password_salt) ? user : nil
@@ -56,6 +54,23 @@ class User < ActiveRecord::Base
   	if !password.blank?
   		self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
   	end
+  end
+  
+  def following
+    relationships.where(:status => "Confirmed")
+  end
+  
+  def pending
+    relationships.where(:status => "Pending")
+  end
+
+  def my_kids
+    relationships.where(:relation_type_id => [1,2])    
+  end
+
+  def followers
+    my_kids.each do |kid|
+    end
   end
   
   private

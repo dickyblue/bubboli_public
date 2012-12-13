@@ -6,6 +6,8 @@ class CreateGiftPriceClassifications < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :gift_price_classifications, :gift_id
+    add_index :gift_price_classifications, :gift_price_range_id
     add_index :gift_price_classifications, [:gift_id, :gift_price_range_id], :name => 'gift_price_classification'
   end
 end

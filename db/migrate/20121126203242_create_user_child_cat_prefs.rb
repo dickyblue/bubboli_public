@@ -5,6 +5,8 @@ class CreateUserChildCatPrefs < ActiveRecord::Migration
       t.references :gift_category
       t.timestamps
     end
+    add_index :user_child_cat_prefs, :relationship_id
+    add_index :user_child_cat_prefs, :gift_category_id    
     add_index :user_child_cat_prefs, [:relationship_id, :gift_category_id], :name => 'user_child_cat_pref'    
   end
 end
