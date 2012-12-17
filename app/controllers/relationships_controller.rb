@@ -24,5 +24,11 @@ class RelationshipsController < ApplicationController
       render 'show'
     end
   end
+
+  def destroy
+    @child = current_user.relationships.find(params[:id]).child
+    current_user.unfollow!(@child)
+    redirect_to current_user
+  end
     
 end

@@ -40,17 +40,25 @@ class UsersController < ApplicationController
     @user = current_user
     @search = User.search(params[:search])
     @users = @search.all
-    @relationships = Relationship.where(:user_id => current_user.id)
-    @relationships_by_birth_date = @relationships.limit(20).sort_by! {|b| b.child.birthday_days}
-    @relationships_by_name = @relationships.limit(20).sort_by! {|b| b.child.first_name}
+    @relationships = Relationship.where(:user_id => current_user.id).where(:status => "Confirmed").limit(20)
+    @relationships_by_birth_date = @relationships.sort_by! {|b| b.child.birthday_days}
+    @relationships_by_name = @relationships.sort_by! {|b| b.child.first_name}
   end
   
   def following
-    @following = current_user.following
+    @following = current_user.followings
   end
   
   def pending
     @pending = current_user.pending
+  end
+  
+  def followers
+    @followers = current_user.my_kids_followers
+  end
+  
+  def requests
+    @requests = current_user.my_kids_requests
   end
   
 

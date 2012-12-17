@@ -56,7 +56,15 @@ class User < ActiveRecord::Base
   	end
   end
   
-  def following
+  def following?(child)
+    relationships.find_by_child_id(child.id)
+  end
+  
+  def unfollow!(child)
+    relationships.find_by_child_id(child.id).destroy
+  end
+  
+  def followings
     relationships.where(:status => "Confirmed")
   end
   
@@ -65,14 +73,17 @@ class User < ActiveRecord::Base
   end
 
   def my_kids
-    relationships.where(:relation_type_id => [1,2])    
+    relationships.where(:relation_type_id => [1,2]).map {|p| p.child }   
   end
 
-  def followers
-    my_kids.each do |kid|
-    end
+  def my_kids_followers
+    my_kids.collect(&:child_followers).flatten.collect(&:user).uniq
   end
   
+  def my_kids_requests
+    my_kids.collect(&:child_requests).flatten.collect(&:user)
+  end
+    
   private
   
     def encrypt_password

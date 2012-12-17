@@ -10,12 +10,12 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
 //= require jquery_ujs
+//= require jquery
 //= require bootstrap
-//= require_tree
+//= require_tree 
 
-
+// changed the order of the jquery_ujs and jquery to get the remote function working for unfollowing kids
 
 // For the js in the show gifts page
 $(function() {

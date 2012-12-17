@@ -1,6 +1,5 @@
 <div class="container">
 
-  <div class="span8">
 
     <h4>
     Before you add a child, search to see if the child is already in our database.
@@ -8,7 +7,7 @@
     </br>
   
     <div class="row">
-      <div class=" span4 child-search-well ">
+      <div class=" span2 child-search-well ">
       <%= simple_form_for @search, :url => search_child_path do |f| %>
         <%= f.input :users_email_equals, :label => 'Search by Parent Email', :required => false %>
         <p style="font-weight: bold">- OR -</p>
@@ -20,7 +19,8 @@
     
     
     
-      <div class="span4">
+      <div class="span8 test">
+        <ul class="prod">
         <% if params[:search].blank? %>
           Your search results here.
         <% elsif @children.empty? %>
@@ -29,28 +29,30 @@
           <%= link_to "Add A Kid", new_child_path, :class => "normal-button round" %>
         <% else %>
           <% @children.each do |child| %>
+          <% rel = current_user.relationships.where(:child_id => child.id).to_a %>
               <div class="row span4">  
                 <div class="span2 image-placeholder">
                 
                 </div>
                 <div class="span2">
-                  <%= child.first_name %></br>
-                  <% unless current_user?(@user) %>
                     <div id="follow_form">
-                    <% if current_user.following?(child) %>
-                      <%= render 'unfollow' %>
-                    <% else %>
-                      <%= render(:partial => 'follow', :locals => {:child => child})%>
+                        <li class="child-search-result block">
+                          <% if current_user.following?(child) %>
+                            <%= link_to child.first_name, relationship_path(rel)%>
+                            <%= render(:partial => 'unfollow', :locals => {:child => child})%>
+                          <% else %>
+                            <%= child.first_name %></br>
+                            <%= render(:partial => 'follow', :locals => {:child => child})%>
+                        </li>  
                     <% end %>
                     </div>
-                  <% end %>
                 </div>
               </div>
           <% end %>
-        <% end %>        
+        <% end %>
+        </ul>        
       </div>
     </div>
   
-  </div>
   
 </div>

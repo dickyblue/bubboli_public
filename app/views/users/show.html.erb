@@ -13,7 +13,9 @@
           <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
           <span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
           <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
-        </li>
+          <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
+            <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
+          <% end %>
         <% else %>
         <% end %>
       <% end %>
@@ -36,15 +38,17 @@
       <li class="children-following child-list block">
         <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
         <span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
+        <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span><br>
+        
+        <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
+          <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
+        <% end %>
+        
       </li>  
       <% end %>
     </ul>
   </div>
-  
-  <% @user.my_kids.each do |test| %>
-    <%= test.child.relationships.where(:status => "Pending") %>
-  <% end %>
+
   
 </div>
     

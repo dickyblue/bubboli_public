@@ -33,7 +33,6 @@ $bubboli-yellow:      #FEFCE6;
 /*==================================================
  * OVERALL SITE
  * ===============================================*/
- 
 .wrapper {
   min-height: 100%;
   height: auto !important;
@@ -72,6 +71,11 @@ p {
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
+  
+.btn-spacing {
+  margin-top: 3px;
+  }  
+  
 
 .push {
   height: 70px
@@ -91,7 +95,7 @@ a {
 
 .pending_link a {
   color: $subdued_red;
-  font-size: 25px; 
+  font-size: 22px; 
   font-weight: bold;
   }
 
@@ -235,6 +239,12 @@ li.prod-list {
   -moz-border-radius-bottomright: 0px;
   } 
   
+.btn-grp-small-size {
+  font-size: 11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  }  
+  
 .child-search-well {
   height: 190px;
   float: left;
@@ -246,6 +256,10 @@ li.prod-list {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+  }
+
+.child-search-result {
+  float: left;
   }
 
 .new-child-well { 

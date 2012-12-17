@@ -1,14 +1,14 @@
 <%= link_to "<<< Back To My Profile", user_path(current_user) %> <br><br>
 
-<span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">All Kids I am Following</span>
+<span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">My Kids Followers</span>
 <hr/>
 
 
 <div class="row">
   <ul class="child-list">
-    <% @following.each do |r| %>
+    <% @followers.each do |r| %>
     <li class="children-following child-list block">
-      <%= render(:partial => "relationship", :locals => {:r => r}) %>
+      <%= render(:partial => "followers_request", :locals => {:r => r}) %> 
     </li>  
     <% end %>
   </ul>

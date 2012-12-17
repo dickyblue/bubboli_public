@@ -24,12 +24,8 @@ class Child < ActiveRecord::Base
     (Date.parse(self.birth_date.strftime('%m%d')) - Date.parse(Date.today.strftime('%m%d'))).to_i
   end
   
-  def mom
-    relation_types.where(:id => 1)
-  end
-  
   def child_city
-    if mom.blank?
+    if child_mother.blank?
       relationships.where(:relation_type_id => 2).map {|p| p.user.address_city }.to_sentence
     else
       relationships.where(:relation_type_id => 1).map {|p| p.user.address_city }.to_sentence
@@ -37,7 +33,7 @@ class Child < ActiveRecord::Base
   end 
   
   def child_state
-    if mom.blank?
+    if child_mother.blank?
       relationships.where(:relation_type_id => 2).map {|p| p.user.address_state }.to_sentence
     else
       relationships.where(:relation_type_id => 1).map {|p| p.user.address_state }.to_sentence
@@ -56,6 +52,13 @@ class Child < ActiveRecord::Base
     categories = self.user_child_cat_prefs.map {|p| p.gift_category_id}
     GiftCategorization.where(:gift_category_id => categories).map {|p| p.gift.name}
   end
+  
+  def child_followers
+    relationships.where(:status => "Confirmed")
+  end
 
+  def child_requests
+    relationships.where(:status => "Pending")
+  end
   
 end
