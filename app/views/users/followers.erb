@@ -8,7 +8,7 @@
   <ul class="child-list">
     <% @followers.each do |r| %>
     <li class="children-following child-list block">
-      <%= render(:partial => "followers_request", :locals => {:r => r}) %> 
+      <strong><%= r.first_name %></strong><br>
     </li>  
     <% end %>
   </ul>

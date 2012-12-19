@@ -28,8 +28,29 @@
 </br>
 </br>
 
+<span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">My Kids</span>
+<%= link_to "Add My Child", new_my_child_path %>
+<hr/>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @user.my_kids.each do |r| %>
+      <li class="children-following child-list block">
+        <strong><%= link_to r.first_name, relationship_path(r) %></strong><br>
+        <span style="color: #999999; font-size: 12px">Birthday: <%= r.birth_date.strftime("%b. %d")%></span><br>
+      </li>  
+      <% end %>
+    </ul>
+  </div>
+
+
+</br>
+</br>
+</br>
+</br>
+
 <span style="font-family: MountainsofChristmas; font-size: 18px; color: #FF6F6A">Children I am Following</span>
-<%= link_to "Add A New Child", search_child_path %> | <%= link_to "Add My Child", new_my_child_path %>
+<%= link_to "Add A New Child", search_child_path %>
 <hr/>
 
   <div class="row">
@@ -40,9 +61,7 @@
         <span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
         <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span><br>
         
-        <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
-          <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
-        <% end %>
+        <%= link_to "Unfollow", r, :method => :delete, :remote => "true" %>
         
       </li>  
       <% end %>

@@ -43,13 +43,14 @@ BubboliKids::Application.routes.draw do
   match '/users/:id/followers', :to => 'users#followers', :as => :followers
   match '/users/:id/requests', :to => 'users#requests', :as => :requests
 
+
   match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
   match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
 
 
   
   resources :blog, :controller => 'blogs'
-  resources :gifts, :children, :relation_types, :relationships, :my_children
+  resources :gifts, :children, :my_children, :relation_types, :relationships, :my_kids_relationships
   resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs
   resources :sessions, :only => [:create]
 

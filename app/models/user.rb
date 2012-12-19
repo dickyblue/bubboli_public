@@ -57,11 +57,23 @@ class User < ActiveRecord::Base
   end
   
   def following?(child)
-    relationships.find_by_child_id(child.id)
+    followings.find_by_child_id(child)
+  end
+
+  def requested?(child)
+    relationships.find_by_child_id(child)
   end
   
   def unfollow!(child)
     relationships.find_by_child_id(child.id).destroy
+  end
+  
+  def ignore!(relationship)
+    my_kids_requests.detect{|p| p.id == relationship.id}.destroy
+  end
+
+  def approve!(relationship)
+    my_kids_requests.detect{|p| p.id == relationship.id}.update_attributes(:status => "Confirmed")
   end
   
   def followings
@@ -81,7 +93,7 @@ class User < ActiveRecord::Base
   end
   
   def my_kids_requests
-    my_kids.collect(&:child_requests).flatten.collect(&:user)
+    my_kids.collect(&:child_requests).flatten
   end
     
   private

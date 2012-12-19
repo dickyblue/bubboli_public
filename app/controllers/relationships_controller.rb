@@ -12,8 +12,12 @@ class RelationshipsController < ApplicationController
   
   def create
     @relationship = Relationship.create(params[:relationship])
-    @relationship.update_attributes(:user_id => current_user.id)
-    redirect_to current_user
+    @relationship.user_id = current_user.id
+    if @relationship.save
+      redirect_to current_user
+    else
+      redirect_back_to
+    end
   end
   
   def update
@@ -30,5 +34,5 @@ class RelationshipsController < ApplicationController
     current_user.unfollow!(@child)
     redirect_to current_user
   end
-    
+           
 end

@@ -22,5 +22,5 @@ class Relationship < ActiveRecord::Base
       self.accepted_at = Time.now
     end
   end
-    
+      
 end
