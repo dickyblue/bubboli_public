@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def approve!(relationship)
-    my_kids_requests.detect{|p| p.id == relationship.id}.update_attributes(:status => "Confirmed")
+    my_kids_requests.detect{|p| p.id == relationship.id}.update_attributes(:status => "Confirmed", :accepted_at => Time.now)
   end
   
   def followings
