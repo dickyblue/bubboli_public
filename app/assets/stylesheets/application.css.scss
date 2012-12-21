@@ -203,28 +203,28 @@ li.prod-list {
   -moz-border-radius: 24px;
   }
   
-.profile-well {
-  border-style: double;
-  border-width: 7px;
-  border-color: $dark-green-blue;
-  height: 180px;
-  float: left;
-  width: 200px;
+.profile-well, .preference-well {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 3px 3px 10px #DDDDDD, -3px -3px 10px #DDDDDD;
+  color: #333333;
+
   padding: 10px;
   margin-bottom: 10px;
-  text-align: center;
-  border-radius: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
+  text-align: left;
+  font-size: 11px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   } 
   
-.btn-group > .btn {
+.btn-group > .btn-borderless {
   padding-top: 10px;
   border-left: none;
   border-right: none;  
   }
-  
-.btn-group > .btn:first-child {
+    
+.btn-group > .btn-borderless:first-child {
   -webkit-border-bottom-left-radius: 0px;
           border-bottom-left-radius: 0px;
   -webkit-border-top-left-radius: 0px;
@@ -233,7 +233,7 @@ li.prod-list {
   -moz-border-radius-topleft: 0px;
   }
   
-.btn-group > .btn:last-child {
+.btn-group > .btn-borderless:last-child {
   -webkit-border-top-right-radius: 0px;
           border-top-right-radius: 0px;
   -webkit-border-bottom-right-radius: 0px;
@@ -505,7 +505,9 @@ img.float-right {
   float: right;
   }
 
-
+.float-right {
+  float: right;
+  }
 
 
 /*==================================================

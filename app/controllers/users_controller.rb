@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     @user = current_user
     @search = User.search(params[:search])
     @users = @search.all
+    @relationship_my_kids = current_user.relationships.where(:relation_type_id => [1,2])
     @relationships = Relationship.where(:user_id => current_user.id).where(:status => "Confirmed").limit(20)
     @relationships_by_birth_date = @relationships.sort_by! {|b| b.child.birthday_days}
     @relationships_by_name = @relationships.sort_by! {|b| b.child.first_name}

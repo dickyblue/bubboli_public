@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128183748) do
+ActiveRecord::Schema.define(:version => 20121219153123) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(:version => 20121128183748) do
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
   end
+
+  create_table "child_images", :force => true do |t|
+    t.integer  "child_id"
+    t.string   "image"
+    t.boolean  "profile"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "child_images", ["child_id"], :name => "index_child_images_on_child_id"
 
   create_table "children", :force => true do |t|
     t.string   "first_name"

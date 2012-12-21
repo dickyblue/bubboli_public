@@ -47,13 +47,16 @@ BubboliKids::Application.routes.draw do
   match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
   match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
 
+  match '/children/:id/photos', :to => 'children#photos', :as => :child_photos
 
   
   resources :blog, :controller => 'blogs'
-  resources :gifts, :children, :my_children, :relation_types, :relationships, :my_kids_relationships
+  resources :gifts, :my_children, :relation_types, :relationships, :my_kids_relationships
   resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs
   resources :sessions, :only => [:create]
-
+  resources :children do
+    resources :child_images
+  end
 
 
 

@@ -12,24 +12,22 @@ $(':checkbox').change(function(e){
 
     <div class="span3" > 
       <div class="profile-well">
-        <%= @child.first_name %><br>
-        <%= @child.id %>
+        <%= image_tag(@child_images.first.image_url(:profile_pic)) if @child_images.first %>
+        <span style="font-size: 12px; font-weight: bold;"><%= @child.first_name %>, Child ID: <%= @child.id %></span><br>
+        Location: <span class="float-right"><%= @child.child_city%>, <%= @child.child_state%></span><br>
+        Mother: <span class="float-right"><%= @child.child_mother%></span><br>
+        Father: <span class="float-right"><%= @child.child_father%></span><br>
+        Birthday: <span class="float-right"><%= @child.birth_date.strftime("%b. %d")%></span><br>
       </div>
   
-      <div>      
-        Location: <%= @child.child_city%>, <%= @child.child_state%><br>
-        Mother: <%= @child.child_mother%><br>
-        Father: <%= @child.child_father%>
-      </div>  
-    
       <br>
       
-      <div>
-      <span style="font-size: 16px; color: #FF6F6A">Gift Options <%= @child.first_name %></span>
+      <div class="preference-well">
+        <span style="font-size: 16px; color: #FF6F6A">Gift Options <%= @child.first_name %></span>
         <%= simple_form_for(@relationship, :html => {:class => "form-inline"}) do |f| %>
-          <%= f.association :relation_type, :as => :collection_select, :label => "Relation To Child"  %><br>
-          <%= f.association :gift_categories, :as => :check_boxes, :item_wrapper_class => "inline" %><br>
-          <%= f.association :gift_price_ranges, :as => :check_boxes, :item_wrapper_class => "inline" %><br>
+          <%= f.association :relation_type, :as => :collection_select, :label => "Relation To Child"%>
+          <%= f.association :gift_categories, :as => :check_boxes, :item_wrapper_class => "span2" %>
+          <%= f.association :gift_price_ranges, :as => :check_boxes, :item_wrapper_class => "span2" %>
           <div class="pull-left"><%= f.button :submit, :class => "primary" %></div>
         <% end %>
       </div>
@@ -39,22 +37,17 @@ $(':checkbox').change(function(e){
 
     <div class="span9">
 
+      <span style="font-size: 16px; color: #FF6F6A"><%= link_to "Photos of  #{@child.first_name}", child_photos_path(@child) %></span>
+      <hr/>
+
+      <%= render :partial => 'shared/child_photos'%><br><br>  
+
+
       <span style="font-size: 16px; color: #FF6F6A">Recommended Gifts for <%= @child.first_name %></span>
       <hr/>
 
-        <div class="row">
-
-            <ul class="no-margin-or-bullet">
-            <% @gifts_by_user_pref.each do |gift| %>
-              <li class="related-gifts">
-                <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %></br>
-                <%= link_to gift.name, gift_path(gift) %>
-              </li>
-            <% end %>
-          </ul>
-
-        </div>
-
+      <%= render :partial => 'recommended_gifts'%>  
+      
     </div>
 
   </div>

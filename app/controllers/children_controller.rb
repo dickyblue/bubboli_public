@@ -27,5 +27,27 @@ class ChildrenController < ApplicationController
     end
   end
 
+  def edit
+    @child = Child.find(params[:id])
+    @child.child_images.build
+  end
+
+
+  def update
+    @child = Child.find(params[:id])
+    if @child.update_attributes(params[:child])
+      redirect_to current_user
+    else
+      render "edit"
+    end
+  end
+  
+  def photos
+    @child = Child.find(params[:id])
+    @image = @child.child_images.build
+    @child_images = @child.child_images
+    @relationship = Relationship.where(:user_id => current_user.id, :child_id => @child.id).first
+  end
+
 
 end

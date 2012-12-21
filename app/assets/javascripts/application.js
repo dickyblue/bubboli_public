@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require jquery_nested_form
 //= require bootstrap
-//= require_tree 
+//= require_tree
 
 // changed the order of the jquery_ujs and jquery to get the remote function working for unfollowing kids
 

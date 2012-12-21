@@ -8,6 +8,7 @@ class RelationshipsController < ApplicationController
     @child = @relationship.child
     @relation = @child.relationships.where(:user_id => current_user.id).map {|p| p.relation_type.name if p.relation_type }.to_sentence
     @gifts_by_user_pref = Gift.gift_by_pref_all_cat(@child, @relationship)
+    @child_images = @child.child_images
   end
   
   def create

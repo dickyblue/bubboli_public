@@ -1,16 +1,18 @@
 class Child < ActiveRecord::Base
   
-  attr_accessible :first_name, :gender, :birth_date, :relation_type_ids, :invitations_attributes, :relationships_attributes
+  attr_accessible :first_name, :gender, :birth_date, :relation_type_ids, :invitations_attributes, :relationships_attributes, :child_images_attributes
   
   validates :first_name, :gender, :birth_date, :presence => true
-
-  has_many :relationships
+  
+  has_many :child_images, :dependent => :destroy
+  has_many :relationships, :dependent => :destroy
   has_many :relation_types, :through => :relationships
   has_many :users, :through => :relationships
 
   has_many :invitations
   
   accepts_nested_attributes_for :invitations
+  accepts_nested_attributes_for :child_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
   
   def invitation_token
     invitation.token if invitation
