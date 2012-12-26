@@ -1,6 +1,6 @@
 class Relationship < ActiveRecord::Base
 
-  attr_accessible :user_id, :child_id, :relation_type_id, :gift_category_ids, :gift_price_range_ids, :status
+  attr_accessible :user_id, :child_id, :relation_type_id, :gift_category_ids, :gift_price_range_ids, :status, :accepted_at
   belongs_to  :user
   belongs_to  :child
   belongs_to  :relation_type

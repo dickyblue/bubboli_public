@@ -9,6 +9,7 @@ class RelationshipsController < ApplicationController
     @relation = @child.relationships.where(:user_id => current_user.id).map {|p| p.relation_type.name if p.relation_type }.to_sentence
     @gifts_by_user_pref = Gift.gift_by_pref_all_cat(@child, @relationship)
     @child_images = @child.child_images
+    @five_photos = @child_images.limit(5)
   end
   
   def create
@@ -35,5 +36,5 @@ class RelationshipsController < ApplicationController
     current_user.unfollow!(@child)
     redirect_to current_user
   end
-           
+      
 end

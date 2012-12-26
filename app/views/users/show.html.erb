@@ -10,8 +10,7 @@
       <% @relationships_by_birth_date.each do |r| %>    
         <% if (0..31).include?(r.child.birthday_days)%>      
         <li class="children-following child-list block">
-          <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
-          <span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
+          <%= render(:partial => 'child_list', :locals => {:r => r})%>
           <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
           <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
             <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
@@ -36,8 +35,7 @@
     <ul class="child-list">
       <% @relationship_my_kids.each do |r| %>
       <li class="children-following child-list block">
-        <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span><br>
+        <%= render(:partial => 'child_list', :locals => {:r => r})%>
       </li>  
       <% end %>
     </ul>
@@ -57,12 +55,9 @@
     <ul class="child-list">
       <% @relationships_by_name.each do |r| %>
       <li class="children-following child-list block">
-        <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span><br>
-        
-        <%= link_to "Unfollow", r, :method => :delete, :remote => "true" %>
-        
+        <%= render(:partial => 'child_list', :locals => {:r => r})%>
+        <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
+        <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
       </li>  
       <% end %>
     </ul>

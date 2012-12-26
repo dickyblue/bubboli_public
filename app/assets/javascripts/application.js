@@ -18,7 +18,6 @@
 //= require bootstrap
 //= require_tree
 
-// changed the order of the jquery_ujs and jquery to get the remote function working for unfollowing kids
 
 // For the js in the show gifts page
 $(function() {
@@ -30,6 +29,7 @@ $('#image').fadeIn('slow');
 $('#image').html('<img src="' + image + '"/>');
 return false;
     });
+	
 });
 
 
@@ -126,3 +126,15 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
+
+
+// unfollowing children
+
+$(document).ready(function() {      
+     
+    $(".unfollow").on("ajax:complete", function(){
+		$(this).closest(".children-following").remove();
+	})
+ 
+});

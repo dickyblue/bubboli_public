@@ -1,0 +1,4 @@
+  <%= form_for([@child_image.child, @child_image], :html => {:multipart => true, :remote => true}) do |f| %>
+    <%= f.file_field :image, multiple: true, name: "child_image[image]" %>
+    <%= f.submit "Submit", class: "btn-mini btn-info btn-spacing" %>
+  <% end %>

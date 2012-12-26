@@ -331,13 +331,17 @@ ul.child-list {
   height: 90px;
   float: left;
   padding: 5px;
-  text-align: left;
   background-color: $background-blue;
   border-top:0px;
   border-right:10px solid #fff;
   border-bottom:10px solid #fff;
   border-left: 0px;
+  }
 
+li.children-following img {
+  height: 90px;
+  float: left;
+  padding-right: 5px;
   }
   
 li.child-list {
@@ -508,8 +512,7 @@ img.float-right {
 .float-right {
   float: right;
   }
-
-
+  
 /*==================================================
  * SHOW TABS
  * ===============================================*/
@@ -836,4 +839,16 @@ ul img {
    }
 
 
+
+ /*==================================================
+  * PHOTOS
+  * ===============================================*/
+
+.photos-collage img {
+  margin-bottom: 9px;
+  margin-right: 5px;
+  }
  
+.photos-collage {
+  margin-left: 50px;
+  }

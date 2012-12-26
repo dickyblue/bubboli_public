@@ -29,7 +29,6 @@ class ChildrenController < ApplicationController
 
   def edit
     @child = Child.find(params[:id])
-    @child.child_images.build
   end
 
 
@@ -40,13 +39,6 @@ class ChildrenController < ApplicationController
     else
       render "edit"
     end
-  end
-  
-  def photos
-    @child = Child.find(params[:id])
-    @image = @child.child_images.build
-    @child_images = @child.child_images
-    @relationship = Relationship.where(:user_id => current_user.id, :child_id => @child.id).first
   end
 
 

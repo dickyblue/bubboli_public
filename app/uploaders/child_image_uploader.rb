@@ -41,6 +41,9 @@ class ChildImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [135, 135]
   end
 
+  version :sm_thumb do
+    process :resize_to_fill => [90, 90]
+  end
 
 
   # Add a white list of extensions which are allowed to be uploaded.
