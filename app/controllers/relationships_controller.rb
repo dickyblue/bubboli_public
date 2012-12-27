@@ -2,6 +2,8 @@ class RelationshipsController < ApplicationController
 
   include SessionsHelper
   
+  before_filter :correct_user
+  
   def show
     @relationship = Relationship.find(params[:id])
     @user = @relationship.user
@@ -35,6 +37,14 @@ class RelationshipsController < ApplicationController
     @child = current_user.relationships.find(params[:id]).child
     current_user.unfollow!(@child)
     redirect_to current_user
+  end
+  
+  private
+  
+  def correct_user
+    relationship = Relationship.find(params[:id])
+    user = relationship.user
+    redirect_to current_user unless user == current_user 
   end
       
 end

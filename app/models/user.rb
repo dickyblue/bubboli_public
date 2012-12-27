@@ -28,8 +28,9 @@ class User < ActiveRecord::Base
   
   validates :password, :if => :should_validate_password?,                 :presence => true, 
                                                                     :confirmation => true
-  
+
   before_save :encrypt_password, :unless => "password.blank?"
+  after_create :send_confirmation_token
   
   def should_validate_password?
     new_record?
@@ -54,6 +55,19 @@ class User < ActiveRecord::Base
   	if !password.blank?
   		self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
   	end
+  end
+  
+  def send_confirmation_token
+    generate_token(:confirmation_token)
+    self.confirmation_token_sent_at = Time.zone.now
+    save!
+    UserMailer.account_confirmation(self).deliver
+  end
+  
+  def confirm!
+    self.confirmed = true
+    self.confirmation_token = nil
+    save(:validate => false)
   end
   
   def following?(child)
@@ -97,6 +111,12 @@ class User < ActiveRecord::Base
   end
     
   private
+  
+    def generate_token(column)
+      begin
+        self[column] = SecureRandom.urlsafe_base64
+      end while User.exists?(column => self[column])
+    end
   
     def encrypt_password
       self.password_salt = make_password_salt if new_record?
