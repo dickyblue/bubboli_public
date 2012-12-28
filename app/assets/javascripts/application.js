@@ -29,6 +29,7 @@ $('#image').fadeIn('slow');
 $('#image').html('<img src="' + image + '"/>');
 return false;
     });
+
 	
 });
 

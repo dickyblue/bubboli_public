@@ -23,7 +23,7 @@ $(':checkbox').change(function(e){
       <br>
       
       <div class="preference-well">
-        <span style="font-size: 16px; color: #FF6F6A">Gift Options <%= @child.first_name %></span>
+        <span class="relationship-header">Gift Options <%= @child.first_name %></span>
         <%= simple_form_for(@relationship, :html => {:class => "form-inline"}) do |f| %>
           <%= f.association :relation_type, :as => :collection_select, :input_html => {:class => "input-small"}, :label => "Relation To Child"%>
           <%= f.association :gift_categories, :as => :check_boxes, :item_wrapper_class => "span2" %>
@@ -37,7 +37,7 @@ $(':checkbox').change(function(e){
 
     <div class="span9">
 
-      <span style="font-size: 16px; color: #FF6F6A"><%= link_to "Photos of  #{@child.first_name}", child_child_images_path(@child) %></span>
+      <span class="relationship-header"><%= link_to "Photos of  #{@child.first_name}", child_child_images_path(@child) %></span>
       <hr/>
 
       <div>
@@ -51,10 +51,17 @@ $(':checkbox').change(function(e){
       
       <br>
 
-      <span style="font-size: 16px; color: #FF6F6A">Recommended Gifts for <%= @child.first_name %></span>
+      <span class="relationship-header">Recommended Gifts for <%= @child.first_name %></span>
       <hr/>
 
       <%= render :partial => 'recommended_gifts'%>  
+
+      
+      <br>
+      <span class="relationship-header">Gifts Already Purchased for <%= @child.first_name %></span>
+      <hr/>
+
+      <%= render :partial => 'purchased_gifts'%>  
       
     </div>
 

@@ -132,7 +132,11 @@ select {
   padding: 5px;
   text-align: center;
   }
-
+  
+.relationship-header {
+  font-size: 16px; 
+  color: #FF6F6A;
+  }
 /*==================================================
  * TOPBAR
  * ===============================================*/
@@ -850,12 +854,17 @@ ul img {
  /*==================================================
   * PHOTOS
   * ===============================================*/
-
-.photos-collage img {
-  margin-bottom: 9px;
-  margin-right: 5px;
-  }
- 
 .photos-collage {
   margin-left: 50px;
+  }
+
+ul.photos-collage li {
+  margin-bottom: 9px;
+  margin-right: 5px;
+  float: left;
+  }
+   
+#make_child_pf_pic li {
+  margin-top: -50px;
+  text-align: top;
   }

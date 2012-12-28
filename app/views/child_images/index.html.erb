@@ -7,10 +7,15 @@
   
   <br>
    
-  <div class="photos-collage">
-    <% @child_images.each do |f| %>
-      <%= link_to image_tag(f.image_url(:thumb)), "#" %>
-    <% end %>
+  <div class="row">
+    <ul class="photos-collage no-margin-or-bullet">
+      <% @child_images.each do |f| %>
+        <li>
+        <%= link_to image_tag(f.image_url(:thumb)), child_child_image_path(f.child, f), :id => "child_pics" %><br>
+        <span id="make_child_pf_pic"><%= link_to "Make Profile Picture", edit_child_child_image_path(f.child, f) %></span>
+        </li>
+      <% end %>
+    </ul>
   </div>  
 
 </div>
