@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   has_many :children, :through => :relationships
 
   has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
-  belongs_to :invitation 
+  belongs_to :invitation
+  
+  has_many  :gift_accessions
+  has_many  :gifts, :through => :gift_accessions 
+  has_many  :children, :through => :gift_accessions
   
   email_regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 

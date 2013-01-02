@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219153123) do
+ActiveRecord::Schema.define(:version => 20121228185739) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -81,6 +81,18 @@ ActiveRecord::Schema.define(:version => 20121219153123) do
   end
 
   add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
+
+  create_table "gift_accessions", :force => true do |t|
+    t.integer  "gift_id"
+    t.integer  "child_id"
+    t.integer  "user_id"
+    t.boolean  "approved",   :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "gift_accessions", ["child_id"], :name => "index_gift_accessions_on_child_id"
+  add_index "gift_accessions", ["user_id"], :name => "index_gift_accessions_on_user_id"
 
   create_table "gift_age_classifications", :force => true do |t|
     t.integer  "gift_id"

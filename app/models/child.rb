@@ -11,6 +11,10 @@ class Child < ActiveRecord::Base
 
   has_many :invitations
   
+  has_many  :gift_accessions
+  has_many  :gifts, :through => :gift_accessions 
+  has_many  :users, :through => :gift_accessions
+  
   accepts_nested_attributes_for :invitations
   accepts_nested_attributes_for :child_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
   

@@ -56,7 +56,9 @@ BubboliKids::Application.routes.draw do
   resources :sessions, :only => [:create]
   resources :children do
     resources :child_images
+    resources :gift_accessions
   end
+
 
 
 

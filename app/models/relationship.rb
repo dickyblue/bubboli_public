@@ -12,7 +12,7 @@ class Relationship < ActiveRecord::Base
   has_many    :gift_price_ranges, :through => :user_child_price_prefs
   
   validates_uniqueness_of :user_id, :scope => :child_id
-
+  
   before_save :change_rel_status
 
   def change_rel_status

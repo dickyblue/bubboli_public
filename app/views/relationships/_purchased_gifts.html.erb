@@ -1,11 +1,14 @@
 <div class="row">
-
-    <ul class="no-margin-or-bullet">
-    <% @gifts_by_user_pref.each do |gift| %>
-      <li class="related-gifts">
-        <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %></br>
-        <%= link_to gift.name, gift_path(gift) %>
-      </li>
+  <ul class="no-margin-or-bullet">
+    <% if !@gift_purchased.empty? %>   
+      <% @gift_purchased.each do |gift| %>
+        <li class="related-gifts">
+          <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %><br>
+          <%= link_to gift.name, gift_path(gift) %>
+        </li>
+      <% end %>
+    <% else %>
+      <p class="no-gifts">Be the first to buy <%= @child.first_name %> a present!</p>
     <% end %>
   </ul>
 

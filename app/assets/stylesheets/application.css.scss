@@ -358,8 +358,12 @@ li.children-following img {
 li.child-list {
   float: left;
   width: 215px;
+  } 
+
+li.purchased-gift-search-list {
+  float: left;
+  width: 291px;
   }
-  
 
 .static-left-side {
   position: fixed;
@@ -509,6 +513,11 @@ img.float-right {
   margin-left: 0px;
   }
 
+.no-bullet {
+  list-style: none;
+  padding: 0;
+  }
+
 .text-over-banner {
   position: relative;
   z-index: 1;
@@ -625,7 +634,10 @@ img.float-right {
   float: left;
   padding: 5px;
   width: 130px;
-  text-align: center
+  height: 145px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
   }
  
  

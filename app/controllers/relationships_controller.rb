@@ -12,6 +12,8 @@ class RelationshipsController < ApplicationController
     @gifts_by_user_pref = Gift.gift_by_pref_all_cat(@child, @relationship)
     @child_images = @child.child_images
     @five_photos = @child_images.limit(5)
+    @gift_purchased = @child.gift_accessions.approved_purchased_gifts
+    @search = Gift.search(params[:search])
   end
   
   def create

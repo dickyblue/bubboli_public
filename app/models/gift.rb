@@ -18,6 +18,10 @@ class Gift < ActiveRecord::Base
   has_many  :gift_price_classifications
   has_many  :gift_price_ranges, :through => :gift_price_classifications
   
+  has_many  :gift_accessions
+  has_many  :users, :through => :gift_accessions 
+  has_many  :children, :through => :gift_accessions
+  
   accepts_nested_attributes_for :gift_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
   
   def to_param

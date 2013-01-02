@@ -54,14 +54,15 @@ $(':checkbox').change(function(e){
       <span class="relationship-header">Recommended Gifts for <%= @child.first_name %></span>
       <hr/>
 
-      <%= render :partial => 'recommended_gifts'%>  
+        <%= render :partial => 'recommended_gifts'%>  
 
       
       <br>
       <span class="relationship-header">Gifts Already Purchased for <%= @child.first_name %></span>
-      <hr/>
-
-      <%= render :partial => 'purchased_gifts'%>  
+      
+        <%= render :partial => 'shared/purchased_gift_search'%>      
+      
+        <%= render :partial => 'purchased_gifts'%>  
       
     </div>
 
