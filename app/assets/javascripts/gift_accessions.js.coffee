@@ -2,6 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+jQuery.fn.submitOnCheck = ->
+  @find('input[type=submit]').remove()
+  @find('input[type=checkbox]').click ->
+    $(this).parent('form').submit()
+  this
+ 
+jQuery ->
+  $('.edit_gift_accession').submitOnCheck()
+
+
 $ ->
 	$('select[rel="autocomplete"]').each ->
         option = []     
@@ -20,3 +30,5 @@ $ ->
         $(input).typeahead({
             source: option
         });
+        
+        

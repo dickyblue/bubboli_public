@@ -101,17 +101,17 @@ class User < ActiveRecord::Base
   def pending
     relationships.where(:status => "Pending")
   end
-
-  def my_kids
-    relationships.where(:relation_type_id => [1,2]).map {|p| p.child }   
-  end
-
+  
   def my_kids_followers
     my_kids.collect(&:child_followers).flatten.collect(&:user).uniq
   end
   
   def my_kids_requests
     my_kids.collect(&:child_requests).flatten
+  end
+
+  def my_kids
+    relationships.where(:relation_type_id => [1,2]).map {|p| p.child }   
   end
     
   private

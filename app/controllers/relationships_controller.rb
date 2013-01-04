@@ -12,7 +12,8 @@ class RelationshipsController < ApplicationController
     @gifts_by_user_pref = Gift.gift_by_pref_all_cat(@child, @relationship)
     @child_images = @child.child_images
     @five_photos = @child_images.limit(5)
-    @gift_purchased = @child.gift_accessions.approved_purchased_gifts
+    @gift_purchased = @child.gift_accessions.where(:approved => true)
+    @approve_gifts = @child.gift_accessions.where(:approved => false)
     @search = Gift.search(params[:search])
   end
   
@@ -28,11 +29,11 @@ class RelationshipsController < ApplicationController
   
   def update
     @relationship = Relationship.find(params[:id])
-    if @relationship.update_attributes(params[:relationship])
-      redirect_to :action => 'show'
-    else
-      render 'show'
-    end
+    @relationship.update_attributes!(params[:relationship])
+    respond_to do |format|
+      format.html { redirect_to @relationship }
+      format.js  
+    end      
   end
 
   def destroy
@@ -48,5 +49,7 @@ class RelationshipsController < ApplicationController
     user = relationship.user
     redirect_to current_user unless user == current_user 
   end
+  
+  
       
 end
