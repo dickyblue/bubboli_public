@@ -16,6 +16,9 @@ BubboliKids::Application.routes.draw do
   match '/gift_age_ranges/list', :to => 'gift_age_ranges#list', :as => :list_gift_age_range
   match '/gift_age_ranges/manage', :to => 'gift_age_ranges#manage', :as => :manage_gift_age_range
 
+  match '/gift_price_ranges/list', :to => 'gift_price_ranges#list', :as => :list_gift_price_range
+  match '/gift_price_ranges/manage', :to => 'gift_price_ranges#manage', :as => :manage_gift_price_range
+
   match '/about', :to => 'pages#about', :as => :about
   match '/terms', :to => 'pages#terms', :as => :term
   match '/privacy', :to => 'pages#privacy', :as => :privacy
@@ -35,17 +38,26 @@ BubboliKids::Application.routes.draw do
   match '/admin', :to => 'admins#index', :as => :admin
 
   match '/users/:id/search_child', :to => 'children#search_child', :as => :search_child
-  match '/users/:id/add_child', :to => 'children#add_my_child', :as => :add_child
-
+  match '/users/:id/following', :to => 'users#following', :as => :following
+  match '/users/:id/pending', :to => 'users#pending', :as => :pending
+  match '/users/:id/followers', :to => 'users#followers', :as => :followers
+  match '/users/:id/requests', :to => 'users#requests', :as => :requests
+  match '/users/thankyou(/:id)', :to => 'users#thankyou', :as => :thankyou
+  match '/users/confirm/:confirmation_token', :to => 'users#confirm', :as => :confirm
+  match '/signup/:invitation_token', :to => 'users#new'
+  
   match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
   match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
 
-
   
   resources :blog, :controller => 'blogs'
-  resources :gifts, :children, :relation_types, :relationships
-  resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges
+  resources :gifts, :my_children, :relation_types, :relationships, :my_kids_relationships
+  resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs
   resources :sessions, :only => [:create]
+  resources :children do
+    resources :child_images
+    resources :gift_accessions
+  end
 
 
 

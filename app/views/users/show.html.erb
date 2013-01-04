@@ -1,54 +1,69 @@
 
-
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script>
-
-
-
-<div class="container">
-
-<h3>Welcome back, <%= @user.first_name %>.</h3>
-
-</br>
-  
+    
+    
+<div class="span9">
+<span class="relationship-header">Upcoming Birthdays</span>
+<hr/>
 
   <div class="row">
-  <div class="span3 no-margin-or-bullet">
-    <ul class="user-tabs nav-pills nav-stacked" id="myTab">
-      <li class="active"><a href="#kids_followed">Kids</a></li>
-      <li><a href="#add_kid">Find</a></li>
-      <li><a href="#add_my_kid">Add</a></li>
-      <li><a href="#acct_settings">Account Settings</a></li>
+    <ul class="child-list">
+      <% @relationships_by_birth_date.each do |r| %>    
+        <% if (0..31).include?(r.child.birthday_days)%>      
+        <li class="children-following child-list block">
+          <%= render(:partial => 'child_list', :locals => {:r => r})%>
+          <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
+          <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
+            <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
+          <% end %>
+        <% else %>
+        <% end %>
+      <% end %>
+
     </ul>
-  </div>  
-
-  <div class="span9">
-    <div class="tab-content">
-      <div class="tab-pane active" id="kids_followed"><%= render(:template => "users/kids_follow") %></div>
-      <div class="tab-pane" id="add_kid"><%= render(:template => "children/search_child") %></div>
-      <div class="tab-pane" id="add_my_kid"><%= render(:template => "children/add_my_child") %></div>
-      <div class="tab-pane" id="acct_settings"><%= render(:template => "users/edit") %></div>
-    </div>
   </div>
+    
+</br>
+</br>
+</br>
+</br>
+
+<span class="relationship-header">My Kids</span>
+<%= link_to "Add My Child", new_my_child_path %>
+<hr/>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @relationship_my_kids.each do |r| %>
+      <li class="children-following child-list block">
+        <%= render(:partial => 'child_list', :locals => {:r => r})%>
+      </li>  
+      <% end %>
+    </ul>
   </div>
 
-    <script>
-      $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-      })
-      
-      $(function () {
-        $('#myTab a:first').tab('show');
-      })
-      
 
-    </script>
+</br>
+</br>
+</br>
+</br>
+
+<span class="relationship-header">Children I am Following</span>
+<%= link_to "Add A New Child", search_child_path %>
+<hr/>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @relationships_by_name.each do |r| %>
+      <li class="children-following child-list block">
+        <%= render(:partial => 'child_list', :locals => {:r => r})%>
+        <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
+        <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
+      </li>  
+      <% end %>
+    </ul>
+  </div>
 
   
 </div>
-
-
-
+    
 

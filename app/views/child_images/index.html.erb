@@ -1,0 +1,21 @@
+<div class = "container">
+
+  <div class="btn-group">
+    <button class="btn"><%= link_to @child.first_name, relationship_path(@relationship) %></button>
+    <button class="btn"><%= link_to "Upload Picture", new_child_child_image_path, :id => "new_child_image", :remote => true %></button>
+  </div>
+  
+  <br>
+   
+  <div class="row">
+    <ul class="photos-collage no-margin-or-bullet">
+      <% @child_images.each do |f| %>
+        <li>
+        <%= link_to image_tag(f.image_url(:thumb)), child_child_image_path(f.child, f), :id => "child_pics" %><br>
+        <span id="make_child_pf_pic"><%= link_to "Make Profile Picture", edit_child_child_image_path(f.child, f) %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>  
+
+</div>

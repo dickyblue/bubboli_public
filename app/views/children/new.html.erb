@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="new-child-well ">
+  
+    <%= simple_form_for(@child, :html => {:class => "form-horizontal"}) do |f| %>
+      <%= render(:partial => 'form', :locals => {:f => f}) %>
+        <%= f.simple_fields_for :invitations do |ff| %>  
+          <%= ff.input :recipient_email, :label => 'Parent Email' %>
+        <% end %>
+      <div class="pull-right">  
+      <%= f.button :submit, :class => "primary" %>
+      </div>
+    
+    <% end %>
+
+  
+  </div>
+  
+</div>

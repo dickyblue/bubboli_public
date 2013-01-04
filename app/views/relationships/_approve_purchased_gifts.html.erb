@@ -1,0 +1,21 @@
+
+<div class="row" id ="approve_gifts">
+  <ul class="no-margin-or-bullet">
+    <% if @approve_gifts.empty? %>   
+      <p class="no-gifts">There are no newly purchased gifts that need your approval now.</p>
+    <% else %>
+      <% @approve_gifts.each do |ag| %>
+        <li class="related-gifts">
+          <%= link_to image_tag(ag.gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(ag.gift) if ag.gift %><br>
+          <%= link_to ag.gift.name, gift_path(ag.gift) if ag.gift %>
+          <%= form_for([ag.child, ag], :remote => true ) do |f| %>
+            <%= f.check_box :approved %>
+            <%= f.submit "Confirm" %>
+            <%= link_to "Did not receive this", [ag.child, ag], :method => :delete, :data => {:confirm => "Are you sure you did not receive this gift?  Maybe it has not arrived yet."}, :remote => true %>
+          <% end %>
+        </li>
+      <% end %>      
+    <% end %>
+  </ul>
+
+</div>

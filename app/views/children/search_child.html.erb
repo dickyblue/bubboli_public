@@ -1,46 +1,61 @@
-<div class="span8">
+<div class="container">
 
-  <h4>
-  Before you add a child, search to see if the child is already in our database.
-  </h4>
-  </br>
+
+    <h4>
+    Before you add a child, search to see if the child is already in our database.
+    </h4>
+    </br>
   
-  <div class="row">
-    <div class=" span4 child-search-well ">
-    <%= simple_form_for @search, :url => user_path(@user) do |f| %>
-      <%= f.input :email_equals, :label => 'Search by Parent Email', :required => false %>
-      <p style="font-weight: bold">- OR -</p>
-      <%= f.input :work_email_equals, :label => 'Search by Parent Work Email', :required => false %>
-      <%= f.button :submit, 'Search', :class => 'btn primary' %>
-    <% end %>
-
-    </div>
+    <div class="row">
+      <div class=" span2 child-search-well ">
+      <%= simple_form_for @search, :url => search_child_path do |f| %>
+        <%= f.input :users_email_equals, :label => 'Search by Parent Email', :required => false %>
+        <p style="font-weight: bold">- OR -</p>
+        <%= f.input :users_work_email_equals, :label => 'Search by Parent Work Email', :required => false %>
+        <%= f.button :submit, 'Search', :class => 'btn primary' %>
+      <% end %>
+      
+      </div>
     
     
     
-    <div class="span4">
-      <% if params[:search].blank? %>
-        Your search results here.
-      <% elsif @users.empty? %>
-        <p>This child is not in the database yet. </p>
-        <p>Be the first to add this child.</p>
-        <%= link_to "Add A Kid", '#', :class => "normal-button round" %>
-      <% else %>
-        <% @users.each do |user| %>
-            <div class="row span4">  
-              <div class="span2 image-placeholder">
+      <div class="span8 test">
+        <ul class="prod">
+        <% if params[:search].blank? %>
+          Your search results here.
+        <% elsif @children.empty? %>
+          <p>This child is not in the database yet. </p>
+          <p>Be the first to add this child.</p>
+          <%= link_to "Add A Kid", new_child_path, :class => "normal-button round" %>
+        <% else %>
+          <% @children.each do |child| %>
+          <% rel = current_user.relationships.where(:child_id => child.id).to_a %>
+              <div class="row span4">  
+                <div class="span2 image-placeholder">
                 
+                </div>
+                <div class="span2">
+                    <div id="follow_form">
+                        <li class="child-search-result block">
+                          <% if current_user.following?(child) %>
+                            <%= link_to child.first_name, relationship_path(rel)%>
+                            <%= render(:partial => 'unfollow', :locals => {:child => child})%>
+                          <% elsif current_user.requested?(child) %>
+                            <%= child.first_name %></br>
+                            Requested
+                          <% else %>
+                            <%= child.first_name %></br>
+                            <%= render(:partial => 'follow', :locals => {:child => child})%>
+                        </li>  
+                    <% end %>
+                    </div>
+                </div>
               </div>
-              <div class="span2">
-                <%= user.email %></br>
-                <%= user.first_name %></br>
-                <%= link_to "Follow #{user.email}", '#' %></br>
-              <%= user.first_name %></br>
-              </div>
-            </div>
+          <% end %>
         <% end %>
-      <% end %>        
+        </ul>        
+      </div>
     </div>
-  </div>
+  
   
 </div>

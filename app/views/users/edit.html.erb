@@ -1,4 +1,4 @@
-<div class="span8">
+<div class="span9">
   
   <%= simple_form_for @user do |f| %>
   <div class="row">
@@ -8,13 +8,11 @@
       <%= f.input :last_name, :label => "Last Name", :input_html => { :class => "input-xlarge" } %> 
       <%= f.input :email, :input_html => { :class => "input-xlarge" } %>
       <%= f.input :work_email, :label => "Work Email - Optional", :input_html => { :class => "input-xlarge" } %>
-      <%= f.input :password, :input_html => { :class => "input-xlarge" } %>
-      <%= f.input :password_confirmation, :label => "Password Confirmation", :input_html => { :class => "input-xlarge" } %>
+      <%= f.input :gender, :as => :select, :collection => ['Male', 'Female'], :input_html => { :class => "input-xlarge" } %>
     </div>
 
 
     <div class="span4 form-stacked">
-      <%= f.input :gender, :as => :select, :collection => ['Male', 'Female'], :input_html => { :class => "input-xlarge" } %>
       <%= f.input :address_street, :label => "Street", :input_html => { :class => "input-xlarge" } %>
       <%= f.input :address_apt, :label => "Apt - Optional", :input_html => { :class => "input-xlarge" } %>
       <%= f.input :address_city, :label => "City", :input_html => { :class => "input-xlarge" } %>

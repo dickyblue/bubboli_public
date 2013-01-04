@@ -6,30 +6,39 @@ class ChildrenController < ApplicationController
   
 
   def search_child
-    @search = User.search(params[:search])
-    @users = @search.all            
+    @search = Child.search(params[:search])
+    @children = @search.where("relationships.relation_type_id" => [1,2])
   end
 
 
-  def add_my_child
-
+  def new
+    @child = Child.new
+    @child.invitations.build
   end
   
   def create
     @child = Child.new(params[:child])
+    @child.invitations.last.sender = current_user
     if @child.save
-      @child.relationships.each do |relationship|
-        relationship.user = current_user
-        relationship.save!
-      end
+      @child.relationships.last.update_attributes(:user_id => current_user.id)
       redirect_to current_user
     else
-      render "add_my_child"
+      render "new"
     end
   end
-  
-  def show
+
+  def edit
     @child = Child.find(params[:id])
+  end
+
+
+  def update
+    @child = Child.find(params[:id])
+    if @child.update_attributes(params[:child])
+      redirect_to current_user
+    else
+      render "edit"
+    end
   end
 
 

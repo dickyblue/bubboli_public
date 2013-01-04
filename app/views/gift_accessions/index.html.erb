@@ -1,0 +1,17 @@
+<div class="container">
+  
+  <%= link_to "<<< Back to #{@child.first_name}", relationship_path(@relationship) %><br>
+
+  <span class="relationship-header">Add to Purchased Gifts</span>
+
+  <%= render :partial => 'shared/purchased_gift_search'%>
+  
+  <%= render :partial => 'search_purchased_gift_results'%>
+  
+  <br>
+  <span class="relationship-header">Gifts Already Purchased for <%= @child.first_name %></span>
+  <hr/>
+  
+  <%= render :partial => 'relationships/purchased_gifts'%>  
+  
+</div>

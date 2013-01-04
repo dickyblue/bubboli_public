@@ -16,6 +16,11 @@ module SessionsHelper
   def current_user?(user)
     user == current_user
   end
+  
+  def sign_out
+    current_user = nil
+    session[:user_id] = nil
+  end
 
   def deny_access
     store_location

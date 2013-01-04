@@ -1,0 +1,4 @@
+<%= simple_form_for(@gift_accession) do |f| %>
+  <%= f.input :gift_id, :collection => @gifts  %>
+  <%= f.submit %>
+<% end %>
