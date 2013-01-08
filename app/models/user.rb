@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   
   has_many  :gift_accessions
   has_many  :gifts, :through => :gift_accessions 
-  has_many  :children, :through => :gift_accessions
+  has_many  :giftee, :through => :gift_accessions
   
   email_regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
