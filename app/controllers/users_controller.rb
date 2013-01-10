@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account Activated."
       redirect_to sign_in_path
     when params[:confirmation_token].blank?
-      flash[:error] = "The activation code was missing. Please follow the URL from your email."
+      flash[:error] = "We couldn't find you. Please follow the URL from your email."
       redirect_to root_path
     else
       flash[:error] = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
@@ -58,6 +58,7 @@ class UsersController < ApplicationController
     @search = User.search(params[:search])
     @users = @search.all
     @relationship_my_kids = current_user.relationships.where(:relation_type_id => [1,2])
+    @find_my_kids = Invitation.invitation_by_email(current_user)
     @relationships = Relationship.where(:user_id => current_user.id).where(:status => "Confirmed").limit(20)
     @relationships_by_birth_date = @relationships.sort_by! {|b| b.child.birthday_days}
     @relationships_by_name = @relationships.sort_by! {|b| b.child.first_name}

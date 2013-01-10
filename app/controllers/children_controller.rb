@@ -8,6 +8,7 @@ class ChildrenController < ApplicationController
   def search_child
     @search = Child.search(params[:search])
     @children = @search.where("relationships.relation_type_id" => [1,2])
+    @user = @search.where("relationships.relation_type_id" => 3)
   end
 
 
@@ -23,6 +24,7 @@ class ChildrenController < ApplicationController
       @child.relationships.last.update_attributes(:user_id => current_user.id)
       redirect_to current_user
     else
+      flash[:error] = "User is already registered, but does not have children of their own."
       render "new"
     end
   end

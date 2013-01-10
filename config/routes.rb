@@ -54,6 +54,7 @@ BubboliKids::Application.routes.draw do
   resources :gifts, :my_children, :relation_types, :relationships, :my_kids_relationships
   resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs
   resources :sessions, :only => [:create]
+  resources :invitations, :only => [:destroy, :show]
   resources :children do
     resources :child_images
     resources :gift_accessions

@@ -2,7 +2,7 @@ class Invitation < ActiveRecord::Base
 
   has_one     :recipient, :class_name => 'User'
   belongs_to  :sender, :class_name => 'User', :foreign_key => 'sender_id'
-  has_one     :child
+  belongs_to  :child
 
   validates :recipient_email, :presence => true
 
@@ -16,6 +16,12 @@ class Invitation < ActiveRecord::Base
     self.sent_at = Time.zone.now
     save!
     InvitationMailer.invitation(self).deliver
+  end
+  
+  def self.invitation_by_email(user)
+    invitations = self.where(:recipient_email => [user.email, user.work_email])
+    child_ids = invitations.pluck(:child_id)
+    Child.where(:id => child_ids).group("first_name")
   end
   
   private

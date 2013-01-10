@@ -90,7 +90,7 @@
           </div>
       
           <div>      
-            Location: <%= current_user.address_city %>, <%= current_user.address_state %>
+            Location: <%= current_user.address_city if current_user %>, <%= current_user.address_state if current_user %>
           </div>  
         
           <div class="btn-group space-break">

@@ -13,7 +13,7 @@ class Relationship < ActiveRecord::Base
   
   validates_uniqueness_of :user_id, :scope => :child_id
   
-  before_save :change_rel_status, :parent_count
+  before_save :change_rel_status
 
   def change_rel_status
     if self.relation_type_id == 1
@@ -26,11 +26,5 @@ class Relationship < ActiveRecord::Base
   end
   
   
-  private 
-  
-    def parent_count
-      #:message => "Relationship already exists" if child.relationships.where(:relation_type_id => 1).exists?
-      # errors.add(:relation_type_id, "already exists for this child") if child.relationships.where(:relation_type_id => 1).size > 1
-    end
       
 end
