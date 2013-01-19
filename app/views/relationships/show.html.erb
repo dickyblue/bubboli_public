@@ -1,12 +1,21 @@
 <script type="text/javascript">
-$(':checkbox').change(function(e){
-   if ($(':checkbox:checked').length > 1) {
-     $(this).prop('checked', false)
-   }
-})
+$(document).ready(function() {
+//$(':checkbox').change(function(e){
+//   if ($(':checkbox:checked').length > 1) {
+//     $(this).prop('checked', false)
+//   }
+//});
+
+$('#gift_search').hide();
+  $('#gift_search_link').click(function() {
+   $('#gift_search_link').hide();
+   $('#gift_search').show();
+   });
+});
 </script>
 
 <div class="container">
+
 <%= link_to "<<< Back To My Profile", user_path(current_user)%><br><br>
   <div class="row">
 
@@ -36,33 +45,49 @@ $(':checkbox').change(function(e){
 
 
     <div class="span9">
+      <div class="op3-title op3-stitched-shadow">
+        <%= link_to "Photos of  #{@child.first_name}", child_child_images_path(@child) %>
+      </div>
 
-      <span class="relationship-header"><%= link_to "Photos of  #{@child.first_name}", child_child_images_path(@child) %></span>
-      <hr/>
-
-      <div>
-        <% if @child_images %>
-        <% @five_photos.each do |f| %>
-          <%= link_to image_tag(f.image_url(:thumb)), "#" %>
-        <% end %>
-        <% else %>
-        <% end %>
+      <div class="test-stitch"><br>
+      <br>
+      <br>        
+        <div>
+          <% if @child_images %>
+          <% @five_photos.each do |f| %>
+            <%= link_to image_tag(f.image_url(:thumb)), "#" %>
+          <% end %>
+          <% else %>
+          <% end %>
         </div>
+      </div>
       
       <br>
 
-      <span class="relationship-header">Recommended Gifts for <%= @child.first_name %></span>
-      <hr/>
+      <div class="op3-title op3-stitched-shadow">
+        Recommended Gifts for <%= @child.first_name %>
+      </div>
 
-        <%= render :partial => 'recommended_gifts'%>  
+      <div class="test-stitch"><br>
+        <br>
+        <br>        
+
+        <%= render :partial => 'recommended_gifts'%>
+      </div>  
       
-      <br>
-      <span class="relationship-header">Gifts Already Purchased for <%= @child.first_name %></span>
+
+
+      <div class="op3-title op3-stitched-shadow">
+        Gifts Already Purchased for <%= @child.first_name %>
+      </div>
+
+      <div class="test-stitch"><br></div>
+      
+        <span class="pull-right red-link"><i class="icon-search"></i> <%= link_to "Search / Add Gifts to Purchased List", '#', :id => "gift_search_link", :remote => true %></span>
       
         <%= render :partial => 'shared/purchased_gift_search'%>      
-
         
-          <%= render :partial => 'approve_purchased_gifts'%>  
+        <%= render :partial => 'approve_purchased_gifts'%>  
       
         <%= render :partial => 'purchased_gifts'%>  
       

@@ -2,10 +2,12 @@
 <html>
 <head>
   <title><%= @page_title || 'Bubboli' %></title>
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "application",  :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
+  <%= favicon_link_tag %>
+
+
 <% # Adding google analytics below %>  
   <script type="text/javascript">
 
@@ -21,19 +23,19 @@
     })();
 
   </script>
-    
+  
 </head>
 <body>
   
-<%= render partial: "layouts/header" %>     
-      
+<%= render partial: "layouts/header" %> 
+         
         <div class="container">
           <hr class="subnav-top">
 
           <ul class="sub-nav pull-left">    
-            <li><%= link_to "NEWLY ADDED", '#' %></li>
-            <li><%= link_to "BUBBOLI FAVORITES", '#' %></li>
-            <li><%= link_to "BABY SHOWERS", '#' %></li>
+            <li><%= link_to "OUR STORY", '#' %></li>
+            <li><%= link_to "OUR TEAM", '#' %></li>
+            <li><%= link_to "BRANDS WE LOVE", '#' %></li>
           </ul>
           
           <%= render partial: "layouts/subnav" %>
@@ -42,15 +44,16 @@
 
         </div>
     </div>
-    
-
+    sho
+    <%= render partial: "shared/flash_messages", flash: flash %> <br>
 
     <%= yield %>
-
-    <div class="push"></div>
     
-  </div>  
+    <div class="push"></div>
+
+  </div>
 </body>
+
 
 <div>
   <footer>

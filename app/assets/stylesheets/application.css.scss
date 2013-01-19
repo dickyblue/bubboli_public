@@ -22,37 +22,220 @@ $bubboli-red:         #FF6F6A;
 $subdued-red:         #FF9B97;
 $background-blue-two: #E4F9F8;
 $light-gray:          #999999;
+$lighter-gray:        #D1D1D1;
 $lightest-gray:       #F0F0F0;
 $background-orange:   #F9F2E3;
 $orange-red:          #FF4500;
 $bubboli-yellow:      #FEFCE6;
+$teal-green:          #63CECA;
+$teal-green2:         #2EAF9D;
+$teal-green3:         #5FC5C1;
 
 @import 'bootstrap';
 
+/*==================================================
+ * TEST
+ * ===============================================*/
+ [class^="icon-"], [class*=" icon-"] {
+   background-image: url(/assets/glyphicons-halflings.png)
+ }
 
+
+/*OPTION ONE*/
+
+hr.gray-dotted {
+  background: url(gray_dotted_line.png) repeat-x top left;
+  border: 0;
+  height: 5px;
+  }
+
+
+/* OPTION TWO*/  
+.stitched-title {
+  position: relative;
+  z-index: 500;
+  width: 250px;
+ 	padding: 5px 10px;
+ 	margin: 0 0 0 30px;
+ 	background: #ff0030;
+ 	background: url(blue_pattern_background.gif) repeat scroll 0 0 transparent;
+ 	color: $teal-green2;
+ }
+
+.stitched {
+  top: -40px;
+	padding: 5px 10px;
+	position: relative;
+	z-index: 0;
+	margin: 10px;
+	/*background: url(blue_pattern_background.gif) repeat scroll 0 0 transparent;*/
+	background: white;
+	color: $teal-green2;
+}
+
+.stitched-shadow {
+  font-size: 13px;
+  line-height: 1.3em;
+  border: 2px dashed $teal-green;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-box-shadow: 0 0 0 4px white, 2px 1px 4px 4px $lighter-gray;
+  -webkit-box-shadow: 0 0 0 4px white, 2px 1px 4px 4px $lighter-gray;
+  box-shadow: 0 0 0 4px white, 2px 1px 6px 4px $lighter-gray;  
+  }
+
+
+
+/* OPTION THREE */
+.op3-title {
+  position: relative;
+  z-index: 500;
+  width: 250px;
+ 	padding: 5px 10px;
+ 	margin: 0 0 0 30px;
+ 	background: #ff0030;
+ 	background: url(blue_pattern_background.gif) repeat scroll 0 0 transparent;
+ 	color: $teal-green2;
+ }
+
+.op3-stitched-shadow {
+  font-size: 13px;
+  line-height: 1.3em;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-box-shadow: 0 0 0 4px white, 2px 1px 4px 4px $lighter-gray;
+  -webkit-box-shadow: 0 0 0 4px white, 2px 1px 4px 4px $lighter-gray;
+  box-shadow: 0 0 0 4px white, 2px 1px 6px 4px $lighter-gray;  
+  }
+
+.test-stitch {
+  position: relative;
+  background: url(gray_dotted_line.png) repeat-x scroll 0 0 transparent;
+  z-index: 0;
+  top: -15px;
+  color: white;
+  } 
+  
+/*OPTION FOUR*/ 
+.op4-title {
+  position: relative;
+  z-index: 500;
+  width: 250px;
+ 	padding: 5px 10px;
+ 	margin: 0 0 0 30px;
+ 	background: #ff0030;
+ 	background: url(blue_pattern_background.gif) repeat scroll 0 0 transparent;
+ 	color: $teal-green2;
+ }
+
+.op4-stitched-shadow {
+  font-size: 13px;
+  line-height: 1.3em;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-box-shadow: 0 0 0 4px white, 2px 1px 4px 4px $lighter-gray;
+  -webkit-box-shadow: 0 0 0 4px white, 2px 1px 4px 4px $lighter-gray;
+  box-shadow: 0 0 0 4px white, 2px 1px 6px 4px $lighter-gray;  
+  }
+
+.stitch-w-box {
+  position: relative;
+  border-top: 3px dashed $teal-green;
+  background-color: #F8F8F8;
+  /*background: url(linen_background.jpg) repeat scroll 0 0 transparent;*/
+  z-index: 0;
+  top: -15px;
+  }  
+
+/* OPTION FIVE*/
+
+.op5-title {
+  font-size: 14px; 
+  color: $bubboli-red;
+  position: relative;
+  z-index: 500;
+ 	padding: 5px 10px;
+ 	margin-right: auto;
+ 	background: white;
+ }
+
+.upcoming-birthdays {
+  width: 190px;  
+  }
+
+.my-children {
+  width: 130px;  
+  }
+
+.all-children {
+  width: 225px;  
+  }
+
+
+.test-stitch {
+  position: relative;
+  background: url(gray_dotted_line.png) repeat-x scroll 0 0 transparent;
+  z-index: 0;
+  top: -15px;
+  color: white;
+  }
+  
 /*==================================================
  * OVERALL SITE
  * ===============================================*/
 .wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -70px;
+  /*min-height: 100%;*/
+  /*height: auto !important;*/
+  /*height: 100%;*/
+  /*margin: 0 auto -70px;*/
   }
 
 html {
   height: 100%
   }
 
+@font-face {
+	font-family: 'LatoLight';
+	src: url('/vendor/assets/fonts/Lato-Lig-webfont.eot');
+	src: local('LatoLight'), url('/assets/Lato-Lig-webfont.eot?#iefix') format("embedded-opentype"), url('/assets/Lato-Lig-webfont.woff') format("woff"), url('/assets/Lato-Lig-webfont.ttf') format("truetype"), url('/assets/Lato-Lig-webfont.svg#LatoLight') format("svg");
+	font-weight: normal;
+	font-style: normal;
+	}
+	
+@font-face {
+	font-family: 'LatoRegular';
+	src: url('/vendor/assets/fonts/Lato-Reg-webfont.eot');
+	src: local('LatoRegular'), url('/assets/Lato-Reg-webfont.eot?#iefix') format("embedded-opentype"), url('/assets/Lato-Reg-webfont.woff') format("woff"), url('/assets/Lato-Reg-webfont.ttf') format("truetype"), url('/assets/Lato-Reg-webfont.svg#LatoLight') format("svg");
+	font-weight: normal;
+	font-style: normal;
+	}	
+  	
 body {
-  padding-top: 190px;
-  height: 100%;
+  padding-top: 155px;
+  /*padding-bottom: 70px;*/
+  /*height: 100%;*/
+  font-family: 'LatoRegular';
+  /*background: url(background_image.png) repeat scroll 0 0;*/
+  /*background: url(footer_pattern.png) repeat scroll 0 0 transparent;*/
   }
 
 p {
   line-height: 150%;
   font-size: 105%;
+  font-family: 'LatoLight';
   }
+
+hr {
+  border-bottom: 1px dashed $background-blue;
+  margin-top: 2px
+  } 
+
+hr.profile {
+  border: 1px dashed $lightest-gray;
+  } 
 
 .btn.primary {
   background-color: $bubboli-red;
@@ -76,21 +259,9 @@ p {
   margin-top: 3px;
   }  
 
-.white-link a {
+.white-font, .white-link a {
   color: #FFFFFF;
   }  
-
-.push {
-  height: 70px
-  }
-
-footer, {
-  text-align: center;
-  background-color: #eee;
-  height: 70px;
-  clear: both;
-  padding-top: 20px
-  }
 
 a {
   color: $dark-green-blue;
@@ -101,9 +272,9 @@ a {
   font-size: 22px; 
   font-weight: bold;
   }
-
-.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
-  background-color: $dark-green-blue
+  
+.red_link a {
+  color: $bubboli_red;
   }
 
 input,
@@ -135,10 +306,41 @@ select {
   
 .relationship-header {
   font-size: 16px; 
-  color: #FF6F6A;
+  color: $bubboli-red;
+  text-align: center
   }
+
+.red-font {
+  color: $bubboli-red;
+  }
+
 /*==================================================
- * TOPBAR
+ * INDEX PAGE
+ * ===============================================*/
+
+#step_two {
+  /*background: url(gray_w_dash_line.jpg) repeat scroll 0 0 transparent;*/
+  }
+
+.index-background {
+background: url(blue_pattern_background.gif) repeat scroll 0 0 transparent;
+}
+
+#step_three {
+  /*background: url(blue_w_gray_line_top.jpg);*/
+  }
+
+#step_three_bottom {
+  /*background: url(blue_w_gray_line.jpg) repeat-x bottom left;*/
+  }
+
+.center-index, center-index p{
+  display: inline-block;
+  text-align: center;
+  }
+  
+/*==================================================
+ * TOPBAR AND FOOTER
  * ===============================================*/
    
 .logo-topbar-fill {
@@ -157,36 +359,163 @@ select {
   background-color: #FFF;
   z-index: 1000;
   }
-  
-.navbar-fixed-top {
-  top: 100px;
-  }
-  
-.nav, .navbar, .navbar-inner, .navbar-fixed-top {
-  background-image: -moz-linear-gradient(center top , $background-blue, #FFF);
-  background-image: -ms-linear-gradient(center top , $background-blue, #FFF);
-  background-image: -khtml-gradient(linear, left top, left bottom, from($background-blue), to(#FFF));
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFF), color-stop(100%, $background-blue));
-  background-image: -webkit-linear-gradient(top, $background-blue, #FFF);
-  background-image: -o-linear-gradient(top, $background-blue, #FFF);
-  background-image: linear-gradient(top, $background-blue, #FFF);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D7EFEE', endColorstr='#FFFFFF', GradientType=0);
+
+.navbar, .navbar-inner, .navbar-fixed-top {
+  background-image: -moz-linear-gradient(center top , #FFF, #FFF);
+  background-image: -ms-linear-gradient(center top , #FFF, #FFF);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#FFF), to(#FFF));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFF), color-stop(100%, #FFF));
+  background-image: -webkit-linear-gradient(top, #FFF, #FFF);
+  background-image: -o-linear-gradient(top, #FFF, #FFF);
+  background-image: linear-gradient(top, #FFF, #FFF);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF', endColorstr='#FFFFFF', GradientType=0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
   }
-  
+
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
   background-color: $dark-green-blue;
   }
-  
+
 .navbar .nav > li > a {
-  color: $dark-green-blue;
+  color: $light-gray;
   }
-  
+
+.nav .nav-pills > li > a {
+  color: $dark-green-blue;
+  padding-top: 25px;
+  }
+
 .navbar .nav > li > a:hover {
   color: $dark-green-blue;
   }
-  
 
+hr.navline {
+  clear: both; 
+  float: none; 
+  width: 100%; 
+  height: 4px;
+  margin: 1.4em 0 0px 0;
+  border: none; 
+  background: $teal-green;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      right bottom,
+      color-stop(0, rgb(255,255,255)),
+      color-stop(0.3, $teal-green),
+      color-stop(0.7, $teal-green),
+      color-stop(1, rgb(255,255,255))
+  );
+  background-image: -moz-linear-gradient(
+      left center,
+      rgb(255,255,255) 0%,
+      $teal-green 30%,
+      $teal-green 70%,
+      rgb(255,255,255) 100%
+  );
+  }
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+  background-color: $teal-green;
+  color: #FFFFFF;
+  font-weight: bold;
+  }
+  
+.nav > li > a:hover {
+  background-color: $subdued-red;  
+  }
+
+.nav-pills > li > a {
+  background-color: $lighter-gray;
+  color: #FFFFFF;
+  font-weight: bold;
+  width: 90px;
+  text-align: center;
+  margin-right: 0px;
+  margin-left: 6px;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+  }
+
+.push {
+  height: 70px
+  }
+
+footer, {
+  text-align: center;
+  /*background: url(footer_pattern.png) repeat scroll 0 0 transparent;*/
+  background: url(gray_w_dash_line.jpg) repeat scroll 0 0 transparent;
+  /*background-color: #eee; */
+  /*background-color: #A6A6A6;*/
+  clear: both;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 0px;
+  }
+
+.footer-nav, .sub-nav {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  }    
+
+.footer-nav li, .sub-nav li {
+  display: inline;  
+  }
+   
+.footer-nav a, .sub-nav a {
+  display: inline-block;
+  margin: 5px 10px;  
+  }
+
+.sub-nav {
+  font-size: 11px;
+  }    
+
+.sub-nav > li > a {
+  line-height: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+  }
+
+.sub-nav >li > a:hover {
+  background-color: $teal-green;
+  color: #FFFFFF;
+  text-decoration: none;
+  vertical-align: center;
+  }
+
+hr.subnav-top {
+  border: 1px dashed $light-gray;
+  margin-bottom: 1px;
+  margin-top: 2px
+  }
+
+hr.subnav-bottom {
+  border: 1px dashed $light-gray;
+  margin-top: 33px;
+  z-index: 1;
+  }
+  
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+  background-color: $teal-green
+  }
+
+.nav > .dropdown.active > a:hover {
+  color: white;
+  }
+
+.nav-pills .open .dropdown-toggle {
+  background-color: $subdued-red;
+  }
+
+.nav-pills .dropdown-toggle:hover .caret {
+  border-top-color: white;
+  border-bottom-color: white;
+  }
+   
 /*==================================================
  * PRODUCTS AND SEARCH AND USER PROFILE
  * ===============================================*/
@@ -342,11 +671,11 @@ ul.child-list {
   height: 90px;
   float: left;
   padding: 5px;
-  background-color: $background-blue;
-  border-top:0px;
+  /*border-top:0px;
   border-right:10px solid #fff;
   border-bottom:10px solid #fff;
-  border-left: 0px;
+  border-left: 0px;*/
+  margin: 0 10px 10px 0;
   }
 
 li.children-following img {
@@ -379,32 +708,24 @@ li.purchased-gift-search-list {
   
 .socialmedia-overlap {
   visibility: visible;
-  position: absolute;
-  z-index: 10000;
+  z-index: -1;
   filter: alpha(opacity=60);
   -moz-opacity: 0.6;
   -khtml-opacity: 0.6;
   opacity: 0.6;
+  list-style: none;
+  display: block;
+  margin-left: 5px;
   }
   
-.fb {
-  left: 736px;
-  top: -33px;
+.socialmedia-overlap li {
+  margin-bottom: 0px;
+  display: inline;
+  vertical-align: center;
   }
-  
-.twitter {
-  left: 796px;
-  top: -33px;
-  }
-  
-.pinterest {
-  left: 855px;
-  top: -25px;
-  }
-  
-.rss {
-  left: 895px;
-  top: -25px;
+
+ul.socialmedia-overlap {
+  margin: 1px 0 0 25px;
   }
 
 
@@ -478,10 +799,6 @@ li.purchased-gift-search-list {
   border-left:20px $bubboli-red;
   font-size: 70px;
   margin: 0;
-  }
-
-hr {
-  border-bottom: 1px dashed $background-blue;
   }
   
 pre {
@@ -573,12 +890,6 @@ img.float-right {
 .tab-content-line {
   border-bottom: 1px solid $subdued-red
   }  
-
-.nav-pills > .active > a, .nav-pills > .active > a:hover {
-  background-color: $subdued-red;
-  color: #FFFFFF;
-  font-weight: bold;
-  }
 
 /*==================================================
  * FOR BUY GIFT BOX

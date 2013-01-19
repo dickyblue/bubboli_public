@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="navbar-fixed-top">  
+    <div class="container">
+         <% if current_user %>
+           <%= link_to bubboli, root_path %>
+         <% else %>
+           <%= link_to bubboli, root_path %>
+         <% end %>
+       <ul class="nav nav-pills pull-right">    
+         <li class="<%= 'active' if params[:controller] == 'gifts' %>"><%= link_to "SHOP", gifts_path %></li>
+         <li class="<%= 'active' if params[:controller] == 'blogs' %>"><%= link_to "BLOG", blogs_path %></li>
+         <li class="<%= 'active' if params[:controller] == 'pages' %>"><%= link_to "ABOUT", about_path %></li>           
+         <% if signed_in? %>
+           <li id="fat-menu" class="dropdown <%= 'active' if params[:controller] == 'users' %> <%= 'active' if params[:controller] == 'relationships' %>">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               ACCOUNT <b class="caret"></b>
+             </a>
+             <ul class="dropdown-menu">
+               <li><%= current_user.admin == true ? link_to("ADMIN PANEL", admin_path) : link_to("PROFILE", current_user )%></li>
+               <li><%= link_to "SETTINGS", edit_user_path(current_user) %></li>
+               <li class="divider"></li>
+               <li>
+                 <%= link_to "SIGN OUT", sign_out_path, method: "delete" %>
+               </li>
+             </ul>
+           </li>
+         <% else %>
+           <li class="<%= 'active' if params[:controller] == 'sessions' %>"><%= link_to "SIGN IN", sign_in_path %></li>
+         <% end %>
+       </ul><br>
+       <span class="red-font pull-right"><%= "Welcome back, #{current_user.first_name}" if current_user %></span>
+    </div>     

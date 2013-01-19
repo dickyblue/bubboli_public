@@ -3,6 +3,10 @@ module ApplicationHelper
   def bubboli
     bubboli = image_tag("BubboliLogo.png", :att => "Bubboli")
   end
+  
+  def elephant
+    elephant = image_tag("elephant.jpg", :att => "Bubboli")
+  end
 
   def facebook
     facebook = image_tag("facebook.jpg", :att => "Facebook")

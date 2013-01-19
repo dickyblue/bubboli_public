@@ -1,4 +1,6 @@
 class GiftsController < ApplicationController
+  
+  layout 'gift'
 
   before_filter :authenticate, :except => [:index, :favorite, :brands, :show]
   

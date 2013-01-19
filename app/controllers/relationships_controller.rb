@@ -41,7 +41,7 @@ class RelationshipsController < ApplicationController
     current_user.unfollow!(@child)
     redirect_to current_user
   end
-  
+    
   private
   
   def correct_user
