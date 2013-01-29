@@ -1,6 +1,7 @@
-
+<div class="row">
 <span class="float-right">
   <%= simple_form_for @search, :url => child_gift_accessions_path(@child) do |f| %>
     <%= f.input :name_contains, :placeholder => "Search / Add Purchased Gifts", :label => false, :required => false %>
   <% end %>
 </span>
+</div>

@@ -2,12 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+#search and add gifts to purchase list js
 jQuery.fn.submitOnCheck = ->
   @find('input[type=submit]').remove()
   @find('input[type=checkbox]').click ->
     $(this).parent('form').submit()
   this
  
+ 
+#autocomplete in finding gifts 
 jQuery ->
   $('.edit_gift_accession').submitOnCheck()
 

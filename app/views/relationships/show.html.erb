@@ -14,85 +14,64 @@ $('#gift_search').hide();
 });
 </script>
 
-<div class="container">
-
-<%= link_to "<<< Back To My Profile", user_path(current_user)%><br><br>
-  <div class="row">
-
-    <div class="span3" > 
-      <div class="profile-well">
-        <%= image_tag(@child_images.first.image_url(:profile_pic)) if @child_images.first %>
-        <span style="font-size: 12px; font-weight: bold;"><%= @child.first_name %>, Child ID: <%= @child.id %></span><br>
-        Location: <span class="float-right"><%= @child.child_city%>, <%= @child.child_state%></span><br>
-        Mother: <span class="float-right"><%= @child.child_mother%></span><br>
-        Father: <span class="float-right"><%= @child.child_father%></span><br>
-        Birthday: <span class="float-right"><%= @child.birth_date.strftime("%b. %d")%></span><br>
-      </div>
-  
-      <br>
-      
-      <div class="preference-well">
-        <span class="relationship-header">Gift Options <%= @child.first_name %></span>
-        <%= simple_form_for @relationship, :html => {:class => "form-inline"} do |f| %>
-          <%= f.association :relation_type, :as => :collection_select, :input_html => {:class => "input-small"}, :label => "Relation To Child"%>
-          <%= f.association :gift_categories, :as => :check_boxes, :item_wrapper_class => "span2" %>
-          <%= f.association :gift_price_ranges, :as => :check_boxes, :item_wrapper_class => "span2" %>
-          <div class="pull-left"><%= f.button :submit, :class => "primary" %></div>
-        <% end %>
-      </div>
-    
-    </div>
 
 
-    <div class="span9">
-      <div class="op3-title op3-stitched-shadow">
-        <%= link_to "Photos of  #{@child.first_name}", child_child_images_path(@child) %>
-      </div>
+<i class="icon-user"></i> <span class="red-link"><%= link_to "Back To My Profile", user_path(current_user)%></span><br><br>
 
-      <div class="test-stitch"><br>
-      <br>
-      <br>        
-        <div>
-          <% if @child_images %>
-          <% @five_photos.each do |f| %>
-            <%= link_to image_tag(f.image_url(:thumb)), "#" %>
-          <% end %>
-          <% else %>
-          <% end %>
-        </div>
-      </div>
-      
-      <br>
-
-      <div class="op3-title op3-stitched-shadow">
-        Recommended Gifts for <%= @child.first_name %>
-      </div>
-
-      <div class="test-stitch"><br>
-        <br>
-        <br>        
-
-        <%= render :partial => 'recommended_gifts'%>
-      </div>  
-      
-
-
-      <div class="op3-title op3-stitched-shadow">
-        Gifts Already Purchased for <%= @child.first_name %>
-      </div>
-
-      <div class="test-stitch"><br></div>
-      
-        <span class="pull-right red-link"><i class="icon-search"></i> <%= link_to "Search / Add Gifts to Purchased List", '#', :id => "gift_search_link", :remote => true %></span>
-      
-        <%= render :partial => 'shared/purchased_gift_search'%>      
-        
-        <%= render :partial => 'approve_purchased_gifts'%>  
-      
-        <%= render :partial => 'purchased_gifts'%>  
-      
-    </div>
-
-  </div>
-
+<div class="op3-title op3-stitched-shadow">
+  <%= link_to "Photos of  #{@child.first_name}", child_child_images_path(@child) %>
 </div>
+
+
+<div class="test-stitch"><br>
+  
+  <ul>
+    <li class="inline pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add Photos", child_child_images_path(@child) %></li>
+    <li class="inline pull-right red-link"><i class="icon-list"></i> <%= link_to "View All Photos", child_child_images_path(@child) %></li>
+  </ul>  
+
+<br>
+<br>        
+  <div>
+    <% if @child_images %>
+    <% @five_photos.each do |f| %>
+      <%= link_to image_tag(f.image_url(:thumb)), "#" %>
+    <% end %>
+    <% else %>
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<div class="op3-title op3-stitched-shadow">
+  Recommended Gifts for <%= @child.first_name %>
+</div>
+
+<div class="test-stitch"><br>
+  <br>
+  <br>        
+  
+  
+  <%= render :partial => 'recommended_gifts'%>
+</div>
+<br>
+
+
+<div class="op3-title op3-stitched-shadow">
+  Gifts Already Purchased for <%= @child.first_name %>
+</div>
+
+<div class="test-stitch"><br></div>
+
+  <span class="pull-right red-link"><i class="icon-search"></i> <%= link_to "Search / Add Gifts to Purchased List", '#', :id => "gift_search_link", :remote => true %></span>
+
+  <%= render :partial => 'shared/purchased_gift_search'%>      
+  
+  <%= render :partial => 'approve_purchased_gifts'%><br>  
+
+  <%= render :partial => 'purchased_gifts'%>  
+</div>
+</div>
+
+

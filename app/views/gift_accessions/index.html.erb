@@ -2,16 +2,23 @@
   
   <%= link_to "<<< Back to #{@child.first_name}", relationship_path(@relationship) %><br>
 
-  <span class="relationship-header">Add to Purchased Gifts</span>
+  <div class="op3-title op3-stitched-shadow">
+    Add to Purchased Gifts
+  </div>
+  
+  <div class="test-stitch"><br></div>
 
   <%= render :partial => 'shared/purchased_gift_search'%>
   
   <%= render :partial => 'search_purchased_gift_results'%>
   
   <br>
-  <span class="relationship-header">Gifts Already Purchased for <%= @child.first_name %></span>
-  <hr/>
-  
+  <div class="op3-title op3-stitched-shadow">
+    Gifts Already Purchased for <%= @child.first_name %>
+  </div>
+
+  <div class="test-stitch"><br></div>
+
   <%= render :partial => 'relationships/purchased_gifts'%>  
   
 </div>

@@ -1,6 +1,7 @@
 class RelationshipsController < ApplicationController
 
   include SessionsHelper
+  layout 'relationship'
   
   before_filter :correct_user
   

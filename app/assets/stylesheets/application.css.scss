@@ -40,6 +40,10 @@ $teal-green3:         #5FC5C1;
    background-image: url(/assets/glyphicons-halflings.png)
  }
 
+.blue {
+  background-color: $background-blue;
+  margin-left: 20px;
+  }
 
 /*OPTION ONE*/
 
@@ -113,7 +117,7 @@ hr.gray-dotted {
 .test-stitch {
   position: relative;
   background: url(gray_dotted_line.png) repeat-x scroll 0 0 transparent;
-  z-index: 0;
+  z-index: -1000;
   top: -15px;
   color: white;
   } 
@@ -257,7 +261,14 @@ hr.profile {
   
 .btn-spacing {
   margin-top: 3px;
-  }  
+  } 
+
+.btn-fixed-bottom {
+  position: relative;
+  top: 0;
+  margin-top: -120px;
+  margin-left: 5px;
+  } 
 
 .white-font, .white-link a {
   color: #FFFFFF;
@@ -300,6 +311,7 @@ select {
   height: 20px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
   padding: 5px;
   text-align: center;
   }
@@ -312,6 +324,11 @@ select {
 
 .red-font {
   color: $bubboli-red;
+  }
+
+li.inline  {
+  display: inline;
+  margin-left: 10px;
   }
 
 /*==================================================
@@ -543,20 +560,34 @@ li.prod-list {
   -moz-border-radius: 24px;
   }
   
-.profile-well, .preference-well {
+.profile-well, .preference-well, .accordion-group {
   background: none repeat scroll 0 0 #FFFFFF;
   border-radius: 5px 5px 5px 5px;
   box-shadow: 3px 3px 10px #DDDDDD, -3px -3px 10px #DDDDDD;
   color: #333333;
-
   padding: 10px;
   margin-bottom: 10px;
   text-align: left;
-  font-size: 11px;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   } 
+
+.profile-well, .preference-well {
+  font-size: 11px;
+  }   
+
+.accordion-inner {
+  border-top: 2px solid $teal-green;
+  }
+
+.accordion-toggle {
+  background: url(blue_pattern_background.gif) repeat scroll 0 0 transparent;
+  }
+  
+/*a.accordion-toggle {
+  color: white;
+  }*/  
   
 .btn-group > .btn-borderless {
   padding-top: 10px;
@@ -647,8 +678,8 @@ li.prod-list {
   line-height: 10px;
   }
   
-.no-gifts {
-  padding-top: 50px;
+.approve_gifts_title {
+  padding-top: 0px;
   padding-left: 20px;
   }
 
@@ -667,7 +698,7 @@ ul.child-list {
   width: 780px;  
   }
 
-.children-following {
+.children-following, .recommended-gifts, .add_to_purchased_gifts {
   height: 90px;
   float: left;
   padding: 5px;
@@ -678,25 +709,39 @@ ul.child-list {
   margin: 0 10px 10px 0;
   }
 
-li.children-following img {
+li.children-following img, li.recommended-gifts img, li.add_to_purchased_gifts img {
+  border: solid 1px #ccc;
   height: 90px;
   float: left;
-  padding-right: 5px;
+  padding: 4px;
+  margin: 3px 1px 3px 1px
   }
+
   
 li.child-list {
   float: left;
   width: 215px;
   } 
 
-li.purchased-gift-search-list {
-  float: left;
-  width: 291px;
-  }
-
 .static-left-side {
   position: fixed;
   }  
+
+
+
+
+/*==================================================
+ * CHILD PROFILE
+ * ===============================================*/
+  
+li.recommended-gifts, li.add_to_purchased_gifts {
+  float: left;
+  width: 210px;
+  }
+
+.add-margin {
+  margin-left: 20px;
+  }    
 
 /*==================================================
  * SOCIAL MEDIA ICONS
@@ -929,8 +974,9 @@ img.float-right {
   height: 280px;
   }  
   
-.related-gifts img, .thumbs img {
+.related-gifts img, .thumbs img, .approve_gifts_list img {
 	border: solid 1px #ccc;
+	background-color: white;
 	height: 90px;
 	width: 90px;
 	padding: 4px;
@@ -941,16 +987,23 @@ img.float-right {
 	border-color: #FF9900;
   }
 
-.related-gifts {
+.related-gifts, .approve_gifts_list {
   float: left;
-  padding: 5px;
   width: 130px;
-  height: 145px;
   text-align: center;
   display: inline-block;
   position: relative;
   }
+  
+.related-gifts, {
+  height: 145px;
+  padding: 5px;
+  }  
  
+.approve_gifts_list, {
+  height: 186px;
+  padding: 15px;
+  } 
  
 /*==================================================
  * FOR PRODUCT STATS IN SHOW PAGE

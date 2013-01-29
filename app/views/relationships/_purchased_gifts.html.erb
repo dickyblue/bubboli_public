@@ -1,4 +1,4 @@
-<h3>purchased gifts</h3>
+
 <div class="row" id="approved_gifts">
   <ul class="no-margin-or-bullet">
     <% if !@gift_purchased.empty? %>   
@@ -9,7 +9,7 @@
         </li>
       <% end %>
     <% else %>
-      <p class="no-gifts">Be the first to buy <%= @child.first_name %> a present!</p>
+      <p class="no-gifts add-margin">Be the first to buy <%= @child.first_name %> a present!</p>
     <% end %>
   </ul>
 
