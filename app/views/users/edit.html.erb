@@ -1,9 +1,10 @@
 <div class="span9">
   
-  <%= simple_form_for @user do |f| %>
+  <%= simple_form_for @user, :html => {:multipart => true} do |f| %>
   <div class="row">
 
     <div class="span4 form-stacked">
+      <%= f.input :image, :label => "Photo", :as => :file %>
       <%= f.input :first_name, :label => "First Name", :input_html => { :class => "input-xlarge" } %>
       <%= f.input :last_name, :label => "Last Name", :input_html => { :class => "input-xlarge" } %> 
       <%= f.input :email, :input_html => { :class => "input-xlarge" } %>

@@ -3,7 +3,7 @@ require 'digest'
 class User < ActiveRecord::Base
   
   attr_accessor   :password
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :address_city, :address_state
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :address_city, :address_state, :image
   attr_protected  :admin
   
   has_many :relationships
@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many  :gift_accessions
   has_many  :gifts, :through => :gift_accessions 
   has_many  :giftee, :through => :gift_accessions
+  
+  mount_uploader :image, UserImageUploader
   
   email_regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 

@@ -54,10 +54,13 @@
     
         <div class="span3 static-left-side" > 
           <div class="profile-well">
-          <%= current_user.first_name %>
+          <%= image_tag(@user.image_url(:profile_pic)) if @user.image? %>
           </div>
+          
+          <br>
       
           <div>      
+            Name: <%= current_user.first_name %><br>
             Location: <%= current_user.address_city if current_user %>, <%= current_user.address_state if current_user %>
           </div>  
         

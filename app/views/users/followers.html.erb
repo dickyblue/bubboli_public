@@ -2,7 +2,7 @@
 
 
 <div class="op3-title op3-stitched-shadow">
-  KIDS I AM FOLLOWING
+  MY KIDS' FOLLOWERS
 </div>
 
 <div class="test-stitch"><br></div>
@@ -10,9 +10,10 @@
 
 <div class="row">
   <ul class="child-list">
-    <% @following.each do |r| %>
+    <% @followers.each do |r| %>
     <li class="children-following child-list block">
-      <%= render(:partial => "relationship", :locals => {:r => r}) %>
+      <%= image_tag(r.image_url(:sm_thumb)) if r.image %>
+      <strong><%= r.first_name %></strong><br>
     </li>  
     <% end %>
   </ul>
