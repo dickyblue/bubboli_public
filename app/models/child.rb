@@ -67,4 +67,13 @@ class Child < ActiveRecord::Base
     relationships.where(:status => "Pending")
   end
   
+  def profile_picture
+    profile_picture = self.child_images.where(:profile => true).try(:first) || self.child_images.try(:first) 
+  end
+  
+  def parents
+    parents = self.relationships.where('relationship_type IN (1,2)')
+    parents.any? ? parents : nil
+  end
+  
 end

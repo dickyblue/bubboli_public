@@ -48,6 +48,7 @@ BubboliKids::Application.routes.draw do
   
   match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
   match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
+  match '/child_images/:id/set_as_profile_picture', :to => 'child_images#set_as_profile_picture', :as => :set_as_profile_picture
 
   match '/index', :to => 'pages#index', :as => :test_index_path
   

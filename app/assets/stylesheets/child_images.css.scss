@@ -1,3 +1,38 @@
 // Place all the styles related to the ChildImages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div.hover-div{
+  display:block;
+  position:relative;
+  margin-bottom:10px;
+  }
+
+div.hover-div:hover .hover-link{
+  display:block;
+  height: 22px;        
+  }
+
+div.hover-div:hover img{
+  opacity:0.8;        
+  }
+
+.hover-link{
+  display:none;
+  clear:both;
+  margin-top:-20px;
+  background: rgba(0,0,0,0.5);
+  color:white;
+  width: 100%;
+  bottom:0;
+  position:absolute;
+  z-index:2;
+  text-align: center;
+  vertical-align: middle;
+  }
+
+div.hover-link a {
+  color: white;
+  text-decoration: none;
+  }

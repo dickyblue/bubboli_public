@@ -11,8 +11,10 @@
     <ul class="photos-collage no-margin-or-bullet">
       <% @child_images.each do |f| %>
         <li>
-        <%= link_to image_tag(f.image_url(:thumb)), child_child_image_path(f.child, f), :id => "child_pics" %><br>
-        <span id="make_child_pf_pic"><%= link_to "Make Profile Picture", edit_child_child_image_path(f.child, f) %></span>
+          <div class="hover-div">
+            <%= image_tag(f.image_url(:thumb), :id => "child_pics") %><br>
+            <div class="hover-link"><%= link_to "Make Profile Picture", set_as_profile_picture_path(f) %></div>
+          </div>
         </li>
       <% end %>
     </ul>

@@ -54,7 +54,7 @@
     
         <div class="span3" > 
           <div class="profile-well">
-            <%= image_tag(@child_images.first.image_url(:profile_pic)) if @child_images.first %>
+            <%= image_tag(@child_images.first.child.profile_picture.image_url(:profile_pic)) if @child_images.first %>
             <span style="font-size: 12px; font-weight: bold;"><%= @child.first_name %>, Child ID: <%= @child.id %></span><br>
             Location: <span class="float-right"><%= @child.child_city%>, <%= @child.child_state%></span><br>
             Mother: <span class="float-right"><%= @child.child_mother%></span><br>
