@@ -80,9 +80,6 @@ class UsersController < ApplicationController
     @requests = current_user.my_kids_requests
   end
   
-  def requests
-  end
-  
   def thankyou
   end
 
