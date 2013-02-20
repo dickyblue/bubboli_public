@@ -20,8 +20,19 @@ class Invitation < ActiveRecord::Base
   
   def self.invitation_by_email(user)
     invitations = self.where(:recipient_email => [user.email, user.work_email])
+  end  
+    
+  def self.invited_children(user) 
+    invitations = invitation_by_email(user) 
     child_ids = invitations.pluck(:child_id)
     Child.where(:id => child_ids).group("first_name")
+  end
+  
+  def confirm_as_child(child)
+    relationships = self.child.relationships
+    relationships.each {|r| r.update_attribute :child_id, child.id }
+    self.child.destroy
+    self.destroy
   end
   
   private

@@ -2,7 +2,31 @@
 
 
 <div class="op3-title op3-stitched-shadow">
-  PENDING RELATIONSHIPS
+  ARE THESE YOUR KIDS
+</div>
+
+<div class="test-stitch"><br></div>
+
+  <div class="row">
+    <%= form_for :invitation, :multipart => true, :remote => true, :url => invitation_confirm_or_delete_url do |f| %>
+      <% @invitations.each do |r| %>
+        <ul class="child-list">
+          <li class="children-following child-list block">
+            <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.try(:child_images).try(:first) %>
+            <%= r.child.try(:first_name) %>
+            <%= f.hidden_field :id, :value => r.id %>
+            <%= select_tag 'child', options_from_collection_for_select(@confirmed_children, 'id', 'first_name'), :prompt => 'Confirm This Child As',
+                :onChange => "this.form.submit()" if @confirmed_children.any? %>    
+          </li>  
+        </ul>  
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+<div class="op3-title op3-stitched-shadow">
+  PENDING REQUESTS
 </div>
 
 <div class="test-stitch"><br></div>
@@ -11,8 +35,8 @@
     <ul class="child-list">
       <% @pending.each do |r| %>
       <li class="children-following child-list block">
-        <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.child_images.first %>
-        <%= r.child.first_name %>    
+        <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.try(:child_images).try(:first) %>
+        <%= r.child.try(:first_name) %>    
       </li>  
       <% end %>
     </ul>

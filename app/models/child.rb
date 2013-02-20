@@ -72,8 +72,12 @@ class Child < ActiveRecord::Base
   end
   
   def parents
-    parents = self.relationships.where('relationship_type IN (1,2)')
+    parents = self.relationships.where('relation_type_id IN (1,2)')
     parents.any? ? parents : nil
+  end
+  
+  def number_of_parents
+    self.parents.present? ? parents.count : 0
   end
   
 end

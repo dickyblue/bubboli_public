@@ -70,6 +70,9 @@ class UsersController < ApplicationController
   
   def pending
     @pending = current_user.pending
+    @invitations = Invitation.invitation_by_email(current_user)
+    @invited_children = Invitation.invited_children(current_user)
+    @confirmed_children = current_user.my_kids
   end
   
   def followers

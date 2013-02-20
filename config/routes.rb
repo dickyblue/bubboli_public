@@ -51,6 +51,7 @@ BubboliKids::Application.routes.draw do
   match '/child_images/:id/set_as_profile_picture', :to => 'child_images#set_as_profile_picture', :as => :set_as_profile_picture
 
   match '/index', :to => 'pages#index', :as => :test_index_path
+  match '/invitations/:id/confirm_or_delete', :to => 'invitations#confirm_or_delete', :as => :invitation_confirm_or_delete
   
   resources :blog, :controller => 'blogs'
   resources :gifts, :my_children, :relation_types, :relationships, :my_kids_relationships

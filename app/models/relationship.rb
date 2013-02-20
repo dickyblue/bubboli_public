@@ -16,10 +16,7 @@ class Relationship < ActiveRecord::Base
   before_save :change_rel_status
 
   def change_rel_status
-    if self.relation_type_id == 1
-      self.status = "Confirmed"
-      self.accepted_at = Time.now
-    elsif self.relation_type_id == 2
+    if self.relation_type_id == 1 && self.child.number_of_parents < 2
       self.status = "Confirmed"
       self.accepted_at = Time.now
     end
