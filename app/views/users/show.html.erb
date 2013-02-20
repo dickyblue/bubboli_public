@@ -30,18 +30,6 @@
 
   <div class="row">
     <ul class="child-list">
-      <% @find_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= image_tag(r.child_images.first.image_url(:sm_thumb)) if r.child_images.first %>
-        <strong><%= link_to r.first_name, relationship_path(r) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.birth_date.strftime("%b. %d")%></span><br>
-        
-        <%= link_to "Not My Child", r.invitations.first, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-
-    <ul class="child-list">
       <% @relationship_my_kids.each do |r| %>
       <li class="children-following child-list block">
         <%= render(:partial => 'child_list', :locals => {:r => r})%>
@@ -114,18 +102,6 @@ OPTION ONE<br>
 <br>
 
   <div class="row">
-    <ul class="child-list">
-      <% @find_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= image_tag(r.child_images.first.image_url(:sm_thumb)) if r.child_images.first %>
-        <strong><%= link_to r.first_name, relationship_path(r) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.birth_date.strftime("%b. %d")%></span><br>
-        
-        <%= link_to "Not My Child", r.invitations.first, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-
     <ul class="child-list">
       <% @relationship_my_kids.each do |r| %>
       <li class="children-following child-list block">
@@ -208,18 +184,6 @@ OPTION TWO
 <br>
 
   <div class="row">
-    <ul class="child-list">
-      <% @find_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= image_tag(r.child_images.first.image_url(:sm_thumb)) if r.child_images.first %>
-        <strong><%= link_to r.first_name, relationship_path(r) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.birth_date.strftime("%b. %d")%></span><br>
-      
-        <%= link_to "Not My Child", r.invitations.first, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-
     <ul class="child-list">
       <% @relationship_my_kids.each do |r| %>
       <li class="children-following child-list block">
@@ -304,18 +268,6 @@ OPTION THREE<br>
 
   <div class="row">
     <ul class="child-list">
-      <% @find_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= image_tag(r.child_images.first.image_url(:sm_thumb)) if r.child_images.first %>
-        <strong><%= link_to r.first_name, relationship_path(r) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.birth_date.strftime("%b. %d")%></span><br>
-
-        <%= link_to "Not My Child", r.invitations.first, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-
-    <ul class="child-list">
       <% @relationship_my_kids.each do |r| %>
       <li class="children-following child-list block">
         <%= render(:partial => 'child_list', :locals => {:r => r})%>
@@ -393,18 +345,6 @@ OPTION FOUR
   <div class="stitch-w-box"><br>
   <span class="pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add My Child", new_my_child_path %></span><br>  
     <div class="row">
-      <ul class="child-list">
-        <% @find_my_kids.each do |r| %>
-        <li class="children-following child-list block">
-          <%= image_tag(r.child_images.first.image_url(:sm_thumb)) if r.child_images.first %>
-          <strong><%= link_to r.first_name, relationship_path(r) %></strong><br>
-          <span style="color: #999999; font-size: 12px">Birthday: <%= r.birth_date.strftime("%b. %d")%></span><br>
-
-          <%= link_to "Not My Child", r.invitations.first, :method => :delete, :remote => "true", :class => "unfollow" %>
-        </li>  
-        <% end %>
-      </ul>
-
       <ul class="child-list">
         <% @relationship_my_kids.each do |r| %>
         <li class="children-following child-list block">
@@ -485,18 +425,6 @@ OPTION FIVE<br>
   <br>
 
   <div class="row">
-    <ul class="child-list">
-      <% @find_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= image_tag(r.child_images.first.image_url(:sm_thumb)) if r.child_images.first %>
-        <strong><%= link_to r.first_name, relationship_path(r) %></strong><br>
-        <span style="color: #999999; font-size: 12px">Birthday: <%= r.birth_date.strftime("%b. %d")%></span><br>
-
-        <%= link_to "Not My Child", r.invitations.first, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-
     <ul class="child-list">
       <% @relationship_my_kids.each do |r| %>
       <li class="children-following child-list block">

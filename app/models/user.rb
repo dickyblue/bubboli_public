@@ -111,6 +111,10 @@ class User < ActiveRecord::Base
   def my_kids_requests
     my_kids.collect(&:child_requests).flatten
   end
+  
+  def self.invitation_count(user)
+    Invitation.invitation_by_email(user).count
+  end
 
   def my_kids
     relationships.where(:relation_type_id => [1,2]).map {|p| p.child }   

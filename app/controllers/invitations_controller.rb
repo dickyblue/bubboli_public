@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
   
   def confirm_or_delete
     @invitation = Invitation.find(params[:invitation][:id])
-    @child = Child.find_by_id(params[:child]) if params[:child].present?
+    @child = Child.find_by_id params[:child] if params[:child].present?
     if @child
       @invitation.confirm_as_child(@child)
       flash[:success] = "Child confirmed"
@@ -18,7 +18,7 @@ class InvitationsController < ApplicationController
     else
       flash[:error] = "There was a problem with your selection.  Please try again."
     end
-    redirect_to pending_path
+    redirect_to requests_path
   end
 
 end
