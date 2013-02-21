@@ -25,13 +25,13 @@ class Invitation < ActiveRecord::Base
   def self.invited_children(user) 
     invitations = invitation_by_email(user) 
     child_ids = invitations.pluck(:child_id)
-    Child.where(:id => child_ids).group("first_name")
   end
   
-  def confirm_as_child(child)
+  def confirm_as_child(confirmed_child)
     relationships = self.child.relationships
-    relationships.each {|r| r.update_attribute :child_id, child.id }
-    self.child.destroy
+    relationships.each {|r| r.update_attribute :child_id, confirmed_child.id }
+    self.child.child_images.each {|i| i.update_attribute :child_id, confirmed_child.id} #moving all images to the new child record
+    self.child.delete #dont use destroy since we dont want to trigger the dependent#destroy on the Child class.
     self.destroy
   end
   
