@@ -6,7 +6,9 @@ class ChildrenController < ApplicationController
   
 
   def search_child
-    @search = Child.search(params[:search])
+    @search = Child.search params[:search]
+    @search_term = params[:search].values[0] if params[:search]
+    #@search = Child.search(by_email) | Child.search(by_work_email)
     @children = @search.where("relationships.relation_type_id" => [1,2])
     @user = @search.where("relationships.relation_type_id" => 3)
   end
@@ -19,9 +21,9 @@ class ChildrenController < ApplicationController
   
   def create
     @child = Child.new(params[:child])
-    @child.invitations.last.sender = current_user
     if @child.save
-      @child.relationships.last.update_attributes(:user_id => current_user.id)
+      @child.relationships.create!(:user_id => current_user.id, :relation_type_id => params[:child][:relation_type_ids].to_i)
+      @child.invitations.create!(:sender => current_user, :recipient_email => params[:invitee])
       redirect_to current_user
     else
       flash[:error] = "User is already registered, but does not have children of their own."

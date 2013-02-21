@@ -26,7 +26,7 @@ $('#gift_search').hide();
 <div class="test-stitch"><br>
   
   <ul>
-    <li class="inline pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add Photos", child_child_images_path(@child) %></li>
+    <% if current_user.is_parent_of?(@child)%><li class="inline pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add Photos", child_child_images_path(@child) %></li><% else %><% end %>
     <li class="inline pull-right red-link"><i class="icon-list"></i> <%= link_to "View All Photos", child_child_images_path(@child) %></li>
   </ul>  
 
