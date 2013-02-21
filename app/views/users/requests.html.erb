@@ -15,7 +15,7 @@
             <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.try(:child_images).try(:first) %>
             <%= r.child.try(:first_name) %>
             <%= r.sender.try(:first_name)%>
-            <%= f.hidden_field :id, :value => r.id %>
+            <%= f.hidden_field :id, :value => r.id %> <% #FIXME remove hidden field at some point %>
             <%= select_tag 'child', options_from_collection_for_select(@confirmed_children, 'id', 'first_name'), :prompt => 'Confirm This Child As', :onChange=>"this.form.submit()" if @confirmed_children.any? %>    
           </li>  
         </ul>  
