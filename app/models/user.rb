@@ -120,9 +120,8 @@ class User < ActiveRecord::Base
     relationships.where(:relation_type_id => [1,2]).map {|p| p.child }   
   end
   
-  def is_parent?(child)
-    child_relationship = self.relationships.where('child_id = ? AND relation_type_id =?', child.id, 1)
-    return true if child_relationship
+  def is_parent_of?(child)
+    self.my_kids.include?(child)
   end
     
   private
