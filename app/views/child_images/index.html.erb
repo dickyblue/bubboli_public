@@ -13,10 +13,10 @@
     <ul class="photos-collage no-margin-or-bullet">
       <% @child_images.select(&:id).each do |f| %>
         <li>
-          <%= "class=hover-div" if current_user.is_parent_of?(f.child) %>
+          <div <%= "class=hover-div" if current_user.is_parent_of?(f.child) %> >
             <%= image_tag(f.image_url(:thumb), :id => "child_pics") %><br>
             <div class="hover-link"><%= link_to "Make Profile Picture", set_as_profile_picture_path(f) if current_user.is_parent_of?(f.child) %></div>
-          
+          </div>
         </li>
       <% end %>
     </ul>

@@ -3,4 +3,5 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#new_child_image').fileupload()
+  $('#new_child_image').fileupload
+    dataType: "script"
