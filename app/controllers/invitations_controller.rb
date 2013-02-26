@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
     if @child
       @invitation.confirm_as_child(@child)
       flash[:success] = "Child confirmed"
-    elsif params[:child] == -1
+    elsif params[:child] == 'delete'
       @invitation.destroy
       flash[:success] = "Request deleted"
     else
