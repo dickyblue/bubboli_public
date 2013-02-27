@@ -1,238 +1,8 @@
-<span class="relationship-header"><%= elephant %> Upcoming Birthdays</span>
-<br>
-<br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationships_by_birth_date.each do |r| %>    
-        <% if (0..31).include?(r.child.birthday_days)%>      
-        <li class="children-following child-list block">
-          <%= render(:partial => 'child_list', :locals => {:r => r})%>
-          <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
-          <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
-            <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
-          <% end %>
-        <% else %>
-        <% end %>
-      <% end %>
-
-    </ul>
-  </div>
-    
-<br>
-<br>
-
-<div class="stitched stitched-shadow">
-<span class="relationship-header"><%= elephant %> My Kids</span>
-<span class="pull-right"%><%= link_to "Add My Child", new_my_child_path %></span>
-<br>
-<br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationship_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= render(:partial => 'child_list', :locals => {:r => r})%>
-      </li>  
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-
-<div class="stitched-title stitched-shadow">
-  CHILDREN I AM FOLLOWING
-</div>  <br>
-
-<div class="stitched stitched-shadow">
-<span class="pull-right red-link"><%= link_to "Add A New Child", search_child_path %></span>
-
-<br>
-<br>
-
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationships_by_name.each do |r| %>
-      <li class="children-following child-list block">
-        <%= render(:partial => 'child_list', :locals => {:r => r})%>
-        <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
-        <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-  </div>
-  
-</div>
-  
-TESTING BEYOND THIS POINT<br><br>
-
-
-
-
-OPTION ONE<br>  
-<span class="relationship-header"><%= elephant %> Upcoming Birthdays</span>
-<br>
-<br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationships_by_birth_date.each do |r| %>    
-        <% if (0..31).include?(r.child.birthday_days)%>      
-        <li class="children-following child-list block">
-          <%= render(:partial => 'child_list', :locals => {:r => r})%>
-          <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
-          <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
-            <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
-          <% end %>
-        <% else %>
-        <% end %>
-      <% end %>
-
-    </ul>
-  </div>
-    
-<br>
-<hr class="gray-dotted">
-<br>
-    
-<span class="relationship-header"><%= elephant %> My Kids</span>
-<span class="pull-right red-link"><%= link_to "Add My Child", new_my_child_path %></span>
-<br>
-<br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationship_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= render(:partial => 'child_list', :locals => {:r => r})%>
-      </li>  
-      <% end %>
-    </ul>
-  </div>
-
-<br>
-<hr class="gray-dotted">
-
-<br>
-
-<span class="relationship-header"><%= elephant %> Kids I Am Following</span>
-<span class="pull-right red-link"><%= link_to "Add A New Child", search_child_path %></span>
-
-<br>
-<br>
-
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationships_by_name.each do |r| %>
-      <li class="children-following child-list block">
-        <%= render(:partial => 'child_list', :locals => {:r => r})%>
-        <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
-        <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-  </div>
-
-
-<br>
-<br>
-<br>
-<br>
-
-
-OPTION TWO
-
-<div class="stitched-title stitched-shadow">
-  UPCOMING BIRTHDAYS
-</div>  <br>
-
-<div class="stitched stitched-shadow">
-
-<br>
-<br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationships_by_birth_date.each do |r| %>    
-        <% if (0..31).include?(r.child.birthday_days)%>      
-        <li class="children-following child-list block">
-          <%= render(:partial => 'child_list', :locals => {:r => r})%>
-          <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
-          <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
-            <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
-          <% end %>
-        <% else %>
-        <% end %>
-      <% end %>
-
-    </ul>
-  </div>
-</div>
-
-
-
-<div class="stitched-title stitched-shadow">
-  MY CHILDREN
-</div>  <br>
-
-<div class="stitched stitched-shadow">
-<span class="pull-right red-link"><%= link_to "Add My Child", new_my_child_path %></span>
-
-<br>
-<br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationship_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= render(:partial => 'child_list', :locals => {:r => r})%>
-      </li>  
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-
-
-<div class="stitched-title stitched-shadow">
-  CHILDREN I AM FOLLOWING
-</div>  <br>
-
-<div class="stitched stitched-shadow">
-<span class="pull-right red-link"><%= link_to "Add A New Child", search_child_path %></span>
-
-<br>
-<br>
-  
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationships_by_name.each do |r| %>
-      <li class="children-following child-list block">
-        <%= render(:partial => 'child_list', :locals => {:r => r})%>
-        <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
-        <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
-      </li>  
-      <% end %>
-    </ul>
-  </div>
-  
-</div>
-
-<br>
-<br>
-<br>
-
-
-OPTION THREE<br>
-
 <div class="op3-title op3-stitched-shadow">
   UPCOMING BIRTHDAYS
 </div>
 
-<div class="test-stitch"><br>
+<div class="test-stitch"><br></div>
 
   <br>
   <br>
@@ -248,20 +18,21 @@ OPTION THREE<br>
             <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
           <% end %>
         <% else %>
+        You don't have any upcoming birthdays.
         <% end %>
       <% end %>
 
     </ul>
   </div>
-</div>
+
 <br>
 
 <div class="op3-title op3-stitched-shadow">
   MY CHILDREN
 </div>
 
-<div class="test-stitch"><br>
-  <span class="pull-right red-link"><%= link_to "Add My Child", new_my_child_path %></span>
+<div class="test-stitch"><br></div>  
+  <span class="pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add My Child", new_my_child_path %></span>
 
   <br>
   <br>
@@ -275,7 +46,7 @@ OPTION THREE<br>
       <% end %>
     </ul>
   </div>
-</div>  
+
 <br>
 
 
@@ -283,7 +54,7 @@ OPTION THREE<br>
   CHILDREN I AM FOLLOWING
 </div>
 
-<div class="test-stitch"><br>
+<div class="test-stitch"><br></div>  
   <span class="pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add A New Child", search_child_path %></span>
 
   <br>
@@ -301,169 +72,10 @@ OPTION THREE<br>
         <% end %>
       </ul>
     </div>
-</div>  
+
 
 
 <br>
 <br>
 <br>
 
-OPTION FOUR
-<div>
-  <div class="op4-title op4-stitched-shadow">
-    MY CHILDREN
-  </div>
-  
-  <div class="stitch-w-box"><br><br>
-    <div class="row">
-      <ul class="child-list">
-        <% @relationships_by_birth_date.each do |r| %>    
-          <% if (0..31).include?(r.child.birthday_days)%>      
-          <li class="children-following child-list block">
-            <%= render(:partial => 'child_list', :locals => {:r => r})%>
-            <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
-            <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
-              <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
-            <% end %>
-          <% else %>
-          <% end %>
-        <% end %>
-
-      </ul>
-    </div>
-  </div>
-</div>  
-<br>
-<br>
-
-
-<div>
-  <div class="op4-title op4-stitched-shadow">
-    MY CHILDREN
-  </div>
-  
-  <div class="stitch-w-box"><br>
-  <span class="pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add My Child", new_my_child_path %></span><br>  
-    <div class="row">
-      <ul class="child-list">
-        <% @relationship_my_kids.each do |r| %>
-        <li class="children-following child-list block">
-          <%= render(:partial => 'child_list', :locals => {:r => r})%>
-        </li>  
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-<br>
-<br>
-
-
-<div>
-  <div class="op4-title op4-stitched-shadow">
-    CHILDREN I AM FOLLOWING
-  </div>
-  
-  <div class="stitch-w-box"><br>
-  <span class="pull-right red-link"><%= link_to "Add A New Child", search_child_path %></span><br>
-    <div class="row">
-      <ul class="child-list">
-        <% @relationships_by_name.each do |r| %>
-        <li class="children-following child-list block">
-          <%= render(:partial => 'child_list', :locals => {:r => r})%>
-          <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
-          <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
-        </li>  
-        <% end %>
-      </ul>
-    </div>
-  </div>  
-</div> 
-
-<br>
-<br>
-
-
-OPTION FIVE<br>  
-
-<div class="op5-title upcoming-birthdays">
-  <%= elephant %> UPCOMING BIRTHDAYS
-</div>
-
-<div class="test-stitch"><br>
-
-  <br>
-  <br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationships_by_birth_date.each do |r| %>    
-        <% if (0..31).include?(r.child.birthday_days)%>      
-        <li class="children-following child-list block">
-          <%= render(:partial => 'child_list', :locals => {:r => r})%>
-          <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
-          <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
-            <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
-          <% end %>
-        <% else %>
-        <% end %>
-      <% end %>
-
-    </ul>
-  </div>
-</div>
-
-
-<div class="op5-title my-children">
-  <%= elephant %> MY CHILDREN
-</div>
-
-<div class="test-stitch"><br>
-  <span class="pull-right red-link"><%= link_to "Add My Child", new_my_child_path %></span>
-
-  <br>
-  <br>
-
-  <div class="row">
-    <ul class="child-list">
-      <% @relationship_my_kids.each do |r| %>
-      <li class="children-following child-list block">
-        <%= render(:partial => 'child_list', :locals => {:r => r})%>
-      </li>  
-      <% end %>
-    </ul>
-  </div>
-</div>  
-<br>
-
-
-<div class="op5-title all-children">
-  <%= elephant %> CHILDREN I AM FOLLOWING
-</div>
-
-<div class="test-stitch"><br>
-  <span class="pull-right red-link"><%= link_to "Add A New Child", search_child_path %></span>
-
-  <br>
-  <br>
-
-
-    <div class="row">
-      <ul class="child-list">
-        <% @relationships_by_name.each do |r| %>
-        <li class="children-following child-list block">
-          <%= render(:partial => 'child_list', :locals => {:r => r})%>
-          <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
-          <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
-        </li>  
-        <% end %>
-      </ul>
-    </div>
-</div>  
-
-
-
-
-
-  
-</div>  
