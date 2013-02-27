@@ -293,6 +293,10 @@ select {
   margin-bottom: 6px;
 }
 
+.input-110 { 
+  width: 110px 
+  }
+
 .image-placeholder {
   border: 1px solid $lightest-gray;
   height: 90px;
@@ -697,7 +701,6 @@ ul.child-list {
   }
 
 .children-following, .recommended-gifts, .add_to_purchased_gifts {
-  height: 90px;
   float: left;
   padding: 5px;
   /*border-top:0px;
@@ -705,6 +708,14 @@ ul.child-list {
   border-bottom:10px solid #fff;
   border-left: 0px;*/
   margin: 0 10px 10px 0;
+  }
+
+.children-following {
+  height: 120px;
+  }
+
+.recommended-gifts, .add_to_purchased_gifts {
+  height: 90px;
   }
 
 li.children-following img, li.recommended-gifts img, li.add_to_purchased_gifts img {
