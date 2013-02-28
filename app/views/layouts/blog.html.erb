@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
+  
   
 <% # Adding google analytics below %>  
   <script type="text/javascript">
@@ -23,40 +25,43 @@
   </script>
     
 </head>
+
 <body>
-  
+
+<div class="wrapper">    
 <%= render partial: "layouts/header" %>     
       
-        <div class="container">
-          <hr class="subnav-top">
+    <div class="container">
+      <hr class="subnav-top">
 
-          <ul class="sub-nav pull-left">    
-            <li><%= link_to "NEWEST", '#' %></li>
-            <li><%= link_to "BUBBOLI FAVORITES", '#' %></li>
-            <li><%= link_to "BABY SHOWERS", '#' %></li>
-          </ul>
-          
-          <%= render partial: "layouts/subnav" %>
-          
-          <hr class="subnav-bottom">
-
-        </div>
+      <ul class="sub-nav pull-left">    
+        <li><%= link_to "NEWEST", '#' %></li>
+        <li><%= link_to "BUBBOLI FAVORITES", '#' %></li>
+        <li><%= link_to "BABY SHOWERS", '#' %></li>
+      </ul>
+      
+      <%= render partial: "layouts/subnav" %>
+      
+      <hr class="subnav-bottom">
     </div>
+  </div><%# div from the header partial %>
     
-
-
-    <%= yield %>
-
-    <div class="push"></div>
+  <div class="proper-content">        
+    <%= render partial: "shared/flash_messages", flash: flash %> <br>
+    <div class="container">  
+      
+      <%= yield %>
     
-  </div>  
-</body>
+    </div>  
+  </div>
+  <div class="push"></div>  
+</div>
 
-<div>
+
   <footer>
     <br>
     <%= render partial: "layouts/footer" %>
   </footer>
-</div>
-
+  
+</body>
 </html>

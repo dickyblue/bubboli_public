@@ -26,29 +26,30 @@
   
 </head>
 <body>
-  
+  <div class="wrapper">  
     <%= render partial: "layouts/header" %>
     
     
     
-        </div>
-    </div>
-    
-    <%= render partial: "shared/flash_messages", flash: flash %> <br>
+    </div><%# div from the header partial %>
 
-    <%= yield %>
-    
-    <div class="push"></div>
+    <div class="proper-content">        
+      <div class="container">
+            
+        <%= render partial: "shared/flash_messages", flash: flash %> <br>
 
+        <%= yield %>
+      </div>
+    </div>  
   </div>
 </body>
 
 
-<div>
+
   <footer>
     <br>
     <%= render partial: "layouts/footer" %>
   </footer>
-</div>
+
 
 </html>

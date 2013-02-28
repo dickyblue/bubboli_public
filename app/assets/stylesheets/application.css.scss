@@ -189,10 +189,14 @@ $teal-green3:         #5FC5C1;
  * OVERALL SITE
  * ===============================================*/
 .wrapper {
-  /*min-height: 100%;*/
-  /*height: auto !important;*/
-  /*height: 100%;*/
-  /*margin: 0 auto -70px;*/
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -101px;
+  }
+  
+.wrapper > .container {
+  padding-top: 0px;
   }
 
 html {
@@ -216,13 +220,17 @@ html {
 	}	
   	
 body {
-  padding-top: 155px;
-  /*padding-bottom: 70px;
-  height: 100%;*/
+  /*padding-bottom: 70px;*/
+  height: 100%;
   font-family: 'LatoRegular';
   /*background: url(background_image.png) repeat scroll 0 0;
   background: url(footer_pattern.png) repeat scroll 0 0 transparent;*/
   }
+
+.proper-content {
+  padding-top: 155px; 
+  position: relative; 
+  }  
 
 p {
   line-height: 150%;
@@ -458,7 +466,7 @@ hr.navline {
   }
 
 .push {
-  height: 70px
+  height: 101px
   }
 
 footer, {

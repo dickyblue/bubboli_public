@@ -26,7 +26,7 @@
   
 </head>
 <body>
-  
+<div class="wrapper">    
 <%= render partial: "layouts/header" %> 
          
         <div class="container">
@@ -43,23 +43,28 @@
           <hr class="subnav-bottom">
 
         </div>
-    </div>
+    </div><%# div from the header partial %>
     
-    <%= render partial: "shared/flash_messages", flash: flash %> <br>
+<div class="proper-content">    
+<%= render partial: "shared/flash_messages", flash: flash %> <br>
+  
+  <div class="container">
 
     <%= yield %>
-    
-    <div class="push"></div>
-
   </div>
-</body>
+  <div class="push"></div>  
+  </div>
+    
+
+  
 
 
-<div>
+
+
   <footer>
     <br>
     <%= render partial: "layouts/footer" %>
   </footer>
-</div>
 
+</body>
 </html>

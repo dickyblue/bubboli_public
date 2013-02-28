@@ -25,45 +25,42 @@
   </script>
   
 </head>
+
 <body>
   
-<%= render partial: "layouts/header" %>     
+<div class="wrapper">  
+<%= render partial: "layouts/header" %>
       
-        <div class="container">
-          <hr class="subnav-top">
+    <div class="container">
+      <hr class="subnav-top">
 
-          <ul class="sub-nav pull-left">    
-            <li><%= link_to "NEWLY ADDED", '#' %></li>
-            <li><%= link_to "BUBBOLI FAVORITES", favorite_gift_path %></li>
-            <li><%= link_to "BABY SHOWERS", '#' %></li>
-          </ul>
-      
-          <%= render partial: "layouts/subnav" %>
-      
-          <hr class="subnav-bottom">
-
-        </div>
+      <ul class="sub-nav pull-left">    
+        <li><%= link_to "NEWLY ADDED", '#' %></li>
+        <li><%= link_to "BUBBOLI FAVORITES", favorite_gift_path %></li>
+        <li><%= link_to "BABY SHOWERS", '#' %></li>
+      </ul>
+  
+      <%= render partial: "layouts/subnav" %>
+  
+      <hr class="subnav-bottom">
     </div>
-    
-    
-    
-    
-    
-    <%= render partial: "shared/flash_messages", flash: flash %> <br>
+  </div><%# div from the header partial %>
 
-    <%= yield %>
-    
-    <div class="push"></div>
+  <div class="proper-content">        
+    <div class="container">  
+      <%= render partial: "shared/flash_messages", flash: flash %> <br>
 
+      <%= yield %>
+    
+    </div>
   </div>
-</body>
+  <div class="push"></div>
+</div>
 
 
-<div>
   <footer>
     <br>
     <%= render partial: "layouts/footer" %>
   </footer>
-</div>
-
+</body>
 </html>
