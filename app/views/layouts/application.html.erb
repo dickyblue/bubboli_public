@@ -29,8 +29,6 @@
   <div class="wrapper">  
     <%= render partial: "layouts/header" %>
     
-    
-    
     </div><%# div from the header partial %>
 
     <div class="proper-content">        
@@ -41,8 +39,9 @@
         <%= yield %>
       </div>
     </div>  
+  
+  <div class="push"></div>
   </div>
-</body>
 
 
 
@@ -51,5 +50,5 @@
     <%= render partial: "layouts/footer" %>
   </footer>
 
-
+</body>
 </html>
