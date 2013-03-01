@@ -13,7 +13,7 @@
           <% else %>
             <%= form_for([@gift_accession.giftee, @gift_accession]) do |f| %>
               <%= f.hidden_field :gift_id, :value => gift.id %>
-              <%= f.submit "Add to purchased gifts", class: "btn-mini btn-success btn-spacing" %>
+              <%= f.submit "Add to Purchased", class: "btn-mini btn-success btn-spacing" %>
             <% end %>
           <% end %>  
       </li>
