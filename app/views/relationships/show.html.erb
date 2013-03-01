@@ -23,7 +23,7 @@ $('#gift_search').hide();
 </div>
 
 
-<div class="test-stitch"><br>
+<div class="test-stitch"><br></div>
   
   <ul>
     <% if current_user.is_parent_of?(@child)%><li class="inline pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add Photos", child_child_images_path(@child) %></li><% else %><% end %>
@@ -40,7 +40,7 @@ $('#gift_search').hide();
     <% else %>
     <% end %>
   </div>
-</div>
+
 
 <br>
 
@@ -48,13 +48,13 @@ $('#gift_search').hide();
   Recommended Gifts for <%= @child.first_name %>
 </div>
 
-<div class="test-stitch"><br>
+<div class="test-stitch"><br></div>
   <br>
   <br>        
   
   
   <%= render :partial => 'recommended_gifts'%>
-</div>
+
 <br>
 
 
@@ -71,7 +71,6 @@ $('#gift_search').hide();
   <%= render :partial => 'approve_purchased_gifts'%><br>  
 
   <%= render :partial => 'purchased_gifts'%>  
-</div>
-</div>
+
 
 

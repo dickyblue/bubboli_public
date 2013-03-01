@@ -25,8 +25,10 @@
   </script>
   
 </head>
+
 <body>
-  
+
+<div class="wrapper">   
 <%= render partial: "layouts/header" %>
 
     <div class="container">
@@ -42,11 +44,11 @@
       
       <hr class="subnav-bottom">
     </div>
-  </div>
+  </div><%# div from the header partial %>
+
+<div class="proper-content">
 
 <%= render partial: "shared/flash_messages", flash: flash %> <br>
-
-
 
     <div class="container">
   
@@ -58,10 +60,12 @@
             <span style="font-size: 12px; font-weight: bold;"><%= @child.first_name %>, Child ID: <%= @child.id %></span><br>
             Location: <span class="float-right"><%= @child.child_city%>, <%= @child.child_state %></span><br>
             Parent: <span class="float-right"><%= @child.first_child_parent.user.first_name%></span><br>
+            
             <% if @child.first_child_parent.user.first_name == @child.second_child_parent.user.first_name %>
             <% else %>
             Parent: <span class="float-right"><%= @child.second_child_parent.user.first_name%></span><br>
             <% end %>
+            
             Birthday: <span class="float-right"><%= @child.birth_date.strftime("%b. %d")%></span><br>
           </div>
 
@@ -119,18 +123,14 @@
     
         </div>
       </div>
-      
-      
     </div>
-    <div class="push"></div>
-</body>
+  <div class="push"></div>
+</div>
 
-
-
-<div>
   <footer>
     <br>
     <%= render partial: "layouts/footer" %>
   </footer>
-</div>
+
+</body>
 </html>
