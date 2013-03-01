@@ -59,8 +59,8 @@ class UsersController < ApplicationController
     @users = @search.all
     @relationship_my_kids = current_user.relationships.where(:relation_type_id => 1)
     @find_my_kids = Invitation.invitation_by_email(current_user)
-    @relationships = Relationship.where(:user_id => current_user.id).where(:status => "Confirmed").limit(20)
-    @all_relationships = Relationship.where(:user_id => current_user.id).where(:status => "Confirmed")
+    @relationships = Relationship.where(:user_id => current_user.id).limit(20)
+    @all_relationships = Relationship.where(:user_id => current_user.id)
     @relationships_by_birth_date = @all_relationships.sort_by! {|b| b.child.birthday_days}
     @relationships_by_name = @relationships.sort_by! {|b| b.child.first_name}
   end
