@@ -35,7 +35,7 @@
           <ul class="sub-nav pull-left">    
             <li><%= link_to "OUR STORY", '#' %></li>
             <li><%= link_to "OUR TEAM", '#' %></li>
-            <li><%= link_to "BRANDS WE LOVE", '#' %></li>
+            <li class="<%= 'active' if current_page?(gift_brand_path) %>"><%= link_to "BRANDS WE LOVE", gift_brand_path %></li>
           </ul>
           
           <%= render partial: "layouts/subnav" %>

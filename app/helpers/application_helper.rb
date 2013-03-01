@@ -74,7 +74,7 @@ module ApplicationHelper
     end
     link_to_function(name, ("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
-  
+    
   class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer
     protected
 

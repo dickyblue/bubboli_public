@@ -8,7 +8,7 @@ BubboliKids::Application.routes.draw do
   match '/gifts/list', :to => 'gifts#list', :as => :list_gift
   match '/gifts/manage', :to => 'gifts#manage', :as => :manage_gift
   match '/gift/favorite', :to => 'gifts#favorite', :as => :favorite_gift
-  match '/gift/brands', :to => 'gifts#brands', :as => :gift_brand
+  match '/gift/brands', :to => 'pages#brands', :as => :gift_brand
 
   match '/gift_categories/list', :to => 'gift_categories#list', :as => :list_gift_category
   match '/gift_categories/manage', :to => 'gift_categories#manage', :as => :manage_gift_category

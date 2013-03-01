@@ -36,7 +36,7 @@
 
       <ul class="sub-nav pull-left">    
         <li><%= link_to "NEWLY ADDED", '#' %></li>
-        <li><%= link_to "BUBBOLI FAVORITES", favorite_gift_path %></li>
+        <li class="<%= 'active' if current_page?(favorite_gift_path) %>"><%= link_to "BUBBOLI FAVORITES", favorite_gift_path %></li>
         <li><%= link_to "BABY SHOWERS", '#' %></li>
       </ul>
   

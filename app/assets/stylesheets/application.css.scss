@@ -507,7 +507,7 @@ footer, {
   padding-right: 10px;
   }
 
-.sub-nav >li > a:hover {
+.sub-nav >li > a:hover, .sub-nav > .active > a {
   background-color: $teal-green;
   color: #FFFFFF;
   text-decoration: none;
