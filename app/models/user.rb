@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :address_city, :address_state, :image
   attr_protected  :admin
   
-  has_many :relationships
+  has_many :relationships, :dependent => :destroy
   has_many :relation_types, :through => :relationships
   has_many :children, :through => :relationships
 
