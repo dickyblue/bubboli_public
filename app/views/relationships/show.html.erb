@@ -68,7 +68,7 @@ $('#gift_search').hide();
 
   <%= render :partial => 'shared/purchased_gift_search'%>      
   
-  <%= render :partial => 'approve_purchased_gifts'%><br>  
+  <%= render :partial => 'approve_purchased_gifts' if current_user.is_parent_of?(@child) %><br>  
 
   <%= render :partial => 'purchased_gifts'%>  
 
