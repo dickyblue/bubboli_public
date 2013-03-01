@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
   end
 
   def my_kids
-    relationships.where(:relation_type_id => [1,2]).map {|p| p.child }   
+    relationships.where(:relation_type_id => 1).map {|p| p.child }   
   end
   
   def is_parent_of?(child)

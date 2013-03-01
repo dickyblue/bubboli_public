@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
   end
   
   def confirm_or_delete
-    @invitation = Invitation.find(params[:invitation][:id])
+    @invitation = Invitation.find(params[:id])
     @child = Child.find_by_id params[:child] if params[:child].present?
     if @child
       @invitation.confirm_as_child(@child)

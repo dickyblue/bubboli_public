@@ -29,30 +29,46 @@ class Child < ActiveRecord::Base
   def birthday_days
     (Date.parse(self.birth_date.strftime('%m%d')) - Date.parse(Date.today.strftime('%m%d'))).to_i
   end
-  
+
   def child_city
-    if child_mother.blank?
-      relationships.where(:relation_type_id => 2).map {|p| p.user.address_city }.to_sentence
-    else
-      relationships.where(:relation_type_id => 1).map {|p| p.user.address_city }.to_sentence
-    end
+    relationships.where(:relation_type_id => 1).map {|p| p.user.address_city }.first
   end 
   
   def child_state
-    if child_mother.blank?
-      relationships.where(:relation_type_id => 2).map {|p| p.user.address_state }.to_sentence
-    else
-      relationships.where(:relation_type_id => 1).map {|p| p.user.address_state }.to_sentence
-    end
+    relationships.where(:relation_type_id => 1).map {|p| p.user.address_state }.first
   end 
 
-  def child_mother
-    relationships.where(:relation_type_id => 1).map {|p| p.user.first_name }.to_sentence
-  end 
+  def first_child_parent
+    relationships.where(:relation_type_id => 1).first
+  end
 
-  def child_father
-    relationships.where(:relation_type_id => 2).map {|p| p.user.first_name }.to_sentence
-  end 
+  def second_child_parent
+    relationships.where(:relation_type_id => 1).last
+  end
+  
+  #def child_city
+    #if child_mother.blank?
+      #relationships.where(:relation_type_id => 2).map {|p| p.user.address_city }.to_sentence
+    #else
+      #relationships.where(:relation_type_id => 1).map {|p| p.user.address_city }.to_sentence
+    #end
+  #end 
+  
+  #def child_state
+    #if child_mother.blank?
+      #relationships.where(:relation_type_id => 2).map {|p| p.user.address_state }.to_sentence
+    #else
+      #relationships.where(:relation_type_id => 1).map {|p| p.user.address_state }.to_sentence
+    #end
+  #end 
+
+  #def child_mother
+    #relationships.where(:relation_type_id => 1).map {|p| p.user.first_name }.to_sentence
+  #end 
+
+  #def child_father
+    #relationships.where(:relation_type_id => 2).map {|p| p.user.first_name }.to_sentence
+  #end 
   
   def user_child_categories
     categories = self.user_child_cat_prefs.map {|p| p.gift_category_id}
@@ -72,7 +88,7 @@ class Child < ActiveRecord::Base
   end
   
   def parents
-    parents = self.relationships.where('relation_type_id IN (1,2)')
+    parents = self.relationships.where('relation_type_id IN (1)')
     parents.any? ? parents : nil
   end
   

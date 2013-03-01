@@ -56,9 +56,12 @@
           <div class="profile-well">
             <%= image_tag(@child_images.first.child.profile_picture.image_url(:profile_pic)) if @child_images.first %>
             <span style="font-size: 12px; font-weight: bold;"><%= @child.first_name %>, Child ID: <%= @child.id %></span><br>
-            Location: <span class="float-right"><%= @child.child_city%>, <%= @child.child_state%></span><br>
-            Mother: <span class="float-right"><%= @child.child_mother%></span><br>
-            Father: <span class="float-right"><%= @child.child_father%></span><br>
+            Location: <span class="float-right"><%= @child.child_city%>, <%= @child.child_state %></span><br>
+            Parent: <span class="float-right"><%= @child.first_child_parent.user.first_name%></span><br>
+            <% if @child.first_child_parent.user.first_name == @child.second_child_parent.user.first_name %>
+            <% else %>
+            Parent: <span class="float-right"><%= @child.second_child_parent.user.first_name%></span><br>
+            <% end %>
             Birthday: <span class="float-right"><%= @child.birth_date.strftime("%b. %d")%></span><br>
           </div>
 
