@@ -22,6 +22,9 @@ class Relationship < ActiveRecord::Base
     end
   end
   
-  
+  def is_confirmed_relationship?(user)
+    confirmed = self.where(:user_id => user.id, :status => "Confirmed")
+    return true if confirmed
+  end
       
 end
