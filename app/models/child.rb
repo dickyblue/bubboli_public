@@ -26,9 +26,15 @@ class Child < ActiveRecord::Base
     self.invitation = Invitation.find_by_invitation_token(invitation_token)
   end
   
-  def birthday_days
-    (Date.parse(self.birth_date.strftime('%m%d')) - Date.parse(Date.today.strftime('%m%d'))).to_i
+  def next_birthday
+    birthday_this_year = Date.parse(self.birth_date.strftime('%m%d'))
+    birthday_this_year.past? ? birthday_this_year + 1.year : birthday_this_year
   end
+  
+  def birthday_days
+    (self.next_birthday - Date.today).to_i
+  end
+  alias :number_of_days_to_next_birthday :birthday_days
 
   def child_city
     relationships.where(:relation_type_id => 1).map {|p| p.user.address_city }.first

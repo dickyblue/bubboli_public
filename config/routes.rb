@@ -1,6 +1,8 @@
+require 'sidekiq/web'
 BubboliKids::Application.routes.draw do
 
   root :to => 'gifts#index'
+  mount Sidekiq::Web, at: '/sidekiq'
   
   match '/gifts/test', :to => 'gifts#test', :as => :test_gift
   

@@ -34,6 +34,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'sidekiq'
+gem 'slim'
+gem 'sinatra', require: false
 
 # added thin and pg for heroku
 group :production do
