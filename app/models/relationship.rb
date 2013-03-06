@@ -19,6 +19,7 @@ class Relationship < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :child_id
   
   before_save :change_rel_status
+  before_save :set_new_due_date
 
   def change_rel_status
     if self.relation_type_id == 1 && self.child.number_of_parents < 2
@@ -36,17 +37,26 @@ class Relationship < ActiveRecord::Base
     
     #identify which reminder is being sent
     #send email noticication from here
-    calculate_next_due_date
+    set_new_due_date(true)
   end
   
-  def calculate_next_due_date
-    selected_reminders = ReminderOption.all.select {|r| (self.respond_to?(r.name)) && (self.send(r.name.to_sym) == '1') }
-    sorted_reminders = selected_reminders.sort_by {|r| r.days } if selected_reminders.present?
-    remaining_reminders = sorted_reminders.select {|r| r.days <= self.child.birthday_days} if sorted_reminders.present?
-    next_reminder = remaining_reminders.max_by(&:days) if remaining_reminders.present?
-    if next_reminder
-      due_date = next_reminder.days.days.ago(self.child.next_birthday)
-      self.update_attribute(:next_reminder_due_at, due_date)
+  def set_new_due_date(force_update=false)
+    date = next_due_date
+    if self.reminders_changed? || force_update
+      self.next_reminder_due_at = date
+    end
+    self.update_attribute(:next_reminder_due_at, date) if force_update && self.next_reminder_due_at_changed?
+  end
+
+  def next_due_date
+    begin
+      selected_reminders = ReminderOption.all.select {|r| (self.respond_to?(r.name)) && (self.send(r.name.to_sym) == 'true')}
+      sorted_reminders = selected_reminders.sort_by {|r| r.days} if selected_reminders.present?
+      remaining_reminders = sorted_reminders.select {|r| r.days <= self.child.birthday_days} if sorted_reminders.present?
+      next_reminder = remaining_reminders.max_by(&:days) if remaining_reminders.present?
+      due_date = next_reminder.days.days.ago(self.child.next_birthday) if next_reminder
+    rescue
+      nil
     end
   end
       
