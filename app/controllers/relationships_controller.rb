@@ -16,6 +16,7 @@ class RelationshipsController < ApplicationController
     @gift_purchased = @child.gift_accessions.where(:approved => true)
     @approve_gifts = @child.gift_accessions.where(:approved => false)
     @search = Gift.search(params[:search])
+    @relation_type = RelationType.where('id <>?', 1) unless @relationship.user.is_parent_of?(@relationship.child)
   end
   
   def create
