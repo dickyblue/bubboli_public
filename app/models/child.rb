@@ -17,6 +17,7 @@ class Child < ActiveRecord::Base
   
   accepts_nested_attributes_for :invitations
   accepts_nested_attributes_for :child_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
+  before_save :update_reminders
   
   def invitation_token
     invitation.token if invitation
@@ -28,7 +29,7 @@ class Child < ActiveRecord::Base
   
   def next_birthday
     birthday_this_year = Date.parse(self.birth_date.strftime('%m%d'))
-    birthday_this_year.past? ? birthday_this_year + 1.year : birthday_this_year
+    birthday_this_year.past? ? 1.year.since(birthday_this_year) : birthday_this_year
   end
   
   def birthday_days
@@ -100,6 +101,10 @@ class Child < ActiveRecord::Base
   
   def number_of_parents
     self.parents.present? ? parents.count : 0
+  end
+  
+  def update_reminders
+    seld.relationships.each {|r| r.set_new_due_date(true)} if self.birth_date_changed?
   end
   
 end
