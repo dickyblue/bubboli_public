@@ -11,6 +11,8 @@ BubboliKids::Application.routes.draw do
   match '/gifts/manage', :to => 'gifts#manage', :as => :manage_gift
   match '/gift/favorite', :to => 'gifts#favorite', :as => :favorite_gift
   match '/gift/brands', :to => 'pages#brands', :as => :gift_brand
+  match 'gift/recently_added', :to => 'gifts#recently_added', :as => :recently_added_gift
+  match 'gift/baby_shower', :to => 'gifts#baby_shower', :as => :baby_shower_gift
 
   match '/gift_categories/list', :to => 'gift_categories#list', :as => :list_gift_category
   match '/gift_categories/manage', :to => 'gift_categories#manage', :as => :manage_gift_category

@@ -24,6 +24,9 @@ class Gift < ActiveRecord::Base
   
   accepts_nested_attributes_for :gift_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
   
+  scope :recently_added, lambda { where("created_at <= ? AND created_at >= ?", Date.today, Date.today - 100) }
+  scope :baby_shower_gifts, lambda { where("baby_shower = ?", true) }
+  
   def to_param
     "#{id}-#{name.parameterize}"
   end

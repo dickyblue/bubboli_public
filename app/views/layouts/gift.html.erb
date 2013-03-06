@@ -35,9 +35,9 @@
       <hr class="subnav-top">
 
       <ul class="sub-nav pull-left">    
-        <li><%= link_to "NEWLY ADDED", '#' %></li>
+        <li class="<%= 'active' if current_page?(recently_added_gift_path) %>"><%= link_to "RECENTLY ADDED", recently_added_gift_path %></li>
         <li class="<%= 'active' if current_page?(favorite_gift_path) %>"><%= link_to "BUBBOLI FAVORITES", favorite_gift_path %></li>
-        <li><%= link_to "BABY SHOWERS", '#' %></li>
+        <li class="<%= 'active' if current_page?(baby_shower_gift_path) %>"><%= link_to "BABY SHOWERS", baby_shower_gift_path %></li>
       </ul>
   
       <%= render partial: "layouts/subnav" %>

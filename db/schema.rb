@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305184924) do
+ActiveRecord::Schema.define(:version => 20130306204654) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -165,7 +165,12 @@ ActiveRecord::Schema.define(:version => 20130305184924) do
     t.boolean  "favorite"
     t.datetime "created_at",                                                            :null => false
     t.datetime "updated_at",                                                            :null => false
+    t.boolean  "baby_shower"
   end
+
+  add_index "gifts", ["baby_shower"], :name => "index_gifts_on_baby_shower"
+  add_index "gifts", ["created_at"], :name => "index_gifts_on_created_at"
+  add_index "gifts", ["favorite"], :name => "index_gifts_on_favorite"
 
   create_table "invitations", :force => true do |t|
     t.integer  "sender_id"

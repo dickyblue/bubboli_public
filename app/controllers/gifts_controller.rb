@@ -61,6 +61,16 @@ class GiftsController < ApplicationController
     @gifts = @search_favorite.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
   end
   
+  def recently_added
+    @search_recently_added = Gift.recently_added.search(params[:search])
+    @gifts = @search_recently_added.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
+  end
+  
+  def baby_shower
+    @search_baby_shower = Gift.baby_shower_gifts.search(params[:search])
+    @gifts = @search_baby_shower.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")    
+  end
+  
   
   def brands
   end  
