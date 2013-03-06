@@ -50,7 +50,7 @@ class Relationship < ActiveRecord::Base
 
   def next_due_date
     begin
-      selected_reminders = ReminderOption.all.select {|r| (self.respond_to?(r.name)) && (self.send(r.name.to_sym) == 'true')}
+      selected_reminders = ReminderOption.all.select {|r| (self.respond_to?(r.name)) && (self.send(r.name.to_sym) == '1')}
       sorted_reminders = selected_reminders.sort_by {|r| r.days} if selected_reminders.present?
       remaining_reminders = sorted_reminders.select {|r| r.days <= self.child.birthday_days} if sorted_reminders.present?
       next_reminder = remaining_reminders.max_by(&:days) if remaining_reminders.present?
