@@ -54,9 +54,18 @@ class Relationship < ActiveRecord::Base
       sorted_reminders = selected_reminders.sort_by {|r| r.days} if selected_reminders.present?
       remaining_reminders = sorted_reminders.select {|r| r.days <= self.child.birthday_days} if sorted_reminders.present?
       next_reminder = remaining_reminders.max_by(&:days) if remaining_reminders.present?
-      due_date= next_reminder.days.days.ago(self.child.next_birthday) if next_reminder
+      if next_reminder
+        due_date= next_reminder.days.days.ago(self.child.next_birthday)
+      elsif sorted_reminders.present?
+        due_date = calculate_for_next_year(sorted_reminders.max_by(&:days))
+      end
+      
     rescue 
       nil
     end
+  end
+  
+  def calculate_for_next_year(reminder)
+    (self.child.next_birthday + 1.year) - reminder.days
   end
 end
