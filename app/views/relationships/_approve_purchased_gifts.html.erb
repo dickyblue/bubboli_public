@@ -1,14 +1,12 @@
+<% if !@approve_gifts.empty? %>   
 
-<div class="row" id ="approve_gifts">
+<div class="row approve-gift-background" id ="approve_gifts">
 
   <ul class="no-margin-or-bullet">
-    <% if @approve_gifts.empty? %>   
-      
-    <% else %>
       <p class="approve_gifts_title">Please approve these gifts.</p>
       <% @approve_gifts.each do |ag| %>
       
-        <li class="row approve_gifts_list blue">
+        <li class="approve_gifts_list">
           <%= link_to image_tag(ag.gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(ag.gift) if ag.gift %><br>
           <%= link_to ag.gift.name, gift_path(ag.gift) if ag.gift %>
           <%= form_for([ag.giftee, ag], :remote => true ) do |f| %>
@@ -16,14 +14,9 @@
             <%= f.submit "Confirm" %><br>
             <%= link_to "Did not receive this", [ag.giftee, ag], :method => :delete, :data => {:confirm => "Are you sure you did not receive this gift?  Maybe it has not arrived yet."}, :remote => true %>
           <% end %>
-    
         </li>
-      <% end %>      
-    <% end %>
-  </ul>
-
-
-
-
-
-</div>
+      <% end %>
+      </ul>
+    </div>
+  <% else %>      
+  <% end %>
