@@ -23,7 +23,7 @@ class GiftAccessionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @relationship }
       format.js  
-      flash[:success] = "Your gift is awaiting approval by the parent."
+      flash[:success] = "Your gift is awaiting approval by the parent." unless @gift_accession.giver.is_parent_of?(@gift_accession.giftee)
     end
   end
 
