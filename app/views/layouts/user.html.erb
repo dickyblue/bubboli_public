@@ -67,10 +67,10 @@
         </div>  
         
         <div class="btn-group space-break">
-          <button class="btn btn-borderless btn-grp-small-size"><span style="font-size: 22px; font-weight: bold; color: #53868B"><%= link_to @user.followings.count, following_path %></span></br><span style="color: #999999">Following</span></button>
-          <button class="btn btn-borderless btn-grp-small-size"><span style="font-size: 22px; font-weight: bold; color: #53868B"><%= link_to @user.my_kids_followers.count, followers_path %></span></br><span style="color: #999999">Followers</span></button>
-          <button class="btn btn-borderless btn-grp-small-size"><span style="font-size: 22px; font-weight: bold; color: #53868B"><%= link_to @user.pending.count, pending_path %></span></br><span style="color: #999999">Pending</span></button>
-          <button class="btn btn-borderless btn-grp-small-size"><span class="pending_link"><%= link_to User.invitation_count(current_user) + @user.my_kids_requests.count, requests_path %></span></br><span style="color: #999999">Requests</span></button>
+          <div class="btn btn-borderless btn-grp-small-size"><span class="user_grp_btn_link"><%= link_to @user.followings.count, following_path %></span></br><span style="color: #999999">Following</span></div>
+          <div class="btn btn-borderless btn-grp-small-size"><span class="user_grp_btn_link"><%= link_to @user.my_kids_followers.count, followers_path %></span></br><span style="color: #999999">Followers</span></div>
+          <div class="btn btn-borderless btn-grp-small-size"><span class="user_grp_btn_link"><%= link_to @user.pending.count, pending_path %></span></br><span style="color: #999999">Pending</span></div>
+          <div class="btn btn-borderless btn-grp-small-size"><span class="pending_link"><%= link_to User.invitation_count(current_user) + @user.my_kids_requests.count, requests_path %></span></br><span style="color: #999999">Requests</span></div>
         </div>
           
       </div>

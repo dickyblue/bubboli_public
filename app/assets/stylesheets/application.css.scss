@@ -287,7 +287,11 @@ a {
 .pending_link a {
   color: $subdued_red;
   font-size: 22px; 
-  font-weight: bold;
+  }
+
+.user_grp_btn_link a {
+  color: $dark-green-blue;
+  font-size: 22px; 
   }
   
 .red_link a {
