@@ -11,7 +11,11 @@
     <ul class="child-list">
       <% @pending.each do |r| %>
       <li class="children-following child-list block">
-        <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.try(:child_images).try(:first) %>
+        <% if r.child.child_images.empty? %>
+          <%= image_tag('profile_pic_default.jpg') %>
+        <% else %>
+          <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.try(:child_images).try(:first) %>
+        <% end %>
         <%= r.child.try(:first_name) %>    
       </li>  
       <% end %>
