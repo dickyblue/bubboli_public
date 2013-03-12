@@ -21,6 +21,10 @@ class ChildImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+  def default_url
+    [version_name, "default.jpg"].compact.join('_')
+  end
+  
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
@@ -44,7 +48,6 @@ class ChildImageUploader < CarrierWave::Uploader::Base
   version :sm_thumb do
     process :resize_to_fill => [90, 90]
   end
-
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
