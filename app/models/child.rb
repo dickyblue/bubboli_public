@@ -104,7 +104,7 @@ class Child < ActiveRecord::Base
   end
   
   def update_reminders
-    seld.relationships.each {|r| r.set_new_due_date(true)} if self.birth_date_changed?
+    self.relationships.each {|r| r.set_new_due_date(true)} if self.birth_date_changed?
   end
   
 end
