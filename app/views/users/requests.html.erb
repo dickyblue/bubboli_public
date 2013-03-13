@@ -7,6 +7,7 @@
 
 <div class="test-stitch"><br></div> 
   <div class="row">
+    <div class="add-margin">If you do not see your child in the drop down menu, please <%= link_to "add your child first", new_my_child_path %>.</div>
     <%= form_for :invitation, :multipart => true, :remote => true, :url => invitation_confirm_or_delete_url do |f| %>
       <% @invitations.each do |r| %>
         <ul class="child-list">
