@@ -21,9 +21,9 @@ class ChildrenController < ApplicationController
   
   def create
     @child = Child.new(params[:child])
-    @child.invitations.last.sender = current_user
     if @child.save
       @child.relationships.last.update_attributes(:user_id => current_user.id)
+      @child.invitations.create!(:sender => current_user, :recipient_email => params[:invitee] )
       redirect_to current_user
       flash[:success] = "Thank you.  An invitation has been sent to #{@child.first_name}'s parent."
     else
