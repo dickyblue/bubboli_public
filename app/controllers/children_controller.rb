@@ -10,6 +10,7 @@ class ChildrenController < ApplicationController
     @search_term = params[:search].values[0] if params[:search]
     #@search = Child.search(by_email) | Child.search(by_work_email)
     @children = @search.where("relationships.relation_type_id" => 1)
+    @relation_type = RelationType.where('id <>?', 1)
     #@user = @search.where("relationships.relation_type_id" => 3)
   end
 
