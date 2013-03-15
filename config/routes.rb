@@ -4,8 +4,6 @@ BubboliKids::Application.routes.draw do
   root :to => 'gifts#index'
   mount Sidekiq::Web, at: '/sidekiq'
   
-  match '/gifts/test', :to => 'gifts#test', :as => :test_gift
-  
   
   match '/gifts/list', :to => 'gifts#list', :as => :list_gift
   match '/gifts/manage', :to => 'gifts#manage', :as => :manage_gift
