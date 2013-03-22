@@ -2,7 +2,7 @@ class GiftsController < ApplicationController
   
   layout 'gift'
 
-  before_filter :authenticate, :except => [:index, :favorite, :brands, :show]
+  before_filter :authenticate, :except => [:index, :favorite, :brands, :show, :recently_added, :baby_shower]
   
   def index
     @search = Gift.search(params[:search])
