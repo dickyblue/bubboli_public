@@ -8,7 +8,8 @@
       
         <li class="approve_gifts_list">
           <%= link_to image_tag(ag.gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(ag.gift) if ag.gift %><br>
-          <%= link_to ag.gift.name, gift_path(ag.gift) if ag.gift %>
+          <%= link_to ag.gift.name, gift_path(ag.gift) if ag.gift %><br>
+          From: <%= ag.giver.first_name %>
           <%= form_for([ag.giftee, ag], :remote => true ) do |f| %>
             <%= f.check_box :approved %> Received this
             <%= f.submit "Confirm" %><br>
