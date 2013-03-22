@@ -31,7 +31,7 @@
               <li class="children-following child-list block">
                 <% if current_user.following?(child) %>
                   <%= child.profile_picture ? image_tag(child.profile_picture.image_url(:profile_pic)) : image_tag('profile_pic_default.jpg') %>
-                  <%= link_to child.first_name, relationship_path(rel)%>
+                  <%= link_to child.first_name, relationship_path(rel)%><br>
                   <%= render(:partial => 'unfollow', :locals => {:child => child})%>
                 <% elsif current_user.requested?(child) %>
                   <%= child.profile_picture ? image_tag(child.profile_picture.image_url(:profile_pic)) : image_tag('profile_pic_default.jpg') %>

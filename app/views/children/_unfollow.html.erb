@@ -1,4 +1,1 @@
-<%= form_for(current_user.relationships.find_by_child_id(child),
-             :html => {:method => :delete }, :remote => true) do |f| %>
-  <%= f.submit "Unfollow", class: "btn-mini btn-warning btn-spacing" %>
-<% end %>
+<%= link_to "Unfollow", current_user.relationships.find_by_child_id(child), :method => :delete, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>

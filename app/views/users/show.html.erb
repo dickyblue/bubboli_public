@@ -14,9 +14,7 @@
         <li class="children-following child-list block">
           <%= render(:partial => 'child_list', :locals => {:r => r})%>
           <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
-          <%= form_for(r, :html => {:method => :delete }, remote: true) do |f| %>
-            <%= f.submit "Unfollow", class: "btn-mini btn-info btn-spacing" %>
-          <% end %>
+          <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>
         <% else %>
         <% end %>        
       <% end %>
@@ -65,7 +63,7 @@
         <li class="children-following child-list block">
           <%= render(:partial => 'child_list', :locals => {:r => r})%>
           <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
-          <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow" %>
+          <%= link_to "Unfollow", r, :method => :delete, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>          
         </li>  
         <% end %>
       </ul>
