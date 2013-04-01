@@ -1,7 +1,9 @@
 require 'sidekiq/web'
 BubboliKids::Application.routes.draw do
 
-  root :to => 'gifts#index'
+  #root :to => 'gifts#index'
+  root :to => 'pages#home'
+  #root :to => 'pages#home2'
   mount Sidekiq::Web, at: '/sidekiq'
   
   

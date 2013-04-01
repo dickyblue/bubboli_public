@@ -30,6 +30,7 @@ $bubboli-yellow:      #FEFCE6;
 $teal-green:          #63CECA;
 $teal-green2:         #2EAF9D;
 $teal-green3:         #5FC5C1;
+$bubboli-green:       #6fae4d;
 
 @import 'bootstrap';
 
@@ -264,6 +265,24 @@ hr.profile {
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
+
+.btn.green {
+  background-color: $bubboli-green;
+ 
+  background-image: -moz-linear-gradient(center top , $bubboli-green, $bubboli-green);
+  background-image: -khtml-gradient(linear, left top, left bottom, from($bubboli-green), to($bubboli-green));
+  background-image: -ms-linear-gradient(top, $bubboli-green, $bubboli-green);
+  background-image: -webkit-gradient(linear, center top, left bottom, color-stop(0%, $bubboli-green), color-stop(100%, $bubboli-green));
+  background-image: -webkit-linear-gradient(top, $bubboli-green, $bubboli-green);
+  background-image: -o-linear-gradient(top, $bubboli-green, $bubboli-green);
+  background-image: linear-gradient(top, $bubboli-green, $bubboli-green);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF9B97', endColorstr='#FF6F6A', GradientType=0);
+
+  background-repeat: repeat-x;
+  border-color: $bubboli-green;
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }  
   
 .btn-spacing {
   margin-top: 3px;
@@ -352,6 +371,11 @@ li.inline  {
   margin-left: 35px;
   }
   
+.bubboli-quote {
+  font-size: 28px;
+  color: $teal-green;
+  }
+  
 /*==================================================
  * INDEX PAGE
  * ===============================================*/
@@ -361,11 +385,61 @@ li.inline  {
   }
 
 .index-background {
-  background: url(blue_pattern_background.gif) repeat scroll 0 0 transparent;
+  background: url(linen_background.jpg) repeat scroll 0 0 transparent;
+  height: 310px;
+  text-align: left;
+  font-size: 14px;
+  padding-top: 20px;
+  border-left: 20px solid #FFFFFF;
+  font-family: 'Lato';
+  color: $dark-green-blue
   /*opacity: 0.7;
   filter:alpha(opacity=70);*/
+  } 
+  
+.explainer-video {
+  position: relative;
+  text-align: right;
+  padding-right: 20px;
   }
 
+.section-header {
+  background: url(section-header.jpg) no-repeat scroll 0 0 transparent;
+  height: 175px;
+  }
+
+.index-h3 {
+  color: $bubboli-green;
+  font-size: 15px;
+  }
+
+.index-p {
+  font-family: 'Georgia';
+  font-style: italic;
+  color: $light-gray
+  }
+  
+.section-header-text {
+  position: relative;
+  top: 65px;
+  text-align: center;
+  font-size: 18px;
+  color: $dark-green-blue;
+  }
+  
+.how-it-works {
+  position: relative;
+  top: 20px;
+  text-align: center; 
+  }
+
+.how-it-works-title {
+  font-size: 20px;
+  color: $bubboli-red;
+  font-family: 'Georgia';
+  font-style: italic;
+  } 
+  
 .approve-gift-background {
   background: $bubboli-yellow;
   margin-left: 0px;

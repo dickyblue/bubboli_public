@@ -47,6 +47,32 @@ module ApplicationHelper
   def separator
     separator = image_tag("separator.png", :att => "")
   end
+  
+  def add_a_child
+    add_a_child = image_tag("add-a-child.jpg", :att => "Add a child")
+  end
+  
+  def send_recommendation
+    send_recommendation = image_tag("send-recommendation.jpg", :att => "Send Recommendation")
+  end
+  
+  def hugs_and_kisses
+    hugs_and_kisses = image_tag("hugs-and-kisses.jpg", :att => "Hugs and kisses")
+  end
+  
+  def get_gifts
+    get_gifts = image_tag("gift.jpg", :att => "Receive presents")
+  end
+  
+  def get_organized
+    get_organized = image_tag("organized.jpg", :att => "Get organized")
+  end
+  
+  def bubboli_mission
+    mission = image_tag("bubboli-mission.jpg", :att => "The Bubboli Mision: To play a small role in bridging the distance
+    - emotionally and physically - between you and your special bubbies, whether you are around the corner, in a different
+    state or a different country.  We search all the nooks and crannies to find the best gifts for your special bubbie so ")
+  end
 
   def twitterized_type(type)
     case type
