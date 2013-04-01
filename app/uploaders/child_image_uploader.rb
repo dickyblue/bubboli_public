@@ -41,11 +41,11 @@ class ChildImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [200, 200]
   end
 
-  version :thumb do
+  version :thumb, :from_version => :profile_pic do
     process :resize_to_fill => [135, 135]
   end
 
-  version :sm_thumb do
+  version :sm_thumb, :from_version => :profile_pic do
     process :resize_to_fill => [90, 90]
   end
 
