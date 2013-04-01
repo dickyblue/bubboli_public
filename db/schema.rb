@@ -206,7 +206,7 @@ ActiveRecord::Schema.define(:version => 20130306204654) do
 
   add_index "relationships", ["child_id"], :name => "index_relationships_on_child_id"
   add_index "relationships", ["relation_type_id"], :name => "index_relationships_on_relation_type_id"
-  add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "index_relationships_on_user_id_and_child_id_and_relation_type_id"
+  add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "user_child_relationship_idx"
   add_index "relationships", ["user_id"], :name => "index_relationships_on_user_id"
 
   create_table "reminder_options", :force => true do |t|
