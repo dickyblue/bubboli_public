@@ -1,6 +1,9 @@
-Class NotificationWorker
+class NotificationWorker
   
   include Sidekiq::Worker
+  
+  sidekiq_options queue: "notifications"
+  sidekiq_options :failures => true
   
   def perform
    sender_reminders_for_today(reminders_for_today) 
