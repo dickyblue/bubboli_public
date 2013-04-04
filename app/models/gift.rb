@@ -30,6 +30,10 @@ class Gift < ActiveRecord::Base
   def to_param
     "#{id}-#{name.parameterize}"
   end
+  
+  def self.gender_search(gender)
+    Gift.where(:gender => [gender, 'Unisex'])
+  end
    
   search_methods :gender_search
 
