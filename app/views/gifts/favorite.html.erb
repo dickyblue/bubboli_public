@@ -16,10 +16,14 @@
     </div>
     
     <div class="row">
-      <div class="span8 extra-padding">
+      <div class="span8  extra-padding">
         <ul class="prod">
-          <% @gifts.each do |gift| %>
-            <%= render(:partial => "gift_list", :locals => {:gift => gift})%>
+          <% if @gifts.empty? %>
+            <p class="no-gifts">There are no gifts that match your criteria.</p>
+          <% else %>
+            <% @gifts.each do |gift| %>
+              <%= render(:partial => "gift_list", :locals => {:gift => gift})%>
+            <% end %>
           <% end %>        
         </ul>
       </div>

@@ -1,0 +1,26 @@
+<div class = "container">
+
+  <div class="btn-group">
+    <button class="btn"><%= link_to @child.first_name, relationship_path(@relationship) %></button>
+    <% if current_user.is_parent_of?(@child)%><button class="btn"><%= render 'form' %><% else %><% end %>
+  </div>
+  
+  <br>
+  
+  <% if @child_images.any? %>
+   
+  <div class="row">
+    <ul class="photos-collage no-margin-or-bullet">
+      <% @child_images.select(&:id).each do |f| %>
+        <li>
+          <div <%= "class=hover-div" if current_user.is_parent_of?(f.child) %> >
+            <%= image_tag(f.image_url(:thumb), :id => "child_pics") %><br>
+            <div class="hover-link"><%= link_to "Make Profile Picture", set_as_profile_picture_path(f) if current_user.is_parent_of?(f.child) %></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>  
+  <% end %>
+
+</div>

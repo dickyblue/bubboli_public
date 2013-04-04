@@ -1,0 +1,36 @@
+<div class="container">
+  
+  <a name="gifts"></a>
+  <div class="row will-paginate">
+      <%= page_navigation_links @gifts, 'gifts' %>  
+  </div>
+  
+  <div class="row">
+    
+    <div class="span2 form-stacked toy-search">
+      <p class="mynewfont">Search Criterias</p>
+      <%= simple_form_for @search_baby_shower, :url => baby_shower_gift_path do |f| %>
+        <%= render(:partial => "gift_search", :locals => {:f => f})%>
+      <% end %>
+      
+    </div>
+    
+    <div class="row">
+      <div class="span8  extra-padding">
+        <ul class="prod">
+          <% if @gifts.empty? %>
+            <p class="no-gifts">There are no gifts that match your criteria.</p>
+          <% else %>
+            <% @gifts.each do |gift| %>
+              <%= render(:partial => "gift_list", :locals => {:gift => gift})%>
+            <% end %>
+          <% end %>        
+        </ul>
+      </div>
+    </div> 
+    
+    <div class="row will-paginate pull-right">
+        <%= page_navigation_links @gifts, 'gifts' %>  
+    </div>
+  </div>
+</div>

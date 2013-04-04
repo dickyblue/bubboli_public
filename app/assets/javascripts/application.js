@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require jquery_nested_form
 //= require bootstrap
 //= require_tree
-
 
 
 // For the js in the show gifts page
@@ -27,6 +29,8 @@ $('#image').fadeIn('slow');
 $('#image').html('<img src="' + image + '"/>');
 return false;
     });
+
+	
 });
 
 
@@ -123,3 +127,15 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
+
+
+// unfollowing children
+
+$(document).ready(function() {      
+     
+    $(".unfollow").on("ajax:complete", function(){
+		$(this).closest(".children-following").remove();
+	})
+ 
+});

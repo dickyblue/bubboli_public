@@ -54,16 +54,16 @@ Tabulous.setup do |config|
 
   config.tabs do
     [
-      #--------------------------------------------------------------------------------------------------------------#
-      #    TAB NAME         |    DISPLAY TEXT           |    PATH                  |    VISIBLE?    |    ENABLED?    #
-      #--------------------------------------------------------------------------------------------------------------#
-      [    :home_tab        ,    'Home'                 ,    root_path             ,    true        ,    true        ],
-      [    :favorite_tab    ,    'Bubboli Favorites'    ,    favorite_gift_path    ,    true        ,    true        ],
-      [    :brand_tab       ,    'Brands We Love'       ,    gift_brand_path       ,    true        ,    true        ],
-      [    :about_tab       ,    'About'                ,    about_path            ,    true        ,    true        ],
-      #--------------------------------------------------------------------------------------------------------------#
-      #    TAB NAME         |    DISPLAY TEXT           |    PATH                  |    VISIBLE?    |    ENABLED?    #
-      #--------------------------------------------------------------------------------------------------------------#
+      #------------------------------------------------------------------------------------------------------#
+      #    TAB NAME        |    DISPLAY TEXT    |    PATH                  |    VISIBLE?    |    ENABLED?    #
+      #------------------------------------------------------------------------------------------------------#
+      [    :gift_tab       ,    'SHOP'          ,    gifts_path            ,    true        ,    true        ],
+      [    :blog_tab       ,    'BLOG'          ,    blogs_path            ,    true        ,    true        ],
+      [    :pages_tab      ,    'ABOUT'         ,    about_path            ,    true        ,    true        ],
+      [    :account_tab    ,    'ACCOUNT'       ,    relationships_path    ,    true        ,    true        ],
+      #------------------------------------------------------------------------------------------------------#
+      #    TAB NAME        |    DISPLAY TEXT    |    PATH                  |    VISIBLE?    |    ENABLED?    #
+      #------------------------------------------------------------------------------------------------------#
     ]
   end
 
@@ -83,16 +83,16 @@ Tabulous.setup do |config|
 
   config.actions do
     [
-      #----------------------------------------------------------#
-      #    CONTROLLER    |    ACTION       |    TAB              #
-      #----------------------------------------------------------#
-      [    :gifts        ,    :favorite    ,    :favorite_tab    ],
-      [    :gifts        ,    :brands      ,    :brand_tab       ],
-      [    :gifts        ,    :index       ,    :home_tab        ],
-      [    :pages        ,    :about       ,    :about_tab       ],
-      #----------------------------------------------------------#
-      #    CONTROLLER    |    ACTION       |    TAB              #
-      #----------------------------------------------------------#
+      #------------------------------------------------------#
+      #    CONTROLLER    |    ACTION    |    TAB             #
+      #------------------------------------------------------#
+      [    :gifts        ,    :all_actions      ,    :gift_tab       ],
+      [    :blogs         ,    :all_actions      ,    :blog_tab       ],
+      [    :pages        ,    :all_actions      ,    :pages_tab      ],
+      [    :user         ,    :all_actions      ,    :account_tab    ],
+      #------------------------------------------------------#
+      #    CONTROLLER    |    ACTION    |    TAB             #
+      #------------------------------------------------------#
     ]
   end
 
@@ -139,7 +139,7 @@ Tabulous.setup do |config|
   # 
   config.css.scaffolding = false
   config.bootstrap_style_subtabs = true
-  config.tabs_ul_class = "nav"
+  config.tabs_ul_class = "nav nav-pills pull-right"
 
   # You can tweak the colors of the generated CSS.
   #

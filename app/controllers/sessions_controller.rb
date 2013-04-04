@@ -9,9 +9,15 @@ class SessionsController < ApplicationController
 
   def create
     user = User.authenticate(params[:session][:email], params[:session][:password])
-    if user
+    if user.nil?
+      flash.now[:error] = "Invalid email / password combination."
+      render "new" 
+    elsif user.admin == true
       session[:user_id] = user.id
-      redirect_back_or list_gift_path   
+      redirect_back_or list_gift_path
+    elsif user
+      session[:user_id] = user.id
+      redirect_back_or user  
     else
       flash.now[:error] = "Invalid email / password combination."
       render "new"
@@ -19,7 +25,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    sign_out
     redirect_to root_path, :notice => "You are logged out."
   end
 

@@ -1,0 +1,24 @@
+<i class="icon-user"></i> <span class="red-link"><%= link_to "Back To My Profile", user_path(current_user)%></span><br><br>
+
+
+<div class="op3-title op3-stitched-shadow">
+  PENDING REQUESTS
+</div>
+
+<div class="test-stitch"><br></div>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @pending.each do |r| %>
+      <li class="children-following child-list block">
+        <% if r.child.child_images.empty? %>
+          <%= image_tag('profile_pic_default.jpg') %>
+        <% else %>
+          <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.try(:child_images).try(:first) %>
+        <% end %>
+        <%= r.child.try(:first_name) %>    
+      </li>  
+      <% end %>
+    </ul>
+  </div>
+

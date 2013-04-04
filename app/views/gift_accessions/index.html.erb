@@ -1,0 +1,24 @@
+<div class="container">
+
+  <i class="icon-chevron-left"></i> <span class="red-link"><%= link_to "Back to #{@child.first_name}", relationship_path(@relationship) %></span><br><br>
+
+  <div class="op3-title op3-stitched-shadow">
+    Add to Purchased Gifts
+  </div>
+  
+  <div class="test-stitch"><br></div>
+
+  <%= render :partial => 'shared/purchased_gift_search'%>
+  
+  <%= render :partial => 'search_purchased_gift_results'%>
+  
+  <br>
+  <div class="op3-title op3-stitched-shadow">
+    Gifts Already Purchased for <%= @child.first_name %>
+  </div>
+
+  <div class="test-stitch"><br></div>
+
+  <%= render :partial => 'relationships/purchased_gifts'%>  
+  
+</div>

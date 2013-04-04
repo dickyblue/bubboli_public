@@ -1,12 +1,15 @@
 class GiftsController < ApplicationController
+  
+  layout 'gift'
 
-  before_filter :authenticate, :except => [:index, :favorite, :brands, :show]
+  before_filter :authenticate, :except => [:index, :favorite, :brands, :show, :recently_added, :baby_shower]
   
   def index
     @search = Gift.search(params[:search])
     @gifts = @search.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
     @all_gift_categories = GiftCategory.all
     @all_gift_age_ranges = GiftAgeRange.all
+    @all_gift_price_ranges = GiftPriceRange.all
     @rotating_gift_image_first = Gift.where(:favorite => true).last
     @rotating_gift_images = Gift.where(:favorite => true).order("created_at DESC").limit(5)     
   end
@@ -56,6 +59,16 @@ class GiftsController < ApplicationController
   def favorite
     @search_favorite = Gift.where(:favorite => true).search(params[:search])
     @gifts = @search_favorite.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
+  end
+  
+  def recently_added
+    @search_recently_added = Gift.recently_added.search(params[:search])
+    @gifts = @search_recently_added.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
+  end
+  
+  def baby_shower
+    @search_baby_shower = Gift.baby_shower_gifts.search(params[:search])
+    @gifts = @search_baby_shower.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")    
   end
   
   

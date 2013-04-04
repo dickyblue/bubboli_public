@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @page_title || 'Bubboli' %></title>
+  <%= stylesheet_link_tag "application",  :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
+
+
+<% # Adding google analytics below %>  
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30251348-1']);
+    _gaq.push(['_setDomainName', 'bubboli.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  
+</head>
+<body>
+<div class="wrapper">    
+<%= render partial: "layouts/header" %> 
+         
+        <div class="container">
+          <hr class="subnav-top">
+
+          <ul class="sub-nav pull-left">    
+            <li><%= link_to "OUR MISSION", '#' %></li>
+            <li><%= link_to "OUR GIFT CRITERION", '#' %></li>
+            <li class="<%= 'active' if current_page?(gift_brand_path) %>"><%= link_to "BRANDS WE LOVE", gift_brand_path %></li>
+            <li><%= link_to "FAQ", '#' %></li>
+          </ul>
+          
+          <%= render partial: "layouts/subnav" %>
+          
+          <hr class="subnav-bottom">
+
+        </div>
+    </div><%# div from the header partial %>
+    
+<div class="proper-content">    
+<%= render partial: "shared/flash_messages", flash: flash %> <br>
+  
+  <div class="container">
+
+    <%= yield %>
+  </div>
+  <div class="push"></div>  
+  </div>
+    
+
+  
+
+
+
+
+  <footer>
+    <br>
+    <%= render partial: "layouts/footer" %>
+  </footer>
+
+</body>
+</html>

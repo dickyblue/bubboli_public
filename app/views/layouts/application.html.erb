@@ -26,72 +26,29 @@
   
 </head>
 <body>
-  
-  <div class="wrapper">
-    <div class="logo-topbar">
-      <div class="logo-topbar-fill">
-        <div class="container">
-          <div>
-            <% if current_user %>
-              <%= link_to bubboli, root_path %>
-            <% else %>
-              <%= link_to bubboli, root_path %>
-            <% end %>
-          </div>
-            
-        </div>
-      </div>
-    </div>
-  
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-      <div class="container">
-          <ul class="nav">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Bubboli Favorites", favorite_gift_path %></li>
-            <li><%= link_to "Brands We Love", gift_brand_path %></li>
-            <li><%= link_to "About", about_path %></li>
-            <% if signed_in? %>
-              <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Account <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= current_user.admin == true ? link_to("Admin Panel", admin_path) : link_to("Profile", "#")%></li>
-                  <li><%= link_to "Settings", "#" %></li>
-                  <li class="divider"></li>
-                  <li>
-                    <%= link_to "Sign out", sign_out_path, method: "delete" %>
-                  </li>
-                </ul>
-              </li>
-            <% else %>
-              <li><%= link_to "Sign in", sign_in_path %></li>
-            <% end %>
-                      
-                      
-                      
-            <li class="socialmedia-overlap blog"><%= link_to blog, blogs_path %></li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <%= yield %>
+  <div class="wrapper">  
+    <%= render partial: "layouts/header" %>
     
-    <div class="push"></div>
+    </div><%# div from the header partial %>
 
+    <div class="proper-content">        
+      <div class="container">
+            
+        <%= render partial: "shared/flash_messages", flash: flash %> <br>
+
+        <%= yield %>
+      </div>
+    </div>  
+  
+  <div class="push"></div>
   </div>
-</body>
 
 
 
-<div>
   <footer>
-    <p><%= link_to "About", about_path %> | <%= link_to "Blog", blogs_path %> | <%= link_to "Privacy", privacy_path %> | <%= link_to "Terms of Use", term_path %></p>
-    <p>&copy;Bubboli<sup>TM</sup> | All Rights Reserved</p>
+    <br>
+    <%= render partial: "layouts/footer" %>
   </footer>
-</div>
 
+</body>
 </html>

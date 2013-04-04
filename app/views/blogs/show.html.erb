@@ -44,13 +44,12 @@
 
           <div class="row">
             <div class="mynewfont blog-back-home pull-right"><%= link_to("«« Blog Home", blogs_path) %></div>
-           </div>
+          </div>
           
           <hr/>        
         
           <div class="comment form-horizontal">
             <h5 class="gray-font">Leave a comment</h5>
-            <%= render(:partial => "shared/flash", :locals => {:flash => flash}) %>
             <%= render(:partial => 'comment_form')%>
           </div>
       
@@ -81,5 +80,5 @@
         <%= page_navigation_links @blogs, '#' %>  
     </div>
 
-  </div>
+  
 </div>

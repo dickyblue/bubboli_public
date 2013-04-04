@@ -1,0 +1,24 @@
+<% @page_title = "Manage Relationship Types" %>
+
+<div class="container">
+  
+  <div class="span4 offset4">
+  <h4>Manage Relationship Types</h4>
+  </br>
+
+  <%= simple_form_for @relation_type do |f| %>
+
+      <div class="row">
+        <div class="span8">
+          <%= f.input :name %>
+        </div>
+      </div>
+    
+  <div class="btn primary white-link"><%= link_to "Cancel", list_gift_category_path %></div>
+  <%= f.button :submit, 'Save', :class => "primary" %>
+  </div>
+  
+  <% end %>
+  </div>
+  
+</div>

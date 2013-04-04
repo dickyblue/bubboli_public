@@ -1,20 +1,27 @@
+require 'sidekiq/web'
 BubboliKids::Application.routes.draw do
 
-  root :to => 'gifts#index'
-  
-  match '/gifts/test', :to => 'gifts#test', :as => :test_gift
+  #root :to => 'gifts#index'
+  root :to => 'pages#home'
+  #root :to => 'pages#home2'
+  mount Sidekiq::Web, at: '/sidekiq'
   
   
   match '/gifts/list', :to => 'gifts#list', :as => :list_gift
   match '/gifts/manage', :to => 'gifts#manage', :as => :manage_gift
   match '/gift/favorite', :to => 'gifts#favorite', :as => :favorite_gift
-  match '/gift/brands', :to => 'gifts#brands', :as => :gift_brand
+  match '/gift/brands', :to => 'pages#brands', :as => :gift_brand
+  match 'gift/recently_added', :to => 'gifts#recently_added', :as => :recently_added_gift
+  match 'gift/baby_shower', :to => 'gifts#baby_shower', :as => :baby_shower_gift
 
   match '/gift_categories/list', :to => 'gift_categories#list', :as => :list_gift_category
   match '/gift_categories/manage', :to => 'gift_categories#manage', :as => :manage_gift_category
 
   match '/gift_age_ranges/list', :to => 'gift_age_ranges#list', :as => :list_gift_age_range
   match '/gift_age_ranges/manage', :to => 'gift_age_ranges#manage', :as => :manage_gift_age_range
+
+  match '/gift_price_ranges/list', :to => 'gift_price_ranges#list', :as => :list_gift_price_range
+  match '/gift_price_ranges/manage', :to => 'gift_price_ranges#manage', :as => :manage_gift_price_range
 
   match '/about', :to => 'pages#about', :as => :about
   match '/terms', :to => 'pages#terms', :as => :term
@@ -30,15 +37,35 @@ BubboliKids::Application.routes.draw do
   get '/blog(.:format)', :to => 'blogs#index', :as => :blogs
   post '/blog(.:format)', :to => 'blogs#create', :as => :blogs
   
-  
   match '/comments/list', :to => 'comments#list', :as => :list_comment
   
   match '/admin', :to => 'admins#index', :as => :admin
+
+  match '/users/:id/search_child', :to => 'children#search_child', :as => :search_child
+  match '/users/:id/following', :to => 'users#following', :as => :following
+  match '/users/:id/pending', :to => 'users#pending', :as => :pending
+  match '/users/:id/followers', :to => 'users#followers', :as => :followers
+  match '/users/:id/requests', :to => 'users#requests', :as => :requests
+  match '/users/thankyou(/:id)', :to => 'users#thankyou', :as => :thankyou
+  match '/users/confirm/:confirmation_token', :to => 'users#confirm', :as => :confirm
+  match '/signup/:invitation_token', :to => 'users#new'
+  
+  match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
+  match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
+  match '/child_images/:id/set_as_profile_picture', :to => 'child_images#set_as_profile_picture', :as => :set_as_profile_picture
+
+  match '/index', :to => 'pages#index', :as => :test_index_path
+  match '/invitations/:id/confirm_or_delete', :to => 'invitations#confirm_or_delete', :as => :invitation_confirm_or_delete
   
   resources :blog, :controller => 'blogs'
-  resources :gifts
-  resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges
+  resources :gifts, :my_children, :relation_types, :relationships, :my_kids_relationships
+  resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs
   resources :sessions, :only => [:create]
+  resources :invitations, :only => [:destroy, :show]
+  resources :children do
+    resources :child_images
+    resources :gift_accessions
+  end
 
 
 

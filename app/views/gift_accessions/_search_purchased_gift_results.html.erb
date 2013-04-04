@@ -1,0 +1,24 @@
+<div class="row">
+  <ul class="no-bullet">
+    <% if @search.blank? %>
+      <p class="no-gifts">There are no gifts that match your criteria.</p>
+    <% else %>
+      <% @search_gift.each do |gift| %>
+      <li class="add_to_purchased_gifts block">
+        <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %>
+        <%= link_to gift.name, gift_path(gift) %><br>
+
+          <% if @gift_accessions.any? {|i| i.gift_id == gift.id}%>
+            <p>Already have it</p>
+          <% else %>
+            <%= form_for([@gift_accession.giftee, @gift_accession]) do |f| %>
+              <%= f.hidden_field :gift_id, :value => gift.id %>
+              <%= f.submit "Add to Purchased", class: "btn-mini btn-success btn-spacing" %>
+            <% end %>
+          <% end %>  
+      </li>
+      <% end %>
+    <% end %>        
+  </ul>
+
+</div>

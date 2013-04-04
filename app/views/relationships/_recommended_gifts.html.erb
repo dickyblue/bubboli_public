@@ -1,0 +1,16 @@
+<div class="row">
+  
+    <ul>
+    <% @gifts_by_user_pref.each do |gift| %>
+      <li class="recommended-gifts no-bullet block">
+        <%= link_to image_tag(gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gift) %>
+        <%= link_to gift.name, gift_path(gift) %><br>
+        <% link = "http://"+gift.permalink %>
+        <div class="row span2 offset1">
+        <%= link_to "Buy This", link, :class => "btn btn-mini btn-success btn-spacing white-link btn-fixed-bottom", :target => "_blank" %>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+  
+</div>

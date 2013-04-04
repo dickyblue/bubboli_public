@@ -1,0 +1,20 @@
+<i class="icon-user"></i> <span class="red-link"><%= link_to "Back To My Profile", user_path(current_user)%></span><br><br>
+
+
+<div class="op3-title op3-stitched-shadow">
+  MY KIDS' FOLLOWERS
+</div>
+
+<div class="test-stitch"><br></div>
+
+
+<div class="row">
+  <ul class="child-list">
+    <% @followers.each do |r| %>
+    <li class="children-following child-list block">
+      <%= image_tag(r.image_url(:sm_thumb)) if r.image %>
+      <strong><%= r.first_name %></strong><br>
+    </li>  
+    <% end %>
+  </ul>
+</div>

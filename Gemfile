@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,6 +17,7 @@ gem 'heroku'
 gem 'randumb'
 gem 'simple_form'
 gem 'country_select'
+gem 'nested_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +25,7 @@ group :assets do
   gem 'bootstrap-sass', '2.0.3'
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'jquery-fileupload-rails', '0.3.4'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -32,6 +34,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'sidekiq'
+gem 'slim'
+gem 'sinatra', require: false
 
 # added thin and pg for heroku
 group :production do
@@ -39,6 +44,9 @@ group :production do
   gem 'pg'
 end
 
+group :development do
+  gem 'pry'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

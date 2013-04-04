@@ -1,0 +1,3 @@
+  <%= form_for([@child, @child.child_images.new], :html => {:multipart => true, :remote => true}) do |f| %>
+    <%= f.file_field :image, multiple: true, name: "child_image[image]" %>
+  <% end %>

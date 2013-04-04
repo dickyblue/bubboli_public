@@ -1,0 +1,46 @@
+<i class="icon-user"></i> <span class="red-link"><%= link_to "Back To My Profile", user_path(current_user)%></span><br><br>
+
+<% if @invitations.count > 0 %>
+<div class="op3-title op3-stitched-shadow">
+  YOUR INVITATION REQUESTS
+</div>
+
+<div class="test-stitch"><br></div> 
+  <div class="row">
+    <div class="add-margin">If you do not see your child in the drop down menu, please <%= link_to "add your child first", new_my_child_path %>.</div>
+    <% @invitations.each do |r| %>
+      <%= form_for :invitation, :multipart => true, :remote => true, :url => invitation_confirm_or_delete_url, :id => 'invitation_form' do |f| %>
+        <ul class="child-list">
+          <li class="children-following child-list block">
+            <%= image_tag(r.sender.image_url(:sm_thumb)) if r.sender.try(:image) %>
+            <%= r.child.try(:first_name) %><br>
+            <%= r.sender.try(:first_name)%><br>
+            <%= link_to 'Not My Child', invitation_confirm_or_delete_path(r, {:child => 'delete', :invitation => {:id => r.id}}) %>
+            <%= f.hidden_field :id, :value => r.id %> <%# FIXME remove hidden field at some point %>
+            <%= select_tag 'child', options_from_collection_for_select(@confirmed_children, 'id', 'first_name'), :prompt => 'Confirm This Child As', :class => "input-110", :onchange=>"this.form.submit();" if @confirmed_children.any? %>    
+          </li>  
+        </ul>  
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+<br>
+
+<div class="op3-title op3-stitched-shadow">
+  MY KIDS' REQUESTS
+</div>
+
+<div class="test-stitch"><br></div>
+
+  <div class="row">
+    <ul class="child-list">
+      <% if current_user.my_kids_requests.count > 0 %>
+        <% @requests.each do |r| %>
+        <li class="children-following child-list block">
+          <%= render(:partial => "followers_request", :locals => {:r => r}) %>
+        </li>  
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+

@@ -1,0 +1,77 @@
+<div class="op3-title op3-stitched-shadow">
+  UPCOMING BIRTHDAYS
+</div>
+
+<div class="test-stitch"><br></div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @relationships_by_birth_date.each do |r| %>    
+        <% if (0..31).include?(r.child.birthday_days)%>      
+        <li class="children-following child-list block">
+          <%= render(:partial => 'child_list', :locals => {:r => r})%>
+          <span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
+          <%= link_to "Unfollow", r, :method => :delete, :data => {:confirm => "Are you sure you want to unfollow this child?"}, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>
+        <% else %>
+        <% end %>        
+      <% end %>
+    </ul>
+  </div>
+
+<br>
+
+<div class="op3-title op3-stitched-shadow">
+  MY CHILDREN
+</div>
+
+<div class="test-stitch"><br></div>  
+  <span class="pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add My Child", new_my_child_path %></span>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <ul class="child-list">
+      <% @relationship_my_kids.each do |r| %>
+      <li class="children-following child-list block">
+        <%= render(:partial => 'child_list', :locals => {:r => r})%>
+      </li>  
+      <% end %>
+    </ul>
+  </div>
+
+<br>
+
+
+<div class="op3-title op3-stitched-shadow">
+  CHILDREN I AM FOLLOWING
+</div>
+
+<div class="test-stitch"><br></div>  
+  <span class="pull-right red-link"><i class="icon-plus"></i> <%= link_to "Add A New Child", search_child_path %></span>
+
+  <br>
+  <br>
+
+
+    <div class="row">
+      <ul class="child-list">
+        <% @relationships_by_name.each do |r| %>
+        <li class="children-following child-list block">
+          <%= render(:partial => 'child_list', :locals => {:r => r})%>
+          <span style="color: #999999; font-size: 12px">Relations: <%= r.relation_type.name if r.relation_type %></span><br>
+          <%= link_to "Unfollow", r, :method => :delete, :data => {:confirm => "Are you sure you want to unfollow this child?"}, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>          
+        </li>  
+        <% end %>
+      </ul>
+    </div>
+
+
+
+<br>
+<br>
+<br>
+

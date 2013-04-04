@@ -1,0 +1,14 @@
+<div class="container">
+  
+  <%= simple_form_for @user, :html => {:multipart => true} do |f| %>
+  <div class="row">
+
+    <%= render(:partial => 'form', :locals => {:f => f})%>
+    
+  </div>
+ 
+  <div>
+  <%= f.button :submit, 'Submit', :class => "primary" %>
+  </div>
+  <% end %>
+</div>

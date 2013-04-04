@@ -1,0 +1,1 @@
+<%= link_to "Unfollow", current_user.relationships.find_by_child_id(child), :method => :delete, :data => {:confirm => "Are you sure you want to unfollow this child?"}, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>

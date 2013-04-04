@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410215912) do
+ActiveRecord::Schema.define(:version => 20130306204654) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -51,6 +51,24 @@ ActiveRecord::Schema.define(:version => 20120410215912) do
     t.datetime "updated_at",                          :null => false
   end
 
+  create_table "child_images", :force => true do |t|
+    t.integer  "child_id"
+    t.string   "image"
+    t.boolean  "profile"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "child_images", ["child_id"], :name => "index_child_images_on_child_id"
+
+  create_table "children", :force => true do |t|
+    t.string   "first_name"
+    t.date     "birth_date"
+    t.string   "gender"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "blog_id"
     t.text     "content"
@@ -63,6 +81,18 @@ ActiveRecord::Schema.define(:version => 20120410215912) do
   end
 
   add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
+
+  create_table "gift_accessions", :force => true do |t|
+    t.integer  "gift_id"
+    t.integer  "child_id"
+    t.integer  "user_id"
+    t.boolean  "approved",   :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "gift_accessions", ["child_id"], :name => "index_gift_accessions_on_child_id"
+  add_index "gift_accessions", ["user_id"], :name => "index_gift_accessions_on_user_id"
 
   create_table "gift_age_classifications", :force => true do |t|
     t.integer  "gift_id"
@@ -103,6 +133,23 @@ ActiveRecord::Schema.define(:version => 20120410215912) do
 
   add_index "gift_images", ["gift_id"], :name => "index_gift_images_on_gift_id"
 
+  create_table "gift_price_classifications", :force => true do |t|
+    t.integer  "gift_id"
+    t.integer  "gift_price_range_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "gift_price_classifications", ["gift_id", "gift_price_range_id"], :name => "gift_price_classification"
+  add_index "gift_price_classifications", ["gift_id"], :name => "index_gift_price_classifications_on_gift_id"
+  add_index "gift_price_classifications", ["gift_price_range_id"], :name => "index_gift_price_classifications_on_gift_price_range_id"
+
+  create_table "gift_price_ranges", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "gifts", :force => true do |t|
     t.string   "name"
     t.string   "permalink"
@@ -110,7 +157,6 @@ ActiveRecord::Schema.define(:version => 20120410215912) do
     t.string   "sku"
     t.string   "manufacturer"
     t.decimal  "price",                :precision => 5, :scale => 2
-    t.string   "price_search"
     t.string   "merchant"
     t.string   "gender"
     t.text     "description"
@@ -119,7 +165,78 @@ ActiveRecord::Schema.define(:version => 20120410215912) do
     t.boolean  "favorite"
     t.datetime "created_at",                                                            :null => false
     t.datetime "updated_at",                                                            :null => false
+    t.boolean  "baby_shower"
   end
+
+  add_index "gifts", ["baby_shower"], :name => "index_gifts_on_baby_shower"
+  add_index "gifts", ["created_at"], :name => "index_gifts_on_created_at"
+  add_index "gifts", ["favorite"], :name => "index_gifts_on_favorite"
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "child_id"
+    t.string   "recipient_email"
+    t.string   "invitation_token"
+    t.datetime "sent_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "invitations", ["child_id"], :name => "index_invitations_on_child_id"
+  add_index "invitations", ["sender_id", "child_id"], :name => "index_invitations_on_sender_id_and_child_id"
+  add_index "invitations", ["sender_id"], :name => "index_invitations_on_sender_id"
+
+  create_table "relation_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "child_id"
+    t.integer  "relation_type_id"
+    t.string   "status",               :default => "Pending"
+    t.datetime "accepted_at"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.text     "reminders"
+    t.date     "next_reminder_due_at"
+  end
+
+  add_index "relationships", ["child_id"], :name => "index_relationships_on_child_id"
+  add_index "relationships", ["relation_type_id"], :name => "index_relationships_on_relation_type_id"
+  add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "user_child_relationship_idx"
+  add_index "relationships", ["user_id"], :name => "index_relationships_on_user_id"
+
+  create_table "reminder_options", :force => true do |t|
+    t.string   "name"
+    t.integer  "days"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_child_cat_prefs", :force => true do |t|
+    t.integer  "relationship_id"
+    t.integer  "gift_category_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "user_child_cat_prefs", ["gift_category_id"], :name => "index_user_child_cat_prefs_on_gift_category_id"
+  add_index "user_child_cat_prefs", ["relationship_id", "gift_category_id"], :name => "user_child_cat_pref"
+  add_index "user_child_cat_prefs", ["relationship_id"], :name => "index_user_child_cat_prefs_on_relationship_id"
+
+  create_table "user_child_price_prefs", :force => true do |t|
+    t.integer  "relationship_id"
+    t.integer  "gift_price_range_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "user_child_price_prefs", ["gift_price_range_id"], :name => "index_user_child_price_prefs_on_gift_price_range_id"
+  add_index "user_child_price_prefs", ["relationship_id", "gift_price_range_id"], :name => "user_child_price_pref"
+  add_index "user_child_price_prefs", ["relationship_id"], :name => "index_user_child_price_prefs_on_relationship_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                 :limit => 25
@@ -143,6 +260,8 @@ ActiveRecord::Schema.define(:version => 20120410215912) do
     t.boolean  "admin",                                    :default => false
     t.datetime "created_at",                                                  :null => false
     t.datetime "updated_at",                                                  :null => false
+    t.integer  "invitation_id"
+    t.string   "image"
   end
 
   add_index "users", ["email", "work_email"], :name => "index_users_on_email_and_work_email", :unique => true

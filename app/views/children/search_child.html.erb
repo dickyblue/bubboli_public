@@ -1,0 +1,55 @@
+<div class="container">
+
+
+    <h4>
+    Before you add a child, search to see if the child is already in our database.
+    </h4>
+    </br>
+  
+    <div class="row">
+      <div class=" span2 child-search-well ">
+      <%= simple_form_for @search, :url => search_child_path do |f| %>
+        <%= f.input :users_email_or_users_work_email_equals, :label => 'Search by Parent Email', :required => true %>
+        <%= f.button :submit, 'Search', :class => 'btn primary' %>
+      <% end %>
+      
+      </div>
+    
+      <div class="span8 test">
+        <ul class="prod">
+        <% if params[:search].blank? %>
+          Your search results here.          
+        <% elsif @children.empty? %>
+          <p>No results found. Be the first to add this child.</p>
+          <%= render 'new', :invitee => @search_term %>
+        <% else %>
+          <ul class="child-list">
+          <% @children.each do |child| %>
+          <% rel = current_user.relationships.where(:child_id => child.id).to_a %>
+            <div id="follow_form">
+              
+              <li class="children-following child-list block">
+                <% if current_user.following?(child) %>
+                  <%= child.profile_picture ? image_tag(child.profile_picture.image_url(:profile_pic)) : image_tag('profile_pic_default.jpg') %>
+                  <%= link_to child.first_name, relationship_path(rel)%><br>
+                  <%= render(:partial => 'unfollow', :locals => {:child => child})%>
+                <% elsif current_user.requested?(child) %>
+                  <%= child.profile_picture ? image_tag(child.profile_picture.image_url(:profile_pic)) : image_tag('profile_pic_default.jpg') %>
+                  <%= child.first_name %></br>
+                  Requested
+                <% else %>
+                  <%= child.profile_picture ? image_tag(child.profile_picture.image_url(:profile_pic)) : image_tag('profile_pic_default.jpg') %>
+                  <%= child.first_name %></br>
+                  <%= render(:partial => 'follow', :locals => {:child => child})%>
+                <% end %>
+              </li>  
+            
+            </div>  
+          <% end %>  
+        <% end %>
+        </ul>        
+      </div>
+    </div>
+  
+  
+</div>

@@ -12,7 +12,7 @@
 <% @page_title = @gift.name %>
 <div class="container">
 
-<%= link_to("«« Back to Gifts", gifts_path) %>
+<i class="icon-chevron-left"></i><span class="red-link"><%= link_to("Back to Gifts", gifts_path) %></span><br><br>
   <div class="row">
     <div class="span9">
       
@@ -22,8 +22,8 @@
       
       </div>
       
-      <br>
-      <br>
+      </br>
+      </br>
 
 
         <ul class="tabs nav-tabs " id="myTab">
@@ -31,7 +31,7 @@
           <li><a href="#bubboli_love">Why Bubboli Loves It</a></li>
         </ul>
 
-        <div class="tab-content">
+        <div class="tab-content-line">
           <div class="tab-pane active" id="prod_desc"><%= simple_format(@gift.description) %></div>
           <div class="tab-pane" id="bubboli_love"><%= simple_format(@gift.why_bubboli_loves_it) %></div>
         </div>
@@ -49,14 +49,7 @@
 
         </script>
 
-
-
-
-
-
-        
-        
-        <br>
+        </br>
         
         <div>
           <%= render(:partial => "related_gifts")%>
@@ -68,15 +61,15 @@
       <div class="row gift-buy-box">
         <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
         <% link = "http://"+@gift.permalink %>
-        <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div><br><br>
+        <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div></br></br>
         <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
         <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>
         <span class='st_pinterest' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
         <span class='st_email'></span>
       </div>
       
-      <br>
-      <br>
+      </br>
+      </br>
 
       <div class="row gift-buy-box2">
         <h4 style= "color: #53868B; text-align: center">Product Statistics</h4>
@@ -100,4 +93,3 @@
     
   </div>  
 </div>
-
