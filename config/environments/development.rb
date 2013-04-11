@@ -38,4 +38,14 @@ BubboliKids::Application.configure do
   # For email confirmation email
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
+  # mandrill
+   config.action_mailer.smtp_settings = {
+       :address   => "smtp.mandrillapp.com",
+       :port      => 587,
+       :enable_starttls_auto => true, # detects and uses STARTTLS
+       :user_name => "bubboli",
+       :password  => "42tOVqQSZKWbeUjFrx2fVw",
+       :authentication => 'login' # Mandrill supports 'plain' or 'login'
+     }
+  
 end
