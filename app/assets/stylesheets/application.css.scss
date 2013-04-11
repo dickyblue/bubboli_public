@@ -386,11 +386,8 @@ li.inline  {
 
 .index-background {
   background: url(linen_background.jpg) repeat scroll 0 0 transparent;
-  height: 310px;
-  text-align: left;
   font-size: 14px;
   padding-top: 20px;
-  border-left: 20px solid #FFFFFF;
   font-family: 'Lato';
   color: $dark-green-blue
   /*opacity: 0.7;
@@ -458,6 +455,14 @@ li.inline  {
 .center-index, center-index p{
   display: inline-block;
   text-align: center;
+  }
+
+.quotes {
+  font-size: 14px;
+  color: $light-gray;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-style: italic;
   }
   
 /*==================================================
@@ -589,6 +594,7 @@ footer, {
 .footer-nav a, .sub-nav a {
   display: inline-block;
   margin: 5px 10px;  
+  color: $dark-green-blue
   }
 
 .sub-nav {
@@ -599,6 +605,7 @@ footer, {
   line-height: 22px;
   padding-left: 10px;
   padding-right: 10px;
+  color: $dark-green-blue
   }
 
 .sub-nav >li > a:hover, .sub-nav > .active > a {

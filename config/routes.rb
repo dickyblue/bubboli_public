@@ -3,8 +3,9 @@ BubboliKids::Application.routes.draw do
 
   #root :to => 'gifts#index'
   root :to => 'pages#home'
-  #root :to => 'pages#home2'
   mount Sidekiq::Web, at: '/sidekiq'
+  
+  match '/home2', :to => 'pages#home2', :as => :home2
   
   
   match '/gifts/list', :to => 'gifts#list', :as => :list_gift
