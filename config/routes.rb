@@ -6,7 +6,7 @@ BubboliKids::Application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
   
   match '/home2', :to => 'pages#home2', :as => :home2
-  match '/gift_recommendations', :to => 'pages#gift_recommendations', :as => :gift_rec
+  match '/gift_recommendation', :to => 'pages#gift_recommendation', :as => :gift_rec
   
   match '/gifts/list', :to => 'gifts#list', :as => :list_gift
   match '/gifts/manage', :to => 'gifts#manage', :as => :manage_gift
