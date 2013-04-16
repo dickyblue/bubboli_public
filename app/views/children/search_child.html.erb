@@ -19,7 +19,7 @@
         <ul class="prod">
         <% if params[:search].blank? %>
           Your search results here.          
-        <% elsif @parent.present? && @children.empty? %>
+        <% elsif @user.present? && @children.empty? %>
           <p>We found the user, but they have no children associated.  Please check back later.</p>
         <% elsif @children.empty? %>
           <p>No results found. Be the first to add this child.</p>
