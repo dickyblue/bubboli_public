@@ -1,9 +1,6 @@
 <div class="container">
 
 
-    <h4>
-    Before you add a child, search to see if the child is already in our database.
-    </h4>
     </br>
   
     <div class="row">
@@ -18,13 +15,13 @@
       <div class="span8 test">
         <ul class="prod">
         <% if params[:search].blank? %>
-          Your search results here.          
+          Before you add a child, search to see if the child is already in our database.          
         <% elsif @user.present? && @children.empty? %>
           <p>We found the user, but they have no children associated.  Please check back later.</p>
-        <% elsif @children.empty? %>
+        <% elsif @children.blank? && @allow_invite %>
           <p>No results found. Be the first to add this child.</p>
           <%= render 'new', :invitee => @search_term %>
-        <% else %>
+        <% elsif @children %>
           <ul class="child-list">
           <% @children.each do |child| %>
           <% rel = current_user.relationships.where(:child_id => child.id).to_a %>
@@ -47,7 +44,9 @@
               </li>  
             
             </div>  
-          <% end %>  
+          <% end %>
+        <% else %>
+          <p>Please enter a valid email address.</p>
         <% end %>
         </ul>        
       </div>

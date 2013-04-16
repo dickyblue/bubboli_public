@@ -1,17 +1,21 @@
 class ChildrenController < ApplicationController
 
   include SessionsHelper
+  include ChildrenHelper
   
   before_filter :authenticate
   
 
   def search_child
-    @search = Child.search params[:search]
     @search_term = params[:search].values[0] if params[:search]
-    @user = User.where('email = ? OR work_email = ?', @search_term, @search_term) if @search_term
-    #@search = Child.search(by_email) | Child.search(by_work_email)
-    @children = @search.where("relationships.relation_type_id" => 1)
     @relation_type = RelationType.where('id <>?', 1)
+    @search = Child.search params[:search]
+    if is_a_valid_email?(@search_term)
+      @user = User.where('email = ? OR work_email = ?', @search_term, @search_term) if @search_term
+      @children = @search.where('relationships.relation_type_id = ?', 1)
+      @allow_invite = true
+    else      
+    end
   end
 
 
