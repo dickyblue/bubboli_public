@@ -20,6 +20,7 @@ class Relationship < ActiveRecord::Base
   
   before_save :change_rel_status
   before_save :set_new_due_date
+  after_save :send_friend_alert_email, :on => :create
 
   def change_rel_status
     if self.relation_type_id == 1 && self.child.number_of_parents < 2
@@ -67,5 +68,9 @@ class Relationship < ActiveRecord::Base
   
   def calculate_for_next_year(reminder)
     (self.child.next_birthday + 1.year) - reminder.days
+  end
+  
+  def send_friend_alert_email
+    FriendAlertMailer.friend_alert(self).deliver
   end
 end

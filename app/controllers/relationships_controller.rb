@@ -20,7 +20,7 @@ class RelationshipsController < ApplicationController
   end
   
   def create
-    @relationship = Relationship.create(params[:relationship])
+    @relationship = Relationship.new(params[:relationship])
     @relationship.user_id = current_user.id
     if @relationship.save
       redirect_to current_user
