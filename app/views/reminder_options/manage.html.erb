@@ -1,0 +1,21 @@
+<% @page_title = "Manage Reminder Options" %>
+
+<div class="container">
+  
+  <div class="span4 offset4">
+  <h4>Manage Reminder Options</h4>
+  <br>
+
+  <%= simple_form_for @reminder_option do |f| %>
+
+      <%= render(:partial => 'shared/manage', :locals => {:f => f}) %>
+      <%= f.input :days %>
+    
+  <div class="btn primary white-link"><%= link_to "Cancel", list_reminder_options_path %></div>
+  <%= f.button :submit, 'Save', :class => "primary" %>
+  </div>
+  
+  <% end %>
+  </div>
+  
+</div>

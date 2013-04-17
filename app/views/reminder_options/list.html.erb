@@ -1,0 +1,34 @@
+<% @page_title = "List of Reminder Options" %>
+
+<div class="container">
+  
+  <p><%= link_to "«« Back to Gifts »»", gifts_path %> | <%= link_to "«« Back to Admin Panel »»", admin_path %></p><br> 
+  
+  <h4>List of Reminder Options</h4><br>
+  
+  <table class="table zebra-striped">
+    <thead>
+      <tr>
+        <th>ID #</th>
+        <th>Name</th>
+        <th>Days</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @reminder_options.each do |reminder_option| %>
+      <tr>
+        <td><%= reminder_option.id %></td>
+        <td><%= reminder_option.name %></td>
+        <td><%= reminder_option.days %></td>
+        <td><%= link_to "Edit", :action => 'manage', :id => reminder_option.id %> | <%= link_to "Delete", reminder_option, :method => :delete %></td>        
+       </tr>
+      <% end %>
+    </tbody>  
+
+  </table>
+  
+  <div class="btn primary white-link pull-right"><%= link_to "New", :action => 'manage' %></div>
+
+</div>
