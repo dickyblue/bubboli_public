@@ -1,0 +1,49 @@
+Hi, <%= @user %>
+===============================================
+ 
+You are receiving this letter because... 
+
+
+<%= image_tag @gifts[0].gift_images.first.image_url(:thumb_pic) if @gifts[0] %>
+<%= @gifts[0].name if @gifts[0] %>
+<%= @gifts[0].description.truncate(100) if @gifts[0] %>
+
+
+<%= image_tag @gifts[1].gift_images.first.image_url(:thumb_pic) if @gifts[1] %>
+<%= @gifts[1].name if @gifts[1] %>
+<%= @gifts[1].description.truncate(100) if @gifts[1] %>
+
+
+<%= image_tag @gifts[2].gift_images.first.image_url(:thumb_pic) if @gifts[2] %>
+<%= @gifts[2].name if @gifts[2] %>
+<%= @gifts[2].description.truncate(100) if @gifts[2] %>
+
+
+<%= image_tag @gifts[3].gift_images.first.image_url(:thumb_pic) if @gifts[3] %>
+<%= @gifts[3].name if @gifts[3] %>
+<%= @gifts[3].description.truncate(100) if @gifts[3] %>
+
+
+<%= image_tag @gifts[4].gift_images.first.image_url(:thumb_pic) if @gifts[4] %>
+<%= @gifts[4].name if @gifts[4] %>
+<%= @gifts[4].description.truncate(100) if @gifts[4] %>
+
+
+<%= image_tag @gifts[5].gift_images.first.image_url(:thumb_pic) if @gifts[5] %>
+<%= @gifts[5].name if @gifts[5] %>
+<%= @gifts[5].description.truncate(100) if @gifts[5] %>
+
+
+LET'S BE FRIENDS
+  http://www.facebook.com/bubboli
+  http://www.twitter.com/bubboli
+  http://www.pinterest.com/bubboli
+  
+  
+===============================================
+Copyright © 2013 Bubboli, All rights reserved.
+
+Our mailing address is:
+Bubboli
+55 W 26 Street
+New York, NY 10010
