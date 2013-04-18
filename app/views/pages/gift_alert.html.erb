@@ -62,27 +62,6 @@
                   
                           <!-- // Begin Module: Standard Header Navigation \\ -->
                   
-                          <td valign="middle" width="260" style="/*@editable*/ color:#202020; font-family:Arial; padding:0; text-align: center">	
-                        	  <table>
-                            	<tr>
-                                <td style="background-color:#63CECA; padding:6px; width:60px; text-align:center; font-family:Arial; font-size:15px; border-left: 5px solid #FFFFFF;">
-                                  <div>
-                                  <a href="http://www.bubboli.com/gifts" target="_blank" style="color: #FFFFFF">Shop</a>
-                                  </div>
-                                </td>    
-                                <td style="background-color:#63CECA; padding:6px; width:60px; text-align:center; font-family:Arial; font-size:15px; border-left: 5px solid #FFFFFF;">
-                                  <div>
-                                  <a href="http://www.bubboli.com/blog" target="_blank" style="color: #FFFFFF">Blog</a>
-                                  </div>
-                              	</td> 
-                              	<td style="background-color:#63CECA; padding:6px; width:60px; text-align:center; font-family:Arial; font-size:15px; border-left: 5px solid #FFFFFF;">
-                                  <div>
-                                  <a href="http://www.bubboli.com/signin" target="_blank" style="color: #FFFFFF">Account</a>
-                                  </div>
-                              	</td> 
-                              </tr>
-                            </table>
-                        	</td>
                           <!-- // End Module: Standard Header Navigation \\ -->  
                     
                         </tr>
@@ -99,18 +78,44 @@
                           <td valign="top" style="border-collapse: collapse">
                           <div style="color:#505050; font-family: Arial; font-size: 14px; line-height: 100%; padding: 0; text-align: left;">
                             <!-- // Begin Module: Standard Welcome \\ -->
-                          	  <span style="color:505050; font-size: 14px; line-height:150%; font-weight:bold;"><h4>Hi <%= @parent.first_name %>,</h4></span> <br><br>
-                          	  <p><%= @user.first_name %> wants to be reminded of <%= @child.first_name %>'s birthday.</p>  
-                          	  <p>Help <%= @user.first_name %> avoid duplicate gifting by <a href="http://www.bubboli.com" style="color:#ff6f6a;
-                              font-weight:normal;text-decoration:none" target="_blank">accepting </a> the friendship so they can see what's already been purchased
+                          	  <br><br><span style="color:505050; font-size: 14px; line-height:150%; font-weight:bold;">
+                          	    <h4>Hi <%= @parent.first_name  if @parent %>,</h4>
+                          	  </span> <br><br>
+                          	  <p><%= @user.first_name %> just purchased a gift for <%= @child.first_name %>'s birthday.</p>  
+                          	  <p>Help others avoid duplicate gifting by <a href="http://www.bubboli.com" style="color:#ff6f6a;
+                              font-weight:normal;text-decoration:none" target="_blank">confirming </a> the gift so others can see what's already been purchased
                               for <%= @child.first_name %>.</p>
                           	<!-- // End Module: Standard Welcome \\ -->
+                          	
                           </div>
                           </td>
                         </tr>
                       </table>  
+                            <!-- // Begin Module: Gift Accession \\ -->
+                            <table border="0" cellpadding="20" cellspacing="0" width="100%">
+                              <tr>
+                                
+                                <!-- // Begin Module: Gift Accession \\ -->
+                                <td valign="top" style="border-collapse: collapse">
+                                  <%= image_tag @gift.gift_images.first.image_url(:thumb_pic) %>
+                                </td>
+                                <td>  
+                                  <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
+                                    <p style="color: #53868b; display: block; font-family: Arial; font-size: 20px; font-weight: normal;
+                                    line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
+                                      <%= @gift.name %>
+                                    </p>
+                                    <p style="background-color:#6FAE4D; height: 25px; padding:6px; width:150px; text-align:center; font-family:Arial; font-size:15px;">                                      
+                                      <a href="http://www.bubboli.com" target="_blank" style="color: #FFFFFF">Confirm this gift.</a>                                      
+                                    </p>  
+                                  </div>
+                                </td>
+                                <!-- // End Module: Gift Accession \\ -->
+                                
+                              </tr>
+                            </table>  
+                            <!-- // End Module: Gift Accession \\ -->
                             
-                          
                             
                             <!-- // Begin Module: Footer \\ -->
                             <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-top:0">
