@@ -73,18 +73,23 @@
                 <tr>
                   <td>    
                     <!-- // Begin Template Body \\ -->
-                      <table border="0" cellpadding="20" cellspacing="0" width="100%">
+                      <table border="0" cellpadding="8" cellspacing="0" width="100%">
                         <tr>
                           <td valign="top" style="border-collapse: collapse">
                           <div style="color:#505050; font-family: Arial; font-size: 14px; line-height: 100%; padding: 0; text-align: left;">
                             <!-- // Begin Module: Standard Welcome \\ -->
-                          	  <br><br><span style="color:505050; font-size: 14px; line-height:150%; font-weight:bold;">
-                          	    <h4>Hi <%= @parent.first_name  if @parent %>,</h4>
-                          	  </span> <br><br>
-                          	  <p><%= @user.first_name %> just purchased a gift for <%= @child.first_name %>'s birthday.</p>  
-                          	  <p>Help others avoid duplicate gifting by <a href="http://www.bubboli.com" style="color:#ff6f6a;
-                              font-weight:normal;text-decoration:none" target="_blank">confirming </a> the gift so others can see what's already been purchased
-                              for <%= @child.first_name %>.</p>
+                          	  <br><br>
+                          	  <span style="color:#707070; font-size: 16px; line-height:150%; font-weight:bold;">Hi <%= @parent.first_name  if @parent %>,</span> <br><br>
+                          	  <br>
+                          	  <tr>
+                          	    <td style="color:#707070; font-size: 15px; line-height:150%;"><%= @user.first_name %> just purchased a gift for <%= @child.first_name %>'s birthday.</td>  
+                          	  </tr>
+                          	  
+                          	  <tr>
+                            	  <td style="color:#707070; font-size: 15px; line-height:150%;">Help others avoid duplicate gifting by <a href="http://www.bubboli.com" style="color:#ff6f6a;
+                                font-weight:normal;text-decoration:none" target="_blank">confirming </a> the gift so others can see what's already been purchased
+                                for <%= @child.first_name %>.</td>
+                              </td>
                           	<!-- // End Module: Standard Welcome \\ -->
                           	
                           </div>
@@ -101,13 +106,21 @@
                                 </td>
                                 <td>  
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
-                                    <p style="color: #53868b; display: block; font-family: Arial; font-size: 20px; font-weight: normal;
-                                    line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <%= @gift.name %>
-                                    </p>
-                                    <p style="background-color:#6FAE4D; height: 25px; padding:6px; width:150px; text-align:center; font-family:Arial; font-size:15px;">                                      
-                                      <a href="http://www.bubboli.com" target="_blank" style="color: #FFFFFF">Confirm this gift.</a>                                      
-                                    </p>  
+                                    <table>
+                                      <tr>
+                                        <td style="color: #53868b; display: block; font-family: Arial; font-size: 20px; font-weight: normal;
+                                        line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
+                                          <%= @gift.name %>
+                                        </td>
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td style="background-color:#6FAE4D; height: 25px; padding:6px; width:150px; text-align:center; font-family:Arial; font-size:15px;">                                      
+                                          <a href="http://www.bubboli.com" target="_blank" style="color: #FFFFFF"><span style="color: #FFFFFF;">CONFIRM THIS GIFT</span></a>                                      
+                                        </td>
+                                      </tr>
+                                    </table>
+                                      
                                   </div>
                                 </td>
                                 <!-- // End Module: Gift Accession \\ -->
