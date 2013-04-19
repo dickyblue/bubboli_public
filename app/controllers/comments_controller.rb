@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-
+  before_filter :verify_is_admin, :except => [:show]
   
   def list
     @comments = Comment.find(:all, :order => 'created_at DESC')

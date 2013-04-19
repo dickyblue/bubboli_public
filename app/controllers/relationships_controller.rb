@@ -3,6 +3,7 @@ class RelationshipsController < ApplicationController
   include SessionsHelper
   layout 'relationship'
   
+  before_filter :authenticate
   before_filter :correct_user, :except => 'create'
   
   def show

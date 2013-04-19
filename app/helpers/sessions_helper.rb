@@ -37,6 +37,10 @@ module SessionsHelper
     def authenticate
       deny_access unless current_user
     end
+    
+    def verify_is_admin
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
+    end
 
     def store_location
       session[:return_to] = request.fullpath

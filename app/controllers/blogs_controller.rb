@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
 
   layout "blog"
   
-  before_filter :authenticate, :except => [:index, :show, :archive]
+  before_filter :verify_is_admin, :except => [:index, :show, :archive]
 
   include ApplicationHelper
   include BlogsHelper

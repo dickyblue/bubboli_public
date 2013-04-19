@@ -1,6 +1,7 @@
 class GiftAccessionsController < ApplicationController
 
   before_filter :get_child
+  before_filter :authenticate
 
   def index
     @search = Gift.search(params[:search])

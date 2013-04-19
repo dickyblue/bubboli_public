@@ -1,5 +1,7 @@
 class InvitationsController < ApplicationController
 
+  before_filter :authenticate
+
   def destroy
     @invitation = Invitation.find(params[:id])
     @invitation.destroy

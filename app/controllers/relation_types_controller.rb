@@ -1,5 +1,7 @@
 class RelationTypesController < ApplicationController
 
+  before_filter :verify_is_admin
+
   def list
     @relation_types = RelationType.find(:all)
   end

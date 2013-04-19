@@ -1,5 +1,7 @@
 class MyKidsRelationshipsController < ApplicationController
 
+  before_filter :authenticate
+
   def update
     @relationship = Relationship.where(:child_id => current_user.relationships.where(:relation_type_id => 1).pluck(:child_id), :status => "Pending").find(params[:id])
     current_user.approve!(@relationship)

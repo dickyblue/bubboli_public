@@ -1,6 +1,6 @@
 class ReminderOptionsController < ApplicationController
   
-  before_filter :authenticate
+  before_filter :verify_is_admin
   
   def index
     @reminder_option = ReminderOption.find(params[:id])

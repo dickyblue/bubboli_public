@@ -1,6 +1,6 @@
 class GiftAgeRangesController < ApplicationController
 
-  before_filter :authenticate
+  before_filter :verify_is_admin
 
 
   def list

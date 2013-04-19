@@ -56,5 +56,5 @@ class ChildImagesController < ApplicationController
   def get_child
     @child = Child.find(params[:child_id])
   end
-
+  
 end
