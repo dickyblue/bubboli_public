@@ -1,6 +1,10 @@
 require 'sidekiq/web'
 BubboliKids::Application.routes.draw do
 
+  get "password_resets/new"
+
+  get "password_reset/new"
+
   #root :to => 'gifts#index'
   root :to => 'pages#home'
   mount Sidekiq::Web, at: '/sidekiq'
@@ -68,10 +72,12 @@ BubboliKids::Application.routes.draw do
   resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs
   resources :sessions, :only => [:create]
   resources :invitations, :only => [:destroy, :show]
+  resources :password_resets
   resources :children do
     resources :child_images
     resources :gift_accessions
   end
+  
 
 
 

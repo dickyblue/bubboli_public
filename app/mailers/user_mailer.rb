@@ -6,4 +6,9 @@ class UserMailer < ActionMailer::Base
     mail :to => user.email, :subject => "Email Activation for Bubboli"
   end
   
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => "Password Reset Instructions"
+  end
+  
 end

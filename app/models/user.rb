@@ -123,6 +123,13 @@ class User < ActiveRecord::Base
   def is_parent_of?(child)
     self.my_kids.include?(child)
   end
+  
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
     
   private
   
