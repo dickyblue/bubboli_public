@@ -59,11 +59,11 @@ class User < ActiveRecord::Base
     (user && user.password_salt == cookie_password_salt) ? user : nil
   end
   
-  def before_update
-  	if !password.blank?
-  		self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-  	end
-  end
+#  def before_update
+#  	if !password.blank?
+#  		self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+#  	end
+#  end
   
   def send_confirmation_token
     generate_token(:confirmation_token)
