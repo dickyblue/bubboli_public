@@ -2,8 +2,8 @@ require 'digest'
 
 class User < ActiveRecord::Base
   
-  attr_accessor   :password
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :address_city, :address_state, :image
+  attr_accessor   :password
   attr_protected  :admin
   
   has_many :relationships, :dependent => :destroy
@@ -32,15 +32,17 @@ class User < ActiveRecord::Base
 
   validates :first_name,              :presence => true
   
-  validates :password, :if => :should_validate_password?,                 :presence => true, 
-                                                                    :confirmation => true
+  validates_confirmation_of :password
+  validates_presence_of :password, :on => :create
+  #validates :password, :if => :should_validate_password?,                 :presence => true, 
+                                                                    #:confirmation => true
 
   before_save :encrypt_password, :unless => "password.blank?"
   after_create :send_confirmation_token
   
-  def should_validate_password?
-    new_record?
-  end
+  #def should_validate_password?
+   # new_record?
+  #end
   
   def has_password?(submitted_password)
     password_hash == encrypt(submitted_password)
