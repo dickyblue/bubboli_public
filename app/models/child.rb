@@ -15,7 +15,7 @@ class Child < ActiveRecord::Base
   has_many  :gifts, :through => :gift_accessions 
   has_many  :givers, :through => :gift_accessions
   
-  accepts_nested_attributes_for :invitations
+  accepts_nested_attributes_for :invitations, :relationships #Added relationships to create new relationship when new child is created
   accepts_nested_attributes_for :child_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
   before_save :update_reminders
   

@@ -22,12 +22,13 @@ class ChildrenController < ApplicationController
   def new
     @child = Child.new
     @child.invitations.build
+    @child.relationships.build
   end
   
   def create
-    @child = Child.new(params[:child])
+    @child = Child.create!(params[:child])
     if @child.save
-      @child.relationships.last.update_attributes(:user_id => current_user.id)
+      @child.relationships.create!(:user_id => current_user.id) # Changed from relationships.last.update_attributes because relationship was not created at creation of child
       @child.invitations.create!(:sender => current_user, :recipient_email => params[:invitee] )
       redirect_to current_user
       flash[:success] = "Thank you.  An invitation has been sent to #{@child.first_name}'s parent."

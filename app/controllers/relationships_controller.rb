@@ -4,7 +4,7 @@ class RelationshipsController < ApplicationController
   layout 'relationship'
   
   before_filter :authenticate
-  before_filter :correct_user, :except => 'create'
+  before_filter :correct_user, :except => [:create]
   
   def show
     @relationship = Relationship.find(params[:id])
