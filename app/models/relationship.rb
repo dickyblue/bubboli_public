@@ -23,7 +23,7 @@ class Relationship < ActiveRecord::Base
   
   before_save :change_rel_status
   before_save :set_new_due_date
-  after_save :send_friend_alert_email, :on => :create # need to fix this so that an email is sent only if a parent exists
+  after_save :send_friend_alert_email, :on => :create
 
   def change_rel_status
     if self.relation_type_id == 1 && self.child.number_of_parents < 2

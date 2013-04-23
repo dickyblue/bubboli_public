@@ -4,6 +4,7 @@ class ChildrenController < ApplicationController
   include ChildrenHelper
   
   before_filter :authenticate
+  before_filter :parents_only
   
 
   def search_child
@@ -52,5 +53,11 @@ class ChildrenController < ApplicationController
     end
   end
 
+  private
+
+  def parents_only
+    child = Child.find(params[:id])
+    redirect_to current_user unless child.parents.include?(current_user) 
+  end
 
 end
