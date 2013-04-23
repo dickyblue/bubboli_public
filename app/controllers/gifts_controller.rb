@@ -31,6 +31,10 @@ class GiftsController < ApplicationController
     category_ids = @gift.gift_categorizations.map(&:gift_category_id)
     gift_categorizations = GiftCategorization.select("distinct gift_id").where(:gift_category_id => category_ids).where("gift_id != ?",@gift.id)
     @similar_gifts = Gift.where(:id => gift_categorizations.map(&:gift_id)).random(5)
+    
+    if request.path != gift_path(@gift)
+      redirect_to @gift, status: :moved_permanently
+    end
   end
   
   def create

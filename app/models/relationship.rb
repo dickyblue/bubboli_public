@@ -1,5 +1,8 @@
 class Relationship < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :full_name_and_child_name, use: [:slugged, :history]
+
   fields = [ :user_id, :child_id, :relation_type_id, :gift_category_ids, :gift_price_range_ids, :status, :accepted_at, :reminders]
   fields << ReminderOption.all.map(&:name.to_sym)
   fields = fields.flatten
@@ -33,9 +36,12 @@ class Relationship < ActiveRecord::Base
     confirmed = self.where(:user_id => user.id, :status => "Confirmed")
     return true if confirmed
   end
+  
+  def full_name_and_child_name
+    "#{self.user.first_name} #{self.user.last_name} #{self.child.first_name} "
+  end
 
-  def send_reminder
-    
+  def send_reminder    
     #identify which reminder is being sent
     #Send email notification from here
     set_new_due_date(true)

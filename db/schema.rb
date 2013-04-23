@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306204654) do
+ActiveRecord::Schema.define(:version => 20130423170700) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -49,7 +49,10 @@ ActiveRecord::Schema.define(:version => 20130306204654) do
     t.datetime "publish_date"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.string   "slug"
   end
+
+  add_index "blogs", ["slug"], :name => "index_blogs_on_slug"
 
   create_table "child_images", :force => true do |t|
     t.integer  "child_id"
@@ -81,6 +84,17 @@ ActiveRecord::Schema.define(:version => 20130306204654) do
   end
 
   add_index "comments", ["blog_id"], :name => "index_comments_on_blog_id"
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "gift_accessions", :force => true do |t|
     t.integer  "gift_id"
@@ -166,11 +180,13 @@ ActiveRecord::Schema.define(:version => 20130306204654) do
     t.datetime "created_at",                                                            :null => false
     t.datetime "updated_at",                                                            :null => false
     t.boolean  "baby_shower"
+    t.string   "slug"
   end
 
   add_index "gifts", ["baby_shower"], :name => "index_gifts_on_baby_shower"
   add_index "gifts", ["created_at"], :name => "index_gifts_on_created_at"
   add_index "gifts", ["favorite"], :name => "index_gifts_on_favorite"
+  add_index "gifts", ["slug"], :name => "index_gifts_on_slug"
 
   create_table "invitations", :force => true do |t|
     t.integer  "sender_id"
@@ -202,10 +218,12 @@ ActiveRecord::Schema.define(:version => 20130306204654) do
     t.datetime "updated_at",                                  :null => false
     t.text     "reminders"
     t.date     "next_reminder_due_at"
+    t.string   "slug"
   end
 
   add_index "relationships", ["child_id"], :name => "index_relationships_on_child_id"
   add_index "relationships", ["relation_type_id"], :name => "index_relationships_on_relation_type_id"
+  add_index "relationships", ["slug"], :name => "index_relationships_on_slug"
   add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "user_child_relationship_idx"
   add_index "relationships", ["user_id"], :name => "index_relationships_on_user_id"
 
@@ -262,8 +280,10 @@ ActiveRecord::Schema.define(:version => 20130306204654) do
     t.datetime "updated_at",                                                  :null => false
     t.integer  "invitation_id"
     t.string   "image"
+    t.string   "slug"
   end
 
   add_index "users", ["email", "work_email"], :name => "index_users_on_email_and_work_email", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug"
 
 end

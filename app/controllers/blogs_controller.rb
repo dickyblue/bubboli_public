@@ -61,6 +61,11 @@ class BlogsController < ApplicationController
     published_blog_search
     set_archive_list
     @comments = Comment.where(:blog_id => @blog.id)
+    
+    if request.path != blog_path(@blog)
+      redirect_to @blog, status: :moved_permanently
+    end
+    
   end
   
   def archive

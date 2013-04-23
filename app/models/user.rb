@@ -1,6 +1,9 @@
 require 'digest'
 
 class User < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :full_name, use: [:slugged, :history]
   
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :address_city, :address_state, :image
   attr_accessor   :password
@@ -43,6 +46,10 @@ class User < ActiveRecord::Base
   #def should_validate_password?
    # new_record?
   #end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
   
   def has_password?(submitted_password)
     password_hash == encrypt(submitted_password)

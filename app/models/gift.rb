@@ -1,5 +1,8 @@
 class Gift < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+  
   attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender,
   :gift_category_ids, :gift_images_attributes, :gift_price_range_ids, :description, :why_bubboli_loves_it, :favorite, :gift_age_range_ids
   
@@ -26,10 +29,11 @@ class Gift < ActiveRecord::Base
   
   scope :recently_added, lambda { where("created_at <= ? AND created_at >= ?", Date.today, Date.today - 100) }
   scope :baby_shower_gifts, lambda { where("baby_shower = ?", true) }
-  
-  def to_param
-    "#{id}-#{name.parameterize}"
-  end
+
+# Using friendly_id gem instead  
+#  def to_param
+#    "#{id}-#{name.parameterize}"
+#  end
   
   def self.gender_search(gender)
     Gift.where(:gender => [gender, 'Unisex'])

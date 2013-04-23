@@ -18,6 +18,11 @@ class RelationshipsController < ApplicationController
     @approve_gifts = @child.gift_accessions.where(:approved => false)
     @search = Gift.search(params[:search])
     @relation_type = RelationType.where('id <>?', 1) unless @relationship.user.is_parent_of?(@relationship.child)
+    
+    if request.path != relationship_path(@relationship)
+      redirect_to @relationship, status: :moved_permanently
+    end
+    
   end
   
   def create

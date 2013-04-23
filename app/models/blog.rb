@@ -1,5 +1,8 @@
 class Blog < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
+
   attr_accessible :image, :remote_image_url, :title, :author, :content, :author_permalink, :published, :publish_date, :blog_image_attributes
   
   has_one  :blog_image
@@ -29,10 +32,10 @@ class Blog < ActiveRecord::Base
     self.class.first(:conditions => ["published = ? && created_at > ?", true, created_at], :order => "created_at asc")
   end
   
-
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
+# Using friendly_id gem instead  
+#  def to_param
+#    "#{id}-#{title.parameterize}"
+#  end
   
   
 end

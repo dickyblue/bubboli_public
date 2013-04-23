@@ -63,6 +63,10 @@ class UsersController < ApplicationController
     @all_relationships = Relationship.where(:user_id => current_user.id)
     @relationships_by_birth_date = @all_relationships.sort_by! {|b| b.child.birthday_days}
     @relationships_by_name = @relationships.sort_by! {|b| b.child.first_name}
+    
+    if request.path != user_path(@user)
+      redirect_to @user, status: :moved_permanently
+    end
   end
   
   def following
