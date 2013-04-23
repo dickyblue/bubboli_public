@@ -36,11 +36,11 @@ class BlogImageUploader < CarrierWave::Uploader::Base
   # end
   
   version :large_pic do
-    process :resize_to_limit => [260, 360]
+    process :resize_to_fill => [260, 360]
   end
  
   version :thumb_pic, :from_version => :large_pic do
-    process :resize_to_limit => [160, 175]
+    process :resize_to_fill => [160, 175]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
