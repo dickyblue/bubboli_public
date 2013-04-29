@@ -53,6 +53,7 @@ BubboliKids::Application.routes.draw do
   match '/users/:id/pending', :to => 'users#pending', :as => :pending
   match '/users/:id/followers', :to => 'users#followers', :as => :followers
   match '/users/:id/requests', :to => 'users#requests', :as => :requests
+  match '/users/:id/change_password', :to => 'users#change_password', :as => :change_password
   match '/users/thankyou(/:id)', :to => 'users#thankyou', :as => :thankyou
   match '/users/confirm/:confirmation_token', :to => 'users#confirm', :as => :confirm
   match '/signup/:invitation_token', :to => 'users#new'

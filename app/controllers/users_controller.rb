@@ -90,6 +90,24 @@ class UsersController < ApplicationController
   
   def thankyou
   end
+  
+  def change_password
+    @user = current_user
+    if request.post?
+      if User.authenticate(current_user.email, params[:old_password]) == @user
+        @user.password = params[:user][:password]
+        @user.password_confirmation = params[:user][:password_confirmation]
+        if @user.save
+          redirect_to current_user
+          flash[:success] = "Password changed."
+        else
+          flash[:error] = 'Please fix errors below.'
+        end
+      else
+        flash[:error] = "You entered an invalid password."
+      end
+    end
+  end
 
   private
   
