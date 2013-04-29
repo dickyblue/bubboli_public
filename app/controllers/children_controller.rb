@@ -4,7 +4,6 @@ class ChildrenController < ApplicationController
   include ChildrenHelper
   
   before_filter :authenticate
-#  before_filter :parents_only, :only => [:edit, :update]
   
 
   def search_child
@@ -14,6 +13,7 @@ class ChildrenController < ApplicationController
     if is_a_valid_email?(@search_term)
       @user = User.where('email = ? OR work_email = ?', @search_term, @search_term) if @search_term
       @children = @search.where('relationships.relation_type_id = ?', 1)
+      @child = Child.new unless @children.present?
       @allow_invite = true
     else      
     end
@@ -27,20 +27,25 @@ class ChildrenController < ApplicationController
   end
   
   def create
-    @child = Child.create!(params[:child])
+    @child = Child.new(params[:child])
+    @search_term = params[:invitee] if params[:invitee]
     if @child.save
       @child.relationships.create!(:user_id => current_user.id) # Changed from relationships.last.update_attributes because relationship was not created at creation of child
       @child.invitations.create!(:sender => current_user, :recipient_email => params[:invitee] )
       redirect_to current_user
       flash[:success] = "Thank you.  An invitation has been sent to #{@child.first_name}'s parent."
     else
-      flash[:error] = "User is already registered, but does not have children of their own."
+      flash[:error] = "Please fix the errors below."
       render "new"
     end
   end
 
   def edit
     @child = Child.find(params[:id])
+    unless parents_only?
+      redirect_to current_user
+      flash[:error] = "You can't edit this child."
+    end
   end
 
 
@@ -65,5 +70,9 @@ class ChildrenController < ApplicationController
 #      redirect_to current_user
 #    end  
 #  end
+
+  def parents_only?
+    current_user.is_parent_of?(@child) || @child.parents.blank?
+  end
 
 end

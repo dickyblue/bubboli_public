@@ -1,5 +1,5 @@
 <div class="span8">
-<%= simple_form_for(Child.new, :html => {:class => "form_horizontal"}) do |f| %>
+<%= simple_form_for(@child, :html => {:class => "form_horizontal"}) do |f| %>
   <%= render(:partial => 'form', :locals => {:f => f}) %>
   <%= hidden_field_tag :invitee, invitee %>
   <div class="pull-right">
