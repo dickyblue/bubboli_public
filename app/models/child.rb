@@ -91,7 +91,7 @@ class Child < ActiveRecord::Base
   end
   
   def profile_picture
-    profile_picture = self.child_images.where(:profile => true).try(:first) || self.child_images.try(:first) 
+    self.child_images.where(:profile => true).try(:first) || self.child_images.try(:first) 
   end
   
   def parents
@@ -104,7 +104,9 @@ class Child < ActiveRecord::Base
   end
   
   def update_reminders
-    self.relationships.each {|r| r.set_new_due_date(true)} if self.birth_date_changed?
+    unless self.new_record?
+      self.relationships.each {|r| r.set_new_due_date(true)} if self.birth_date_changed?
+    end
   end
   
 end
