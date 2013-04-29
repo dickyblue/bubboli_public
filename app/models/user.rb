@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   validates :email,                   :presence => true,
                                       :uniqueness => { :case_sensitive => false },
                                       :format => { :with => email_regex },
-                                      :on => :save
+                                      :on => :create
                                       
   validates :work_email,              :uniqueness => { :case_sensitive => false },
                                       :format => { :with => email_regex },

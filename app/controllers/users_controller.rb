@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       sign_out
       redirect_to thankyou_path
     else
-      render 'new'
+      render 'new', :layout => 'application'
     end
   end
   
