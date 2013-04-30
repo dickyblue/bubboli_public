@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423170700) do
+ActiveRecord::Schema.define(:version => 20130430141108) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20130423170700) do
     t.boolean  "approved",   :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.boolean  "gift_alert"
   end
 
   add_index "gift_accessions", ["child_id"], :name => "index_gift_accessions_on_child_id"
@@ -219,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20130423170700) do
     t.text     "reminders"
     t.date     "next_reminder_due_at"
     t.string   "slug"
+    t.boolean  "friend_alert"
   end
 
   add_index "relationships", ["child_id"], :name => "index_relationships_on_child_id"

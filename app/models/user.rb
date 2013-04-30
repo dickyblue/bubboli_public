@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
    # new_record?
   #end
 
+  def self.reset_password
+    where('reset_password =?', true)
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -134,6 +138,10 @@ class User < ActiveRecord::Base
   end
   
   def send_password_reset
+    PasswordResetWorker.perform_async(self.id)
+  end
+  
+  def reset_password
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.now
     save!
@@ -150,7 +158,7 @@ class User < ActiveRecord::Base
   
     def encrypt_password
       self.password_salt = make_password_salt if new_record?
-      self.password_hash = encrypt (password)
+      self.password_hash = encrypt(password)
     end
     
     def encrypt(string)

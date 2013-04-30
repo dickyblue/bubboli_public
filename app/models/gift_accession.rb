@@ -7,12 +7,16 @@ class GiftAccession < ActiveRecord::Base
   belongs_to :giver, :class_name => "User", :foreign_key => 'user_id'
   
   before_save :approve_gifts_from_parents
-  after_save :send_gift_alert_email, :on => :create
+  after_save :set_gift_alert, :on => :create
   
   def approve_gifts_from_parents
     if self.giver.is_parent_of?(self.giftee)
       self.approved = "true"
     end
+  end
+  
+  def set_gift_alert
+    self.update_column('gift_alert', true)
   end
   
   def send_gift_alert_email
