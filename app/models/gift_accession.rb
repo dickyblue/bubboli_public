@@ -20,7 +20,12 @@ class GiftAccession < ActiveRecord::Base
   end
   
   def send_gift_alert_email
-    GiftAlertMailer.gift_alert(self).deliver
+    begin
+      GiftAlertMailer.gift_alert(self).deliver!
+      self.update_attributes('gift_aert', false)
+    rescue
+      nul
+    end
   end
     
 end

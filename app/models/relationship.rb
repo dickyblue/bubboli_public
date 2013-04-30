@@ -81,6 +81,11 @@ class Relationship < ActiveRecord::Base
   end
   
   def send_friend_alert_email
-    FriendAlertMailer.friend_alert(self).deliver if self.child.parents
+    begin
+      FriendAlertMailer.friend_alert(self).deliver if self.child.parents
+      self.update_attributes('friend_alert', false)
+    rescue
+      nil
+    end
   end
 end
