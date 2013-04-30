@@ -8,7 +8,8 @@ class ChildrenController < ApplicationController
 
   def search_child
     @search_term = params[:search].values[0] if params[:search]
-    @relation_type = RelationType.where('id <>?', 1)
+    #@relation_type = RelationType.where('id <>?', 1)
+    @relation_type = RelationType.non_parent
     @search = Child.search params[:search]
     if is_a_valid_email?(@search_term)
       @user = User.where('email = ? OR work_email = ?', @search_term, @search_term) if @search_term
