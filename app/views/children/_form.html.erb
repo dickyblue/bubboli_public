@@ -6,7 +6,7 @@
 <%#= select_tag 'relationship.relation_type_id', options_from_collection_for_select(RelationType.non_parent, "id", "name") %>
 <%#= f.association :relation_types, :as => :collection_select, :collection => @relation_type, :label => "Your Relation To Child" %>
 <%#= collection_select(:relationships, :relation_type_id, RelationType.non_parent, :id, :name )%>
-<%#= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name") %>
+<%= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name") %>
 <%#= collection_select :relation_type_ids, RelationType.non_parent, :name, :id %>
 <%#= select_tag("relationships", "relation_type_id", RelationType.non_parent.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select Person'}) %>
 

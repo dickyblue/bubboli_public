@@ -109,4 +109,8 @@ class Child < ActiveRecord::Base
     end
   end
   
+  def build_relationship(user_id, relation_type_id)
+    self.relationships.create!(:user_id => user_id, :relation_type_id => relation_type_id)
+  end
+  
 end
