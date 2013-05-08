@@ -70,7 +70,7 @@ BubboliKids::Application.configure do
   # For email confirmation email
   config.action_mailer.default_url_options = { :host => 'bubboli-kids-staging.herokuapp.com/' }
   
-  #mandrill
+  # mandrill.  also added the mandrill add on for heroku
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
       :address =>        'smtp.mandrillapp.com',
