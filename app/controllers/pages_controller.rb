@@ -29,6 +29,11 @@ class PagesController < ApplicationController
     @parent = @child.parents.first.user if @child.parents
     @gift = gift_accession.gift
   end
+  
+  #only for viewing online
+  # def account_confirmation
+  #   @user = User.first
+  # end
 
   
 end

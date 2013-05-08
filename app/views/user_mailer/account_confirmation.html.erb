@@ -12,8 +12,202 @@
     <p>
       To activate your account, click the URL below.
 
-      <%= confirm_url(@user.confirmation_token) %>
+      <%#= confirm_url(@user.confirmation_token) %>
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>
+</html>
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <!-- Bubboli Email Confirmation Template -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Facebook sharing information tags -->
+        <meta property="og:title" content="*|MC:SUBJECT|*">
+        
+        <title>*|MC:SUBJECT|*</title>
+    </head>
+
+    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    	<center>
+        
+        <!-- // Overall \\ -->
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="background-color:#FAFAFA; height:100% !important; margin:0; padding:0; width:100% !important; -webkit-text-size-adjust: none;">
+          <tr>
+            <td align="center" valign="top">
+              
+    
+              <!-- // Body \\ -->      
+              <table border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #DDDDDD; background-color:#FDFDFD;">
+              	<tr>
+                  <td align="center" valign="top">
+              
+                    <!-- // Begin Template Header \\ -->
+                      <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color:#FFFFFF; border-bottom:0;">
+                        <tr>
+                          <td style="/*@editable*/ color:#202020; font-family:Arial; font-size:34px; font-weight:bold; line-height:100%; padding:0; text-align:center; vertical-align:middle;">
+                            <!-- // Begin Module: Standard Header Image \\ -->
+                          	<div style="text-align: left">
+                          	  <img alt="Bubboli" src="http://www.bubboli.com/assets/BubboliLogo-085ca4d853b37df4b3ac839940e32ede.png" style="max-width:600px;" style="max-width:600px !important;" mc:label="header_image" mc:edit="header_image" mc:allowdesigner="" mc:allowtext="">
+                          	</div>
+                          	<!-- // End Module: Standard Header Image \\ -->
+                          </td>
+                                      
+                        </tr>
+                      </table>
+                    <!-- // End Template Header \\ -->
+                  </td>  
+                </tr>
+                
+                <tr>
+                  <td>    
+                    <!-- // Begin Template Body \\ -->
+                      <table border="0" cellpadding="8" cellspacing="0" width="100%">
+                        <tr>
+                          <td valign="top" style="border-collapse: collapse">
+                          <div style="color:#505050; font-family: Arial; font-size: 14px; line-height: 100%; padding: 0; text-align: left;">
+                            <!-- // Begin Module: Standard Welcome \\ -->
+                          	  <br><br>
+                          	  <span style="color:#707070; font-size: 16px; line-height:150%; font-weight:bold;">Hi <%= @user.first_name %>,</span> <br><br>
+                          	  <br>
+                          	  <tr>
+                          	    <td style="color:#707070; font-size: 15px; line-height:150%;"><h1>Welcome to Bubboli!</h1></td>  
+                          	  </tr>
+                          	  
+                          	  <tr>
+                            	  <td style="color:#707070; font-size: 15px; line-height:150%;">Thank you for signing up to Bubboli and for wanting to
+                                show the kids in your life just how much you love them. </td>
+                              </tr>  
+                              
+                              <tr>
+                                <td style="color:#707070; font-size: 15px; line-height:150%;">To activate your account, click the link below. </td>
+                              </tr>
+                              
+                          	<!-- // End Module: Standard Welcome \\ -->
+                          	
+                          </div>
+                          </td>
+                        </tr>
+                      </table>
+                      
+                      
+                      <table border="0" cellpadding="8" cellspacing="0" width="100%">
+                        <tr>
+                          
+                          <!-- // Begin Module: Activation Button \\ -->
+                          <td>  
+                            <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
+                              <table>
+                                <tr>
+                                  <td style="background-color:#6FAE4D; height: 25px; padding:6px; width:150px; text-align:center; font-family:Arial; font-size:15px;">                                      
+                                    <a href="<%#= confirm_url(@user.confirmation_token) %>" target="_blank" style="color: #FFFFFF"><span style="color: #FFFFFF;">Activate Your Account</span></a>                                      
+                                  </td>
+                                </tr>
+                              </table>
+                                
+                            </div>
+                          </td>
+                          <!-- // End Module: Activation Button \\ -->
+                          
+                        </tr>
+                      </table>  
+                      <br>
+                      <table border="0" cellpadding="8" cellspacing="0" width="100%">
+                        <tr>
+                          
+                          <!-- // Begin Module: Signature \\ -->
+                          <td>  
+                            <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
+                              <table>
+
+                                <tr>
+                                  <td>
+                                    All the best,
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="color: #707070; font-family:Arial; font-size: 12px; line-height: 125%; text-align: left">
+                                    Ming<br>
+                                    Co-Founder<br>
+                                    @mingbubboli
+                                  </td>
+                                </tr>
+                              </table>
+                                
+                            </div>
+                          </td>
+                          <!-- // End Module: Signature \\ -->
+                          
+                        </tr>
+                      </table>
+                                                    
+                            
+                            <!-- // Begin Module: Footer \\ -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-top:0">
+                              <tr>
+                                <td valign="top" style="border-collapse: collapse">
+                                  <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                    <tr>
+                                      <td colspan="2" valign="middle" style="border-collapse: collapse; background-color: #FAFAFA; border: 0">
+                                        <div style="color: #707070; font-family: Arial; font-size: 12px; line-height: 125%; text-align: center">
+                                          <span valign="middle" style="color: #53868B; font-weight: normal; font-size: 15px;">LET'S BE FRIENDS</span>
+                                          &nbsp; &nbsp; &nbsp;
+                                          <a href="http://www.facebook.com/bubboli" style="color: #53868B; font-weight: normal; text-decoration: none" target="_blank"></a>
+                                            <img align="none" alt="facebook" height="28" width="28" src="http://localhost:3000/assets/facebook.jpg" style="width: 28px; min-height: 28px; border: 0; 
+                                            line-height: 100%; outline: none; text-decoration: none; display: inline">
+                                            &nbsp; &nbsp; &nbsp;
+                                          <a href="http://www.twitter.com/bubboli" style="color: #53868B; font-weight: normal; text-decoration: none" target="_blank"></a>
+                                            <img align="none" alt="twitter" height="28" width="28" src="http://localhost:3000/assets/twitter.jpg" style="width: 28px; min-height: 28px; border: 0; 
+                                            line-height: 100%; outline: none; text-decoration: none; display: inline">
+                                            &nbsp; &nbsp; &nbsp;
+                                          <a href="http://www.pinterest.com/bubboli" style="color: #53868B; font-weight: normal; text-decoration: none" target="_blank"></a>
+                                            <img align="none" alt="pinterest" height="28" width="28" src="http://localhost:3000/assets/pinterest.jpg" style="width: 28px; min-height: 28px; border: 0; 
+                                            line-height: 100%; outline: none; text-decoration: none; display: inline">
+                                            &nbsp; &nbsp; &nbsp;
+                                            <span style="color: #53868B; font-weight: normal; font-size: 15px;">STAY CONNECTED</span>
+                                        </div>  
+                                      </td>  
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td valign="top" width="350" style="border-collapse: collapse">
+                                        <div style="color: #707070; font-family:Arial; font-size: 12px; line-height: 125%; text-align: left" >
+                                          <em>Copyright © 2013 Bubboli, All rights reserved.</em><br><br>
+                                          <strong>Our mailing address is:</strong><br>
+                                          <div>
+                                            <span>Bubboli</span><br>
+                                            <div>
+                                              <span>55 W 26 Street</span><br>
+                                              <span>New York, NY 10010</span><br>                                             
+                                            </div>  
+                                          </div>  
+                                        </div>
+                                      </td>
+                                    </tr>  
+                                  </table>  
+                                </td>
+                              </tr>
+                            </table>
+                            <!-- // End Module: Footer \\ -->
+                            
+                          </td>
+                        </tr>  
+                        
+                      </table>      
+                    <!-- // End Template Body \\ -->
+
+                  </td>
+                </tr>    
+              </table>
+            </td>
+          </tr>
+        </table>      
+      </center>
+    </body>
+
 </html>
