@@ -3,7 +3,7 @@
   <div>
     <% link = "http://"+gift.permalink %>
     <%# for image in gift.gift_images.limit(1) %>
-    <%= link_to image_tag(gift.gift_images.first.image_url(:thumb_pic)), gift %>
+    <%#= link_to image_tag(image.image_url(:thumb_pic)), gift %>
     <%# end %>
     <%= link_to gift.name, gift, :class => "strong" %><br>
     <%= number_to_currency(gift.price) %><br>
