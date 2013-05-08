@@ -74,8 +74,8 @@ BubboliKids::Application.configure do
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
       :address =>        'smtp.mandrillapp.com',
-      :user_name =>      ENV['app15405621@heroku.com'],
-      :password =>       ENV['SrY4L2qhdD8rwD91AcQmPg'],
+      :user_name =>      'app15405621@heroku.com',
+      :password =>       'SrY4L2qhdD8rwD91AcQmPg',
       :domain =>         'heroku.com',
       :authentication => :plain
   }
