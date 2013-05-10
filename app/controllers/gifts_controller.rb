@@ -64,16 +64,25 @@ class GiftsController < ApplicationController
   def favorite
     @search_favorite = Gift.where(:favorite => true).search(params[:search])
     @gifts = @search_favorite.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
+    @all_gift_categories = GiftCategory.all
+    @all_gift_age_ranges = GiftAgeRange.all
+    @all_gift_price_ranges = GiftPriceRange.all
   end
   
   def recently_added
     @search_recently_added = Gift.recently_added.search(params[:search])
     @gifts = @search_recently_added.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
+    @all_gift_categories = GiftCategory.all
+    @all_gift_age_ranges = GiftAgeRange.all
+    @all_gift_price_ranges = GiftPriceRange.all
   end
   
   def baby_shower
     @search_baby_shower = Gift.baby_shower_gifts.search(params[:search])
-    @gifts = @search_baby_shower.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")    
+    @gifts = @search_baby_shower.paginate(:page => params[:page], :per_page => 9, :order => "created_at DESC")
+    @all_gift_categories = GiftCategory.all
+    @all_gift_age_ranges = GiftAgeRange.all
+    @all_gift_price_ranges = GiftPriceRange.all    
   end
   
   
