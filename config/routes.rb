@@ -9,7 +9,7 @@ BubboliKids::Application.routes.draw do
   root :to => 'pages#home'
   mount Sidekiq::Web, at: '/sidekiq'
   
-  match '/home2', :to => 'pages#home2', :as => :home2
+  match '/home2', :to => 'pages#home_alt', :as => :home2
   match '/gift_recommendation', :to => 'pages#gift_recommendation', :as => :gift_rec
   match '/friend_alert', :to => 'pages#friend_alert', :as => :friend_alert
   match '/gift_alert', :to => 'pages#gift_alert', :as => :gift_alert
