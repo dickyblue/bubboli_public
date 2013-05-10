@@ -3,7 +3,7 @@ class Gift < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
   
-  attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender,
+  attr_accessible :name, :permalink, :available, :sku, :manufacturer, :price, :merchant, :gender, :baby_shower,
   :gift_category_ids, :gift_images_attributes, :gift_price_range_ids, :description, :why_bubboli_loves_it, :favorite, :gift_age_range_ids
   
   attr_searchable :name, :gender, :description
