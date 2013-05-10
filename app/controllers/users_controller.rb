@@ -104,7 +104,7 @@ class UsersController < ApplicationController
           flash[:error] = 'Please fix errors below.'
         end
       else
-        flash[:error] = "You entered an invalid password."
+        flash[:error] = "Your existing password is incorrect."
       end
     end
   end
