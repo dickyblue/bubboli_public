@@ -40,15 +40,15 @@ class GiftImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [600, 300]
   end
   
-  version :large_pic, :from_version => :ex_large_pic do
+  version :large_pic do
     process :resize_to_limit => [268, 268]
   end
  
-  version :thumb_pic, :from_version => :ex_large_pic do
-    process :resize_to_limit => [170, 170]
+  version :thumb_pic do
+    process :resize_to_fill => [170, 170]
   end
     
-  version :sm_thumb_pic, :from_version => :ex_large_pic do
+  version :sm_thumb_pic, :from_version => :thumb_pic do
     process :resize_to_fill => [90, 90]
   end
 
