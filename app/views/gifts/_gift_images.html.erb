@@ -9,8 +9,14 @@
   <div class="thumbs">
     <% @images.each do |image| %>          
         <a href="javascript:void(0)" rel="<%= image.image_url(:large_pic) %>" class="image">
-          <% unless image == @gift.gift_images.last %>
+          <!-- <% unless image == @gift.gift_images.last %>
           <%= image_tag(image.image_url(:sm_thumb_pic)) %>
+          <% end %> -->
+          
+          <% if @gift.favorite == false %>
+            <%= image_tag(image.image_url(:sm_thumb_pic)) %>
+          <% else %>
+            <%= image_tag(image.image_url(:sm_thumb_pic)) unless image == @gift.gift_images.last %>
           <% end %>
         </a>
     <% end %>
