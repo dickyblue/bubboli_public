@@ -35,9 +35,9 @@
     <hr class="subnav-top">
 
       <ul class="sub-nav pull-left">    
-        <li><%= link_to "UPCOMING BIRTHDAYS", '#' %></li>
-        <li><%= link_to "MY KIDS", '#' %></li>
-        <li><%= link_to "CHILDREN I AM FOLLOWING", '#' %></li>
+        <li><%= link_to "UPCOMING BIRTHDAYS", user_path(:anchor => 'upcoming_birthday') %></li>
+        <li><%= link_to "MY KIDS", user_path(:anchor => 'my_kids') %></li>
+        <li><%= link_to "CHILDREN I AM FOLLOWING", user_path(:anchor => 'children_following') %></li>
       </ul>
       
       <%= render partial: "layouts/subnav" %>
@@ -77,6 +77,19 @@
     
     
       <div class="offset3 span9">
+
+        <div class="welcome">
+          <%= welcome %>
+        </div>  
+
+        <div class="welcome-text">
+          <% if signed_in? %>
+            Welcome back, <%= current_user.first_name %><br>
+            <%= link_to "SIGN OUT", sign_out_path, method: "delete" %>
+          <% else %>
+            <%= link_to "SIGN IN", sign_in_path %>
+          <% end %>
+        </div>  
 
         <%= yield %>
     
