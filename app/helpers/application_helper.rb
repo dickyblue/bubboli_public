@@ -68,6 +68,10 @@ module ApplicationHelper
     get_organized = image_tag("organized.jpg", :att => "Get organized")
   end
   
+  def welcome
+    welcome = image_tag("welcome.png", :att => "Welcome")
+  end
+  
   def bubboli_mission
     mission = image_tag("bubboli-mission.jpg", :att => "The Bubboli Mision: To play a small role in bridging the distance
     - emotionally and physically - between you and your special bubbies, whether you are around the corner, in a different

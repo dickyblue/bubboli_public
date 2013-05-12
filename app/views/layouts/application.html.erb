@@ -35,7 +35,20 @@
       <div class="container">
             
         <%= render partial: "shared/flash_messages", flash: flash %> <br>
+        
+        <div class="welcome">
+          <%= welcome %>
+        </div>  
 
+        <div class="welcome-text">
+          <% if signed_in? %>
+            Welcome back, <%= current_user.first_name %><br>
+            <%= link_to "SIGN OUT", sign_out_path, method: "delete" %>
+          <% else %>
+            <%= link_to "SIGN IN", sign_in_path %>
+          <% end %>
+        </div>  
+        
         <%= yield %>
       </div>
     </div>  
