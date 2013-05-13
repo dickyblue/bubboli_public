@@ -59,7 +59,7 @@
           Welcome back, <%= current_user.first_name %><br>
           <%= link_to "SIGN OUT", sign_out_path, method: "delete" %>
         <% else %>
-          <%= link_to "SIGN IN", sign_in_path %>
+          <%= link_to "SIGN IN", sign_in_path %> | <%= link_to "REGISTER", new_user_path %>
         <% end %>
       </div>    
       
