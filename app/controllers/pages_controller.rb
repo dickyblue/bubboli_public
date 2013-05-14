@@ -31,6 +31,11 @@ class PagesController < ApplicationController
   end
   
   #only for viewing online
+  def password_reset
+    @user = User.last
+  end
+  
+  #only for viewing online
   # def account_confirmation
   #   @user = User.first
   # end
