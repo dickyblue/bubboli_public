@@ -9,10 +9,12 @@ BubboliKids::Application.routes.draw do
   root :to => 'pages#home'
   mount Sidekiq::Web, at: '/sidekiq'
   
+  # mailer tests to view in browser
   match '/home2', :to => 'pages#home_alt', :as => :home2
   match '/gift_recommendation', :to => 'pages#gift_recommendation', :as => :gift_rec
   match '/friend_alert', :to => 'pages#friend_alert', :as => :friend_alert
   match '/gift_alert', :to => 'pages#gift_alert', :as => :gift_alert
+  
   match '/account_confirmation', :to => 'pages#account_confirmation', :as => :acct_conf
   
   match '/gifts/list', :to => 'gifts#list', :as => :list_gift
