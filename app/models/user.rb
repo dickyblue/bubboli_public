@@ -137,9 +137,9 @@ class User < ActiveRecord::Base
     self.my_kids.include?(child)
   end
   
-  def send_password_reset
-    PasswordResetWorker.perform_async(self.id)
-  end
+  # def send_password_reset
+  #   PasswordResetWorker.perform_async(self.id)
+  # end
   
   def reset_password
     generate_token(:password_reset_token)
