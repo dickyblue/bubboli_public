@@ -50,7 +50,7 @@
                             <!-- // Begin Module: Standard Welcome \\ -->
                           	  <br>
                           	  <tr>
-                          	    <td style="color:#707070; font-size: 15px; line-height:150%;"><h1>Welcome to Bubboli!</h1></td>  
+                          	    <td style="color:#707070; font-size: 15px; line-height:150%; font-style: italic;"><h2>Welcome to Bubboli!</h2></td>  
                           	  </tr>
                           	  
                           	  <tr>
@@ -59,7 +59,7 @@
                               </tr>  
                               
                               <tr>
-                                <td style="color:#707070; font-size: 15px; line-height:150%;">To activate your account, click the link below. </td>
+                                <td style="color:#707070; font-size: 15px; line-height:150%;">To complete the registration, please activate your account by clicking the link below. </td>
                               </tr>
                               
                           	<!-- // End Module: Standard Welcome \\ -->
@@ -79,7 +79,7 @@
                               <table>
                                 <tr>
                                   <td style="background-color:#6FAE4D; height: 35px; padding:6px; width:225px; text-align:center; font-family:Arial; font-size:13px;">                                      
-                                    <a href="<%= confirm_url(@user.confirmation_token) %>" target="_blank" style="color: #FFFFFF; text-decoration: none;"><span style="color: #FFFFFF;">ACTIVATE YOUR ACCOUNT</span></a>                                      
+                                    <a href="<%= confirm_url(@user.confirmation_token) if @user.confirmation_token %>" target="_blank" style="color: #FFFFFF; text-decoration: none;"><span style="color: #FFFFFF;">ACTIVATE YOUR ACCOUNT</span></a>                                      
                                   </td>
                                 </tr>
                               </table>
@@ -101,12 +101,12 @@
 
                                 <tr>
                                   <td style="color:#707070; font-size: 15px; line-height:150%;">
-                                    All the best,
+                                    With love,
                                   </td>
                                 </tr>
                                 <tr>
                                   <td style="color: #707070; font-family:Arial; font-size: 12px; line-height: 125%; text-align: left">
-                                    The Bubboli Team<br>
+                                    Your friends at Bubboli<br>
                                     @bubboli
                                   </td>
                                 </tr>
