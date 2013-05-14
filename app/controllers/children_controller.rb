@@ -21,11 +21,11 @@ class ChildrenController < ApplicationController
   end
 
 
-  def new
-    @child = Child.new
-    @child.invitations.build
-    @child.relationships.build
-  end
+  # def new
+  #   @child = Child.new
+  #   @child.invitations.build
+  #   @child.relationships.build
+  # end
   
   def create
     @child = Child.new(params[:child])
