@@ -36,9 +36,9 @@ class PagesController < ApplicationController
   end
   
   #only for viewing online
-  # def account_confirmation
-  #   @user = User.first
-  # end
+  def account_confirmation
+    @user = User.first
+  end
 
   
 end
