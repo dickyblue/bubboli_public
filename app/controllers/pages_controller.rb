@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   
   #only for viewing online
   def friend_alert
-    relationship = Relationship.last
+    relationship = Relationship.first
     @user = relationship.user
     @child = relationship.child
     @parent = @child.parents.first.user
