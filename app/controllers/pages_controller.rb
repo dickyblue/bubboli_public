@@ -39,6 +39,13 @@ class PagesController < ApplicationController
   def account_confirmation
     @user = User.first
   end
+  
+  #only for viewing online
+  def invitation
+    @invitation = Invitation.last
+    @sender = @invitation.sender
+    @child = @invitation.child
+  end
 
   
 end
