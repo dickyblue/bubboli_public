@@ -11,4 +11,8 @@ namespace :alerts do
   task :reminder => :environment do
     NotificationWorker.perform_async
   end
+  
+  task :invitation => :environment do
+    InvitationWorker.perform_async
+  end
 end

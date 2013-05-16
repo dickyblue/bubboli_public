@@ -11,6 +11,7 @@ class Invitation < ActiveRecord::Base
   
   before_create :generate_token
   after_create :send_invitation_token
+  after_save :set_send_invitation, :on => :create
   
   def send_invitation_token
     self.sent_at = Time.zone.now
@@ -33,6 +34,19 @@ class Invitation < ActiveRecord::Base
     self.child.child_images.each {|i| i.update_attribute :child_id, confirmed_child.id} #moving all images to the new child record
     self.child.delete #dont use destroy since we dont want to trigger the dependent#destroy on the Child class.
     self.destroy
+  end
+  
+  def set_send_invitation
+    self.update_column('send_invitation', true)
+  end
+  
+  def send_invite_email
+    begin
+      InvitationMailer.invitation(self).deliver if self.recipient
+      self.update_attributes('send_invitation', false)
+    rescue
+      nil
+    end
   end
   
   private

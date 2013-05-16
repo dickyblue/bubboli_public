@@ -17,8 +17,6 @@ class AlertsWorker
   end
   
   def send_gift_alerts
-    #TODO when do we send these?
-    #right now it just loops through all records
     GiftAccession.where('gift_alert=?', true).each do |acc|
       acc.send_gift_alert_email
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430141108) do
+ActiveRecord::Schema.define(:version => 20130515173350) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(:version => 20130430141108) do
     t.datetime "sent_at"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.boolean  "send_invitation"
   end
 
   add_index "invitations", ["child_id"], :name => "index_invitations_on_child_id"
