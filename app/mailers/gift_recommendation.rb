@@ -15,7 +15,7 @@ class GiftRecommendation < ActionMailer::Base
     def gift_recommendation(relationship)
       @user = relationship.user.first_name
       @child = relationship.child
-      @gifts = Gift.gift_by_pref_all_cat(@child, relationship, 6)      
+      @gifts = Gift.gift_by_pref_all_cat(@child, relationship, limit=6)      
       mail :to => relationship.user.email, :subject => "Test Mandrill"
     end
 

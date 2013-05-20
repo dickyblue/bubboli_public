@@ -47,7 +47,7 @@ class Gift < ActiveRecord::Base
   end
   
   def self.gift_by_pref_all_cat(child, rel, limit=10)
-    categories = rel.user_child_cat_prefs.map {|p| p.gift_category_id }
+    
     self.get_gift_by_gender_age_price(child, rel).joins(:gift_categorizations).merge(GiftCategorization.gift_by_matching_cat(rel)).limit(limit).sort_by do |gift|
       gift.gift_categorizations.count
     end.uniq
