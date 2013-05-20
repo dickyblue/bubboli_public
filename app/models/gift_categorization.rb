@@ -10,7 +10,7 @@ class GiftCategorization < ActiveRecord::Base
       self.where(:gift_category_id => GiftCategory.all)
     else
       categories = rel.user_child_cat_prefs.map {|p| p.gift_category_id }
-      self.where(:gift_category_id => categories).group("gift_categorizations.gift_id").order("count(gift_categorizations.gift_id) DESC")    
+      self.where(:gift_category_id => categories)
     end
   end
 
