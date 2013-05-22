@@ -13,6 +13,7 @@
     <% @following.each do |r| %>
     <li class="children-following child-list block">
       <%= render(:partial => "relationship", :locals => {:r => r}) %>
+      <%= link_to "Unfollow", r, :method => :delete, :data => {:confirm => "Are you sure you want to unfollow this child?"}, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>
     </li>  
     <% end %>
   </ul>
