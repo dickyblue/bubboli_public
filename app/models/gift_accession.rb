@@ -16,7 +16,7 @@ class GiftAccession < ActiveRecord::Base
   end
   
   def set_gift_alert
-    self.update_column('gift_alert', true)
+    self.update_column('gift_alert', true) unless self.giver_is_parent_of?(self.giftee)
   end
   
   def send_gift_alert_email
