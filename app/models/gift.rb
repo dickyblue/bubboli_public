@@ -52,6 +52,11 @@ class Gift < ActiveRecord::Base
     end.uniq
   end
   
-  
+  def self.final_filtered_gifts(child, rel, limit=10)
+    filtered_gifts = self.gift_by_pref_all_cat(child, rel, limit=10).collect {|gid| gid.id}
+    purchased_gifts = child.gift_accessions.where(:approved => true).pluck(:gift_id)
+    ids = filtered_gifts - purchased_gifts
+    return Gift.where(:id => ids)
+  end
   
 end
