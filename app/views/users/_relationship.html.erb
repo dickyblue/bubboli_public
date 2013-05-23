@@ -4,5 +4,7 @@
   <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.child_images.first %>
 <% end %>
 <strong><%= link_to r.child.first_name, relationship_path(r) %></strong><br>
-<span style="color: #999999; font-size: 12px">Relations:<%= r.relation_type.name if r.relation_type %></span><br>
-<span style="color: #999999; font-size: 12px">Birthday: <%= r.child.birth_date.strftime("%b. %d")%></span>
+<span class="font-next-to-images">
+  Relations:<%= r.relation_type.name if r.relation_type %><br>
+  Birthday: <%= r.child.birth_date.strftime("%b. %d")%>
+</span>

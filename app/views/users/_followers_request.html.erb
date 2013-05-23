@@ -1,5 +1,5 @@
 <%= image_tag(r.user.image_url(:sm_thumb)) if r.user.image %>
 <strong style="color: #53868B;"><%= r.user.first_name %></strong><br>
-<span style="color: #999999; font-size: 12px">Child: <%= r.child.first_name  %></span><br>
+<span class="font-next-to-images">Child: <%= r.child.first_name  %></span><br>
 <span class="btn btn-mini btn-success btn-spacing white-link"><%= link_to "Accept", my_kids_relationship_path(r),  :method => :put %></span>  
 <span class="btn btn-mini btn-warning btn-spacing white-link"><%= link_to "Ignore", my_kids_relationship_path(r),  :confirm => 'Are you sure?', :method => :delete %></span>    

@@ -78,7 +78,7 @@ class UsersController < ApplicationController
   end
   
   def followers
-    @followers = current_user.my_kids_followers
+    @followers = current_user.my_kids_relationships
   end
   
   def requests

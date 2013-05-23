@@ -16,7 +16,12 @@
         <% else %>
           <%= image_tag(r.child.child_images.first.image_url(:sm_thumb)) if r.child.try(:child_images).try(:first) %>
         <% end %>
-        <%= r.child.try(:first_name) %>    
+        <strong style="color: #53868B;"><%= r.child.try(:first_name) %></strong><br>
+        <span class="font-next-to-images">
+          Relation: <%= r.relation_type.name if r.relation_type %><br>
+          Requested: <%= r.created_at.strftime("%m/%d/%y") %>
+          <%= link_to "Unfollow", r, :method => :delete, :data => {:confirm => "Are you sure you want to cancel your friend request?"}, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>
+        </span>    
       </li>  
       <% end %>
     </ul>

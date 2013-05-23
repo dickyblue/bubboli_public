@@ -12,8 +12,13 @@
   <ul class="child-list">
     <% @followers.each do |r| %>
     <li class="children-following child-list block">
-      <%= image_tag(r.image_url(:sm_thumb)) if r.image %>
-      <strong><%= r.first_name %></strong><br>
+      <%= image_tag(r.user.image_url(:sm_thumb)) if r.user.image %>
+      <strong style="color: #53868B;"><%= r.user.first_name %></strong><br>
+      <span class="font-next-to-images">
+        Relation: <%= r.relation_type.name if r.relation_type %><br>
+        Following: <%= r.child.first_name if r.child %>
+      </span>
+      <%= link_to "Unfollow", r, :method => :delete, :data => {:confirm => "Are you sure you want to disallow #{r.user.first_name} to follow #{r.child.first_name}?"}, :remote => "true", :class => "unfollow btn btn-mini btn-warning btn-spacing" %>
     </li>  
     <% end %>
   </ul>

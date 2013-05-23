@@ -120,6 +120,10 @@ class User < ActiveRecord::Base
   def my_kids_followers
     my_kids.collect(&:child_followers).flatten.collect(&:user).uniq
   end
+
+  def my_kids_relationships
+    my_kids.collect(&:child_followers).flatten
+  end
   
   def my_kids_requests
     my_kids.collect(&:child_requests).flatten
