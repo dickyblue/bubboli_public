@@ -110,11 +110,11 @@ class User < ActiveRecord::Base
   end
   
   def followings
-    relationships.where(:status => "Confirmed")
+    relationships.where(:status => "Confirmed").sort_by { |rel| rel.child.first_name.downcase }
   end
   
   def pending
-    relationships.where(:status => "Pending")
+    relationships.where(:status => "Pending").sort_by { |rel| rel.child.first_name.downcase }
   end
   
   def my_kids_followers
@@ -122,7 +122,7 @@ class User < ActiveRecord::Base
   end
 
   def my_kids_relationships
-    my_kids.collect(&:child_followers).flatten
+    my_kids.collect(&:child_followers).flatten.sort_by { |rel| rel.user.first_name.downcase }
   end
   
   def my_kids_requests
