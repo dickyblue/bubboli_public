@@ -1,6 +1,7 @@
 <div class="span8">
 <%= simple_form_for(@child, :html => {:class => "form_horizontal"}) do |f| %>
   <%= render(:partial => 'form', :locals => {:f => f}) %>
+  <%= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name") %>
   <%= hidden_field_tag :invitee, invitee %>
   <div class="pull-right">
     <%= f.button :submit, :class=> "primary" %>

@@ -1,4 +1,6 @@
 <%= f.input :first_name, :label => 'First Name' %>
 <%= f.input :birth_date, :as => :date, :order => [:month, :day, :year], :start_year => 2000, :end_year => Time.now.year, :input_html => {:class => "input-small"}, :label => "Birth Date" %>
 <%= f.input :gender, :as => :select, :collection => ['Male', 'Female'] %>
-<%= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name") %>
+<%#= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name", selected: :relation_type_id) %>
+<%#= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name", @child.relationships.where(:user_id => current_user.id).first.relation_type_id), {}  %>
+<%#= collection_select(:child, :relation_type_ids, RelationType.non_parent, :id, :name)%>
