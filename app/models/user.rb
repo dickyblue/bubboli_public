@@ -110,7 +110,7 @@ class User < ActiveRecord::Base
   end
   
   def followings
-    relationships.where(:status => "Confirmed").sort_by { |rel| rel.child.first_name.downcase }
+    relationships.where(:status => "Confirmed")
   end
   
   def pending

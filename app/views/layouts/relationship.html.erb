@@ -71,6 +71,7 @@
             <% end %>
             
             Birthday: <span class="float-right"><%= @child.birth_date.strftime("%b. %d")%></span><br>
+            <span class="float-right"><%= link_to "Edit Child", edit_child_path(@child) if current_user.is_parent_of?(@child) || @child.parents.blank? %></span><br>
           </div>
 
           <br>

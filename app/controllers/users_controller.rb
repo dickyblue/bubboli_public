@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   end
   
   def following
-    @following = current_user.followings
+    @following = current_user.followings.sort_by { |rel| rel.child.first_name.downcase }
   end
   
   def pending
