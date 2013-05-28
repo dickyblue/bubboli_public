@@ -1,12 +1,10 @@
 <meta property="og:image" content="<%= @gift.gift_images.first.image_url(:large_pic) %>" />
-
-
+<meta property="og:title" content="<%= @page_title %> via @bubboli'>"/>
+<meta property="og:description" content="<%= truncate(simple_format(@gift.description)), :length => 118 %>"/>
 
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script>
-
-
 
 
 <% @page_title = @gift.name %>
@@ -66,6 +64,16 @@
         <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>
         <span class='st_pinterest' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
         <span class='st_email'></span>
+        
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+        <a class="addthis_button_facebook"></a>
+        <a class="addthis_button_twitter"></a>
+        <a class="addthis_button_pinterest_share"></a>
+        <a class="addthis_button_email"></a>
+        </div>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=undefined"></script>
+        <!-- AddThis Button END -->
       </div>
       
       </br>
