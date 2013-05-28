@@ -1,4 +1,7 @@
 class Child < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :first_name, use: [:slugged, :history]
   
   attr_accessible :first_name, :gender, :birth_date, :relation_type_ids, :invitations_attributes, :relationships_attributes, :child_images_attributes
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515173350) do
+ActiveRecord::Schema.define(:version => 20130528201036) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -70,7 +70,10 @@ ActiveRecord::Schema.define(:version => 20130515173350) do
     t.string   "gender"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
+
+  add_index "children", ["slug"], :name => "index_children_on_slug"
 
   create_table "comments", :force => true do |t|
     t.integer  "blog_id"
