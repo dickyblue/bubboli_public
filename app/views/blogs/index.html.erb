@@ -1,4 +1,6 @@
 <div class="container">
+<% content_for :head, auto_discovery_link_tag(:atom, blogs_url(format: "atom")) %>
+
 <br>
   <div class="row will-paginate">
       <%= page_navigation_links @blogs, '#' %>
