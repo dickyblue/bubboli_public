@@ -83,7 +83,8 @@ BubboliKids::Application.routes.draw do
     resources :gift_accessions
   end
   
-
+  match '/404', :to => 'errors#error_404'
+  match '*not_found', to: 'errors#error_404'
 
 
 
