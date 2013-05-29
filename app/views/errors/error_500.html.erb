@@ -1,0 +1,59 @@
+<%= error_page %><br><br><br>
+
+
+<%= link_to "Home", root_path, :class => "error-page home" %>
+<%= link_to "Shop", gifts_path, :class => "error-page gift" %>
+<%= link_to "About", about_path, :class => "error-page about" %>
+<%= link_to "Favorite", favorite_gift_path, :class => "error-page favorite" %>
+<%= link_to "Account", user_path(current_user), :class => "error-page account" %>
+<%= link_to "Blog", blogs_path, :class => "error-page blog" %>
+
+
+
+
+<style>
+.error-page {
+  position: relative;
+  z-index: 0;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  color: white;
+  }
+  
+a:hover {
+  color: white;
+  text-decoration: none;
+  }
+  
+.home {
+  top: -580px;
+  left: 250px;
+  }
+  
+.gift {
+  top: -550px;
+  left: 495px;
+  }
+  
+.about {
+  top: -480px;
+  left: 570px;
+  }
+  
+.favorite {
+  top: -180px;
+  left: 435px;
+  }
+  
+.account {
+  top: -180px;
+  left: -270px;
+  }
+  
+.blog {
+  top: -450px;
+  left: -445px;
+  }
+
+</style>
