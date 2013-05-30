@@ -1,59 +1,55 @@
-<%= error_page %><br><br><br>
+<div class="pic">
+<%= five_hundred_error %><br><br><br>
+</div>
 
+<div class="message">
+<div class="big-font">well, we're embarrassed...</div><br><br>
 
-<%= link_to "Home", root_path, :class => "error-page home" %>
-<%= link_to "Shop", gifts_path, :class => "error-page gift" %>
-<%= link_to "About", about_path, :class => "error-page about" %>
-<%= link_to "Favorite", favorite_gift_path, :class => "error-page favorite" %>
-<%= link_to "Account", user_path(current_user), :class => "error-page account" %>
-<%= link_to "Blog", blogs_path, :class => "error-page blog" %>
+<p class="small-font">something went wrong, but we are on it!  In the meantime, try refreshing the page
+  or <%= mail_to("contact@bubboli.com", "contact us", :subject => "Problem with the site") %> if the problem persists.</p><br>
 
+<p class="small-font"> Thank you for your patience!</p><br>
+  
+<p class="small-font"><%= link_to "HOME", root_path %> | <%= link_to "SHOP", gifts_path %> | <%= link_to "ABOUT", about_path %></p>
+</div>
 
 
 
 <style>
-.error-page {
+.message {
   position: relative;
-  z-index: 0;
-  height: 100px;
-  width: 100px;
-  display: inline-block;
-  color: white;
+  z-index: 99;
+  color: #53868B;
+  background: white;
+  height: 240px;
+  width: 400px;
+  top:-200px;
+  left: 380px;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 14px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
   }
   
-a:hover {
-  color: white;
-  text-decoration: none;
-  }
-  
-.home {
-  top: -580px;
-  left: 250px;
-  }
-  
-.gift {
-  top: -550px;
-  left: 495px;
-  }
-  
-.about {
-  top: -480px;
-  left: 570px;
-  }
-  
-.favorite {
-  top: -180px;
-  left: 435px;
-  }
-  
-.account {
-  top: -180px;
-  left: -270px;
-  }
-  
-.blog {
+.big-font {
   top: -450px;
-  left: -445px;
+  left: 500px;
+  font-size: 28px;
+  font-weight: bold;
+  }
+  
+.small-font {
+  top: -450px;
+  left: 500px;
+  font-size: 20px;
+  font-weight: bold;
+  }  
+
+.pic {
+  position: relative;
+  top: -70px;
+  margin-bottom: -380px;
   }
 
 </style>

@@ -76,6 +76,10 @@ module ApplicationHelper
     error_page = image_tag("BubboliErrorPage.png", :att => "404 Error")
   end
   
+  def five_hundred_error
+    five_hundred_error = image_tag("Bubboli500Error.png", :att => "500 Error")
+  end
+  
   def bubboli_mission
     mission = image_tag("bubboli-mission.jpg", :att => "The Bubboli Mision: To play a small role in bridging the distance
     - emotionally and physically - between you and your special bubbies, whether you are around the corner, in a different
