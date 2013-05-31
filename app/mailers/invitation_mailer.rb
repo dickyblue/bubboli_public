@@ -3,6 +3,8 @@ class InvitationMailer < ActionMailer::Base
   
   def invitation(invitation)
     @invitation = invitation
+    @sender = @invitation.sender
+    @child = @invitation.child
     mail :to => invitation.recipient_email, :subject => "Invitation for Bubboli"
   end
   
