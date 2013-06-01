@@ -1,4 +1,4 @@
-class GiftRecommendation < ActionMailer::Base
+class GiftRecommendationMailer < ActionMailer::Base
   default from: "contact@bubboli.com"
 
     def test_recommendation(relationship)
