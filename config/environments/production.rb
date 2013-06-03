@@ -62,6 +62,16 @@ BubboliKids::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # mandrill
+   config.action_mailer.smtp_settings = {
+       :address   => "smtp.mandrillapp.com",
+       :port      => 587,
+       :enable_starttls_auto => true, # detects and uses STARTTLS
+       :user_name => "bubboli",
+       :password  => "42tOVqQSZKWbeUjFrx2fVw",
+       :authentication => 'login' # Mandrill supports 'plain' or 'login'
+     }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
