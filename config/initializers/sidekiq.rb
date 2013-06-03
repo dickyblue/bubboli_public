@@ -1,4 +1,4 @@
-require 'sidekiq'
+# require 'sidekiq'
 
 require 'autoscaler/sidekiq'
 require 'autoscaler/heroku_scaler'
