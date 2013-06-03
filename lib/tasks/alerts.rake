@@ -9,7 +9,9 @@ namespace :alerts do
 #   end
 #   
   task :reminder => :environment do
-    NotificationWorker.perform_async
+    Relationship.where('next_reminder_due_at = ?', Date.today).each do |relationship|
+      NotificationWorker.perform_async(relationship.id)
+    end
   end
 #   
 #   task :invitation => :environment do

@@ -42,11 +42,11 @@ class Relationship < ActiveRecord::Base
     "#{self.user.first_name} #{self.user.last_name} #{self.child.first_name} "
   end
 
-  def send_reminder    
+  # def send_reminder    
     #identify which reminder is being sent
     #Send email notification from here
-    set_new_due_date(true)
-  end
+  #   set_new_due_date(true)
+  # end
 
   def set_new_due_date(force_update=false)
     date = next_due_date
