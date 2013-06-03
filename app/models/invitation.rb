@@ -16,7 +16,7 @@ class Invitation < ActiveRecord::Base
   def send_invitation_token
     self.sent_at = Time.zone.now
     save!
-    InvitationMailer.delay_for(1.minute).invitation(self) if self.recipient_email
+    InvitationMailer.delay.invitation(self) if self.recipient_email
   end
   
   def self.invitation_by_email(user)
