@@ -7,7 +7,8 @@ class GiftAccession < ActiveRecord::Base
   belongs_to :giver, :class_name => "User", :foreign_key => 'user_id'
   
   before_save :approve_gifts_from_parents
-  after_save :set_gift_alert, :on => :create
+  # after_save :set_gift_alert, :on => :create
+  after_create :send_gift_alert_email
   
   def approve_gifts_from_parents
     if self.giver.is_parent_of?(self.giftee)
@@ -15,17 +16,17 @@ class GiftAccession < ActiveRecord::Base
     end
   end
   
-  def set_gift_alert
-    self.update_column('gift_alert', true) unless self.giver.is_parent_of?(self.giftee)
-  end
+  # def set_gift_alert
+  #   self.update_column('gift_alert', true) unless self.giver.is_parent_of?(self.giftee)
+  # end
   
   def send_gift_alert_email
-    begin
-      GiftAlertMailer.gift_alert(self).deliver!
-      self.update_attributes('gift_aert', false)
-    rescue
-      nul
-    end
+    # begin
+      GiftAlertMailer.delay.gift_alert(self) if self.giftee.parents
+    #   self.update_attributes('gift_aert', false)
+    # rescue
+    #   nil
+    # end
   end
     
 end
