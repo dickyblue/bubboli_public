@@ -1,6 +1,6 @@
 <meta property="og:image" content="<%= @gift.gift_images.first.image_url(:large_pic) %>" />
 <meta property="og:title" content="<%= @page_title %> via @bubboli'>"/>
-<meta property="og:description" content="<%= truncate(simple_format(@gift.description)), :length => 118 %>"/>
+<meta property="og:description" content="<%= truncate(simple_format(@gift.description), :length => 118) %>"/>
 
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
