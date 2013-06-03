@@ -11,12 +11,12 @@ class Invitation < ActiveRecord::Base
   
   before_create :generate_token
   after_create :send_invitation_token
-  after_save :set_send_invitation, :on => :create
+  # after_save :set_send_invitation, :on => :create
   
   def send_invitation_token
     self.sent_at = Time.zone.now
     save!
-    InvitationMailer.invitation(self).deliver
+    InvitationMailer.delay_for(1.minute).invitation(self) if self.recipient_email
   end
   
   def self.invitation_by_email(user)
@@ -36,18 +36,18 @@ class Invitation < ActiveRecord::Base
     self.destroy
   end
   
-  def set_send_invitation
-    self.update_column('send_invitation', true)
-  end
-  
-  def send_invite_email
-    begin
-      InvitationMailer.invitation(self).deliver if self.recipient
-      self.update_attributes('send_invitation', false)
-    rescue
-      nil
-    end
-  end
+  # def set_send_invitation
+  #   self.update_column('send_invitation', true)
+  # end
+  # 
+  # def send_invite_email
+  #   begin
+  #     InvitationMailer.invitation(self).deliver if self.recipient
+  #     self.update_attributes('send_invitation', false)
+  #   rescue
+  #     nil
+  #   end
+  # end
   
   private
   

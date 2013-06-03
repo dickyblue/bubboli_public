@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'nested_form'
 gem 'friendly_id', '~> 4.0.9'
+gem 'autoscaler'
 
 # Gems used only for assets and not required
 # in production environments by default.
