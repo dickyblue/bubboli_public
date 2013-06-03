@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
     generate_token(:confirmation_token)
     self.confirmation_token_sent_at = Time.zone.now
     save!
-    UserMailer.account_confirmation(self).deliver
+    UserMailer.delay.account_confirmation(self)
   end
   
   def confirm!
