@@ -15,6 +15,11 @@ Sidekiq.configure_server do |config|
   end
 end
 
+require 'sidekiq/web'
+
+Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+  username == 'abc@test.com' && password == 'password'
+end 
 
 
 
