@@ -5,7 +5,6 @@ class FriendAlertMailer < ActionMailer::Base
     @user = relationship.user
     @child = relationship.child
     @parent = @child.parents.first.user
-    @user_profile = image_tag @user.image_url(:thumb)
     mail :to => @parent.email, :subject => "#{@user.first_name} wants to be reminder of #{@child.first_name}'s birthday"
   end  
   
