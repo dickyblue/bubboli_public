@@ -82,7 +82,9 @@
           <br><br>
           <% if current_user.my_kids %>
             <% current_user.my_kids.each do |kid| %>
-              <%= link_to kid.first_name + " has gifts that needs your approval", child_path(kid) if kid.gift_accessions %>
+              <% if kid.gift_accessions %>
+              <%= link_to kid.first_name, relationship_path(current_user, kid) %> has some gifts that needs your approval.
+              <% end %>
             <% end %>
           <% end %>
         </div>  

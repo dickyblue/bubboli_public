@@ -63,16 +63,16 @@ BubboliKids::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # For email host
-  config.action_mailer.default_url_options = { :host => 'http://www.bubboli.com' }
+  # For email host.
+  # config.action_mailer.default_url_options = { :host => 'http://www.bubboli.com' }
   
   # mandrill
    config.action_mailer.smtp_settings = {
        :address   => "smtp.mandrillapp.com",
        :port      => 587,
        :enable_starttls_auto => true, # detects and uses STARTTLS
-       :user_name => "bubboli",
-       :password  => "42tOVqQSZKWbeUjFrx2fVw",
+       :user_name => "bubboli-production",
+       :password  => "oVm5XBQzv-5FxWAA",
        :authentication => 'login' # Mandrill supports 'plain' or 'login'
      }
 
