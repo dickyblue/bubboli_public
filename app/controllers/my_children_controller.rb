@@ -6,7 +6,6 @@ class MyChildrenController < ApplicationController
 
   def new
     @my_child = Child.new
-    @my_child.invitations.build
   end
   
   def create
