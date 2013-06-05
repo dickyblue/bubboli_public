@@ -72,7 +72,20 @@
           <div class="btn btn-borderless btn-grp-small-size"><span class="user_grp_btn_link"><%= link_to @user.pending.count, pending_path %></span></br><span style="color: #999999">Pending</span></div>
           <div class="btn btn-borderless btn-grp-small-size"><span class="pending_link"><%= link_to User.invitation_count(current_user) + @user.my_kids_requests.count, requests_path %></span></br><span style="color: #999999">Requests</span></div>
         </div>
-          
+        
+        <br><br>
+        
+        <div class="user-notification">
+          <% if current_user.my_kids_requests %>
+            You have <%= link_to (User.invitation_count(current_user) + @user.my_kids_requests.count), requests_path %> friend requests.
+          <% end %>
+          <br><br>
+          <% if current_user.my_kids %>
+            <% current_user.my_kids.each do |kid| %>
+              <%= link_to kid.first_name + " has gifts that needs your approval", child_path(kid) if kid.gift_accessions %>
+            <% end %>
+          <% end %>
+        </div>  
       </div>
     
     
