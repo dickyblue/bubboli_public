@@ -72,7 +72,9 @@ $('#gift_search').hide();
   
   <%= render :partial => 'approve_purchased_gifts' if current_user.is_parent_of?(@child) %><br>  
 
-  <%= render :partial => 'purchased_gifts'%>  
-
-
+  <% if @relationship.status == "Confirmed" %>
+    <%= render :partial => 'purchased_gifts' %>
+  <% else %>
+    <%= render :partial => 'user_purchased_gifts'  %>  
+  <% end %>  
 

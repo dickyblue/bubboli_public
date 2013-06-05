@@ -24,7 +24,7 @@ class Relationship < ActiveRecord::Base
   before_save :change_rel_status
   before_save :set_new_due_date
   # after_save :set_friend_alert, :on => :create
-  after_create :send_friend_alert_email
+  after_create :send_friend_alert_email 
 
   def change_rel_status
     if self.relation_type_id == 1 && self.child.number_of_parents < 2
@@ -33,7 +33,7 @@ class Relationship < ActiveRecord::Base
     end
   end
   
-  def is_confirmed_relationship?(user)
+  def is_confirmed_relationship?
     confirmed = self.where(:user_id => user.id, :status => "Confirmed")
     return true if confirmed
   end
