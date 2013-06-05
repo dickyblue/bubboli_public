@@ -64,7 +64,7 @@ BubboliKids::Application.configure do
   config.active_support.deprecation = :notify
 
   # For email host.
-  # config.action_mailer.default_url_options = { :host => 'http://www.bubboli.com' }
+  config.action_mailer.default_url_options = { :host => 'http://www.bubboli.com' }
   
   # mandrill
    config.action_mailer.smtp_settings = {
