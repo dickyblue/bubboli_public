@@ -3,8 +3,8 @@
 <meta property="og:description" content="<%= truncate(simple_format(@gift.description), :length => 118) %>"/>
 
 <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script>
+<!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script> -->
 
 
 <% @page_title = @gift.name %>
@@ -60,10 +60,12 @@
         <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
         <% link = "http://"+@gift.permalink %>
         <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div></br></br>
-        <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
+        <!-- ShareThis Button BEGIN -->
+        <!-- <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
         <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>
         <span class='st_pinterest' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
-        <span class='st_email'></span>
+        <span class='st_email'></span> -->
+        <!-- ShareThis Button END -->
         
         <!-- AddThis Button BEGIN -->
         <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
