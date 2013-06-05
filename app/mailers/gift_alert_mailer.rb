@@ -6,7 +6,7 @@ class GiftAlertMailer < ActionMailer::Base
     @child = gift_accession.giftee
     @parent = @child.parents.first.user
     @gift = gift_accession.gift
-    @page = requests_url(@parent)
+    @page = child_url(@child)
     mail :to => @parent.email, :subject => "Gift purchase: #{@user.first_name} just purchased a gift for #{@child.first_name}'s birthday"
   end
 end
