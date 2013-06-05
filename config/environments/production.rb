@@ -72,7 +72,7 @@ BubboliKids::Application.configure do
        :port      => 587,
        :enable_starttls_auto => true, # detects and uses STARTTLS
        :user_name => "bubboli-production",
-       :password  => "oVm5XBQzv-5FxWAA",
+       :password  => "vOh1t8p9dLPoe0hqDxwX6A",
        :authentication => 'login' # Mandrill supports 'plain' or 'login'
      }
 
