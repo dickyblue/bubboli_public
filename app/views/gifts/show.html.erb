@@ -16,7 +16,9 @@
       
       <div>
         <h3 class="qikki-font" style="color: #53868B"><%= @gift.name %></h3>
-        <span style="font-size: 12px"> <%= link_to "Edit", :action => 'manage', :id => @gift.id if current_user.admin == true %></span>
+        <span style="font-size: 12px"> 
+            <%= link_to "Edit", :action => 'manage', :id => @gift.id if current_user && current_user.admin == true %>
+        </span>
         <%= render(:partial => "gift_images") %>
       
       </div>
