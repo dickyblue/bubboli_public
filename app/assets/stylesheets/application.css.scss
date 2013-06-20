@@ -515,10 +515,10 @@ li.inline  {
   background-image: -webkit-linear-gradient(top, #FFF, #FFF);
   background-image: -o-linear-gradient(top, #FFF, #FFF);
   background-image: linear-gradient(top, #FFF, #FFF);
-  # filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF', endColorstr='#FFFFFF', GradientType=0);
-  # -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
-  #    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
-  #       box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF', endColorstr='#FFFFFF', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 -1px 0 rgba(0, 0, 0, 0) inset;*/
   }
 
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
