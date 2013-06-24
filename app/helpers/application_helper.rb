@@ -1,87 +1,87 @@
 module ApplicationHelper
 
   def bubboli
-    bubboli = image_tag("BubboliLogo.png", :att => "Bubboli")
+    bubboli = image_tag("BubboliLogo.png", :alt => "Bubboli")
   end
   
   def elephant
-    elephant = image_tag("elephant.jpg", :att => "Bubboli")
+    elephant = image_tag("elephant.jpg", :alt => "Bubboli")
   end
 
   def facebook
-    facebook = image_tag("facebook.jpg", :att => "Facebook")
+    facebook = image_tag("facebook.jpg", :alt => "Bubboli Facebook")
   end
   
   def twitter
-    twitter = image_tag("twitter.jpg", :att => "Twitter")
+    twitter = image_tag("twitter.jpg", :alt => "Bubboli Twitter")
   end
 
   def gmail
-    gmail = image_tag("gmail.jpg", :att => "Gmail")
+    gmail = image_tag("gmail.jpg", :alt => "Gmail")
   end
   
   def rss
-    rss = image_tag("rss.jpg", :att => "RSS")
+    rss = image_tag("rss.jpg", :alt => "Bubboli RSS")
   end
 
   def pinterest
-    pinterest = image_tag("pinterest.jpg", :att => "Pinterest")
+    pinterest = image_tag("pinterest.jpg", :alt => "Bubboli Pinterest")
   end
 
   def bubboli_team
-    bubboli_team = image_tag("BubboliTeam.gif", :att => "Bubboli Team")
+    bubboli_team = image_tag("BubboliTeam.gif", :alt => "Bubboli Team")
   end
 
   def splash_one
-    splash_one = image_tag("baby_smiling.jpg", :att => "splash one", :class => "active")
+    splash_one = image_tag("baby_smiling.jpg", :alt => "splash one", :class => "active")
   end
 
   def splash_two
-    splash_two = image_tag("babies_w_toys.jpg", :att => "splash two")
+    splash_two = image_tag("babies_w_toys.jpg", :alt => "splash two")
   end
 
   def blog
-    blog = image_tag("bubboli-blog.jpg", :att => "blog")
+    blog = image_tag("bubboli-blog.jpg", :alt => "bubboli blog")
   end
 
   def separator
-    separator = image_tag("separator.png", :att => "")
+    separator = image_tag("separator.png", :alt => "")
   end
   
   def add_a_child
-    add_a_child = image_tag("add-a-child.jpg", :att => "Add a child")
+    add_a_child = image_tag("add-a-child.jpg", :alt => "Add a child")
   end
   
   def send_recommendation
-    send_recommendation = image_tag("send-recommendation.jpg", :att => "Send Recommendation")
+    send_recommendation = image_tag("send-recommendation.jpg", :alt => "Send Recommendation")
   end
   
   def hugs_and_kisses
-    hugs_and_kisses = image_tag("hugs-and-kisses.jpg", :att => "Hugs and kisses")
+    hugs_and_kisses = image_tag("hugs-and-kisses.jpg", :alt => "Hugs and kisses")
   end
   
   def get_gifts
-    get_gifts = image_tag("gift.jpg", :att => "Receive presents")
+    get_gifts = image_tag("gift.jpg", :alt => "Receive presents")
   end
   
   def get_organized
-    get_organized = image_tag("organized.jpg", :att => "Get organized")
+    get_organized = image_tag("organized.jpg", :alt => "Get organized")
   end
   
   def welcome
-    welcome = image_tag("welcome.png", :att => "Welcome")
+    welcome = image_tag("welcome.png", :alt => "Bubboli Welcome")
   end
   
   def error_page
-    error_page = image_tag("BubboliErrorPage.png", :att => "404 Error")
+    error_page = image_tag("BubboliErrorPage.png", :alt => "404 Error")
   end
   
   def five_hundred_error
-    five_hundred_error = image_tag("Bubboli500Error.png", :att => "500 Error")
+    five_hundred_error = image_tag("Bubboli500Error.png", :alt => "500 Error")
   end
   
   def bubboli_mission
-    mission = image_tag("bubboli-mission.jpg", :att => "The Bubboli Mision: To play a small role in bridging the distance
+    mission = image_tag("bubboli-mission.jpg", :alt => "The Bubboli Mision: To play a small role in bridging the distance
     - emotionally and physically - between you and your special bubbies, whether you are around the corner, in a different
     state or a different country.  We search all the nooks and crannies to find the best gifts for your special bubbie so ")
   end
