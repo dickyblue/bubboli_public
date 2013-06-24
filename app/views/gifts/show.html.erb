@@ -25,8 +25,8 @@
       
       </div>
       
-      </br>
-      </br>
+      <br>
+      <br>
 
 
         <ul class="tabs nav-tabs " id="myTab">
@@ -52,7 +52,7 @@
 
         </script>
 
-        </br>
+        <br>
         
         <div>
           <%= render(:partial => "related_gifts")%>
@@ -64,7 +64,7 @@
       <div class="row gift-buy-box">
         <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
         <% link = "http://"+@gift.permalink %>
-        <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div></br></br>
+        <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div><br><br>
         <!-- ShareThis Button BEGIN -->
         <!-- <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
         <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>
@@ -83,8 +83,8 @@
         <!-- AddThis Button END -->
       </div>
       
-      </br>
-      </br>
+      <br>
+      <br>
 
       <div class="row gift-buy-box2">
         <h4 style= "color: #53868B; text-align: center">Product Statistics</h4>

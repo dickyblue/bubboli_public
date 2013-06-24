@@ -1,7 +1,7 @@
 <div class="container">
 
 
-    </br>
+    <br>
   
     <div class="row">
       <div class=" span2 child-search-well ">
@@ -34,11 +34,11 @@
                   <%= render(:partial => 'unfollow', :locals => {:child => child})%>
                 <% elsif current_user.requested?(child) %>
                   <%= child.profile_picture ? image_tag(child.profile_picture.image_url(:profile_pic)) : image_tag('profile_pic_default.jpg') %>
-                  <%= child.first_name %></br>
+                  <%= child.first_name %><br>
                   Requested
                 <% else %>
                   <%= child.profile_picture ? image_tag(child.profile_picture.image_url(:profile_pic)) : image_tag('profile_pic_default.jpg') %>
-                  <%= child.first_name %></br>
+                  <%= child.first_name %><br>
                   <%= render(:partial => 'follow', :locals => {:child => child})%>
                 <% end %>
               </li>  

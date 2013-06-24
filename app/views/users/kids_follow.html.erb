@@ -7,8 +7,8 @@
         <% @kids.each do |kf| %>
           <li class="prod-well prod-list block">
             <div>
-              <%= link_to kf.child.first_name, kf.child %></br>
-              DOB: <%= kf.child.birth_date %></br>
+              <%= link_to kf.child.first_name, kf.child %><br>
+              DOB: <%= kf.child.birth_date %><br>
               Relationship: <%= kf.relation_type.name %>
             </div>
           </li>
