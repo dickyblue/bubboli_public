@@ -23,17 +23,22 @@ class BlogsController < ApplicationController
     @blog = Blog.new if @blog.nil?
     @blog.build_blog_image
     @blog = Blog.find(params[:id]) if params[:id]
-    @all_blog_categories = get_all_categories
   end
   
   def create
-    @all_blog_categories = get_all_categories
-    checked_blog_categories = get_blog_categories_from(params[:blog_categories])
-    removed_blog_categories = @all_blog_categories - checked_blog_categories
+    # @all_blog_categories = get_all_categories
+    # checked_blog_categories = get_blog_categories_from(params[:blog_categories])
+    # removed_blog_categories = @all_blog_categories - checked_blog_categories
+    # @blog = Blog.new(params[:blog])
+    # if @blog.save
+    #   checked_blog_categories.each {|cat| @blog.blog_categories << cat if !@blog.blog_categories.include?(cat)}
+    #   removed_blog_categories.each {|cat| @blog.blog_categories.delete(cat) if @blog.blog_categories.include?(cat)}
+    #   redirect_to(:action => 'list')
+    # else
+    #   render "manage"
+    # end
     @blog = Blog.new(params[:blog])
     if @blog.save
-      checked_blog_categories.each {|cat| @blog.blog_categories << cat if !@blog.blog_categories.include?(cat)}
-      removed_blog_categories.each {|cat| @blog.blog_categories.delete(cat) if @blog.blog_categories.include?(cat)}
       redirect_to(:action => 'list')
     else
       render "manage"
@@ -41,14 +46,20 @@ class BlogsController < ApplicationController
   end
     
   def update
-    @all_blog_categories = get_all_categories
-    checked_blog_categories = get_blog_categories_from(params[:blog_categories])
-    removed_blog_categories = @all_blog_categories - checked_blog_categories
+    # @all_blog_categories = get_all_categories
+    # checked_blog_categories = get_blog_categories_from(params[:blog_categories])
+    # removed_blog_categories = @all_blog_categories - checked_blog_categories
+    # @blog = Blog.find(params[:id])
+    # if @blog.update_attributes(params[:blog])
+    #   checked_blog_categories.each {|cat| @blog.blog_categories << cat if !@blog.blog_categories.include?(cat)}
+    #   removed_blog_categories.each {|cat| @blog.blog_categories.delete(cat) if @blog.blog_categories.include?(cat)}
+    #   redirect_to(:action => 'show')
+    # else
+    #   render "manage"
+    # end
     @blog = Blog.find(params[:id])
     if @blog.update_attributes(params[:blog])
-      checked_blog_categories.each {|cat| @blog.blog_categories << cat if !@blog.blog_categories.include?(cat)}
-      removed_blog_categories.each {|cat| @blog.blog_categories.delete(cat) if @blog.blog_categories.include?(cat)}
-      redirect_to(:action => 'show')
+      redirect_to(:action => 'list')
     else
       render "manage"
     end    
