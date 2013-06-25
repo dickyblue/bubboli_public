@@ -36,7 +36,7 @@ class BlogImageUploader < CarrierWave::Uploader::Base
   # end
   
   version :large_pic do
-    process :resize_to_fill => [260, 360]
+    process :resize_to_fill => [300, 300]
   end
  
   version :thumb_pic do

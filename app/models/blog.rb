@@ -3,7 +3,7 @@ class Blog < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
 
-  attr_accessible :image, :remote_image_url, :title, :author, :content, :author_permalink, :published, :publish_date, :blog_image_attributes
+  attr_accessible :image, :remote_image_url, :title, :author, :content, :author_permalink, :published, :publish_date, :blog_image_attributes, :blog_category_ids
   
   has_one  :blog_image
   has_many :comments, :dependent => :destroy
