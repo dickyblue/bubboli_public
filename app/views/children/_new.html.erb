@@ -1,11 +1,30 @@
+
+
+<script type="text/javascript">
+$(function() {
+  $(".tip").tooltip();
+});
+</script>
+
 <div class="span8">
 <%= simple_form_for(@child, :html => {:class => "form_horizontal"}) do |f| %>
   <%= render(:partial => 'form', :locals => {:f => f}) %>
   <%= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name") %>
-  <%= check_box_tag :invite, true %>
+  
+  <br><br>
+  <span style="float: left; margin-left: 3px; margin-top: 1px"><%= check_box_tag :invite, true %></span> 
+  <span style="float: left; margin-left: 6px; margin-top: 1px"><%= label_tag 'Alert'%></span>
+  <span style="float: left; margin-left: 3px; margin-top: 1px; margin-right: 2px"><%= label_tag 'Parent'%></span>
+  
+  <div id="example">
+  <a class="tip" data-toggle="tooltip" data-placement="right" title="By clicking this, we will alert the parent
+  that you love their bubbies and wish to be reminded of their birthday."><i class="icon-question-sign"></i></a>
+  </div>
+  
   <%= hidden_field_tag :invitee, invitee %>
   <div class="pull-right">
     <%= f.button :submit, :class=> "primary" %>
   </div>
 <% end %>
 </div>
+

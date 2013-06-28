@@ -14,9 +14,11 @@ class Invitation < ActiveRecord::Base
   # after_save :set_send_invitation, :on => :create
   
   def send_invitation_token
-    self.sent_at = Time.zone.now
-    save!
-    InvitationMailer.delay.invitation(self) if self.recipient_email
+    if self.send_invitation == true
+      self.sent_at = Time.zone.now
+      save!
+      InvitationMailer.delay.invitation(self) if self.recipient_email
+    end
   end
   
   def self.invitation_by_email(user)
