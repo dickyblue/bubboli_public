@@ -36,7 +36,7 @@ class ChildrenController < ApplicationController
       @child.invitations.create!(:sender => current_user, :recipient_email => params[:invitee], :send_invitation => params[:invite] )
       redirect_to current_user
       flash[:success] = "Thank you.  Tailor the gift preferences for #{@child.first_name} <a href='#{url_for(@relationship)}'>here</a> so we can
-      better tailor our recommendations!".html_safe.
+      better tailor our recommendations!".html_safe
     else
       flash[:error] = "Please fix the errors below."
       render "new"
