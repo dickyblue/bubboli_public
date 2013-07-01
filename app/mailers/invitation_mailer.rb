@@ -5,7 +5,7 @@ class InvitationMailer < ActionMailer::Base
     @invitation = invitation
     @sender = @invitation.sender
     @child = @invitation.child
-    mail :to => invitation.recipient_email, :subject => "#{@sender.first_name} Invitation for Bubboli"
+    mail :to => invitation.recipient_email, :subject => "#{@sender.first_name} wants to be reminded of #{@child.first_name}'s birthday on Bubboli"
   end
   
 end
