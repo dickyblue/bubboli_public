@@ -137,6 +137,10 @@ class User < ActiveRecord::Base
     relationships.where(:relation_type_id => 1).map {|p| p.child }   
   end
   
+  def my_kids_rel_path
+    relationships.where(:relation_type_id => 1)   
+  end
+  
   def is_parent_of?(child)
     self.my_kids.include?(child)
   end

@@ -100,13 +100,11 @@
             You have <%= link_to (User.invitation_count(current_user) + @user.my_kids_requests.count), requests_path %> friend requests.
           <% end %>
           <br><br>
-          <% if current_user.my_kids %>
-            <% current_user.my_kids.each do |kid| %>
-              <% if kid.gift_accessions %>
-              <%= link_to kid.first_name, relationship_path(current_user, kid) %> has some gifts that needs your approval.
+            <% current_user.my_kids_rel_path.each do |kid| %>
+              <% if kid.child.gift_accessions.where(:approved => false).count > 0 %>
+                <%= link_to kid.child.first_name, relationship_path(kid) %> has some gifts that needs your approval.
               <% end %>
             <% end %>
-          <% end %>
         </div>  
       </div>
     

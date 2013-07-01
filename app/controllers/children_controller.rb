@@ -31,11 +31,11 @@ class ChildrenController < ApplicationController
     @child = Child.new(params[:child])
     @search_term = params[:invitee] if params[:invitee]
     if @child.save
-      @relationship = @child.build_relationship(current_user.id, params[:relation_type_ids]) #build_relationships method in child model to make this more rails friendly
+      @relation = @child.build_relationship(current_user.id, params[:relation_type_ids]) #build_relationships method in child model to make this more rails friendly
       #@child.relationships.create!(:user_id => current_user.id, :relation_type_id => params[:relation_type_ids]) # Changed from relationships.last.update_attributes because relationship was not created at creation of child
       @child.invitations.create!(:sender => current_user, :recipient_email => params[:invitee], :send_invitation => params[:invite] )
       redirect_to current_user
-      flash[:success] = "Thank you.  Tailor the gift preferences for #{@child.first_name} <a href='#{url_for(@relationship)}'>here</a> so we can
+      flash[:success] = "Thank you.  <a href='#{url_for(@relation)}'>Complete the gift preferences</a> for #{@child.first_name} so we can
       better tailor our recommendations!".html_safe
     else
       flash[:error] = "Please fix the errors below."
