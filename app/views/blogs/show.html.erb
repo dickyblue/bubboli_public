@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  <meta property="og:image" content="<%= @blog.blog_image.image_url(:large_pic) %>" />
+  <meta property="og:title" content="<%= @page_title %>" />
+  <meta property="og:description" content="<%= truncate(simple_format(@blog.content), :length => 118) %>"/>
+<% end %>
+
 <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script> -->
 
