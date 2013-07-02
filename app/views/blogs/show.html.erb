@@ -1,5 +1,6 @@
 <% content_for :head do %>
   <meta property="og:image" content="<%= @blog.blog_image.image_url(:large_pic) %>" />
+  <meta property="og:title" content="<%= @blog.title %>" />
   <meta property="og:description" content="<%= truncate(simple_format(@blog.content), :length => 118) %>"/>
 <% end %>
 
