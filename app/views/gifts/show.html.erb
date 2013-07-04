@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <meta property="og:image" content="<%= @gift.gift_images.first.image_url(:large_pic) %>" />
   <meta property="og:title" content="<%= @gift.name %>" />
-  <meta property="og:description" content="<%= truncate(simple_format(@gift.description), :length => 118) %>"/>
+  <meta property="og:description" content="<%= truncate(simple_format(@gift.description), :length => 128) %>"/>
 <% end %>
 
 <!-- <script type="text/javascript">var switchTo5x=true;</script> -->
