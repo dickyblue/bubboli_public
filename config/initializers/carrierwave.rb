@@ -20,5 +20,5 @@ CarrierWave.configure do |config|
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"
   config.fog_directory = FOG_CONFIG['bucket']
-  config.fog_public = true
+  config.fog_public = false
 end
