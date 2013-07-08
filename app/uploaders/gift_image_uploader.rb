@@ -18,7 +18,7 @@ class GiftImageUploader < CarrierWave::Uploader::Base
   end
   
   configure do |c|
-    c.fog_public = false # or false
+    c.fog_public = true # or false
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
