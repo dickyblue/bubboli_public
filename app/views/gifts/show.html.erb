@@ -61,10 +61,16 @@
     </div>
     
     <div class="span3">
-      <div class="row gift-buy-box">
+      <div class="row gift-buy-box"><br>
         <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
         <% link = "http://"+@gift.permalink %>
-        <div class="btn primary white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div><br><br>
+        
+        <% if @gift.merchant == "Amazon" %>
+          <%= link_to buy_from_amazon, link, :target => "_blank" %><br><br>
+        <% else %>
+          <div class="btn green white-link"><%= link_to "Buy It from #{@gift.merchant}", link, :target => "_blank" %></div><br><br>
+        <% end %>
+        
         <!-- ShareThis Button BEGIN -->
         <!-- <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
         <span class='st_twitter' st_title='<%= @page_title %> via @bubboli'></span>

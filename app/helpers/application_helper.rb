@@ -80,6 +80,14 @@ module ApplicationHelper
     five_hundred_error = image_tag("Bubboli500Error.png", :alt => "500 Error")
   end
   
+  def buy_from_amazon
+    buy_from_amazon = image_tag("buy_amazon.gif", :alt => "Buy From Amazon")
+  end
+  
+  def check_email
+    check_email = image_tag("email.jpg", :alt => "Check Email")
+  end
+  
   def bubboli_mission
     mission = image_tag("bubboli-mission.jpg", :alt => "The Bubboli Mision: To play a small role in bridging the distance
     - emotionally and physically - between you and your special bubbies, whether you are around the corner, in a different
