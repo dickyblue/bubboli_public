@@ -1,5 +1,5 @@
 class GiftRecommendationMailer < ActionMailer::Base
-  default from: "contact@bubboli.com"
+  default from: "reminders@bubboli.com"
 
     # def test_recommendation(relationship)
     #   @user = User.first
