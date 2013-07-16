@@ -54,7 +54,7 @@ class RelationshipsController < ApplicationController
   def confirm_relationship
     rel = Relationship.find(:first, :conditions => {:relation_token => params[:relation_token]}) unless params[:relation_token].blank?
     case
-    when (!params[:relation_token].blank?) && rel && !rel.confirmed?
+    when (!params[:relation_token].blank?) && rel && rel.status != "Confirmed"
       rel.confirm_relationship!
       flash[:notice] = "Friendship confirmed."
     when params[:relation_token].blank?
