@@ -21,12 +21,24 @@ class GiftAccession < ActiveRecord::Base
   # end
   
   def send_gift_alert_email
-    # begin
-      GiftAlertMailer.delay.gift_alert(self) if self.giftee.parents
-    #   self.update_attributes('gift_aert', false)
-    # rescue
-    #   nil
-    # end
+    generate_token(:gift_accession_token)
+    self.gift_accession_token_sent_at = Time.now
+    save!
+    GiftAlertMailer.delay.gift_alert(self) if self.giftee.parents
   end
+  
+  def approve!
+    self.approved = true
+    self.gift_accession_token = nil
+    save(:validate => false)
+  end
+  
+  private
+  
+    def generate_token(column)
+      begin
+        self[column] = SecureRandom.urlsafe_base64
+      end while GiftAccession.exists?(column => self[column])
+    end
     
 end

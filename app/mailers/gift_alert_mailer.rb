@@ -2,6 +2,7 @@ class GiftAlertMailer < ActionMailer::Base
   default from: "contact@bubboli.com"
   
   def gift_alert(gift_accession)
+    @gift_accession = gift_accession
     @user = gift_accession.giver
     @child = gift_accession.giftee
     @parent = @child.parents.first.user

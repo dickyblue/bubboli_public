@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716165344) do
+ActiveRecord::Schema.define(:version => 20130716224242) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -103,13 +103,16 @@ ActiveRecord::Schema.define(:version => 20130716165344) do
     t.integer  "gift_id"
     t.integer  "child_id"
     t.integer  "user_id"
-    t.boolean  "approved",   :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "approved",                     :default => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.boolean  "gift_alert"
+    t.string   "gift_accession_token"
+    t.datetime "gift_accession_token_sent_at"
   end
 
   add_index "gift_accessions", ["child_id"], :name => "index_gift_accessions_on_child_id"
+  add_index "gift_accessions", ["gift_accession_token"], :name => "index_gift_accessions_on_gift_accession_token"
   add_index "gift_accessions", ["user_id"], :name => "index_gift_accessions_on_user_id"
 
   create_table "gift_age_classifications", :force => true do |t|
