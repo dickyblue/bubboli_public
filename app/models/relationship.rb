@@ -81,12 +81,26 @@ class Relationship < ActiveRecord::Base
   #   self.update_column('friend_alert', true)
   # end
   
-  def send_friend_alert_email
-    # begin
-      FriendAlertMailer.delay.friend_alert(self) if self.child.parents 
-      # self.update_attributes('friend_alert', false)
-    # rescue
-    #   nil
-    # end
+  def send_friend_alert_email     
+    generate_token(:relation_token)
+    self.relation_token_sent_at = Time.zone.now
+    save!
+    FriendAlertMailer.delay.friend_alert(self) if self.child.parents      
   end
+  
+  def confirm_relationship!
+    self.status = "Confirmed"
+    self.relation_token = nil
+    save(:validate => false)
+  end
+  
+  private
+  
+    def generate_token(column)
+      begin
+        self[column] = SecureRandom.urlsafe_base64
+      end while Relationship.exists?(column => self[column])
+    end
+  
+  
 end

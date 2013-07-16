@@ -50,6 +50,22 @@ class RelationshipsController < ApplicationController
     current_user.unfollow!(@child)
     redirect_to current_user
   end
+  
+  def confirm_relationship
+    rel = Relationship.find(:first, :conditions => {:relation_token => params[:relation_token]}) unless params[:relation_token].blank?
+    case
+    when (!params[:relation_token].blank?) && rel && !rel.confirmed?
+      rel.confirm_relationship!
+      flash[:notice] = "Friendship confirmed."
+    when params[:relation_token].blank?
+      flash[:error] = "There is no such relationship."
+      redirect_to root_path
+    else
+      flash[:error] = "We can't find this relationship."
+      redirect_to root_path
+    end
+  end
+  
     
   private
   

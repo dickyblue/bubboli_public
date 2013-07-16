@@ -59,9 +59,11 @@ BubboliKids::Application.routes.draw do
   match '/users/:id/requests', :to => 'users#requests', :as => :requests
   match '/users/:id/change_password', :to => 'users#change_password', :as => :change_password
   match '/users/thankyou(/:id)', :to => 'users#thankyou', :as => :thankyou
-  match '/users/confirm/:confirmation_token', :to => 'users#confirm', :as => :confirm
   match '/signup/:invitation_token', :to => 'users#new'
-  
+
+  match '/users/confirm/:confirmation_token', :to => 'users#confirm', :as => :confirm
+  match '/relationships/confirm_relationship/:relation_token', :to => 'relationships#confirm_relationship', :as => :confirm_relationship
+    
   match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
   match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
   match '/child_images/:id/set_as_profile_picture', :to => 'child_images#set_as_profile_picture', :as => :set_as_profile_picture
