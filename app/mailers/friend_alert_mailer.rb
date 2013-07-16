@@ -7,7 +7,6 @@ class FriendAlertMailer < ActionMailer::Base
     @child = relationship.child
     @parent = @child.parents.first.user
     @page = requests_url(@parent)
-    @gift = Gift.first
     mail :to => @parent.email, :subject => "#{@user.first_name} wants to be reminded of #{@child.first_name}'s birthday on Bubboli"
   end  
   

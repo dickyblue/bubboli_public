@@ -127,7 +127,7 @@
                                 
                                 <!-- // Begin Module: Friend Alert \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= @user.image ? image_tag(@gift.gift_images.first.image_url(:large_pic)) : image_tag("profile_pic_default.jpg")%>
+                                  <%= @user.image ? image_tag(@user.image_url(:thumb)) : image_tag("profile_pic_default.jpg")%>
                                 </td>
                                 <td>  
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
