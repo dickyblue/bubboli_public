@@ -3,8 +3,8 @@ class RelationshipsController < ApplicationController
   include SessionsHelper
   layout 'relationship'
   
-  before_filter :authenticate
-  before_filter :correct_user, :except => [:create]
+  before_filter :authenticate, :except => [:confirm_relationship]
+  before_filter :correct_user, :except => [:create, :confirm_relationship]
   
   def show
     @relationship = Relationship.find(params[:id])
