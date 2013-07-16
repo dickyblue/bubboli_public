@@ -56,7 +56,7 @@ class RelationshipsController < ApplicationController
     case
     when (!params[:relation_token].blank?) && rel && rel.status != "Confirmed"
       rel.confirm_relationship!
-      flash[:notice] = "Friendship confirmed."
+      flash[:notice] = "Friendship confirmed. #{rel.user.first_name} is now following #{rel.child.first_name}"
       redirect_to root_path
     when params[:relation_token].blank?
       flash[:error] = "There is no such relationship."
