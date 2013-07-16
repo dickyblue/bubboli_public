@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528201036) do
+ActiveRecord::Schema.define(:version => 20130716165344) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -217,17 +217,20 @@ ActiveRecord::Schema.define(:version => 20130528201036) do
     t.integer  "user_id"
     t.integer  "child_id"
     t.integer  "relation_type_id"
-    t.string   "status",               :default => "Pending"
+    t.string   "status",                 :default => "Pending"
     t.datetime "accepted_at"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.text     "reminders"
     t.date     "next_reminder_due_at"
     t.string   "slug"
     t.boolean  "friend_alert"
+    t.string   "relation_token"
+    t.datetime "relation_token_sent_at"
   end
 
   add_index "relationships", ["child_id"], :name => "index_relationships_on_child_id"
+  add_index "relationships", ["relation_token"], :name => "index_relationships_on_relation_token"
   add_index "relationships", ["relation_type_id"], :name => "index_relationships_on_relation_type_id"
   add_index "relationships", ["slug"], :name => "index_relationships_on_slug"
   add_index "relationships", ["user_id", "child_id", "relation_type_id"], :name => "user_child_relationship_idx"
