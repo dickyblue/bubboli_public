@@ -63,7 +63,7 @@ BubboliKids::Application.routes.draw do
 
   match '/users/confirm/:confirmation_token', :to => 'users#confirm', :as => :confirm
   match '/relationships/confirm_relationship/:relation_token', :to => 'relationships#confirm_relationship', :as => :confirm_relationship
-  match '/gift_accessions/approve/:gift_accession_token', :to => 'gift_accessions#approve', :as => :approve_gift
+  match '/children/:id/gift_accessions/approve/:gift_accession_token', :to => 'gift_accessions#approve', :as => :approve_gift
     
   match '/relation_types/manage', :to => 'relation_types#manage', :as => :manage_relation_types
   match '/relation_types/list', :to => 'relation_types#list', :as => :list_relation_types
