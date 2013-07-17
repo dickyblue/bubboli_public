@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class GiftAlertMailer < ActionMailer::Base
   default from: "contact@bubboli.com"
   
@@ -8,6 +10,7 @@ class GiftAlertMailer < ActionMailer::Base
     @parent = @child.parents.first.user
     @gift = gift_accession.gift
     @page = child_url(@child)
+    attachments['@gift'] = open(@gift.gift_images.first.image_url(:thumb_pic)).read
     @image = @gift.gift_images.first.image_url(:thumb_pic)
     mail :to => @parent.email, :subject => "Gift purchase: #{@user.first_name} just purchased a gift for #{@child.first_name}'s birthday"
   end
