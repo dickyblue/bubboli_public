@@ -127,7 +127,7 @@
                                 
                                 <!-- // Begin Module: Friend Alert \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= @user.image ? image_tag(@user.image_url(:thumb)) : <img alt="Friend" src="http://www.bubboli.com//assets/profile_pic_default.jpg" >
+                                  <%= @user.image ? image_tag(@user.image_url(:thumb)) : <img alt="Friend" src="<%= asset_path('profile_pic_default.jpg') %>" >
                                   %>
                                 </td>
                                 <td>  
