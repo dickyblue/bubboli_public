@@ -7,7 +7,7 @@ Hi, <%= @parent.first_name %>
 Help <%= @user.first_name %> avoid duplicate gifting by accepting the friendship so they can see what's already been purchased
 for <%= @child.first_name %>.
 
-Accept here: http://www.bubboli.com
+Accept here: <%= confirm_relationship_url(@relationship.relation_token) if @relationship.relation_token %>
 
 LET'S BE FRIENDS
   http://www.facebook.com/bubboli

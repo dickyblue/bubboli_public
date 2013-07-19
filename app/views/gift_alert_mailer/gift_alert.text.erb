@@ -5,7 +5,7 @@ Hi, <%= @parent.first_name %>
 
 
 Help others avoid duplicate gifting by confirming the gift so others can see what's already been purchased
-for <%= @child.first_name %> at http://www.bubboli.com.
+for <%= @child.first_name %> at <%= approve_gift_url(@gift_accession.gift_accession_token) if @gift_accession.gift_accession_token %>.
 
 
 LET'S BE FRIENDS
