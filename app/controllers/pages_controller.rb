@@ -40,6 +40,11 @@ class PagesController < ApplicationController
   #   @user = User.first
   # end
   
+  # only for viewing online
+  # def welcome_email
+  #   @user = User.first
+  # end
+  
   #only for viewing online
   # def invitation
   #   @invitation = Invitation.last
