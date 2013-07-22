@@ -86,7 +86,6 @@ class User < ActiveRecord::Base
   def confirm!
     self.confirmed = true
     self.confirmation_token = nil
-    UserMailer.delay.welcome_email(self)
     save(:validate => false)
   end
   
