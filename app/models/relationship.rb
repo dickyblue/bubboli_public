@@ -82,7 +82,8 @@ class Relationship < ActiveRecord::Base
   # end
   
   def send_friend_alert_email     
-    unless self.relation_type == 1 
+    if self.relation_type == 1
+    else 
       generate_token(:relation_token)
       self.relation_token_sent_at = Time.zone.now
       save!
