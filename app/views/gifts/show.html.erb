@@ -8,11 +8,16 @@
 <!-- <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "271e0905-d30e-4bc4-af9d-b574b6eda513"}); </script> -->
 
+<script type="text/javascript">
+$(function() {
+  $(".tip").tooltip();
+});
+</script>
 
 <% @page_title = "Bubboli - #{@gift.name}" %>
 <div class="container">
 
-<i class="icon-chevron-left"></i><span class="red-link"><%= link_to("Back to Gifts", gifts_path) %></span><br><br>
+<i class="icon-chevron-left"></i><span class="red-link"> <%= link_to("Back to Gifts", gifts_path) %></span><br><br>
   <div class="row">
     <div class="span9">
       
@@ -66,10 +71,14 @@
         <% link = "http://"+@gift.permalink %>
         
         <% if @gift.merchant == "Amazon" %>
-          <%= link_to buy_from_amazon, link, :target => "_blank" %><br><br>
+          <%= link_to buy_from_amazon, link, :target => "_blank" %><a class="tip" data-toggle="tooltip" data-placement="right" title="By purchasing this product through this link, Bubboli
+          receives a small commission, at no additional cost to you, for the sale.  This commission will help fund site-related expenses. Thank you.">
+          <i class="icon-question-sign"></i></a><br><br>
         <% else %>
-          <div class="btn green white-link"><%= link_to "Buy It from #{@gift.merchant}", link, :target => "_blank" %></div><br><br>
-        <% end %>
+          <div class="btn green white-link"><%= link_to "Buy It from #{@gift.merchant}", link, :target => "_blank" %></div><a class="tip" data-toggle="tooltip" data-placement="right" title="By purchasing this product through this link, Bubboli
+          receives a small commission, at no additional cost to you, for the sale.  This commission will help fund site-related expenses.  Thank you.">
+          <i class="icon-question-sign"></i></a><br><br>
+        <% end %>        
         
         <!-- ShareThis Button BEGIN -->
         <!-- <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
