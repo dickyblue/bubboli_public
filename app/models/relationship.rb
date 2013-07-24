@@ -82,10 +82,12 @@ class Relationship < ActiveRecord::Base
   # end
   
   def send_friend_alert_email     
-    generate_token(:relation_token)
-    self.relation_token_sent_at = Time.zone.now
-    save!
-    FriendAlertMailer.delay.friend_alert(self) if self.child.parents      
+    unless self.relation_type == 1 
+      generate_token(:relation_token)
+      self.relation_token_sent_at = Time.zone.now
+      save!
+      FriendAlertMailer.delay.friend_alert(self) if self.child.parents
+    end       
   end
   
   def confirm_relationship!
