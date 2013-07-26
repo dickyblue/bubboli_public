@@ -59,4 +59,11 @@ class Gift < ActiveRecord::Base
     return Gift.where(:id => ids)
   end
   
+  def self.get_amazon_reviews(gift)
+    unless gift.sku.blank?
+      res = Amazon::Ecs.item_lookup(gift.sku, { :response_group => "ItemAttributes,Reviews"})
+      res.items.first.get("CustomerReviews/IFrameURL")
+    end
+  end
+  
 end

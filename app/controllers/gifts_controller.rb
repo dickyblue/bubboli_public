@@ -27,6 +27,7 @@ class GiftsController < ApplicationController
   
   def show
     @gift = Gift.find(params[:id])
+    @iframe_url = Gift.get_amazon_reviews(@gift)
     @images = @gift.gift_images
     #@images = GiftImage.where(:gift_id => @gift.id)
     category_ids = @gift.gift_categorizations.map(&:gift_category_id)

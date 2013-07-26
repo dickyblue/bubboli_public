@@ -63,6 +63,15 @@ $(function() {
           <%= render(:partial => "related_gifts")%>
         </div>
         
+        <% unless @gift.sku.blank? %>
+        <div>
+          <h4 class="qikki-font" style="color: #53868B">Reviews from Amazon</h4><br>
+          <iframe src="<%= @iframe_url.gsub("&amp;", "&") %>" width="700" height="400" scrolling="yes"></iframe>
+        </div>
+        <% end %>
+        
+        <br>
+        
     </div>
     
     <div class="span3">
