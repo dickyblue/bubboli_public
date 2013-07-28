@@ -8,7 +8,7 @@ namespace :update_price do
       price = item.get("Offers/Offer/OfferListing/Price").to_i
     end
     if price == 0
-      errors << gift.isbn 
+      errors << gift.sku 
     else 
       gift.price = price 
       gift.save 
