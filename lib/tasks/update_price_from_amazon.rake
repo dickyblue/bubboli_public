@@ -7,11 +7,7 @@ namespace :update_price do
       asin.items.each do |item|
       price = item.get("Offers/Offer/OfferListing/Price").to_i
     end
-    if price == 0
-      errors << gift.sku 
-    else 
       gift.price = price 
       gift.save 
       puts "These gifts did not update #{errors.inspect}" 
-    end 
   end
