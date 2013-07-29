@@ -4,9 +4,9 @@ namespace :update_price_from_amazon do
     gifts.each do |gift|
       asin = Amazon::Ecs.item_lookup(gift.sku, {:response_group => "OfferListings"})
       asin.items.each do |item|
-        price = item.get("Offers/Offer/OfferListing/Price").to_i
+        amazon_price = item.get("Offers/Offer/OfferListing/Price").to_i
       end  
-      gift.price = price 
+      gift.price = amazon_price 
       gift.save 
     end
   end
