@@ -10,3 +10,4 @@ namespace :update_price_from_amazon do
       gift.save 
     end
   end
+end
