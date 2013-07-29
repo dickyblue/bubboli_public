@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716224242) do
+ActiveRecord::Schema.define(:version => 20130729200657) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -177,7 +177,7 @@ ActiveRecord::Schema.define(:version => 20130716224242) do
     t.boolean  "available",                                          :default => false
     t.string   "sku"
     t.string   "manufacturer"
-    t.decimal  "price",                :precision => 5, :scale => 2
+    t.decimal  "price",                :precision => 7, :scale => 2
     t.string   "merchant"
     t.string   "gender"
     t.text     "description"
@@ -284,9 +284,9 @@ ActiveRecord::Schema.define(:version => 20130716224242) do
     t.string   "address_street"
     t.string   "address_apt"
     t.string   "address_city"
-    t.string   "address_state"
+    t.string   "address_state",              :limit => 50
     t.integer  "address_zip"
-    t.string   "address_country"
+    t.string   "address_country",            :limit => 50
     t.boolean  "admin",                                    :default => false
     t.datetime "created_at",                                                  :null => false
     t.datetime "updated_at",                                                  :null => false
