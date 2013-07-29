@@ -8,5 +8,4 @@ namespace :update_price_from_amazon do
     end
       gift.price = price 
       gift.save 
-      puts "These gifts did not update #{errors.inspect}" 
   end
