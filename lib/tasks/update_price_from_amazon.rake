@@ -20,7 +20,6 @@ namespace :update_price_from_amazon do
     #   gift.price = gift.price/100
     #   gift.save 
     # end
-      UpdatePriceWorker.perform_async(gift)
-    end
+    UpdatePriceWorker.perform_async(gift)
   end
 end
