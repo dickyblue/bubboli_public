@@ -9,15 +9,14 @@ namespace :update_price_from_amazon do
       amazon_price = asin.items.first.get("Offers/Offer/OfferListing/Price/Amount").to_i
       gift.price = amazon_price 
       gift.save
-      gift.gift_price_range = [ ]
       if gift.price.between?(0, 2500)
-        gift.gift_price_range == 1
+        gift.gift_price_classifications.first.gift_price_range_id == 1
       elsif gift.price.between?(2501, 5000)
-        gift.gift_price_range == 2
+        gift.gift_price_classifications.first.gift_price_range_id == 2
       elsif gift.price.between?(5001, 7500)
-        gift.gift_price_range == 3
+        gift.gift_price_classifications.first.gift_price_range_id == 3
       else (gift.price >= 7501)
-        gift.gift_price_range == 4
+        gift.gift_price_classifications.first.gift_price_range_id == 4
       end    
       gift.price = gift.price/100
       gift.save 
