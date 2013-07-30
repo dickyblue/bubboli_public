@@ -20,6 +20,9 @@ namespace :update_price_from_amazon do
     #   gift.price = gift.price/100
     #   gift.save 
     # end
-    UpdatePriceWorker.perform_async(gift)
+    gifts = Gift.where(:merchant => "Amazon")
+    gifts.each do |gift|  
+      UpdatePriceWorker.perform_async(gift.id)
+    end
   end
 end

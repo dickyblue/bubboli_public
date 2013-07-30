@@ -6,8 +6,7 @@ class UpdatePriceWorker
   sidekiq_options :failures => true
   
   def perform(gift)
-    gifts = Gift.where(:merchant => "Amazon")
-    gifts.each do |gift|
+      gift = Gift.find(gift_id)
       asin = Amazon::Ecs.item_lookup(gift.sku, {:response_group => "OfferListings"})
       amazon_price = asin.items.first.get("Offers/Offer/OfferListing/Price/Amount").to_i
       gift.price = amazon_price 
