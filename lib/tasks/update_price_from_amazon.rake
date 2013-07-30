@@ -17,7 +17,8 @@ namespace :update_price_from_amazon do
         gift.gift_price_classifications.first.gift_price_range_id = 3
       else (gift.price >= 7501)
         gift.gift_price_classifications.first.gift_price_range_id = 4
-      end    
+      end
+      gift.gift_price_classifications.first.save    
       gift.price = gift.price/100
       gift.save 
     end
