@@ -5,7 +5,7 @@ require 'autoscaler/heroku_scaler'
 
 Sidekiq.configure_client do |config|
   config.client_middleware do |chain|
-    chain.add Autoscaler::Sidekiq::Client, 'default' => Autoscaler::HerokuScaler.new
+    chain.add Autoscaler::Sidekiq::Client, 'default, notifications, price_update' => Autoscaler::HerokuScaler.new
   end
 end
 

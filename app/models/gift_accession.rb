@@ -16,10 +16,6 @@ class GiftAccession < ActiveRecord::Base
     end
   end
   
-  # def set_gift_alert
-  #   self.update_column('gift_alert', true) unless self.giver.is_parent_of?(self.giftee)
-  # end
-  
   def send_gift_alert_email
     generate_token(:gift_accession_token)
     self.gift_accession_token_sent_at = Time.now

@@ -5,7 +5,7 @@ class UpdatePriceWorker
   sidekiq_options queue: "update_price"
   sidekiq_options :failures => true
   
-  def perform(gift)
+  def perform(gift_id)
       gift = Gift.find(gift_id)
       asin = Amazon::Ecs.item_lookup(gift.sku, {:response_group => "OfferListings"})
       amazon_price = asin.items.first.get("Offers/Offer/OfferListing/Price/Amount").to_i
@@ -24,7 +24,5 @@ class UpdatePriceWorker
       a.save    
       gift.price = gift.price/100
       gift.save 
-    end
-    
   end
 end
