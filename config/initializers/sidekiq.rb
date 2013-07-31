@@ -3,15 +3,42 @@ require 'sidekiq'
 require 'autoscaler/sidekiq'
 require 'autoscaler/heroku_scaler'
 
-Sidekiq.configure_client do |config|
-  config.client_middleware do |chain|
-    chain.add Autoscaler::Sidekiq::Client, 'default' => Autoscaler::HerokuScaler.new
+heroku = nil
+if ENV['bubboli-kids-staging']
+  heroku = {}
+  scaleable = %w[default update_price notifications] - (ENV['ALWAYS'] || '').split(' ')
+  scaleable.each do |queue|
+    heroku[queue] = Autoscaler::HerokuScaler.new(
+      queue,
+      ENV['8e1c1c4614615661ccb83cce77dc149b50e84be6'],
+      ENV['bubboli-kids-staging'])
   end
 end
 
+Sidekiq.configure_client do |config|
+  if heroku
+    config.client_middleware do |chain|
+      chain.add Autoscaler::Sidekiq::Client, heroku
+    end
+  end
+end
+
+# define HEROKU_PROCESS in the Procfile:
+#
+#    default: env HEROKU_PROCESS=default bundle exec sidekiq -r ./background/boot.rb
+#    import:  env HEROKU_PROCESS=import bundle exec sidekiq -q import -c 1 -r ./background/boot.rb
+# web: bundle exec thin start -p $PORT
+# worker: bundle exec sidekiq -e production
+
+
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.add(Autoscaler::Sidekiq::Server, Autoscaler::HerokuScaler.new, 60)
+    if heroku && ENV['HEROKU_PROCESS'] && heroku[ENV['HEROKU_PROCESS']]
+      p "Setting up auto-scaledown"
+      chain.add(Autoscaler::Sidekiq::Server, heroku[ENV['HEROKU_PROCESS']], 60, [ENV['HEROKU_PROCESS']])
+    else
+      p "Not scaleable"
+    end
   end
 end
 
