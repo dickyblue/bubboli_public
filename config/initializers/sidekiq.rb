@@ -4,14 +4,14 @@ require 'autoscaler/sidekiq'
 require 'autoscaler/heroku_scaler'
 
 heroku = nil
-if ENV['bubboli-kids-staging']
+if ENV['HEROKU_APP']
   heroku = {}
   scaleable = %w[default update_price notifications] - (ENV['ALWAYS'] || '').split(' ')
   scaleable.each do |queue|
     heroku[queue] = Autoscaler::HerokuScaler.new(
       queue,
-      ENV['8e1c1c4614615661ccb83cce77dc149b50e84be6'],
-      ENV['bubboli-kids-staging'])
+      ENV['HEROKU_API_KEY'],
+      ENV['HEROKU_APP'])
   end
 end
 
