@@ -16,9 +16,11 @@ if ENV['bubboli-kids-staging']
 end
 
 Sidekiq.configure_client do |config|
+  if heroku
     config.client_middleware do |chain|
       chain.add Autoscaler::Sidekiq::Client, heroku
     end
+  end
 end
 
 # define HEROKU_PROCESS in the Procfile:
