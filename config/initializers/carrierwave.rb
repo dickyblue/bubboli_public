@@ -1,4 +1,4 @@
-# FOG_CONFIG = YAML.load_file(Rails.root.join('config', 'fog.yml'))[Rails.env]
+FOG_CONFIG = YAML.load_file(Rails.root.join('config', 'fog.yml'))[Rails.env]
 
 
 CarrierWave.configure do |config|
