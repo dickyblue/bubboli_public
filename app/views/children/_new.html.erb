@@ -9,7 +9,7 @@ $(function() {
 <div class="span8">
 <%= simple_form_for(@child, :html => {:class => "form_horizontal"}) do |f| %>
   <%= render(:partial => 'form', :locals => {:f => f}) %>
-  <%= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name") %>
+  <%= select_tag :relation_type_ids, options_from_collection_for_select(RelationType.non_parent, "id", "name"), :prompt => "Your Relationship To Child" %>
   
   <br><br>
   <span style="float: left; margin-left: 3px; margin-top: 1px"><%= check_box_tag :invite, true, {:checked => "checked"} %></span> 
