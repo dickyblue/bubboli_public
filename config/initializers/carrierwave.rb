@@ -4,8 +4,10 @@ FOG_CONFIG = YAML.load_file(Rails.root.join('config', 'fog.yml'))[Rails.env]
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: FOG_CONFIG['access_key_id'],
-    aws_secret_access_key: FOG_CONFIG['secret_access_key'],
+    # aws_access_key_id: FOG_CONFIG['access_key_id'],
+    # aws_secret_access_key: FOG_CONFIG['secret_access_key'],
+    aws_access_key_id: ENV['AMAZON_ACCESS_KEY'],
+    aws_secret_access_key: ENV['AMAZON_SECRET_KEY'],
   }
   
   if Rails.env.test? || Rails.env.cucumber?
