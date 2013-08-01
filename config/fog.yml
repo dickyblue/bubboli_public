@@ -11,6 +11,6 @@ development:
 
 
 staging:
-    access_key_id: AKIAI2WTSOAPR7WAFDCQ
-    secret_access_key: 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
-    bucket: bubboli_dev
+  access_key_id: ENV['AMAZON_ACCESS_KEY']
+  secret_access_key: ENV['AMAZON_SECRET_KEY']
+  bucket: bubboli_dev
