@@ -1430,3 +1430,12 @@ ul.photos-collage li {
   color: $dark-green-blue;
   font-size: 1.2em;
   }  
+  
+/*==================================================
+ * AMAZON FORMATTINGS
+ * ===============================================*/
+
+.abridged-amazon-reviews {
+  position: relative;
+  z-index: -10;
+  }

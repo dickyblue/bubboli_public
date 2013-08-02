@@ -63,6 +63,12 @@ $(function() {
           <%= render(:partial => "related_gifts")%>
         </div>
         
+        <% unless @gift.sku.blank? %>
+        <div>
+          <h4 class="qikki-font" style="color: #53868B">Reviews from Amazon</h4><br>
+          <iframe src="<%= @iframe_url.gsub("&amp;", "&") %>" width="700" height="400" scrolling="yes"></iframe>
+        </div>
+        <% end %>
         
         <br>
         
@@ -99,8 +105,15 @@ $(function() {
         <!-- AddThis Button END -->
       </div>
       
-      <br>
-      <br>
+     <div class="row"> 
+        <% unless @gift.sku.blank? %>
+        <div class="abridged-amazon-reviews">
+          <iframe src="<%= @iframe_url.gsub("&amp;", "&") %>" width="240" height="220" scrolling="no" frameborder="0"></iframe>
+        </div>
+        <% end %>
+      </div>
+      
+
 
       <div class="row gift-buy-box2">
         <h4 style= "color: #53868B; text-align: center">Product Statistics</h4>
