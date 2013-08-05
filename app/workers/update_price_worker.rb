@@ -12,18 +12,19 @@ class UpdatePriceWorker
       if amazon_price == 0
         gift.price_error = true
       else
-        gift.price = amazon_price/100
+        gift.price = amazon_price
+        gift.price = gift.price/100
       end
       gift.save  
       a = gift.gift_price_classifications.first
-      p = number_to_currency(gift.price)
-      if p.between?("$0.01", "$25.00")
+      p = gift.price
+      if p.between?(0.01, 25.00)
         a.gift_price_range_id = 1
-      elsif p.between?("$25.01", "$50.00")
+      elsif p.between?(25.01, 50.00)
         a.gift_price_range_id = 2
-      elsif p.between?("$50.01", "75.00")
+      elsif p.between?(50.01, 75.00)
         a.gift_price_range_id = 3
-      else (p >= "$75.01")
+      else (p >= 75.01)
         a.gift_price_range_id = 4
       end
       a.save
