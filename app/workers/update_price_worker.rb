@@ -8,17 +8,22 @@ class UpdatePriceWorker
   def perform(gift_id)
       gift = Gift.find(gift_id)
       asin = Amazon::Ecs.item_lookup(gift.sku, {:response_group => "OfferListings"})
-      amazon_price = asin.items.first.get("Offers/Offer/OfferListing/Price/Amount").to_i
-      gift.price = amazon_price 
-      gift.save
+      amazon_price_unfiltered = asin.items.first.get("Offers/Offer/OfferListing/Price/Amount").to_i
+      if amazon_price_unfiltered == 0
+        gift.price_error = true
+      else
+        gift.price = amazon_price_unfiltered 
+      end
+      gift.save  
       a = gift.gift_price_classifications.first
-      if amazon_price.between?(0, 2500)
+      p = number_to_currency(gift.price)
+      if p.between?("$0.01", "$25.00")
         a.gift_price_range_id = 1
-      elsif amazon_price.between?(2501, 5000)
+      elsif p.between?("$25.01", "$50.00")
         a.gift_price_range_id = 2
-      elsif amazon_price.between?(5001, 7500)
+      elsif p.between?("$50.01", "75.00")
         a.gift_price_range_id = 3
-      else (amazon_price >= 7501)
+      else (p >= "$75.01")
         a.gift_price_range_id = 4
       end
       a.save    

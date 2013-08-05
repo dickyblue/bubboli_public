@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729200657) do
+ActiveRecord::Schema.define(:version => 20130804210514) do
 
   create_table "blog_categories", :force => true do |t|
     t.string   "name"
@@ -188,11 +188,13 @@ ActiveRecord::Schema.define(:version => 20130729200657) do
     t.datetime "updated_at",                                                            :null => false
     t.boolean  "baby_shower"
     t.string   "slug"
+    t.boolean  "price_error"
   end
 
   add_index "gifts", ["baby_shower"], :name => "index_gifts_on_baby_shower"
   add_index "gifts", ["created_at"], :name => "index_gifts_on_created_at"
   add_index "gifts", ["favorite"], :name => "index_gifts_on_favorite"
+  add_index "gifts", ["price_error"], :name => "index_gifts_on_price_error"
   add_index "gifts", ["slug"], :name => "index_gifts_on_slug"
 
   create_table "invitations", :force => true do |t|
