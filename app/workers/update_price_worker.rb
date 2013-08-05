@@ -28,6 +28,6 @@ class UpdatePriceWorker
         a.gift_price_range_id = 4
       end
       a.save
-      # PriceErrorMailer.delay.price_error(User.find(1))    
+      PriceErrorMailer.delay.price_error(User.where(:admin => true).first)    
   end
 end
