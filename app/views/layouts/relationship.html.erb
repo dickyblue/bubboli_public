@@ -108,7 +108,7 @@
                   <p>Check all that applies:</p>
                   <%= simple_form_for @relationship, :html => {:class => "form-inline"} do |f| %>
                     <% ReminderOption.all.each do |option| %>
-                      <%= f.input option.name, as: :boolean, :item_wrapper_class => 'span2', :wrapper => :checkbox %>
+                      <%= f.input option.name, as: :boolean, :item_wrapper_class => 'span2', :wrapper => :checkbox, :input_html => { :checked => true } %>
                     <% end %>
                     <%= f.button :submit, 'Update Reminders', :class => 'primary pull_left'%>
                   <% end %>
