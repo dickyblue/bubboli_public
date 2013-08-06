@@ -81,7 +81,7 @@
               <% @comments.each do |comment| %>
                 <% link = "http://"+comment.commenter_permalink %>
                 <li><strong><%= link_to comment.commenter, link, :target => "_blank" %></strong> on <em><%= comment.created_at.strftime("%b %d, %Y")%></em></li>
-                <li><%= comment.content %></li><br>
+                <li><%= comment.content %></li><br><hr>
               <% end %>
               </ul>
           </div>
