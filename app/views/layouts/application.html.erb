@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag %>
+  <%= content_for?(:head) ? yield(:head) : '' %>
   
   <meta name="keywords" content="Toys and Games for Kids, Boys, Girls, Nieces, Nephews, Baby and Teens. Educational Toys, toy, toys for us. buy toys online. baby games, baby toys, 
   kids toys. Fisher price, Think fun, ThinkFun, Hasbro, Lego, Skip Hop, LeapFrog, Leap frog, Books" /> 
