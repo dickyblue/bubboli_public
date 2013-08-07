@@ -5,7 +5,7 @@ module ApplicationHelper
   end
   
   def bubboli_square
-    bubboli_square = image_tag("bubboli-logo-square.png", :alt => "Bubboli-Square")
+    bubboli_square = image_tag("bubboli-logo-square.png")
   end
   
   def elephant
