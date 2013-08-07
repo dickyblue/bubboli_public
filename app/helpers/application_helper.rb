@@ -4,6 +4,10 @@ module ApplicationHelper
     bubboli = image_tag("BubboliLogo.png", :alt => "Bubboli")
   end
   
+  def bubboli_square
+    bubboli_square = image_tag("bubboli-logo-square.jpg", :alt => "Bubboli-Square")
+  end
+  
   def elephant
     elephant = image_tag("elephant.jpg", :alt => "Bubboli")
   end
