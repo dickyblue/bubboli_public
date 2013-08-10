@@ -102,6 +102,7 @@ class Relationship < ActiveRecord::Base
     self.reminders = {}
     reminder_options = ReminderOption.pluck(:name)
     reminder_options.each{|a| self.reminders[a] = "1"}
+    self.next_reminder_due_at = next_due_date
     self.save
   end
   
