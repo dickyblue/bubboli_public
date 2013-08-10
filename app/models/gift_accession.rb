@@ -17,10 +17,12 @@ class GiftAccession < ActiveRecord::Base
   end
   
   def send_gift_alert_email
-    generate_token(:gift_accession_token)
-    self.gift_accession_token_sent_at = Time.now
-    save!
-    GiftAlertMailer.delay.gift_alert(self) if self.giftee.parents
+    unless self.giver.is_parent_of?(self.giftee)
+      generate_token(:gift_accession_token)
+      self.gift_accession_token_sent_at = Time.now
+      save!
+      GiftAlertMailer.delay.gift_alert(self) if self.giftee.parents
+    end
   end
   
   def approve!
