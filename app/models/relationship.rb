@@ -94,7 +94,7 @@ class Relationship < ActiveRecord::Base
   
   def confirm_relationship!
     self.status = "Confirmed"
-    self.relation_token = nil
+    # self.relation_token = nil
     save(:validate => false)
   end
   

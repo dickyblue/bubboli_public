@@ -27,7 +27,7 @@ class GiftAccession < ActiveRecord::Base
   
   def approve!
     self.approved = true
-    self.gift_accession_token = nil
+    # self.gift_accession_token = nil
     save(:validate => false)
   end
   
