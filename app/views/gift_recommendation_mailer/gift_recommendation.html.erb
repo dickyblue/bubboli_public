@@ -99,10 +99,10 @@
                       <table border="0" cellpadding="20" cellspacing="0" width="100%">
                         <tr>
                           <td valign="top" style="border-collapse: collapse">
-                          <div style="color:#505050; font-family: Arial; font-size: 14px; line-height: 100%; padding: 0; text-align: left;">
+                          <div style="color:#505050; font-family: Arial; font-size: 14px; line-height: 150%; padding: 0; text-align: left;">
                             <!-- // Begin Module: Standard Welcome \\ -->
                           	  <span style="color:505050; font-size: 14px; line-height:150%; font-weight:bold;">Hi <%= @user %>,</span> <br><br>
-                          	  <%= @child.first_name %>'s birthday is coming up soon so here are the gift recommendations based on your preferences. 
+                          	  <%= @child.first_name %>'s birthday is coming up soon! Below are the gift recommendations based on your preferences. Happy gifting!
                           	<!-- // End Module: Standard Welcome \\ -->
                           </div>
                           </td>
@@ -116,12 +116,12 @@
                                 
                                 <!-- // Begin Module: Recommendation One \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <a href="<%= gift_url(@gifts[0]) %>"><%= image_tag @gifts[0].gift_images.first.image_url(:thumb_pic) if @gifts[0] %></a>
+                                  <a href="<%= gift_url(@gifts[0]) if @gifts[0] %>" target="_blank" style="color: #53868B;"><%= image_tag @gifts[0].gift_images.first.image_url(:thumb_pic) if @gifts[0] %></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <a href="<%= gift_url(@gifts[0]) %>"><%= @gifts[0].name if @gifts[0] %></a>
+                                      <a href="<%= gift_url(@gifts[0]) if @gifts[0] %>" target="_blank" style="color: #53868B;"><%= @gifts[0].name if @gifts[0] %></a>
                                     </span>
                                     <%= @gifts[0].description.truncate(100) if @gifts[0] %>  
                                   </div>
@@ -130,12 +130,12 @@
                                 
                                 <!-- // Begin Module: Recommendation Two \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= image_tag @gifts[1].gift_images.first.image_url(:thumb_pic) if @gifts[1] %>
+                                  <a href="<%= gift_url(@gifts[1]) if @gifts[1] %>" target="_blank" style="color: #53868B;"><%= image_tag @gifts[1].gift_images.first.image_url(:thumb_pic) if @gifts[1] %></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <%= @gifts[1].name if @gifts[1] %>
+                                      <a href="<%= gift_url(@gifts[1]) if @gifts[1] %>" target="_blank" style="color: #53868B;"><%= @gifts[1].name if @gifts[1] %></a>
                                     </span>
                                     <%= @gifts[1].description.truncate(100) if @gifts[1] %>  
                                   </div>
@@ -144,12 +144,12 @@
                                 
                                 <!-- // Begin Module: Recommendation Three \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= image_tag @gifts[2].gift_images.first.image_url(:thumb_pic) if @gifts[2] %>
+                                  <a href="<%= gift_url(@gifts[2]) if @gifts[2] %>" target="_blank" style="color: #53868B;"><%= image_tag @gifts[2].gift_images.first.image_url(:thumb_pic) if @gifts[2] %></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <%= @gifts[2].name if @gifts[2] %>
+                                      <a href="<%= gift_url(@gifts[2]) if @gifts[2] %>" target="_blank" style="color: #53868B;"><%= @gifts[2].name if @gifts[2] %></a>
                                     </span>
                                     <%= @gifts[2].description.truncate(100) if @gifts[2] %>  
                                   </div>
@@ -161,12 +161,12 @@
                                 <tr>  
                                 <!-- // Begin Module: Recommendation Four \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= image_tag @gifts[3].gift_images.first.image_url(:thumb_pic) if @gifts[3]%>
+                                  <a href="<%= gift_url(@gifts[3]) if @gifts[3] %>" target="_blank" style="color: #53868B;"><%= image_tag @gifts[3].gift_images.first.image_url(:thumb_pic) if @gifts[3]%></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <%= @gifts[3].name if @gifts[3] %>
+                                      <a href="<%= gift_url(@gifts[3]) if @gifts[3] %>" target="_blank" style="color: #53868B;"><%= @gifts[3].name if @gifts[3] %></a>
                                     </span>
                                     <%= @gifts[3].description.truncate(100) if @gifts[3] %>  
                                   </div>
@@ -175,12 +175,12 @@
                                 
                                 <!-- // Begin Module: Recommendation Five \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= image_tag @gifts[4].gift_images.first.image_url(:thumb_pic) if @gifts[4] %>
+                                  <a href="<%= gift_url(@gifts[4]) if @gifts[4] %>" target="_blank" style="color: #53868B;"><%= image_tag @gifts[4].gift_images.first.image_url(:thumb_pic) if @gifts[4] %></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <%= @gifts[4].name if @gifts[4] %>
+                                      <a href="<%= gift_url(@gifts[4]) if @gifts[4] %>" target="_blank" style="color: #53868B;"><%= @gifts[4].name if @gifts[4] %></a>
                                     </span>
                                     <%= @gifts[4].description.truncate(100) if @gifts[4] %>  
                                   </div>
@@ -189,12 +189,12 @@
                                 
                                 <!-- // Begin Module: Recommendation Six \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= image_tag @gifts[5].gift_images.first.image_url(:thumb_pic) if @gifts[5] %>
+                                  <a href="<%= gift_url(@gifts[5]) if @gifts[5] %>" target="_blank" style="color: #53868B;"><%= image_tag @gifts[5].gift_images.first.image_url(:thumb_pic) if @gifts[5] %></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <%= @gifts[5].name if @gifts[5] %>
+                                      <a href="<%= gift_url(@gifts[5]) if @gifts[5] %>" target="_blank" style="color: #53868B;"><%= @gifts[5].name if @gifts[5] %></a>
                                     </span>
                                     <%= @gifts[5].description.truncate(100) if @gifts[5] %>  
                                   </div>
