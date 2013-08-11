@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   #   @user = relationship.user.first_name
   #   @child = relationship.child
   #   @gifts = Gift.gift_by_pref_all_cat(@child, relationship).first(6)
-  end
+  # end
   
   #only for viewing online
   # def friend_alert
