@@ -23,4 +23,5 @@ CarrierWave.configure do |config|
   config.cache_dir = "#{Rails.root}/tmp/uploads"
   config.fog_directory = FOG_CONFIG['bucket']
   config.fog_public = false
+  config.fog_authenticated_url_expiration = 1209600
 end
