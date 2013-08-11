@@ -102,7 +102,7 @@
                           <div style="color:#505050; font-family: Arial; font-size: 14px; line-height: 100%; padding: 0; text-align: left;">
                             <!-- // Begin Module: Standard Welcome \\ -->
                           	  <span style="color:505050; font-size: 14px; line-height:150%; font-weight:bold;">Hi <%= @user %>,</span> <br><br>
-                          	  You are receiving this letter because...
+                          	  <%= @child.first_name %>'s birthday is coming up soon so here are the gift recommendations based on your preferences. 
                           	<!-- // End Module: Standard Welcome \\ -->
                           </div>
                           </td>
@@ -116,15 +116,14 @@
                                 
                                 <!-- // Begin Module: Recommendation One \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <%= image_tag @gifts[0].gift_images.first.image_url(:thumb_pic) if @gifts[0] %>
+                                  <a href="<%= gift_path(@gift) %>"><%= image_tag @gifts[0].gift_images.first.image_url(:thumb_pic) if @gifts[0] %></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <%= @gifts[0].name if @gifts[0] %>
+                                      <a href="<%= gift_path(@gift) %>"><%= @gifts[0].name if @gifts[0] %></a>
                                     </span>
-                                    <%= @gifts[0].description.truncate(100) if @gifts[0] %>This is what a <a href="http://www.bubboli.com" style="color:#ff6f6a;
-                                    font-weight:normal;text-decoration:none" target="_blank">link </a>looks like.  
+                                    <%= @gifts[0].description.truncate(100) if @gifts[0] %>  
                                   </div>
                                 </td>
                                 <!-- // End Module: Recommendation One \\ -->
@@ -138,8 +137,7 @@
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
                                       <%= @gifts[1].name if @gifts[1] %>
                                     </span>
-                                    <%= @gifts[1].description.truncate(100) if @gifts[1] %>. This is what a <a href="http://www.bubboli.com" style="color:#ff6f6a;
-                                    font-weight:normal;text-decoration:none" target="_blank">link </a>looks like.  
+                                    <%= @gifts[1].description.truncate(100) if @gifts[1] %>  
                                   </div>
                                 </td>
                                 <!-- // End Module: Recommendation Two \\ -->
