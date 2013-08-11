@@ -46,7 +46,7 @@ class GiftAccessionsController < ApplicationController
       flash[:notice] = "#{ga.gift.name} has been added to #{ga.giftee.first_name}'s purchased list."
       redirect_to root_path
     when (!params[:gift_accession_token].blank?) && ga && ga.approved?
-      flash[:error] = "Looks like you already approved this gift already."
+      flash[:error] = "Looks like you already approved this gift."
       redirect_to root_path
     else
       flash[:error] = "We couldn't find this gift.  Perhaps you had already added it to #{ga.giftee.first_name}'s purchased list."
