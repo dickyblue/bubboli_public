@@ -57,6 +57,7 @@ class Relationship < ActiveRecord::Base
     self.update_attribute(:next_reminder_due_at, date) if force_update && self.next_reminder_due_at_changed?
   end
 
+ # NEED TO MAKE IT SO THAT IT UPDATES ONCE EMAILS ARE SENT.  ALSO NEED TO UPDATE WHEN CHILD BIRTHDATE CHANGES.
   def next_due_date
     begin
       selected_reminders = ReminderOption.all.select {|r| (self.respond_to?(r.name)) && (self.send(r.name.to_sym) == '1') }
@@ -102,7 +103,7 @@ class Relationship < ActiveRecord::Base
     self.reminders = {}
     reminder_options = ReminderOption.pluck(:name)
     reminder_options.each{|a| self.reminders[a] = "1"}
-    self.next_reminder_due_at = next_due_date
+    self.next_reminder_due_at = self.next_due_date
     self.save
   end
   
