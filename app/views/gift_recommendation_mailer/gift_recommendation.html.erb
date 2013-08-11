@@ -116,12 +116,12 @@
                                 
                                 <!-- // Begin Module: Recommendation One \\ -->
                                 <td valign="top" style="border-collapse: collapse">
-                                  <a href="<%= gift_url(@gift) %>"><%= image_tag @gifts[0].gift_images.first.image_url(:thumb_pic) if @gifts[0] %></a>
+                                  <a href="<%= gift_url(@gifts[0]) %>"><%= image_tag @gifts[0].gift_images.first.image_url(:thumb_pic) if @gifts[0] %></a>
                                   
                                   <div style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left; max-width: 160px;">
                                     <span style="color: #53868b; display: block; font-family: Arial; font-size: 14px; font-weight: bold;
                                     line-height: 100%; margin-top: 0; margin-right: 0; margin-bottom: 10px; margin-left: 0; text-align: center">
-                                      <a href="<%= gift_url(@gift) %>"><%= @gifts[0].name if @gifts[0] %></a>
+                                      <a href="<%= gift_url(@gifts[0]) %>"><%= @gifts[0].name if @gifts[0] %></a>
                                     </span>
                                     <%= @gifts[0].description.truncate(100) if @gifts[0] %>  
                                   </div>
