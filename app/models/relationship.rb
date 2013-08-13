@@ -22,10 +22,10 @@ class Relationship < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :child_id
   
   before_save :change_rel_status
-  after_save :set_new_due_date
+  before_save :set_new_due_date
   # after_save :set_friend_alert, :on => :create
   after_create :send_friend_alert_email 
-  after_create :set_reminders_to_all
+  # after_create :set_reminders_to_all
 
   def change_rel_status
     if self.relation_type_id == 1 && self.child.number_of_parents < 2
@@ -54,7 +54,7 @@ class Relationship < ActiveRecord::Base
     if self.reminders_changed? || force_update || self.child_id_changed?
       self.next_reminder_due_at = date
     end
-    self.update_attribute(:next_reminder_due_at, date) if force_update && self.next_reminder_due_at_changed?
+    self.update_attribute(:next_reminder_due_at, date) if force_update
   end
 
  # NEED TO MAKE IT SO THAT IT UPDATES ONCE EMAILS ARE SENT.  ALSO NEED TO UPDATE WHEN CHILD BIRTHDATE CHANGES.
@@ -100,13 +100,13 @@ class Relationship < ActiveRecord::Base
     save(:validate => false)
   end
   
-  def set_reminders_to_all
-    self.reminders = {}
-    reminder_options = ReminderOption.pluck(:name)
-    reminder_options.each{|a| self.reminders[a] = "1"}
-    self.set_new_due_date(true)
-    self.save
-  end
+  # def set_reminders_to_all
+  #   self.reminders = {}
+  #   reminder_options = ReminderOption.pluck(:name)
+  #   reminder_options.each{|a| self.reminders[a] = "1"}
+  #   self.set_new_due_date(true)
+  #   self.save
+  # end
   
   private
   
