@@ -22,7 +22,7 @@ class Relationship < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :child_id
   
   before_save :change_rel_status
-  before_save :set_new_due_date
+  after_save :set_new_due_date
   # after_save :set_friend_alert, :on => :create
   after_create :send_friend_alert_email 
   after_create :set_reminders_to_all
@@ -59,20 +59,21 @@ class Relationship < ActiveRecord::Base
 
  # NEED TO MAKE IT SO THAT IT UPDATES ONCE EMAILS ARE SENT.  ALSO NEED TO UPDATE WHEN CHILD BIRTHDATE CHANGES.
   def next_due_date
-    begin
+    # begin
       selected_reminders = ReminderOption.all.select {|r| (self.respond_to?(r.name)) && (self.send(r.name.to_sym) == '1') }
-      sorted_reminders = selected_reminders.sort_by {|r| r.days} if selected_reminders.present?
-      remaining_reminders = sorted_reminders.select {|r| r.days <= self.child.birthday_days} if sorted_reminders.present?
-      next_reminder = remaining_reminders.max_by(&:days) if remaining_reminders.present?
+      return nil if selected_reminders.empty?
+      sorted_reminders = selected_reminders.sort_by {|r| r.days} 
+      remaining_reminders = sorted_reminders.select {|r| r.days <= self.child.birthday_days} 
+      next_reminder = remaining_reminders.max_by(&:days) 
       if next_reminder
-        due_date= next_reminder.days.days.ago(self.child.next_birthday)
-      elsif sorted_reminders.present?
-        due_date = calculate_for_next_year(sorted_reminders.max_by(&:days))
+        next_reminder.days.days.ago(self.child.next_birthday)
+      else
+        calculate_for_next_year(sorted_reminders.max_by(&:days))
       end
       
-    rescue 
-      nil
-    end
+    # rescue 
+    #   nil
+    # end
   end
   
   def calculate_for_next_year(reminder)
@@ -103,7 +104,7 @@ class Relationship < ActiveRecord::Base
     self.reminders = {}
     reminder_options = ReminderOption.pluck(:name)
     reminder_options.each{|a| self.reminders[a] = "1"}
-    self.next_reminder_due_at = self.next_due_date
+    self.set_new_due_date(true)
     self.save
   end
   
