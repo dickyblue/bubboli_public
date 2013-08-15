@@ -34,6 +34,7 @@ class Invitation < ActiveRecord::Base
     relationships = self.child.relationships
     relationships.each {|r| r.update_attribute :child_id, confirmed_child.id }
     self.child.child_images.each {|i| i.update_attribute :child_id, confirmed_child.id} #moving all images to the new child record
+    self.child.gift_accessions.each {|ga| ga.update_attribute :child_id, confirmed_child.id} #moving all gift accessions to the new child record
     self.child.delete #dont use destroy since we dont want to trigger the dependent#destroy on the Child class.
     self.destroy
   end
