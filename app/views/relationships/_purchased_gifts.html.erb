@@ -5,7 +5,7 @@
       <% @gift_purchased.each do |gp| %>
         <li class="related-gifts">
           <%= link_to image_tag(gp.gift.gift_images.first.image_url(:sm_thumb_pic)), gift_path(gp.gift) if gp.gift %><br>
-          <%= link_to gp.gift.name, gift_path(gp.gift) %><br>
+          <%= link_to gp.gift.name, gift_path(gp.gift) if gp.gift %><br>
           
           <% if current_user.is_parent_of?(@child) %>
           <span class="gray-font">From: <%= gp.giver.first_name %></span>

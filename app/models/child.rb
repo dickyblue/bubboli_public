@@ -20,7 +20,7 @@ class Child < ActiveRecord::Base
   
   accepts_nested_attributes_for :invitations, :relationships #Added relationships to create new relationship when new child is created
   accepts_nested_attributes_for :child_images, :reject_if => lambda { |g| g[:image].blank? }, :allow_destroy => true
-  before_save :update_reminders
+  after_save :update_reminders
   
   def invitation_token
     invitation.token if invitation
@@ -106,16 +106,18 @@ class Child < ActiveRecord::Base
     self.parents.present? ? parents.count : 0
   end
   
-  def update_reminders
-    unless self.new_record?
-      self.relationships.each do |r| 
-        r.set_new_due_date(true) if self.birth_date_changed?
-      end
-    end
-  end
-  
   def build_relationship(user_id, relation_type_id)
     self.relationships.create!(:user_id => user_id, :relation_type_id => relation_type_id)
   end
+  
+  private 
+  
+    def update_reminders
+      unless self.new_record?
+        self.relationships.each do |r| 
+          r.set_new_due_date(true)
+        end
+      end
+    end
   
 end
