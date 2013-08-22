@@ -23,7 +23,7 @@ class Invitation < ActiveRecord::Base
   end
   
   def self.invitation_by_email(user)
-    invitations = self.where(:recipient_email => [user.email, user.work_email])
+    invitations = self.where(:recipient_email => [user.email, user.work_email] && :invitation_token != nil)
   end  
     
   def self.invited_children(user) 
@@ -38,6 +38,7 @@ class Invitation < ActiveRecord::Base
     kid.child_images.each {|i| i.update_attribute :child_id, confirmed_child.id} #moving all images to the new child record
     kid.gift_accessions.each {|ga| ga.update_attribute :child_id, confirmed_child.id} #moving all gift accessions to the new child record
     kid.delete #dont use destroy since we dont want to trigger the dependent#destroy on the Child class.
+    self.invitation_token = nil
     # self.destroy
   end
   
