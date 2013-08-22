@@ -23,7 +23,7 @@ class Invitation < ActiveRecord::Base
   end
   
   def self.invitation_by_email(user)
-    invitations = self.where(:recipient_email => [user.email, user.work_email] && :invitation_token != nil)
+    invitations = self.where(:recipient_email => [user.email, user.work_email])
   end  
     
   def self.invited_children(user) 
