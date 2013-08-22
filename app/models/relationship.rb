@@ -18,6 +18,7 @@ class Relationship < ActiveRecord::Base
   
   has_many    :user_child_price_prefs
   has_many    :gift_price_ranges, :through => :user_child_price_prefs
+  has_one     :invitation, dependent: :destroy
   
   validates_uniqueness_of :user_id, :scope => :child_id
 

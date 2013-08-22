@@ -33,7 +33,7 @@ class ChildrenController < ApplicationController
     if @child.save
       @relation = @child.build_relationship(current_user.id, params[:relation_type_ids]) #build_relationships method in child model to make this more rails friendly
       #@child.relationships.create!(:user_id => current_user.id, :relation_type_id => params[:relation_type_ids]) # Changed from relationships.last.update_attributes because relationship was not created at creation of child
-      @child.invitations.create!(:sender => current_user, :recipient_email => params[:invitee], :send_invitation => params[:invite] )
+      @child.invitations.create!(:relationship_id => @relation.id, :recipient_email => params[:invitee], :send_invitation => params[:invite] )
       redirect_to current_user
       flash[:success] = "Thank you.  <a href='#{url_for(@relation)}'>Complete the gift preferences</a> for #{@child.first_name} so we can
       better tailor our recommendations!".html_safe

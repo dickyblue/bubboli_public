@@ -1,8 +1,9 @@
 class Invitation < ActiveRecord::Base
 
   has_one     :recipient, :class_name => 'User'
-  belongs_to  :sender, :class_name => 'User', :foreign_key => 'sender_id'
-  belongs_to  :child
+  # belongs_to  :sender, :class_name => 'User', :foreign_key => 'sender_id'
+  # belongs_to  :child
+  belongs_to :relationship
 
   validates :recipient_email, :presence => true
 
@@ -31,12 +32,13 @@ class Invitation < ActiveRecord::Base
   end
   
   def confirm_as_child(confirmed_child)
-    relationships = self.child.relationships
-    relationships.each {|r| r.update_attribute :child_id, confirmed_child.id }
-    self.child.child_images.each {|i| i.update_attribute :child_id, confirmed_child.id} #moving all images to the new child record
-    self.child.gift_accessions.each {|ga| ga.update_attribute :child_id, confirmed_child.id} #moving all gift accessions to the new child record
-    self.child.delete #dont use destroy since we dont want to trigger the dependent#destroy on the Child class.
-    self.destroy
+    relationship = self.relationship
+    kid = self.relationship.child
+    relationship.update_attribute :child_id, confirmed_child.id 
+    kid.child_images.each {|i| i.update_attribute :child_id, confirmed_child.id} #moving all images to the new child record
+    kid.gift_accessions.each {|ga| ga.update_attribute :child_id, confirmed_child.id} #moving all gift accessions to the new child record
+    kid.delete #dont use destroy since we dont want to trigger the dependent#destroy on the Child class.
+    # self.destroy
   end
   
   # def set_send_invitation

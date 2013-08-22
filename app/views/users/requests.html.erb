@@ -12,9 +12,9 @@
       <%= form_for :invitation, :multipart => true, :remote => true, :url => invitation_confirm_or_delete_url, :id => 'invitation_form' do |f| %>
         <ul class="child-list">
           <li class="children-following child-list block">
-            <%= image_tag(r.sender.image_url(:sm_thumb)) if r.sender.try(:image) %>
-            <%= r.child.try(:first_name) %><br>
-            <%= r.sender.try(:first_name)%><br>
+            <%= image_tag(r.relationship.user.image_url(:sm_thumb)) if r.relationship.user.try(:image) %>
+            <%= r.relationship.child.try(:first_name) %><br>
+            <%= r.relationship.user.try(:first_name)%><br>
             <%= link_to 'Not My Child', invitation_confirm_or_delete_path(r, {:child => 'delete', :invitation => {:id => r.id}}) %>
             <%= f.hidden_field :id, :value => r.id %> <%# FIXME remove hidden field at some point %>
             <%= select_tag 'child', options_from_collection_for_select(@confirmed_children, 'id', 'first_name'), :prompt => 'Confirm This Child As', :class => "input-110", :onchange=>"this.form.submit();" if @confirmed_children.any? %>    
