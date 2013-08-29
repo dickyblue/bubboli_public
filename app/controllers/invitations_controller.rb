@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
     else
       flash[:error] = "There was a problem with your selection.  Please try again."
     end
-    redirect_to requests_path
+    redirect_to requests_path(current_user)
   end
 
 end

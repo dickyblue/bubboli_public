@@ -7,8 +7,8 @@ class Invitation < ActiveRecord::Base
 
   validates :recipient_email, :presence => true
 
-  validate :recipient_is_not_registered_email
-  validate :recipient_is_not_registered_work_email
+  validate :recipient_is_not_registered_email, :on => :create
+  validate :recipient_is_not_registered_work_email, :on => :create
   
   before_create :generate_token
   after_create :send_invitation_token
@@ -24,6 +24,7 @@ class Invitation < ActiveRecord::Base
   
   def self.invitation_by_email(user)
     invitations = self.where(:recipient_email => [user.email, user.work_email])
+    invitations.where("invitation_token IS NOT NULL")
   end  
     
   def self.invited_children(user) 
@@ -39,6 +40,9 @@ class Invitation < ActiveRecord::Base
     kid.gift_accessions.each {|ga| ga.update_attribute :child_id, confirmed_child.id} #moving all gift accessions to the new child record
     kid.delete #dont use destroy since we dont want to trigger the dependent#destroy on the Child class.
     self.invitation_token = nil
+    self.save
+    relationship.status = "Confirmed"
+    relationship.save
     # self.destroy
   end
   
