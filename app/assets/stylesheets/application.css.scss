@@ -1111,10 +1111,11 @@ img.float-right {
  * ===============================================*/
 
 .gift-buy-box {
-  height: 130px;
+  position: relative;
+  height: 135px;
   width: 230px;
   float: right;
-  margin-bottom: 15px;
+  border-bottom: 30px solid #FFFFFF;
   padding-top: 15px;
   text-align: center;
   background-color: $background-blue;
@@ -1130,6 +1131,7 @@ img.float-right {
   }
 
 .gift-buy-box2 {
+  position: relative;
   height: 420px;
   width: 230px;
   float: right;
@@ -1435,11 +1437,14 @@ ul.photos-collage li {
  * AMAZON FORMATTINGS
  * ===============================================*/
 
-.abridged-amazon-reviews {
-  position: relative;
-  z-index: -10;
-  }
-
 .iframe {
   border: 1px solid $lighter-gray;
+  }
+
+.iframe-summary {
+  border: none;
+  position: relative;
+  z-index: -10;
+  top: -110px;
+  margin-bottom: -110px;
   }
