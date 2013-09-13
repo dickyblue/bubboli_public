@@ -60,6 +60,12 @@ class ChildrenController < ApplicationController
       render "edit"
     end
   end
+  
+  # This only destroys the relationship between parent and child and does not destroy the child itself to preserve the other relationships and gift accessions
+  def destroy
+    @child = Child.find(params[:id])
+    current_user.unfollow!(@child)
+  end
 
   private
 
