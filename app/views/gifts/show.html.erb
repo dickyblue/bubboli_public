@@ -105,9 +105,9 @@ $(function() {
       <div class="row">
       <% unless @gift.sku.blank? %>
         <div>          
-          <iframe class="iframe-summary" src="<%= @iframe_url.gsub("&amp;", "&") %>" width="280" height="235" scrolling="no" border="none"></iframe>
-        </div>
-        <%= link_to "View All Amazon.com reviews", "#AmazonReviews", style: "padding-left: 35px"%><br><br>
+          <iframe class="iframe-summary" src="<%= @iframe_url.gsub("&amp;", "&") %>" width="280" height="200" scrolling="no" border="none"></iframe>
+        </div><br><br>
+        <%= link_to "View All Amazon.com reviews", "#AmazonReviews", class: "view-all-amazon-link"%><br><br>
       <% end %>
       </div>
       

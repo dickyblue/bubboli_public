@@ -1123,6 +1123,7 @@ img.float-right {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   background: url(buy-background.png) no-repeat;
+  z-index: 10;
   }
 
 .addthis_toolbox {
@@ -1444,8 +1445,12 @@ ul.photos-collage li {
 .iframe-summary {
   border: none;
   position: relative;
-  z-index: -10;
   top: -80px;
   margin-bottom: -110px;
   margin-left: 10px;
   }
+  
+.view-all-amazon-link {
+  padding-left: 35px;
+  z-index: 100;
+  }  
