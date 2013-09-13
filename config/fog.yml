@@ -7,4 +7,5 @@ development:
 
 
 staging:
+    # bucket: bubboli_dev
     bucket: bubboli

@@ -102,13 +102,13 @@ $(function() {
       
       
       
-      <div class="row center-index">
+      <div class="row">
       <% unless @gift.sku.blank? %>
         <div>          
-          <iframe class="iframe-summary" src="<%= @iframe_url.gsub("&amp;", "&") %>" width="220" height="230" scrolling="no" border="none"></iframe>
+          <iframe class="iframe-summary" src="<%= @iframe_url.gsub("&amp;", "&") %>" width="280" height="235" scrolling="no" border="none"></iframe>
         </div>
+        <%= link_to "View All Amazon.com reviews", "#AmazonReviews", style: "padding-left: 35px"%><br><br>
       <% end %>
-      <%= link_to "View All Amazon.com reviews", "#AmazonReviews" %><br><br>
       </div>
       
       <div class="row gift-buy-box2">
@@ -132,15 +132,14 @@ $(function() {
     </div>
     
   </div> 
-  
  
-  
+  <div class="row">
   <% unless @gift.sku.blank? %>
    <hr class="tab-content-line">
     <div>
       <h4 id ="AmazonReviews" class="qikki-font" style="color: #53868B">Reviews from Amazon</h4><br>
-      <iframe class="iframe" src="<%= @iframe_url.gsub("&amp;", "&") %>" width="940" height="400" scrolling="auto" ></iframe>
+      <iframe class="iframe" src="<%= @iframe_url.gsub("&amp;", "&") %>" width="960" height="400" scrolling="auto" ></iframe>
     </div>
   <% end %>
-   
+  </div> 
 </div>
