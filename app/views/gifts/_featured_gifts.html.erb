@@ -1,16 +1,42 @@
 
 <div class="gallery root-shadow-effect">
 
-  <ul class="slideshow">
-      <% @rotating_gift_images.each do |fav|%>
-      <li>
-          <%= link_to image_tag(fav.gift_images.last.image_url(:ex_large_pic), :title => fav.name, :alt => truncate(fav.description, :length => 130) ), fav %>
-      </li>
-      <% end %>
-  </ul>
+    <div class="carousel slide" id="myCarousel">
+      <div class="carousel-inner">
+        <div class="item active">
+          <ul class="no-margin-or-bullet">
+            <li class="slide_gallery">
+            <%= image_tag(@rotating_gift_image_first.gift_images.last.image_url(:ex_large_pic)) %>
+            <span class="gallery-slideshow-caption"><%= @rotating_gift_image_first.description %></span>
+            </li>
+          </ul>
+        </div>
+
+        <% @rotating_gift_images.each do |fb| %>
+        <div class="item">
+          <ul class="no-margin-or-bullet">
+            <li class="slide_gallery">
+            <%= image_tag(fb.gift_images.last.image_url(:ex_large_pic))%>
+            <span class="gallery-slideshow-caption"><%= fb.description %></span>
+            </li>
+          </ul>
+        </div>
+        <% end %>
+
+      </div>
+        <a data-slide="prev" href="#myCarousel" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#myCarousel" class="right carousel-control">›</a>
+    </div>
+
+  <script>
+    $('#myCarousel').carousel();
+  </script>
+  
+
 </div>
 
 <br>
+
 
 
 
