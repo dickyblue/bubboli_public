@@ -7,7 +7,10 @@
           <ul class="no-margin-or-bullet">
             <li class="slide_gallery">
             <%= image_tag(@rotating_gift_image_first.gift_images.last.image_url(:ex_large_pic)) %>
-            <span class="gallery-slideshow-caption"><%= truncate(@rotating_gift_image_first.description, length: 200) %></span>
+            <span class="gallery-slideshow-caption">
+              <h3 class="gallery-slideshow-h3"><%= @rotating_gift_image_first.name %></h3>
+              <p class="gallery-slideshow-p"><%= truncate(@rotating_gift_image_first.description, length: 150) %></p>
+            </span>
             </li>
           </ul>
         </div>
@@ -17,7 +20,10 @@
           <ul class="no-margin-or-bullet">
             <li class="slide_gallery">
             <%= image_tag(fb.gift_images.last.image_url(:ex_large_pic))%>
-            <span class="gallery-slideshow-caption"><%= truncate(fb.description, length: 200) %></span>
+            <span class="gallery-slideshow-caption">
+              <h3 class="gallery-slideshow-h3"><%= fb.name %></h3>
+              <p class="gallery-slideshow-p"><%= truncate(fb.description, length: 150) %></p>
+            </span>
             </li>
           </ul>
         </div>
