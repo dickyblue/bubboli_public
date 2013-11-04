@@ -6,5 +6,4 @@ class GiftImage < ActiveRecord::Base
   
   mount_uploader :image, GiftImageUploader
 
-
 end

@@ -10,7 +10,7 @@ class Gift < ActiveRecord::Base
   
   validates :name, :permalink, :price, :merchant, :presence => true
   
-  has_many  :gift_images 
+  has_many  :gift_images, :order => "id ASC" 
   has_many  :gift_categorizations
   has_many  :gift_categories, :through => :gift_categorizations
   has_many  :gift_age_classifications
