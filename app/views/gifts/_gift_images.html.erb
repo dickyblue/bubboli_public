@@ -16,7 +16,7 @@
           <% if @gift.favorite == false %>
             <%= image_tag(image.image_url(:sm_thumb_pic)) %>
           <% else %>
-            <%= image_tag(image.image_url(:sm_thumb_pic)) unless image == @gift.gift_images.last %>
+            <%= image_tag(image.image_url(:sm_thumb_pic)) unless image == @gift.gift_images.first %>
           <% end %>
         </a>
     <% end %>
