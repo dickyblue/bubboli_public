@@ -7,11 +7,11 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
 
 
 SitemapGenerator::Sitemap.create do
-  add '/gifts', :changefreq => 'daily', :priority => 0.9
+  add '/gifts', :changefreq => 'daily', :priority => 1.0
   add '/about', :changefreq => 'weekly'
   add '/gifts/favorite', :changefreq => 'daily'
   add '/gifts/baby_shower', :changefreq => 'weekly'
-  add '/blog', :changefreq => 'daily'
+  add '/blog', :changefreq => 'weekly'
     Blog.find_each do |blog|
       add blog_path(blog), lastmod: blog.updated_at
     end
