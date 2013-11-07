@@ -6,5 +6,4 @@
 
 
 #Sitemap: http://bubboli.s3.amazonaws.com/sitemaps/sitemap.xml.gz
-
 Sitemap: http://s3.amazonaws.com/sitemap-generator/sitemaps/sitemap.xml.gz
