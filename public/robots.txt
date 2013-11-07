@@ -5,4 +5,4 @@
 # Disallow: /
 
 
-Sitemap: http://bubboli.s3.amazonaws.com/sitemaps/sitemap.xml.gz
+Sitemap: http://bubboli_sitemap.s3.amazonaws.com/sitemaps/sitemap.xml.gz
