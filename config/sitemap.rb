@@ -3,7 +3,7 @@ SitemapGenerator::Sitemap.default_host = "http://www.bubboli.com"
 SitemapGenerator::Sitemap.sitemaps_host = ENV['SITEMAP_HOST']
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::WaveAdapter.new
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new
 
 
 SitemapGenerator::Sitemap.create do
