@@ -3,7 +3,7 @@
   <meta property="og:title" content="Bubboli Blog" />
   <meta property="og:url" content="www.bubboli.com/blog" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="<%= truncate(@blogs.last.content, :length => 168) %>"/>
+  <meta property="og:description" content="<%= truncate(@blogs.first.content, :length => 168) %>"/>
 <% end %>
 
 <% @page_title = "Bubboli blog" %>
