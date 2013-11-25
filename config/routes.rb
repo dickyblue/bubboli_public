@@ -76,6 +76,8 @@ BubboliKids::Application.routes.draw do
   match '/reminder_options/manage', :to => 'reminder_options#manage', :as => :manage_reminder_options
   match '/reminder_options/list', :to => 'reminder_options#list', :as => :list_reminder_options
   
+  match '/submit', :to => 'mailchimp_newsletters#submit', :as => :submit
+  
   resources :blog, :controller => 'blogs'
   resources :gifts, :my_children, :relation_types, :relationships, :my_kids_relationships, :reminder_options
   resources :gift_categories, :users, :blog_categories, :comments, :gift_age_ranges, :gift_price_ranges, :user_child_cat_prefs, :user_child_price_prefs

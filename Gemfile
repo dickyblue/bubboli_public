@@ -23,6 +23,7 @@ gem 'friendly_id', '~> 4.0.9'
 gem 'autoscaler'
 gem 'amazon-ecs'
 gem 'sitemap_generator'
+gem 'gibbon'
 
 # Gems used only for assets and not required
 # in production environments by default.

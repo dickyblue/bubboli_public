@@ -3,6 +3,13 @@
 <% end %>
 
 <div class="container">
+  
+  <%= form_tag submit_path do %>
+    <%= text_field_tag 'email', nil, :placeholder => 'Your email address' %>
+    <%= submit_tag "Subscribe", :alt => "Subscribe", class: "btn btn-large green"%>
+  <% end %>
+  
+  
   <div class="index-background">  
     <div class="row">
       <div style="font-size: 20px; text-align: center; font-family: 'futura-pt-condensed';">  

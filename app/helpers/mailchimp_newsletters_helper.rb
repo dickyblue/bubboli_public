@@ -1,0 +1,2 @@
+module MailchimpNewslettersHelper
+end
