@@ -1,8 +1,8 @@
 class MailchimpNewslettersController < ApplicationController
   
   def submit
-    gb = Gibbon::API.new
-    response = gb.list_subscribe({:id => 'e91b3d8a9b', :email => params[:email]})
+    gb = Gibbon::API.new(ENV['MAILCHIMP_API_KEY'])
+    response = gb.list_subscribe({:id => 'MAILCHIMP_NEWSLETTER_LIST_ID', :email => params[:email]})
   end
   
 end
