@@ -2,42 +2,47 @@
   <meta property="og:image" content="http://www.bubboli.com//assets/bubboli-logo-square-702bbb43fb322e654926771685ef0e5b.png" />
 <% end %>
 
-<div class="container">
-  
+
+  <div class="newsletter_signup_form">
   <%= form_tag subscribe_path do %>
-    <%= text_field_tag :email, nil, :placeholder => 'Your email address' %>
-    <%= submit_tag "Subscribe", :alt => "Subscribe", class: "btn btn-large green"%>
+  Subscribe to our Newsletter for the latest news & updates &nbsp
+    <%= text_field_tag :email, nil, :placeholder => 'name@example.com' %>&nbsp&nbsp
+    <%= submit_tag "Subscribe", :alt => "Subscribe", class: "btn-large btn-warning"%>
   <% end %>
+  </div>
   
-  
-  <div class="index-background">  
-    <div class="row">
-      <div style="font-size: 20px; text-align: center; font-family: 'futura-pt-condensed';">  
-        <span>CURATED BIRTHDAY GIFTS FOR KIDS AT YOUR FINGERTIPS!</span>
-        <br>
-        <br>
+
+  <div class="carousel slide" id="myCarouselMain">
+    <div class="carousel-inner main-carousel-height">
+      <div class="item active">
+          <%= pic_two %>
+          <div class="main-gallery-slideshow-caption">Let us spend time finding the best toys so you can <span class="font-emphasis">spend more time creating memories</span></div>
       </div>
+
+      <%# @featured_images.each do |fb| %>
+      <div class="item">
+          <%=  pic_one %>
+          <span class="main-gallery-slideshow-caption">Our curated gifts are as <span class="font-emphasis">unique, creative and has as much personality</span> as your bubbie</span>
+      </div>
+      <%# end %>
       
-      <div class="span12">
-        <br>
-        <p style="font-size: 17px; text-align: center; ">Bubboli helps you keep track of childrens'
-        <span style="font-size: 17px; color: #FFFFFF; background-color: #FF9B97; padding: 5px;">birthdays and sends you curated gift recommendations
-        from our trusted community</span> for the special bubbies in your life</span></p>
-        <br>
-              
-        <br>
-        <div style="text-align: center">
-        <%= link_to "SIGN UP NOW", new_user_path, :class => "btn btn-large green" %>
-        </div>
-        <br>
+      <div class="item">
+          <%=  pic_three %>
+          <span class="main-gallery-slideshow-caption"><span class="font-emphasis">No more late or duplicate gifts;</span> we send you our personalized recommendations straight to your inbox</span>
       </div>
-    
-      <!-- <div class="explainer-video pull-right">
-        <iframe width="450" height="253" src="http://www.youtube.com/embed/a7-K1rfFtE8" frameborder="0" allowfullscreen></iframe>
-      </div> -->
+
     </div>
-  </div>  
+      <a data-slide="prev" href="#myCarouselMain" class="left carousel-control">‹</a>
+      <a data-slide="next" href="#myCarouselMain" class="right carousel-control">›</a>
+  </div>
+
+  <script>
+    $('#myCarouselMain').carousel();
+    interval: 1000
+  </script>
+
     <br>
+<div class="container">
     
   <div>
     <hr>
@@ -77,51 +82,6 @@
   <br>
   <br>
     
-  <div class="row">
-    <div class="span12">
-      <div class="section-header">
-        <div class="section-header-text">
-          <p>WHY USE<br> 
-          BUBBOLI?</p>
-        </div>    
-      </div>
-      <div class="row">
-        <div class="span4">
-          <div class="index-h3">CURATED FROM OUR COMMUNITY</div>
-          <p class="index-p">of parents, teachers, child development specialists, and kids themselves</p>
-        </div>
-      
-        <div class="span4">
-          <div class="index-h3">PERSONALIZED GIFTS</div>
-          <p class="index-p">based on your preferences for each child</p>
-        </div>
-      
-        <div class="span4">
-          <div class="index-h3">ALWAYS ON TIME</div>
-          <p class="index-p">we remind you in advance so you are never late with a present again</p>
-        </div>
-       </div> 
-       <br>
-       <div class="row">
-         <div class="span4">
-           <div class="index-h3">WAY TOO MANY OPTIONS</div>
-           <p class="index-p">that you don't know what to get or what kids are into these days</p>
-         </div>
-
-         <div class="span4">
-           <div class="index-h3">TOO BUSY CONQUERING THE WORLD</div>
-           <p class="index-p">so why not let us help you take the weight off this one</p>
-         </div>
-
-         <div class="span4">
-           <div class="index-h3">BUBBOLI IS FOR EVERYONE</div>
-           <p class="index-p">no matter if you are an aunt, uncle, grandparent, godparent or friend around the corner or miles away</p>
-         </div>
-        </div> 
-       
-
-     </div>
-  </div>
   
     
     
