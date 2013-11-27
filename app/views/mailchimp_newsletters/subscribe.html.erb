@@ -1,0 +1,26 @@
+<div class="container center-index">
+<p style="font-size: 18px; color: #53868B; text-align: center">Thank you for subscribing to the Bubboli Newsletter!</p>  
+<br>
+<br>
+
+<p class="qikki-font" style="font-size: 18px; color: #6FAE4D; text-align: center">Before you go, we thought you might want to 
+  check out our most popular products.</p>  
+<br>
+<br>
+
+<div class="center-index">
+  <% @gifts.each do |gift| %>
+    <li class="no-bullet prod-list block">
+      <div>
+        <%= link_to(image_tag(gift.gift_images.first.image_url(:thumb_pic)), gift) %><br><br>
+        <%= link_to gift.name, gift, :class => "strong" %><br>
+      </div>
+    </li>
+  <% end %>
+</div>
+
+<br>
+<br>
+
+
+</div>
