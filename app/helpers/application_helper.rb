@@ -88,6 +88,18 @@ module ApplicationHelper
     check_email = image_tag("email.jpg", :alt => "Check Email")
   end
   
+  def pic_one
+    pic_one = image_tag("superhero_girl.jpg", :alt => "superhero_girl")
+  end
+  
+  def pic_two
+    pic_two = image_tag("grandparents_with_grandkids.jpg", :alt => "grandparents with grandkids")
+  end
+  
+  def pic_three
+    pic_three = image_tag("birthday_cupcakes.jpg", :alt => "birthday cupcakes")
+  end
+  
   def bubboli_mission
     mission = image_tag("bubboli-mission.jpg", :alt => "The Bubboli Mision: To play a small role in bridging the distance
     - emotionally and physically - between you and your special bubbies, whether you are around the corner, in a different

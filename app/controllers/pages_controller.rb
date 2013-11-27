@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def about
   end
   
+
   #only for viewing online
   # def gift_recommendation
   #   relationship = Relationship.first

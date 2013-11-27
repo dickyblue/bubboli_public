@@ -1,0 +1,158 @@
+<% content_for :head do %>
+  <meta property="og:image" content="http://www.bubboli.com//assets/bubboli-logo-square-702bbb43fb322e654926771685ef0e5b.png" />
+<% end %>
+
+
+  <div class="newsletter_signup_form">
+  <%= form_tag subscribe_path do %>
+  Subscribe to our Newsletter for the latest news & updates &nbsp
+    <%= text_field_tag :email, nil, :placeholder => 'name@example.com' %>&nbsp&nbsp
+    <%= submit_tag "Subscribe", :alt => "Subscribe", class: "btn-large btn-warning"%>
+  <% end %>
+  </div>
+  
+
+  <div class="carousel slide" id="myCarouselMain">
+    <div class="carousel-inner main-carousel-height">
+      <div class="item active">
+          <%= pic_two %>
+          <div class="main-gallery-slideshow-caption">Let us spend time finding the best toys so you can <span class="font-emphasis">spend more time creating memories</span></div>
+      </div>
+
+      <%# @featured_images.each do |fb| %>
+      <div class="item">
+          <%=  pic_one %>
+          <span class="main-gallery-slideshow-caption">Our curated gifts are as <span class="font-emphasis">unique, creative and has as much personality</span> as your bubbie</span>
+      </div>
+      <%# end %>
+      
+      <div class="item">
+          <%=  pic_three %>
+          <span class="main-gallery-slideshow-caption"><span class="font-emphasis">No more late or duplicate gifts;</span> we send you our personalized recommendations straight to your inbox</span>
+      </div>
+
+    </div>
+      <a data-slide="prev" href="#myCarouselMain" class="left carousel-control">‹</a>
+      <a data-slide="next" href="#myCarouselMain" class="right carousel-control">›</a>
+  </div>
+
+  <script>
+    $('#myCarouselMain').carousel();
+    interval: 1000
+  </script>
+
+    <br>
+<div class="container">
+    
+  <div>
+    <hr>
+    <div class="row">
+    <h2 style="text-align: center; font-size: 17px; color: #9092A2;">BUBBOLI IS TRUSTED BY OUR USERS</h2><br>
+    
+    
+      <div class="span4">
+        <p class="quotes">
+          "I was looking for a baby shower gift and turned to my facebook friends for advice.  One of them recommended Bubboli where
+          I found the baby keepsake.  I am soooooo pleased with the purchase.  My friend loved it!" 
+          <br>
+          <small><span class="pull-right">- Amy, New York</span></small>
+        </p>
+      </div>
+      
+      <div class="span4">
+        <p class="quotes">
+        "Bubboli made me the favorite aunt with the Strider bike. I can't wait to see my nephew ride it when I visit him next. Thanks bubboli!"   
+        <br>
+        <small><span class="pull-right">- Nancy, Rhode Island</span></small>
+        </p>
+      </div>  
+      
+      <div class="span4">
+        <p class="quotes">
+        "I was so excited when I received the Deluxe Baby Keepsake Kit from my sister after the birth of my first child.  Such an amazing way
+        to capture their little hands and feet.  I am definitely getting this for my girlfriends when they have babies."
+        <br>
+        <small><span class="pull-right">- Ann-Marie, New Jersey</span></small>        
+        </p>
+      </div>          
+    </div>
+    <hr>  
+  </div>  
+  
+  <br>
+  <br>
+    
+  
+    
+    
+  <div class="row-fluid">
+    <div class="section-header">
+      <div class="section-header-text">
+        <p>HOW DOES<br> 
+        IT WORK?</p>
+      </div>
+    </div>
+    
+    <div class="how-it-works">  
+      <div class="row how-it-works-title">
+        <div class="span6">
+          <h2>GIFTERS</h2>
+        </div>
+
+        <div class="span6">
+          <h2>PARENTS</h2>
+        </div>
+      </div>
+
+      <br>
+      <div class="row-fluid">
+        <div class="span6">
+          <p><%=  add_a_child  %> <br>1) Add the children you want to follow</p>
+        </div>
+
+        <div class="span6">
+          <p><%=  add_a_child  %> <br>1) Add your children</p>
+        </div>
+      </div>
+      <br>
+    
+      <div class="row-fluid">
+        <div class="span6">
+          <p><%=  send_recommendation  %> <br>2) We remind you of upcoming birthdays with a list of personalized gifts based on your preferences</p>
+        </div>
+
+        <div class="span6">
+          <p><%=  get_gifts  %> <br>2) Keep track of gifts purchased for your children</p>
+        </div>
+      </div>  
+      <br>
+    
+      <div class="row-fluid">
+        <div class="span6">
+          <p><%=  hugs_and_kisses  %> <br>3) Get loved, hugged and kissed</p>
+        </div>
+
+        <div class="span6">
+          <p><%=  get_organized  %> <br>3) Be organized and avoid receiving duplicate gifts</p>
+        </div>
+      </div>  
+      <br>
+      
+      <div class="row-fluid">
+        <div class="span6">
+          <br>
+          <br>
+          <%= link_to "SIGN UP NOW", new_user_path, :class => 'btn btn-large green' %>
+        </div>
+
+        <div class="span6">
+          <br>
+          <br>
+          <%= link_to "SIGN UP NOW", new_user_path, :class => 'btn btn-large green' %>
+        </div>
+      </div>  
+
+    </div>
+  </div>
+    <br>
+</div>  
