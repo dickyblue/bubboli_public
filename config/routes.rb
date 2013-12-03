@@ -19,6 +19,7 @@ BubboliKids::Application.routes.draw do
   #match '/password_reset', :to => 'pages#password_reset', :as => :pass_reset
   #match '/account_confirmation', :to => 'pages#account_confirmation', :as => :acct_conf
   # match '/welcome_email', :to => 'pages#welcome_email', :as => :welcome_email
+  match '/despicable_me_contest_official_rules', :to => 'pages#despicable_me_contest_official_rules', :as => :despicable_me_contest_official_rules
   
   match '/gifts/list', :to => 'gifts#list', :as => :list_gift
   match '/gifts/manage', :to => 'gifts#manage', :as => :manage_gift
