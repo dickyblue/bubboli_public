@@ -72,13 +72,7 @@ $(function() {
         <h4 style= "color: #53868B" >Price: <%= number_to_currency(@gift.price) %></h4>
         <% link = "http://"+@gift.permalink %>
         
-        <% if @gift.merchant == "Amazon" %>
-          <%= link_to buy_from_amazon, link, :target => "_blank" %>&nbsp<a class="tip" data-toggle="tooltip" data-placement="right" title="By purchasing this product through this link, Bubboli
-          receives a small commission, at no additional cost to you, for the sale.  This commission will help fund site-related expenses. Thank you."><i class="icon-question-sign"></i></a><br><br>
-        <% else %>
-          <div class="btn green white-link"><%= link_to "Buy It from #{@gift.merchant}", link, :target => "_blank" %></div>&nbsp<a class="tip" data-toggle="tooltip" data-placement="right" title="By purchasing this product through this link, Bubboli
-          receives a small commission, at no additional cost to you, for the sale.  This commission will help fund site-related expenses.  Thank you."><i class="icon-question-sign"></i></a><br><br>
-        <% end %>        
+          <div class="btn green white-link"><%= link_to "Buy It Now", link, :target => "_blank" %></div><br><br>
         
         <!-- ShareThis Button BEGIN -->
         <!-- <span class='st_facebook' st_img='<%= @gift.gift_images.first.image_url(:large_pic) %>'></span>
