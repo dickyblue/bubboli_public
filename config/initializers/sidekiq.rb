@@ -45,7 +45,7 @@ end
 require 'sidekiq/web'
 
 Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-  username == 'abc@test.com' && password == 'password'
+  username == ENV['SIDEKIQ_USER'] && password == ENV['SIDEKIQ_PW']
 end 
 
 
